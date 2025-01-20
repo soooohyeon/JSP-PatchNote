@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+.<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -21,7 +21,7 @@
 
 		<!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
 		<div id="ADMIN-DIV-CONTENTWRAP">
-			<!-- 상단 헤더 -->
+			`<!-- 상단 헤더 -->
 			<jsp:include page="/html/admin/header.jsp" />
 			<!-- 상단 헤더 끝 -->
 

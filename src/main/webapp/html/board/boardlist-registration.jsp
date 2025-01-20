@@ -10,8 +10,7 @@
       rel="stylesheet"
       href="${pageContext.request.contextPath}/asset/css/board/boardlistregistration.css"
     />
-    <link rel="stylesheet" href="./../../asset/css/main/header.css" />
-    <link rel="stylesheet" href="./../../asset/css/main/footer.css" />
+
     <script
       defer
       src="${pageContext.request.contextPath}/asset/js/board/boardlistregistration.js"
@@ -19,17 +18,8 @@
   </head>
 
   <body>
-    <!-- 상단 메뉴바 -->
-    <nav class="main-nav-menuwrap">
-      <img src="../../asset/img/main/logo.png" class="main-img-logo" />
-      <ul class="main-nav-ul">
-        <li><a href="./../notice/noticelist.html">공지</a></li>
-        <li><a href="./../board/boardlist.html">자유게시판</a></li>
-        <li><a href="./../study/studylist.html">스터디 모집</a></li>
-        <li><a href="./../login/join.html">회원가입</a></li>
-        <li><a href="./../login/login.html">로그인</a></li>
-      </ul>
-    </nav>
+   <!-- 헤더 - 메뉴바 -->
+	<jsp:include page="/html/main/header.jsp" />
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="board-h1-title">게시글 등록</h1>
@@ -89,29 +79,8 @@
       </div>
     </main>
 
-    <footer class="main-footer-container">
-      <div class="main-footer-content">
-        <div class="main-footer-links">
-          <div class="main-footer-policies">
-            <a href="#" class="main-link-policy">개인정보처리방침</a>
-            <span class="main-span-divider">|</span>
-            <a href="#" class="main-link-terms">이용약관</a>
-          </div>
-          <p class="main-paragraph-contact">
-            Contact: team.patchnote.official@gmail.com
-          </p>
-          <p class="main-paragraph-copyright">
-            Copyright Forest Info. All rights reserved
-          </p>
-        </div>
-        <div class="main-footer-logo">
-          <img
-            src="/webapp/asset/img/main/logo.png"
-            alt="Forest of Knowledge Logo"
-            class="main-img-footerlogo"
-          />
-        </div>
-      </div>
-    </footer>
+	<!-- 푸터 -->
+	<jsp:include page="/html/main/footer.jsp"/>
+
   </body>
 </html>
