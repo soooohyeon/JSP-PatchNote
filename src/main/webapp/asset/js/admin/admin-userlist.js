@@ -6,6 +6,7 @@ function quitBtn(event) {
   // 확인 버튼 클릭시
   if (isdelete) {
     // 해당 글 삭제 먼저 진행되어야 함
+	
     // 삭제 후 알람
     alert('탈퇴가 완료되었습니다.');
   }

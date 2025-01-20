@@ -21,8 +21,33 @@ public class AdminDAO {
 	}
 
 //	해당 유저 상세 조회
-	public List<UserDTO> selectUserOne(int userNum) {
-		return sqlSession.selectList("AdminMapper.selectUserOne", userNum);
+	public UserDTO selectUserOne(int userNum) {
+		return sqlSession.selectOne("AdminMapper.selectUserOne", userNum);
+	}
+	
+//	해당 유저가 작성한 스터디 개수 조회
+	public int countStudy(int userNum) {
+		return sqlSession.selectOne("AdminMapper.countStudy", userNum);
+	}
+	
+//	해당 유저가 신청한 스터디 개수 조회
+	public int countApply(int userNum) {
+		return sqlSession.selectOne("AdminMapper.countApply", userNum);
+	}
+	
+//	해당 유저가 작성한 스터디 댓글 개수 조회
+	public int countStudyComment(int userNum) {
+		return sqlSession.selectOne("AdminMapper.countStudyComment", userNum);
+	}
+	
+//	해당 유저가 작성한 자유게시판 개수 조회
+	public int countBoard(int userNum) {
+		return sqlSession.selectOne("AdminMapper.countBoard", userNum);
+	}
+	
+//	해당 유저가 작성한 자유게시판 댓글 개수 조회
+	public int countBoardComment(int userNum) {
+		return sqlSession.selectOne("AdminMapper.countBoardComment", userNum);
 	}
 	
 }

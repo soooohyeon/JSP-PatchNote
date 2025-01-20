@@ -11,15 +11,16 @@
 </head>
 <body>
   <div id="ADMIN-DIV-LAYOUTCONTAINER">
-    <!-- 사이드 메뉴 -->
-    <jsp:include page = "/html/admin/sidemenu.jsp" />
-    <!-- 사이드 메뉴 끝 -->
+		<!-- 사이드 메뉴 -->
+		<jsp:include page="/html/admin/sidemenu.jsp" />
+		<!-- 사이드 메뉴 끝 -->
 
-    <!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
-    <div id="ADMIN-DIV-CONTENTWRAP">
-      <!-- 상단 헤더 -->
-	  <jsp:include page = "/html/admin/header.jsp" />
-      <!-- 상단 헤더 끝 -->
+		<!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
+		<div id="ADMIN-DIV-CONTENTWRAP">
+			<!-- 상단 헤더 -->
+			<jsp:include page="/html/admin/header.jsp" />
+			<!-- 상단 헤더 끝 -->
+
 
       <!-- 메인 컨텐츠가 들어갈 컨테이너 -->
       <main class="admin-div-container">
@@ -40,17 +41,17 @@
               <li class="adminUserDetail-li-usernickname">닉네임</li>
               <li class="adminUserDetail-li-userbirth">생년월일</li>
               <li class="adminUserDetail-li-userphone">전화번호</li>
-              <li class="adminUserDetail-li-joindate">가입일</li>
+              <li class="adminUserDetail-li-joindate">가입</li>
             </ul>
 
             <!-- 유저 정보가 들어가는 부분 -->
             <ul class="admin-ul-datawrap">
-              <li class="adminUserDetail-li-username">홍길동</li>
-              <li class="adminUserDetail-li-userid">sdklfnewirfni97231</li>
-              <li class="adminUserDetail-li-usernickname">풀잎나무</li>
-              <li class="adminUserDetail-li-userbirth">1999.01.01</li>
-              <li class="adminUserDetail-li-userphone">010-1234-1234</li>
-              <li class="adminUserDetail-li-joindate">2025.01.13</li>
+              <li class="adminUserDetail-li-username">${user.userName}</li>
+              <li class="adminUserDetail-li-userid">${user.userId}</li>
+              <li class="adminUserDetail-li-usernickname">${user.userNick}</li>
+              <li class="adminUserDetail-li-userbirth">${user.userBirth}</li>
+              <li class="adminUserDetail-li-userphone">${user.userPH}</li>
+              <li class="adminUserDetail-li-joindate">${user.userJoinDate}</li>
               </li>
             </ul>
             
@@ -68,28 +69,28 @@
               <!-- 스터디 글, 신청, 댓글 개수 - 데이터 -->
               <ul class="admin-ul-datawrap">
                 <li class="adminUserDetail-li-study">
-                  <span class="countText">1</span>개
+                  <span class="countText">${studyCount}</span>개
                 </li>
                 <li class="adminUserDetail-li-studyapply">
-                  <span class="countText">10</span>개
+                  <span class="countText">${applyCount}</span>개
                 </li>
                 <li class="adminUserDetail-li-studycomment">
-                  <span class="countText">3</span>개
+                  <span class="countText">${studyCommentCount}</span>개
                 </li>
               </ul>
 
               <!-- 자유게시판 글, 댓글 - 제목 -->
               <ul class="adminUserDetail-div-titlewrap">
-                <li class="adminUserDetail-li-board">생성한 스터디</li>
-                <li class="adminUserDetail-li-boardapply">신청한 스터디</li>
+                <li class="adminUserDetail-li-board">작성한 자유게시판 글</li>
+                <li class="adminUserDetail-li-boardapply">작성한 자유게시판 댓글</li>
               </ul>
               <!-- 자유게시판 글, 댓글 - 데이터 -->
               <ul class="admin-ul-datawrap">
                 <li class="adminUserDetail-li-board">
-                  <span class="countText">1</span>개
+                  <span class="countText">${boardyCount}</span>개
                 </li>
                 <li class="adminUserDetail-li-boardapply">
-                  <span class="countText">10</span>개
+                  <span class="countText">${boardCommentCount}</span>개
                 </li>
               </ul>
 

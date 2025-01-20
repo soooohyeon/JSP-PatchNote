@@ -49,7 +49,7 @@
 							<li class="adminUser-li-userid">유저ID</li>
 							<li class="adminUser-li-usernickname">닉네임</li>
 							<li class="adminUser-li-userphone">전화번호</li>
-							<li class="adminUser-li-userbirth">생년월일</li>
+							<li class="adminUser-li-userbirth">가입일</li>
 							<li class="adminUser-li-userquit">강제탈퇴</li>
 						</ul>
 
@@ -71,7 +71,7 @@
 											<c:out value="${user.userPH}" />
 										</li>
 										<li class="adminUser-li-userbirth lightdata">
-											<c:out value="${user.userBirth}" />
+											<c:out value="${user.userJoinDate}" />
 										</li>
 										<li class="adminUser-li-userquit lightdata">
 											<button class="admin-btn-delete" onclick="quitBtn(this)">탈퇴</button>

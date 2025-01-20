@@ -10,7 +10,7 @@
 
 
 /* 테이블 1개의 가로, 폰트 두께 재설정 */
-.admin-div-listwrap {
+div.admin-div-listwrap {
   width: 100%;
   font-weight: 700;
   margin-top: 30px;
@@ -37,13 +37,13 @@
 .adminUserDetail-li-userphone { width: 20%; }
 .adminUserDetail-li-joindate { width: 15%; }
 
-.admin-ul-titlewrap {
+ul.admin-ul-titlewrap {
   background-color: #fff;
   border-bottom: 1px solid #ccc;
   color: #003161;
 }
 
-ul.admin-ul-datawrap {
+.admin-div-listwrap ul.admin-ul-datawrap {
   height: 60px;
   background-color: #fff;
   line-height: 60px;
@@ -81,4 +81,4 @@ ul.admin-ul-datawrap {
   margin-top: 50px;
 }
 
-.admin-btn-delete { width: 120px; }
+button.admin-btn-delete { width: 120px; }
