@@ -7,9 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>지식의 숲</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/main01.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/main.css">
+    <script>
+        const contextPath = '${pageContext.request.contextPath}';
+    </script>
     <script src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
 </head>
 
@@ -17,7 +18,6 @@
 <body>
 	<!-- 헤더 - 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
-	
 	
 
     <!-- 위시 리스트 -->
@@ -29,6 +29,7 @@
                         style="width: 40px; height: 40px;  margin-right: 5px;">
                     Forest of Knowledge
                 </h2>
+                
                 <div class="main-div-wishlistcontainer">
                     <div class="main-div-wishlistcontent">
                         <div class="main-div-wishlisttitle">
@@ -38,11 +39,12 @@
                             <h2>LIST</h2>
                         </div>
                         <ul class="main-div-ulist">
-                            <li>로그인 후 이용 부탁 드립니다.</li>
+                            <li class="main-div-wish" onclick="wishList(this)">로그인 후 이용 부탁 드립니다.</li>
                         </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="main-div-banner">
                 <div class="main-div-slide1">
                     <img src="${pageContext.request.contextPath}/asset/img/main/banner01.png" alt="이미지1"
@@ -57,8 +59,8 @@
 
             </div>
         </div>
-
         <!-- 신규/마감 임박 스터디 -->
+        
         <main class="main-div-container">
             <div class="main-div-studycard main-div-studynew">
                 <header class="main-div-studycardheader">
