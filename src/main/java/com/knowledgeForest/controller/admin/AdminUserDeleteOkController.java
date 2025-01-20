@@ -1,7 +1,6 @@
 package com.knowledgeForest.controller.admin;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,24 +9,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.AdminDAO;
-import com.knowledgeForest.dto.UserDTO;
 
-// 관리자 전체 유저 목록 조회
-public class AdminUserListOkController implements Execute {
+// 유저 탈퇴
+public class AdminUserDeleteOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
-		
-//		유저 목록 조회
-		List<UserDTO> userList = adminDAO.selectUserAll();
-		request.setAttribute("userList", userList);
-		result.setPath("/html/admin/admin-userlist.jsp");
-		result.setRedirect(false);
 
+//		userNum 변수에 저장
+		int userNum = Integer.parseInt(request.getParameter("userNum"));
+		
+//		유저 데이터 삭제 메소드 실행 - userNum 전달
+		adminDAO.deleteUser(userNum);
+
+//		경로 설정
+		result.setPath(request.getContextPath() + "/admin/admin-main.ad");
+		result.setRedirect(true);
+		
 		return result;
 	}
-	
+
 }

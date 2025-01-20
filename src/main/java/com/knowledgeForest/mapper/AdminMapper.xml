@@ -21,34 +21,40 @@
 	<select id="countStudy" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 신청한 스터디 개수 -->
 	<select id="countApply" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY_APPLY
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 스터디 댓글 개수 -->
 	<select id="countStudyComment" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY_COMMENT
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 게시판 글 개수 -->
 	<select id="countBoard" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_BOARD
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 게시판 댓글 개수 -->
 	<select id="countBoardComment" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_FB_COMMENT
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
+	
+	<!-- 해당 유저 데이터 삭제(탈퇴) -->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM TBL_USER
+		WHERE USER_NUM = #{userNum}
+	</delete>
 </mapper>

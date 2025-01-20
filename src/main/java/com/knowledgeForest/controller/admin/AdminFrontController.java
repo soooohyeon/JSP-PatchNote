@@ -24,15 +24,26 @@ public class AdminFrontController extends HttpServlet {
       Result result = null;
       
       switch(target) {
+//    관리자 메인 화면
       case "/admin/admin-main.ad":
     	  request.getRequestDispatcher("/html/admin/admin-main.jsp").forward(request, response);
     	  break;
+    	  
+//    모든 유저 목록 조회
       case "/admin/admin-userlist.ad":
     	  result = new AdminUserListOkController().execute(request, response);
     	  break;
+    	  
+//    해당 유저 상세 조회
       case "/admin/admin-userdetail.ad":
     	  result = new AdminUserDetailOkController().execute(request, response);
     	  break;
+    	  
+//    유저 삭제(탈퇴)
+      case "/admin/userDeleteOk.ad":
+    	  result = new AdminUserDeleteOkController().execute(request, response);
+    	  break;
+    	  
       case "/admin/admin-studylist.ad":
     	  request.getRequestDispatcher("/html/admin/admin-studylist.jsp").forward(request, response);
     	  break;

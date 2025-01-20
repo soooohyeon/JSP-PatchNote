@@ -98,7 +98,7 @@
 
 
             <div id="ADMINUSERDETAIL-DIV-DELETEWRAP">
-              <button class="admin-btn-delete" onclick="quitBtn(this)">탈퇴</button>
+              <button class="admin-btn-delete" onclick="quitBtn(${user.userNum})">탈퇴</button>
             </div>
           </div>
       </main>

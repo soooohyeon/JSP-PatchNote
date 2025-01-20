@@ -50,4 +50,8 @@ public class AdminDAO {
 		return sqlSession.selectOne("AdminMapper.countBoardComment", userNum);
 	}
 	
+	public void deleteUser(int userNum) {
+		sqlSession.delete("AdminMapper.deleteUser", userNum);
+	}
+	
 }
