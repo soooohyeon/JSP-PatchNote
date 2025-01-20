@@ -19,5 +19,10 @@ public class AdminDAO {
 	public List<UserDTO> selectUserAll() {
 		return sqlSession.selectList("AdminMapper.selectUserAll");
 	}
+
+//	해당 유저 상세 조회
+	public List<UserDTO> selectUserOne(int userNum) {
+		return sqlSession.selectList("AdminMapper.selectUserOne", userNum);
+	}
 	
 }
