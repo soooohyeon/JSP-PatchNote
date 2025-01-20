@@ -1,11 +1,13 @@
 package com.knowledgeForest.controller.login;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.knowledgeForest.Result;
 
 /**
  * Servlet implementation class LoginFrontController
@@ -41,6 +43,9 @@ public class LoginFrontController extends HttpServlet {
 		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 		System.out.println("test");
+		
+		Result result = null;
+		
 //		경로 분기처리
 		switch (target) {
 			
@@ -58,9 +63,20 @@ public class LoginFrontController extends HttpServlet {
 			request.getRequestDispatcher("/html/login/passwordSelect.jsp").forward(request, response);
 			break;
 		
-		case "/login/loginSendPage.me " :
+		case "/login/loginOk.me " :
 			System.out.println("mainPage이동");
-			request.getRequestDispatcher("/html/main/main.jsp").forward(request, response);
+			result = new LoginOkController().execute(request, response);
+			System.out.println(result.isRedirect());
+			break;
+		}
+		if(result != null) {
+			System.out.println("로그인좀");
+			if(result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+				
+			}else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
 		}
 		
 	}

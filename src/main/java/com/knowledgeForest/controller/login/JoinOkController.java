@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
+import com.knowledgeForest.dao.LoginDAO;
+import com.knowledgeForest.dto.UserDTO;
 
 public class JoinOkController implements Execute {
 
@@ -16,6 +18,10 @@ public class JoinOkController implements Execute {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
+		
+		LoginDAO loginDAO = new LoginDAO();
+		UserDTO userDTO = new UserDTO();
+		Result result = new Result();
 		
 		
 		
