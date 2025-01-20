@@ -22,11 +22,11 @@
       <div class="login-div-h1-box">
         <h1 class="login-h1-title">로그인</h1>
       </div>
-      <form action="${pageContext.request.contextPath}/login/loginOk" method = "get">
+      <form action="${pageContext.request.contextPath}/login/loginOk.me" method = "post">
       <div class="login-div-wrapper-input-box">
-        <input type="text" class="login-input" placeholder="아이디" name="id" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" > 
+        <input type="text" class="login-input" placeholder="아이디" name="userId" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" > 
 
-        <input type="password" class="login-input" placeholder="비밀번호" name="pwd" id="LOGIN-INPUT-PWD" maxlength="15" onblur="pwdCheck()" onkeyup="inputLenFunc1()" >
+        <input type="password" class="login-input" placeholder="비밀번호" name="userPw" id="LOGIN-INPUT-PWD" maxlength="15" onblur="pwdCheck()" onkeyup="inputLenFunc1()" >
       </div>
 
       <div class="login-div-wrapper-join-box">
@@ -34,7 +34,7 @@
       </div>
 
       	<div class="login-div-wrapper-btn-box">
-        	<button type="button" class="login-btn-join" id="LOGIN-BTN-LOGIN" onclick="moveSite()">로그인</button>
+        	<button type = "submit" class="login-btn-join" id="LOGIN-BTN-LOGIN">로그인</button>
       	</div>
 	  </form>
       <div class="login-div-wrapper-pwd-box">

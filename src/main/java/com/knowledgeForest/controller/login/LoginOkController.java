@@ -19,16 +19,23 @@ public class LoginOkController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("test");
+		System.out.println("LoginOkcontroller test");
+		
+		
+		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
+		System.out.println("test");
+		
+		
+		
 		
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		
+		System.out.println("daotest");
 		userDTO = loginDAO.login(userId, userPw);
-		
+		System.out.println("test");
 		if(userDTO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userDTO", userDTO);

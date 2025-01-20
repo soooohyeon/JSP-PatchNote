@@ -5,13 +5,14 @@ import org.apache.ibatis.session.SqlSession;
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.UserDTO;
 
-public class LoginDAO {
-
+public class LoginDAO{
+	
 	public SqlSession sqlsession;
 	
-	public LoginDAO() {
-		
+	public LoginDAO(){
+		System.out.println("=====SQLSESSION 확인======" + sqlsession);
 		sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
+		System.out.println("fifjwfjwe : " + sqlsession);
 		
 	}
 	
