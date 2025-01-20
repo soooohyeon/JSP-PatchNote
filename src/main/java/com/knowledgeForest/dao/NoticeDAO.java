@@ -1,9 +1,13 @@
 package com.knowledgeForest.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.NoticeDTO;
+import com.knowledgeForest.dto.UserDTO;
 
 public class NoticeDAO {
 	public SqlSession sqlSession;
@@ -12,11 +16,15 @@ public class NoticeDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public void join(NoticeDTO noticeDTO) {
-		sqlSession.insert("NoticeMapper.getNotice",noticeDTO);
-	}
+	public List<NoticeDTO> getNotice(){
+		List<NoticeDTO> list = sqlSession.selectList("notice.getNotice");
 	
-	
-	
-	
+		return list;
+	}	
+		
+//		해당 게시글 상세 조회
+		public List<UserDTO> selectNotice(int userNum) {
+			return sqlSession.selectList("NoticeMapper.selectUserOne", userNum);
+
+}
 }

@@ -5,6 +5,39 @@
 
 	<!-- 공지 전체 조회 -->
 	<select id="getNotice" resultType="NoticeDTO">
-		SELECT * FROM TBL_NOTICE
+		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_UPLOAD_DATE, USER_NUM, NOTICE_CONTENT, NOTICE_EDIT_DATE 
+		FROM TBL_USER
+		JOIN TBL_NOTICE
+		ON USER_NUM = NOTICE_USER_NUM
+		ORDER BY NOTICE_UPLOAD_DATE DESC
 	</select>
+	<!-- 게시글 총 개수 -->
+	<select id="getTotal" resultType="int">
+        <![CDATA[
+        SELECT COUNT(NOTICE_NUM) 
+        FROM TBL_NOTICE
+        ]]>
+	</select>
+	
+		<!-- 삭제 쿼리 -->
+	<delete id="delete" parameterType="int">
+		delete from TBL_NOTICE where
+		NOTICE_NUM = #{noticeNum}
+	</delete>
+		<!-- 업로드 쿼리 -->
+	<update id="update" parameterType="NOTICEDTO">
+		update TBL_NOTICE
+		set
+		NOTICE_TITLE = #{noticeTitle}, NOTICE_CONTENT = #{noticeContent}
+		where
+		NOTICE_NUM = #{noticeNum}
+	</update>
+	
+	<!-- 해당 게시글 정보 조회 -->
+    <select id="selectNotice" resultType="NoticeDTO" parameterType="int">
+    	SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+        FROM TBL_USER
+        WHERE USER_NUM = #{userNum}
+    </select>
+    
 </mapper>
