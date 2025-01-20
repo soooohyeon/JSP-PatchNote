@@ -1,0 +1,44 @@
+/* 상단 헤더 (메뉴바) */
+
+/* 폰트 설정 */
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* a 태그 기본 스타일 제거 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 메뉴 스타일 */
+.main-nav-menuwrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #888;
+}
+
+.main-nav-menuwrap img { cursor: pointer; }
+
+.main-nav-ul {
+  list-style: none;
+  display: flex;
+  margin-right: 100px;
+  gap: 50px;
+  color: #003161;
+  font-size: 24px;
+  font-family: "GangwonEdu_OTFBoldA";
+}
+
+.main-div-wrapper,
+.main-div-container {
+  padding: 20px;
+  margin: 0 auto;
+  width: 90%;
+  box-sizing: border-box;
+}

@@ -1,0 +1,92 @@
+/* 테이블들 감싸는 태그 */
+.adminMain-div-mainwrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* 카테고리 요소 1개 컨테이너 */
+.adminMain-div-contentswrap {
+  width: 48%;
+  padding-bottom: 50px;
+}
+
+/* 관리할 테이블 이름 */
+.adminMain-div-contentheaderWrap {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.adminMain-div-contentstitle { font-weight: 700; }
+.adminMain-div-contentsall { color : #808080; }
+
+/* 테이블 형식 스타일 */
+.adminMain-div-tablewrap li { text-align: center; }
+
+.adminMain-lists-titleswrap {
+  height: 40px;
+  background-color: #003161;
+
+  color: #fff;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.adminMain-lists-dataswrap {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+}
+
+.adminMain-lists-dataswrap li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 유저 목록 컬럼 너비 */
+.adminMain-li-userid { width: 30%; }
+.adminMain-li-usernickname { width: 40%; }
+.adminMain-li-userjoindate { width: 30%; }
+
+/* 스터디와 자유게시판 목록 컬럼 너비 */
+.adminMain-li-posttitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+}
+
+.adminMain-lists-dataswrap > .adminMain-li-posttitle { justify-content: flex-start; }
+.adminMain-li-writer { width: 25%; }
+.adminMain-li-writerdate { width: 20%; }
+
+.adminMain-div-title {
+  max-width: 90%;
+  margin-left: 5px;
+
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adminMain-div-commentcount {
+  width: 10%;
+  margin-right: 5px;
+}
+
+/* 공지 목록 컬럼 너비  */
+.adminMain-li-noticetitle {
+  width: 80%;
+  margin-left: 5px;
+}
+
+li.adminMain-notice-title {
+    text-align: left;
+  }

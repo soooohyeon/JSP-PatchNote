@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지식의 숲</title>
+  <link rel="stylesheet" href="./../../asset/css/notice/noticelist.css">
+  <link rel="stylesheet" href="./../../asset/css/main/header.css">
+  <link rel="stylesheet" href="../../asset/css/main/footer.css">
+  <script defer src="./../../asset/js/notice/noticelist.js"></script>
+</head>
+
+<body>
+  <!-- 상단 메뉴바 -->
+  <nav class="main-nav-menuwrap">
+    <img src="./../../asset/img/main/logo.png" class="main-img-logo" onclick="location.href='./main_login.html'">
+
+    <ul class="main-nav-ul">
+      <li><a href="./../notice/noticelist.html">공지</a></li>
+      <li><a href="./../board/boardlist.html">자유게시판</a></li>
+      <li><a href="./../study/studylist.html">스터디 모집</a></li>
+      <li><a href="./../myPage/mypageAccountEdit.html">마이페이지</a></li>
+      <li><a href="">로그아웃</a></li>
+    </ul>
+  </nav>
+  <h1>공지사항</h1>
+  <div class="noticelist-div-list">
+    <ul class="noticelist-ul-list">
+      <li class="noticelist-li-header">
+        <span class="notice-title">제목</span>
+        <span class="notice-author">작성자</span>
+        <span class="notice-date">작성일자</span>
+      </li>
+
+      <li class="noticelist-li-item" onclick="noticedetailpage()">
+        <span class="notice-title">[공지] 게시글 작성 방법</span>
+        <span class="notice-author">관리자</span>
+        <span class="notice-date">2025.01.01</span>
+      </li>
+      <li class="noticelist-li-item">
+        <span class="notice-title">[공지] 서버 점검 안내</span>
+        <span class="notice-author">관리자</span>
+        <span class="notice-date">2025.01.02</span>
+      </li>
+      <li class="noticelist-li-item">
+        <span class="notice-title">[공지] 개인정보 처리방침 개정 안내</span>
+        <span class="notice-author">관리자</span>
+        <span class="notice-date">2025.01.03</span>
+      </li>
+    </ul>
+    <!-- 페이지네이션 -->
+    <div class="noticelist-div-paginationwrapper">
+      <ul id="NOTICELIST-UL-PAGINATION">
+        <li class="noticelist-li-paginationlist pre">&lt;</li>
+        <li class="noticelist-li-paginationlist currentpage">1</li>
+        <li class="noticelist-li-paginationlist">2</li>
+        <li class="noticelist-li-paginationlist">3</li>
+        <li class="noticelist-li-paginationlist">4</li>
+        <li class="noticelist-li-paginationlist">5</li>
+        <li class="noticelist-li-paginationlist next">&#62;</li>
+      </ul>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="main-footer-container">
+    <div class="main-footer-content">
+      <div class="main-footer-links">
+        <div class="main-footer-policies">
+          <a href="#" class="main-link-policy">개인정보처리방침</a>
+          <span class="main-span-divider">|</span>
+          <a href="#" class="main-link-terms">이용약관</a>
+        </div>
+        <p class="main-paragraph-contact">Contact: team.patchnote.official@gmail.com</p>
+        <p class="main-paragraph-copyright">Copyright Forest Info. All rights reserved</p>
+      </div>
+      <div class="main-footer-logo">
+        <img src="./../../asset/img/main/logo.png" alt="Forest of Knowledge Logo" class="main-img-footerlogo">
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

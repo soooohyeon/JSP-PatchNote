@@ -1,0 +1,21 @@
+/* 각 데이터의 가로 너비 */
+.adminUser-li-userid {
+  width: 25%;
+}
+
+.adminUser-li-usernickname {
+  width: 25%;
+}
+
+.adminUser-li-userphone {
+  width: 20%;
+}
+
+.adminUser-li-userbirth {
+  width: 15%;
+}
+
+.adminUser-li-userquit {
+  width: 15%;
+  cursor: default;
+}

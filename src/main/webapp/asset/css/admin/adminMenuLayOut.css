@@ -1,0 +1,297 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: #F6F6F6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li { list-style-type: none; }
+
+#ADMIN-DIV-LAYOUTCONTAINER {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+#ADMIN-MENUCONTAINER {
+  position: fixed;
+  /* width: 16%; */
+  width: 210px;
+  height: 100%;
+  /* padding: 80px 0; */
+  background-color: #003161;
+
+  color: #fff;
+}
+
+.admin-div-menuwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 35%;
+}
+
+/* 사이드 메뉴에 관리자 페이지  */
+#ADMIN-H2-TITLE { margin-bottom: 30px; }
+
+.admin-ul-menuwrap { width: 100%; }
+
+.admin-ul-menuwrap li {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.admin-ul-menuwrap a {
+  position: absolute;
+  left: 0;
+  width: 76%;
+  height: 100%;
+  padding: 0 25px;
+}
+
+/* 사이드 메뉴에 마우스오버시 */
+.admin-ul-menuwrap li:hover:not(.admin-li-menuactive) {
+  background-color: #0b2d52;
+  color: inherit;
+}
+
+/* 메뉴 클릭했을 때 */
+.admin-li-menuactive {
+  background-color: #F6F6F6;
+  color: #003161;
+}
+.admin-li-menuactive:hover { background-color: #dedede; }
+
+/* 사이드메뉴 기준 우측 요소들 감싸는 태그 */
+#ADMIN-DIV-CONTENTWRAP {
+  width: 100%;
+  height: 100%;
+  margin-left: 210px;
+}
+
+/* 상단 헤더 - 로고, 홈, 로그아웃 */
+#ADMIN-DIV-HEADERCONTAINER {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+}
+
+/* 로고 설정 */
+.admin-img-logo {
+  height: 50px;
+  margin-left: 10px;
+}
+
+#ADMIN-UL-HEADERWRAP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+#ADMIN-UL-HEADERWRAP li {
+  width: 100px;
+
+  color: #003161;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+#ADMIN-UL-HEADERWRAP li:nth-child(1) { border-right: 1px solid #003161; }
+
+/* 메인 컨텐츠가 들어갈 컨테이너 */
+.admin-div-container { width: 100%; }
+
+.admin-div-contentcontainer {
+  width: 90%;
+  padding: 50px 0;
+  margin: auto;
+}
+
+/* 테이블 가로열 만들기 */
+.list-datatable {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 페이지별 제목 */
+.admin-h1-maintitle {
+  letter-spacing: 10px;
+  text-align: center;
+  margin: 30px 0 40px;
+}
+
+/* 검색 부분 */
+.admin-div-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 0 20px;
+  margin: auto;
+  margin-bottom: 40px;
+
+  border-radius: 100px;
+  border: 1px solid #555;
+  background-color: white;
+}
+
+.admin-input-search {
+  width: 100%;
+  height: 55px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+/* 검색 창이 포커스 되었을때*/
+.admin-input-search:focus {
+  outline: none;
+}
+
+/* 포커스 되었을 때 div의 스타일 (JS로 추가될 클래스) */
+.admin-div-wrapper.focused {
+  border: solid 4px #003161;
+}
+
+/* 검색 창의 돋보기 버튼*/
+.admin-img-search {
+  width: 50px;
+  height: 50px;
+}
+.admin-img-search:hover{
+  cursor: pointer;
+}
+
+/* 테이블 양식 */
+.admin-div-listwrap {
+  width: 90%;
+  min-height: 200px;
+  margin: auto;
+  text-align: center;
+}
+
+.admin-div-listwrap ul {
+  height: 50px;
+  line-height: 50px;
+}
+
+/* 테이블 제목 */
+.admin-ul-titlewrap {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  background-color: #003161;
+
+  color: #fff;
+}
+
+/* 데이터 넣는 부분 */
+.admin-ul-datawrap {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+}
+
+.admin-ul-datawrap li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 모든 데이터 중 회색 글씨 */
+.lightdata {
+  color: #808080;
+  font-weight: 500;
+}
+
+/* 모든 탈퇴, 삭제 공용 스타일 */
+.admin-btn-delete {
+  width: 70%;
+  height: 40px;
+  background-color: #003161;
+  border: none;
+  border-radius: 100px;
+
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 공지, 배너 작성 버튼 */
+#ADMIN-DIV-BTNWRAP {
+  width: 90%;
+  margin: auto;
+  padding-top: 50px;
+  text-align: right;
+}
+
+.admin-btn-write {
+  width: 100px;
+  height: 40px;
+  background-color: #003161;
+  border: none;
+  border-radius: 100px;
+
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/*페이지네이션*/
+
+.admin-div-paginationwrapper{
+  width: 100%;
+  margin : 50px 0;
+}
+
+#admin-UL-PAGINATION{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top : 50px;
+}
+
+/*페이지네이션 리스트*/
+.admin-li-paginationlist{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height : 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin : 0 5px;
+  cursor : pointer;
+  list-style-type: none;
+}
+
+.currentpage{
+  background: #003161;
+  color: white;
+}
+.admin-li-paginationlist:hover:not(.pre,.next){
+
+  border: 3px solid #003161;
+}
+
+/* -------------- 여기까지 공통으로 들어갈 CSS -------------- */

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지식의 숲 - 관리자</title>
+  <link rel="stylesheet" href="./../../asset/css/admin/adminMenuLayOut.css">
+  <link rel="stylesheet" href="./../../asset/css/admin/admin-userlist.css">
+  <script defer src="./../../asset/js/admin/admin-basic.js"></script>
+  <script defer src="./../../asset/js/admin/admin-userlist.js"></script>
+</head>
+<body>
+  <div id="ADMIN-DIV-LAYOUTCONTAINER">
+    <!-- 사이드 메뉴 -->
+    <aside id="ADMIN-MENUCONTAINER">
+      <nav class="admin-div-menuwrap">
+        <h1 id="ADMIN-H2-TITLE"><a href="./admin-main.html">관리자 페이지</a></h1>
+        <ul class="admin-ul-menuwrap">
+          <li class="admin-li-menuactive"><a href="./admin-userlist.html">유저 목록</a></li>
+          <li><a href="./admin-studylist.html">스터디 목록</a></li>
+          <li><a href="./admin-studyapplylist.html">스터디 신청 관리</a></li>
+          <li><a href="./admin-studycommentlist.html">스터디 후기댓글 목록</a></li>
+          <li><a href="./admin-boardlist.html">자유게시판 관리</a></li>
+          <li><a href="./admin-boardcommentlist.html">자유게시판 댓글 관리</a></li>
+          <li><a href="./admin-noticelist.html">공지 목록</a></li>
+          <li><a href="./admin-bannerlist.html">배너 목록</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- 사이드 메뉴 끝 -->
+
+    <!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
+    <div id="ADMIN-DIV-CONTENTWRAP">
+      <!-- 상단 헤더 -->
+      <div id="ADMIN-DIV-HEADERCONTAINER">
+        <img src="./../../asset/img/main/logo.png" class="admin-img-logo" alt="Logo">
+        <ul id="ADMIN-UL-HEADERWRAP">
+          <li><a href="./../main/main.html">홈</a></li>
+          <li><a href="">로그아웃</a></li>
+        </ul>
+      </div>
+
+      <!-- 메인 컨텐츠가 들어갈 컨테이너 -->
+      <main class="admin-div-container">
+        <div class="admin-div-contentcontainer adminMain-div-mainwrap">
+
+          <!-- 현재 페이지 제목 -->
+          <h1 class="admin-h1-maintitle">유저 관리</h1>
+
+          <!-- 검색창 -->
+          <form action="" method="">
+            <div class="admin-div-wrapper">
+              <input type="text" class="admin-input-search"
+                placeholder="유저ID 또는 닉네임을 입력해주세요." value=""/>
+              <img src="/webapp/asset/img/study/search-btn.png"
+                alt="search" class="admin-img-search"/>
+            </div>
+          </form>
+
+          <!-- 유저 테이블 -->
+          <div class="admin-div-listwrap">
+            <!-- 테이블 컬럼명 -->
+            <ul class="admin-ul-titlewrap">
+              <li class="adminUser-li-userid">유저ID</li>
+              <li class="adminUser-li-usernickname">닉네임</li>
+              <li class="adminUser-li-userphone">전화번호</li>
+              <li class="adminUser-li-userbirth">생년월일</li>
+              <li class="adminUser-li-userquit">강제탈퇴</li>
+            </ul>
+
+            <!-- 데이터 넣는 부분 - 임시데이터 (1) -->
+            <ul class="admin-ul-datawrap">
+              <li class="adminUser-li-userid">
+                <!-- 관리자 - 유저 상세페이지로 이동 -->
+                <a href="./admin-userdetail.html">
+                sdklfnewirfni97231
+                </a>
+              </li>
+              <li class="adminUser-li-usernickname lightdata">풀잎나무</li>
+              <li class="adminUser-li-userphone lightdata">010-1234-1234</li>
+              <li class="adminUser-li-userbirth lightdata">1999.01.01</li>
+              <li class="adminUser-li-userquit lightdata">
+                <button class="admin-btn-delete" onclick="quitBtn(this)">탈퇴</button>
+              </li>
+            </ul>
+
+            <!-- 임시데이터 (2) -->
+            <ul class="admin-ul-datawrap">
+              <li class="adminUser-li-userid">
+                <!-- 관리자 화면의 유저 상세페이지로 이동 -->
+                <a href="./admin-userdetail.html">
+                sdklfnewirfni97231
+                </a>
+              </li>
+              <li class="adminUser-li-usernickname lightdata">풀잎나무</li>
+              <li class="adminUser-li-userphone lightdata">010-1234-1234</li>
+              <li class="adminUser-li-userbirth lightdata">1999.01.01</li>
+              <li class="adminUser-li-userquit lightdata">
+                <button class="admin-btn-delete" onclick="quitBtn(this)">탈퇴</button>
+              </li>
+            </ul>
+
+          </div>
+          <!-- 유저 테이블 끝 -->
+          
+          <!-- 페이지네이션 -->
+          <div class="admin-div-paginationwrapper">
+            <ul id="admin-UL-PAGINATION">
+              <li class="admin-li-paginationlist pre">&lt;</li>
+              <li class="admin-li-paginationlist currentpage">1</li>
+              <li class="admin-li-paginationlist">2</li>
+              <li class="admin-li-paginationlist">3</li>
+              <li class="admin-li-paginationlist">4</li>
+              <li class="admin-li-paginationlist">5</li>
+              <li class="admin-li-paginationlist next">&#62;</li>
+            </ul>
+          </div>
+
+        </div>
+      </main>
+      <!-- 메인 컨텐츠 끝 -->
+      
+    </div>
+    <!-- 헤더 + 메인 컨텐츠 끝 -->
+
+  </div>
+
+</body>
+</html>

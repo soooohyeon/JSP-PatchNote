@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+    <!-- 사용자 정보 조회 -->
+    <select id="getUser" resultType="UserDTO">
+        SELECT * FROM TBL_USER  WHERE USER_ID = #{userId}
+    </select>
+
+    <!-- 닉네임 중복 확인 -->
+    <select id="checkNickname" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM TBL_USER WHERE USER_NICK = #{userNick}
+    </select>
+
+    <!-- 사용자 정보 업데이트 -->
+    <update id="updateUser">
+        UPDATE TBL_USER 
+        SET USER_NICK = #{nickname}, USER_PH = #{userPH}, USER_PW = #{userPw}
+        WHERE USER_ID = #{userId}
+    </update>
+</mapper>

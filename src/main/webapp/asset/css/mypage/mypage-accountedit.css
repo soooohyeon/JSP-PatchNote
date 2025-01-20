@@ -1,0 +1,251 @@
+/* @import url("//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css"); */
+
+* {
+  padding: 0;
+  margin: 0;
+  letter-spacing: -1px;
+  /* font-family: "Nanum Gothic"; */
+}
+
+header {
+  /* height: vh; */
+}
+body {
+  background-color: #f6f6f6;
+  /* height: 100vh; */
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/*-사이드 테이블 스타일 부분-*/
+aside {
+  position: fixed;
+  background-color: #003161;
+  width: 210px;
+  height: 100%;
+  color: #fff;
+}
+
+.mypage-div-menuwrap {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 210px;
+}
+
+
+
+/*사이드 테이블 제목*/
+#MYPAGE-H2-TITLE {
+  margin-bottom: 40px;
+}
+
+
+/* 상단 헤더 - 로고, 홈, 로그아웃 */
+#ADMIN-DIV-HEADERCONTAINER {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  /* margin-left: 210px; */
+}
+
+.admin-img-logo{
+  margin-left: 210px;
+  width: 245px;
+  height: 49px;
+}
+
+#ADMIN-UL-HEADERWRAP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+#ADMIN-UL-HEADERWRAP a {
+  text-decoration: none;
+  color: #003161;
+}
+
+#ADMIN-UL-HEADERWRAP li {
+  width: 100px;
+
+  color: #003161;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+#ADMIN-UL-HEADERWRAP li:nth-child(1) { border-right: 1px solid #003161; }
+
+
+
+
+
+/*리스트 부분*/
+.mypage-ul-menuwrap {
+  width: 100%;
+  text-align: right;
+}
+
+.mypage-ul-menuwrap li {
+  height: 30px;
+  padding: 8px 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.mypage-ul-menuwrap li:hover {
+  background-color: #0b2d52;
+  color: white;
+}
+.mypage-ul-menuwrap li:hover > a {
+  color: white;
+}
+
+/* 메뉴 클릭했을 때 */
+.mypage-li-menuactive {
+  background-color: #fff;
+}
+.mypage-li-menuactive > a {
+  color: #003161;
+}
+li {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.mypage-div-asidetitle {
+  margin-top: 100px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.mypage-div-asidemenu {
+  margin: 50px 30px;
+  text-align: right;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  color: #86a788;
+  font-size: 16px;
+}
+
+main {
+  margin: 50px auto;
+}
+
+.mypage-div-main {
+  margin-left: 210px;
+}
+
+.mypage-title {
+  margin-bottom: 25px;
+}
+
+section {
+  border: 1px solid #afafaf;
+  margin-bottom: 30px;
+  padding: 30px 80px;
+  box-sizing: border-box;
+  width: 800px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: #fff;
+}
+label {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.mypage-div-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mypage-div-wrapper2 {
+  margin-bottom: 20px;
+  display: flex; /* 가로 배치 */
+  align-items: flex-end; /* 수직 가운데 정렬 */
+}
+
+.editpage-input-nickname,
+.editpage-input-phoneNum,
+.editpage-input-phoneNumchk {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* label과 input 세로 정렬 */
+  margin-right: 10px; /* 버튼과 간격 추가 */
+}
+
+.mypage-div-edit {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mypage-btn-edit,
+.mypage-btn-nickname,
+.mypage-btn-phoneNum-send,
+.mypage-btn-phoneNum-check {
+  padding: 0 10px;
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background-color: #003161;
+  color: #ffffff;
+}
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  background-color: #001d38;
+}
+
+input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #afafaf;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+input:read-only {
+  background-color: #f0f0f0; /* 회색 배경 */
+  color: #a0a0a0; /* 텍스트 색상도 연하게 */
+  /* border-color: #d0d0d0; 테두리도 연한 색으로 */
+  cursor: not-allowed;
+  outline: none;
+  border: 1px solid #afafaf;
+}
+
+#password-error, #nickname-error, #passwordchk-error
+ {
+  color: red;
+  font-size: 12px;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}

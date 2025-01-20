@@ -1,0 +1,263 @@
+@import url("//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+body {
+  height: 100vh;
+  font-family: "NanumGothic", sans-serif;
+  background-color: #f6f6f6;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+
+/* 메인 컨텐츠 */
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* 각 화면 최상단 제목 */
+.studylist-h1-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* 하단 컨텐츠를 감싸는 래퍼 */
+.studylist-div-contentsWrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* 한 행*/
+.studylist-div-wrapperlayer {
+  display: flex;
+  height: 50px;
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.studylist-div-longwrapperlayer {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.studylist-div-wrapperlayerDual {
+  display: flex;
+  height: 50px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.studylist-div-infowrapper {
+  flex: 1;
+  display: flex;
+}
+
+.studylist-div-infowrapperDual {
+  width: 49%;
+  border: 1px solid #555555;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* 본문를 포함하는 행*/
+
+.studylist-div-wrapperlayer:last-child {
+  height: 300px;
+}
+
+/* info와 label을 감싸는 div */
+.studylist-div-infowrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.studylist-div-categoryselectwrapper,
+.studylist-div-phoneselectwrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* textarea를 감싸는 div */
+.studylist-div-textareawrapper {
+  width: 100%;
+  height: 150px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+/* 첨부파일을 감싸는 div */
+.studylist-div-filewrap {
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+/*라벨 */
+.label {
+  width: 200px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #808080;
+  font-weight: bolder;
+  border-right: 1px solid #ccc;
+}
+
+/*textarea 라벨*/
+.studylist-div-textareawrapper > .label {
+  width: 200px;
+  line-height: 150px;
+  text-align: center;
+  color: #808080;
+  box-sizing: border-box;
+}
+
+/*인풋*/
+.studylist-input-groupinfo {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #808080;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+}
+
+#STUDYLIST-INPUT-FILE {
+  display: none;
+}
+
+#STUDYLIST-INPUT-FILELABEL {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #808080;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.studylist-div-filebtn {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  padding: 0 15px;
+  background-color: #003161;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* 탭 선택 */
+.studylist-div-categoryselector,
+.studylist-div-shownumberselector {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #808080;
+  font-size: 18px;
+  text-align: center;
+}
+
+.categoryselected,
+.phoneselected {
+  background-color: #003161;
+  color: white;
+}
+
+/*본문 칸*/
+.studylist-div-studycontents {
+  flex: 1;
+  height: 150px;
+  font-size: 18px;
+  color: #808080;
+  border: none;
+  resize: none;
+  padding: 20px;
+  box-sizing: border-box;
+  border-collapse: separate;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* footer */
+
+.main-footer-container {
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #666;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+}
+
+.main-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.main-footer-links a {
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+}
+
+.main-span-divider {
+  color: #aaa;
+  margin: 0 5px;
+}
+
+.main-paragraph-contact,
+.main-paragraph-copyright {
+  margin: 0;
+}
+
+/* 폰트 설정 */
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

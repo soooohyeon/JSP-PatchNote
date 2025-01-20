@@ -1,0 +1,84 @@
+
+/* 유저 관리 목록으로 가기 버튼 */
+.adminUserDetail-span-backbtn {
+  margin-right: 30px;
+  color: #808080;
+  font-weight: 300;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+
+/* 테이블 1개의 가로, 폰트 두께 재설정 */
+.admin-div-listwrap {
+  width: 100%;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+/* 유저의 정보를 표시한 각 테이블명 */
+.admin-div-tablename {
+  height: 50px;
+  background-color: #003161;
+  padding: 0 20px;
+
+  font-size: 18px;
+  text-align: left;
+  line-height: 50px;
+  letter-spacing: 5px;
+  color: #fff;
+}
+
+/* 유저 정보 컬럼 가로 길이 설정 */
+.adminUserDetail-li-username { width: 12%; }
+.adminUserDetail-li-userid { width: 19%; }
+.adminUserDetail-li-usernickname { width: 19%; }
+.adminUserDetail-li-userbirth { width: 15%; }
+.adminUserDetail-li-userphone { width: 20%; }
+.adminUserDetail-li-joindate { width: 15%; }
+
+.admin-ul-titlewrap {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  color: #003161;
+}
+
+ul.admin-ul-datawrap {
+  height: 60px;
+  background-color: #fff;
+  line-height: 60px;
+  color: #003161;
+}
+
+/* 사용자가 작성한 글, 댓글 개수 */
+.adminUserDetail-div-countscontainer {
+  margin-top: 50px;
+  background-color: #fff;
+  font-size: 17px;
+}
+
+.adminUserDetail-div-titlewrap {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  /* background-color: #003161; */
+
+  color: #808080;
+  line-height: 40px;
+}
+
+.adminUserDetail-li-study { width: 33.3%; }
+.adminUserDetail-li-studyapply { width: 33.3%; }
+.adminUserDetail-li-studycomment { width: 33.3%; }
+.adminUserDetail-li-board { width: 50%; }
+.adminUserDetail-li-boardapply { width: 50%; }
+
+
+/* 탈퇴버튼 */
+#ADMINUSERDETAIL-DIV-DELETEWRAP {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 50px;
+}
+
+.admin-btn-delete { width: 120px; }
