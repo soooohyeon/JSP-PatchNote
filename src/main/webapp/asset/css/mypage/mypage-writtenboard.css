@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: -1px;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: 'NanumGothic', sans-serif; */
+  background-color: #F6F6F6;
+  /* font-size: 18px; */
+  /* font-weight: 500; */
+}
+
+.board-div-list{
+  margin: 10px;
+}
+
+/*-사이드 테이블 스타일 부분-*/
+aside {
+  position: fixed;
+  background-color: #003161;
+  width: 210px;
+  height: 100%;
+  color: #fff;
+}
+
+.mypage-div-menuwrap {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 210px;
+}
+
+/*사이드 테이블 제목*/
+#MYPAGE-H2-TITLE { margin-bottom: 40px; }
+
+/* 상단 헤더 - 로고, 홈, 로그아웃 */
+#ADMIN-DIV-HEADERCONTAINER {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  /* margin-left: 210px; */
+}
+
+.admin-img-logo{
+  margin-left: 210px;
+}
+
+#ADMIN-UL-HEADERWRAP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+#ADMIN-UL-HEADERWRAP a {
+  text-decoration: none;
+  color: #003161;
+}
+
+#ADMIN-UL-HEADERWRAP li {
+  width: 100px;
+
+  color: #003161;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+#ADMIN-UL-HEADERWRAP li:nth-child(1) { border-right: 1px solid #003161; }
+
+
+
+
+
+/* 메인 컨텐츠가 들어갈 컨테이너 */
+#MYPAGE-DIV-LAYOUTCONTAINER {
+  height: 100%;
+  margin-left: 210px;
+}
+
+.mypage-div-container {
+  padding: 70px 0 40px;
+  margin-left: 130px;
+
+}
+
+/* 페이지 제목 */
+.mypage-h1-maintitle {
+  align-self: flex-start;
+  margin-top: 30px;
+ 
+}
+
+/* 게시판 컨텐츠 정렬을 위한 div */
+.mypage-div-contentscontainer {
+  width: 90%;
+  padding: 50px 0;
+}
+
+.mypage-div-contentswrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+/*리스트 부분*/
+.mypage-ul-menuwrap {
+  width: 100%;
+  text-align: right;
+}
+
+.mypage-ul-menuwrap li {
+  /* height: 30px; */
+  padding: 8px 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.mypage-ul-menuwrap li:hover {
+  background-color: #0b2d52;
+  color: white;
+}
+.mypage-ul-menuwrap li:hover > a{
+  color: white;
+}
+
+/* 메뉴 클릭했을 때 */
+.mypage-li-menuactive{
+  background-color: #fff;
+}
+.mypage-li-menuactive>a{
+  color: #003161;
+}
+li { list-style-type: none; }
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+
+
+.board-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid #ddd; */
+}
+
+.board-header {
+  display: flex;
+  /* font-weight: bold; */
+  color: #FFFFFF;
+  background-color: #003161;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.board-item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.board-item:last-child {
+  border-bottom: none;
+}
+
+.board-number,
+.board-title,
+.board-author,
+.board-date {
+  flex: 1;
+  text-align: center;
+}
+
+.board-title {
+  flex: 2; /* 제목은 더 넓게 */
+}
+
+.board-title a {
+  color: #000;
+}
+
+.jimboard-div-listswrap {
+  display: flex;
+}
+
+/* 컨텐츠 1개에 대한 css */
+.jimboard-div-wrap{
+  border: 1px solid black;
+  width: 400px;
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  /* padding: 50px; */
+}
+.section{
+  width: 100%;
+  padding: 20px;
+}
+.enddateandstatus{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.enddateandstatus > .enddate{
+  /* margin-right: 150px; */
+}
+.title{
+  margin: 20px 0;
+  height: 130px;
+  font-weight: bold;
+}
+.categoryandpeople{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.nameandjim{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+
+/*페이지네이션*/
+
+.mypage-div-paginationwrapper{
+  width: 100%;
+  margin : 50px 0;
+}
+
+
+
+#mypage-UL-PAGINATION{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top : 50px;
+}
+
+/*페이지네이션 리스트*/
+.mypage-li-paginationlist{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height : 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin : 0 5px;
+  cursor : pointer;
+  list-style-type: none;
+}
+
+.currentpage{
+  background: #003161;
+  color: white;
+}

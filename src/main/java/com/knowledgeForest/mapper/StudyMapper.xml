@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StudyMapper">
+	<!-- 스터디 게시글 추가 -->
+	<select id="insert" resultType="StudyDTO">
+		INSERT INTO TBL_STUDY (
+		STUDY_NUM
+		, USER_NUM
+		, STUDY_TITLE
+		, STUDY_DESCRIPT
+		, STUDY_LOCATION
+		, STUDY_START_DAY
+		, STUDY_END_DAY
+		, STUDY_START_TIME
+		, STUDY_END_TIME
+		, STUDY_LIMIT
+		, STUDY_DEADLINE
+		, STUDY_SHOWPH
+		, STUDY_CATEGORY
+		, STUDY_UPLOAD_DATE
+		, STUDY_EDIT_DATE) 
+		VALUES (
+		SEQ_STUDY.NEXTVAL
+		, #{userNum}
+		, #{studyTitle}
+		, #{studyDescript}
+		, #{studyLocation}
+		, #{studyStartDay}
+		, #{studyEndDay}
+		, #{studyStartTime}
+		, #{studyEndTime}
+		, #{studyLimit}
+		, #{studyDeadline}
+		, #{studyShowph}
+		, #{studyCategory}
+		, #{studyUploadDate}
+		, #{studyEditDate}
+		)
+	</select>
+	
+	<!-- 마지막 생성된 시퀀스 값을 가져오는 쿼리 -->
+	<select id="getCurrentStudyNumber" resultType="int">
+		SELECT
+		seq_study.CURRVAL FROM DUAL
+	</select>
+</mapper>

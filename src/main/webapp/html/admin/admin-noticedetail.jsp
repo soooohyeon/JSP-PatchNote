@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지식의 숲 - 관리자</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/admin/admin-detail.css">
+  <script defer src="${pageContext.request.contextPath}/asset/js/admin/admin-noticedetail.js"></script>
+</head>
+<body>
+  <div id="ADMIN-DIV-LAYOUTCONTAINER">
+    <!-- 사이드 메뉴 -->
+    <aside id="ADMIN-MENUCONTAINER">
+    <!-- 사이드 메뉴 -->
+    <jsp:include page = "/html/admin/sidemenu.jsp" />
+    <!-- 사이드 메뉴 끝 -->
+
+    <!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
+    <div id="ADMIN-DIV-CONTENTWRAP">
+      <!-- 상단 헤더 -->
+	  <jsp:include page = "/html/admin/header.jsp" />
+      <!-- 상단 헤더 끝 -->
+
+      <!-- 메인 컨텐츠가 들어갈 컨테이너 -->
+      <main class="admin-div-container">
+        <div class="admin-div-contentcontainer adminMain-div-mainwrap">
+
+          <!-- 현재 페이지 제목 -->
+          <h1 class="admin-h1-detail">
+            <span class="adminDetail-span-backbtn">&lt;</span>공지 상세
+          </h1>
+
+          <!-- 배너 데이터 출력하는 부분 -->
+          <div class="adminDetail-div-contentsWrapper">
+            <div id="adminBannerDetail-FORM">
+              <!-- 한 행 -->
+                <!-- label과 input을 묶은 div -->
+                <div class="adminDetail-div-infowrapper">
+                  <div class="label">제 목</div>
+                  <div class="adminDetail-div-groupinfo">공지 1</div>
+                </div>
+    
+                <div class="adminDetail-div-infowrapper">
+                  <div class="label">닉네임</div>
+                  <div class="adminDetail-div-groupinfo">관리자</div>
+                </div>
+                <div class="adminDetail-div-infowrapper">
+                  <div class="label">등록일</div>
+                  <div class="adminDetail-div-groupinfo">2025.01.14 01:41</div>
+                </div>
+                <div class="adminNoticeDetail-div-noticecontentwrap">
+                  <div class="label">본문</div>
+                  <div class="adminDetail-div-noticecontent">
+                    6개월 동안 JAVA 코딩테스트 문제 풀이하고 코드해석 해보는 스터디
+                    모임입니다. 화, 목 13시부터 16시까지 총 3시간동안 진행
+                    예정입니다 다른 분들과 코드 공유해보며 여러 풀이 방법도 경험하고
+                    또 색다른 코드들을 경험하며 배울 수 있습니다. 원하시는 분들은
+                    코디신청서 작성시 전화번호 또는 카톡 아이디 같이 작성해주세요.
+                    <div class="adminNoticeDetial-div-img">
+                      <img src="${pageContext.request.contextPath}/asset/img/main/books.png" alt="예시 사진">
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+
+          <div id="ADMINDETAIL-DIV-BTNWRAP">
+            <button class="admin-btn btn-update" onclick="clickUpdateBtn(this)">수정</button>
+            <button class="admin-btn btn-delete" onclick="clickDeleteBtn(this)">삭제</button>
+          </div>
+
+        </div>
+      </main>
+      <!-- 메인 컨텐츠 끝 -->
+      
+    </div>
+    <!-- 헤더 + 메인 컨텐츠 끝 -->
+
+  </div>
+
+</body>
+</html>

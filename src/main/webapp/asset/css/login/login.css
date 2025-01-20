@@ -1,0 +1,84 @@
+*{
+  margin: 0;
+  padding: 0;
+
+}
+/* 페이지 이름 - 요소 - 기능 */
+
+body{
+  background-color: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+main{
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border: 1px solid lightgray;
+  width: 25%;
+  border-radius: 30px;
+  margin : 60px auto  ;
+} 
+
+.login-h1-title{
+  display: flex;
+  justify-content: center;
+  margin : 30px 0;
+}
+
+.login-div-wrapper-input-box{
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input{
+  border-radius: 30px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border: 1px solid lightgray;
+  line-height: 40px;
+  width: 300px;
+  
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.login-div-wrapper-join-box{
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  margin-bottom: 5px;
+ 
+}
+
+.login-a-join,.login-a-pwd{
+  text-decoration: none;
+  color: #808080;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.login-div-wrapper-btn-box{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  
+}
+.login-btn-join{
+  width: 100px;
+  background-color: #003161;
+  color: white;
+  border-radius: 10px;
+ border: none;
+ height: 40px;
+}
+.login-div-wrapper-pwd-box{
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+}
+
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>KnowledgeForest</display-name>
+	<welcome-file-list>
+		<welcome-file>main.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!--Servlet root -->
+
+	<servlet>
+		<servlet-name>Admin</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.admin.AdminFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Board</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.board.BoardFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.login.LoginFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.main.MainFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>MyPage</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.myPage.MyPageFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Notice</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.notice.NoticeFrontController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Study</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.study.StudyFrontController</servlet-class>
+	</servlet>
+	
+	<!-- URL to JSP Mappings -->
+	<servlet-mapping>
+		<servlet-name>Admin</servlet-name>
+		<url-pattern>*.ad</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Board</servlet-name>
+		<url-pattern>*.bo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MyPage</servlet-name>
+		<url-pattern>*.my</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Notice</servlet-name>
+		<url-pattern>*.no</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Study</servlet-name>
+		<url-pattern>*.st</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Error Pages -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/html/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/html/error/error.jsp</location>
+	</error-page>
+
+</web-app>

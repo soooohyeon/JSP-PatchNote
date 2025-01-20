@@ -1,0 +1,117 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body { background-color: #f6f6f6; }
+.noticedetail-div-h2{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.noticedetail-div-layer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+
+.title-rightline {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid #ccc;
+}
+.noticedetail-div-contents{
+  flex: 1;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 자유게시판 상세페이지 글 내용 */
+.noticedetail-div-contentslong{
+  flex: 1;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding : 20px;
+}
+
+
+.noticedetail-div-header {
+  border: 1px;
+  background-color: #fff;
+}
+
+ main, .noticedetail-detail-div-btnwrapper {
+  width: 80%;
+  margin: auto;
+}
+.noticedetail-btn-change{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.noticedetail-btn-change>button{
+  background-color: #003161;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 50px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.noticedetail-btn-change>button:hover{
+  background-color: #003161;
+}
+.noticedetail-btn-change{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.noticedetail-div-layers{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #ccc;
+
+}
+
+.noticedetail-div-layers:last-child{
+  height: 500px;
+}
+.title-rightlines {
+  width: 150px;
+  height: 100%;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noticedetail-div-infowrapper{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.notice-div-imgwrapper{
+  width: 500px;
+  height: 300px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.notice-img{
+  width: 100%; 
+  height: 100%;
+}
+

@@ -1,0 +1,19 @@
+/* 각 데이터의 가로 너비 */
+.adminStudy-li-studyid { width: 6%; }
+
+.adminStudy-li-studytitle { width: 25%; }
+
+.adminStudy-li-studymemberwrap { width: 13%; }
+
+.adminStudy-li-studystatus { width: 9%; }
+
+.adminStudy-li-userid { width: 15%; }
+
+.adminStudy-li-usernickname { width: 12%; }
+
+.adminStudy-li-studywritedate { width: 10%; }
+
+.adminStudy-li-studydelete {
+  width: 10%;
+  cursor: default;
+}

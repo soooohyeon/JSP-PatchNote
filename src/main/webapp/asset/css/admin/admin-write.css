@@ -1,0 +1,146 @@
+
+/* 공통 적인 부분 */
+/* 상세페이지 제목 */
+.admin-h1-detailtitle { margin-bottom: 40px; }
+
+/* 데이터 출력 부분 */
+.adminWrite-div-formwrapper { width: 100%; }
+
+.adminWrite-div-datawrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.adminWrite-div-title {
+  width: 15%;
+  height: 50px;
+}
+
+.adminWrite-div-content {
+  width: 90%;
+  height: 100%;
+  border-left: 1px solid #ccc;
+}
+
+.titlewrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  justify-content: center;
+}
+
+.inputwrap {
+  height: 100%;
+  padding: 10px;
+}
+
+/* 등록, 취소 버튼 */
+#ADMINWRITE-DIV-BTNWRAP {
+  width: 95%;
+  margin: auto;
+  padding: 30px 0;
+  text-align: right;
+}
+
+.admin-btn {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 100px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-save { background-color: #003161; }
+
+.btn-cancel {
+  background-color: #fff;
+  color: #003161;
+  border: none;
+}
+
+/* 입력칸에 별도로 주는 스타일*/
+.inputStyle {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.inputStyle:focus { outline: none; }
+.inputStyle::placeholder {
+  font-family: "godick";
+  font-weight: 500;
+}
+
+.fileBtn {
+  height: 25px;
+  text-align: right;
+}
+
+/* 공지 본문 + 첨부파일 감싸는 div */
+.adminNoticeWrite-div-wrap {
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc ;
+  border-radius: 10px;
+}
+/* 공지의 본문과 첨부파일 감싸는 div */
+.adminNoticeWrite-div-wrap > div {
+  margin-top: 0;
+  background-color: transparent;
+  border: none ;
+  border-radius: 0;
+}
+.adminNoticeWrite-div-wrap>div:nth-child(1) { border-bottom: 1px solid #ccc ; }
+.adminNoticeWrite-div-wrap>div:nth-child(1) { border-bottom: 1px solid #ccc ; }
+
+/* 공지 내용 입력 */
+textarea.inputStyle {
+  height: 300px;
+  resize: none;
+  font-weight: 700;
+}
+
+/* 배너에 별도로 주는 스타일 */
+.bannerimgwrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+/* 배너에 이미지 미첨부시 뜨는 문구 */
+.bannerimgnone { color: #ccc; }
+
+/* 이미지 설정 */
+.bannerimgwrap > img {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+/* 이미지 첨부 버튼 스타일 */
+.bannerimgbtnwrap {
+  text-align: right;
+  margin-top: 30px;
+}
+
+label.admin-btn { background-color: #003161;
+  padding: 12px 20px;
+  font-size: 13px;
+  border-radius: 5px;
+}
+
+#NOTICEIMAGE-NAME { margin: 0 5px; }
+
+input[type="file"] { display: none; }
+

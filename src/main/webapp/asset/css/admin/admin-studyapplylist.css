@@ -1,0 +1,23 @@
+/* 각 데이터의 가로 너비 */
+.adminStudyApply-li-applyid { width: 13%; }
+
+.adminStudyApply-li-studyid { width: 10%; }
+
+.adminStudyApply-li-studymemberwrap { width: 15%; }
+
+.adminStudyApply-li-studystatus { width: 9%; }
+
+.adminStudyApply-li-applystatus { width: 10%; }
+
+.adminStudyApply-li-userid { width: 15%; }
+
+.adminStudyApply-li-usernickname { width: 15%; }
+
+.adminStudyApply-li-studydelete {
+  width: 13%;
+  cursor: default;
+}
+
+.admin-ul-datawrap {
+  cursor: default;
+}
