@@ -30,6 +30,9 @@ public class AdminFrontController extends HttpServlet {
       case "/admin/admin-userlist.ad":
     	  result = new AdminUserListOkController().execute(request, response);
     	  break;
+      case "/admin/admin-userdetail.ad":
+    	  result = new AdminUserDetailOkController().execute(request, response);
+    	  break;
       case "/admin/admin-studylist.ad":
     	  request.getRequestDispatcher("/html/admin/admin-studylist.jsp").forward(request, response);
     	  break;
