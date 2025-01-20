@@ -17,7 +17,7 @@ function deleteStudy() {
     //삭제 후 스터디 목록 화면으로 이동
 
     alert("해당 스터디 글이 삭제되었습니다.");
-    window.location.href = "studylist.html"; // 이동
+    window.location.href = "studylist.jsp"; // 이동
   } else {
     alert("취소되었습니다.");
   }
@@ -108,5 +108,5 @@ function writeCourage(event) {
     return;
   }
   alert("신청이 완료되었습니다.");
-  window.location.href ="studylist.html"
+  window.location.href ="studylist.jsp"
 }

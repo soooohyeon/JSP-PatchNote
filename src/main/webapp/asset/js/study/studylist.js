@@ -32,13 +32,13 @@ categoryList.forEach((item) => {
   const studyList = document.querySelectorAll(".studylist-div-grouptitle");
   studyList.forEach((item) => {
     item.addEventListener("click", () => {
-      window.location.href = "studylist-detail.html"; // 이동
+      window.location.href = "studylist-detail.jsp"; // 이동
     });
   });
 
   //등록 버튼을 누르면 스터디 등록으로 이동
   function registerStudy(){
-    window.location.href="./studylist-write.html";
+    window.location.href="./studylist-write.jsp";
   }
 
   //찜 버튼을 누르면 채워진 하트로 이미지를 바꾸는 함수
@@ -47,10 +47,10 @@ categoryList.forEach((item) => {
     // 이미지의 현재 src를 확인해서 조건에 맞게 변경
     if (imgElement.src.includes('no-like.png')) {
       // 비운 하트를 눌렀을 때, 채운 하트로 변경
-      imgElement.src = "../../asset/img/study/like.png";
+      imgElement.src = "${pageContext.request.contextPath}/asset/img/study/like.png";
     } else {
       // 채운 하트를 눌렀을 때, 다시 비운 하트로 변경
-      imgElement.src = "../../asset/img/study/no-like.png";
+      imgElement.src = "${pageContext.request.contextPath}/asset/img/study/no-like.png";
     }
 
     //찜 카운트를 갱신
