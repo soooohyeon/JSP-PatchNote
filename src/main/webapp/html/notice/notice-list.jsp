@@ -14,18 +14,9 @@
 </head>
 
 <body>
-  <!-- 상단 메뉴바 -->
-  <nav class="main-nav-menuwrap">
-    <img src="./../../asset/img/main/logo.png" class="main-img-logo" onclick="location.href='./main_login.html'">
+<!-- 헤더 - 메뉴바 -->
+	<jsp:include page="/html/main/header.jsp" />
 
-    <ul class="main-nav-ul">
-      <li><a href="./../notice/noticelist.html">공지</a></li>
-      <li><a href="./../board/boardlist.html">자유게시판</a></li>
-      <li><a href="./../study/studylist.html">스터디 모집</a></li>
-      <li><a href="./../myPage/mypageAccountEdit.html">마이페이지</a></li>
-      <li><a href="">로그아웃</a></li>
-    </ul>
-  </nav>
   <h1>공지사항</h1>
   <div class="noticelist-div-list">
     <ul class="noticelist-ul-list">
@@ -64,23 +55,9 @@
       </ul>
     </div>
   </div>
-  <!-- footer -->
-  <footer class="main-footer-container">
-    <div class="main-footer-content">
-      <div class="main-footer-links">
-        <div class="main-footer-policies">
-          <a href="#" class="main-link-policy">개인정보처리방침</a>
-          <span class="main-span-divider">|</span>
-          <a href="#" class="main-link-terms">이용약관</a>
-        </div>
-        <p class="main-paragraph-contact">Contact: team.patchnote.official@gmail.com</p>
-        <p class="main-paragraph-copyright">Copyright Forest Info. All rights reserved</p>
-      </div>
-      <div class="main-footer-logo">
-        <img src="./../../asset/img/main/logo.png" alt="Forest of Knowledge Logo" class="main-img-footerlogo">
-      </div>
-    </div>
-  </footer>
+  <!-- 푸터 -->
+	<jsp:include page="/html/main/footer.jsp"/>
+ 
 </body>
 
 </html>
