@@ -1,0 +1,41 @@
+/* 하단 푸터 */
+/* footer */
+
+.main-footer-container {
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #666;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.main-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.main-footer-links a {
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+}
+
+.main-span-divider {
+  color: #aaa;
+  margin: 0 5px;
+}
+
+.main-paragraph-contact,
+.main-paragraph-copyright {
+  margin: 0;
+}

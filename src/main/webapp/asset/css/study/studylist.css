@@ -1,0 +1,288 @@
+@import url('//fonts.googleapis.com/earlyaccess/nanumgothiccoding.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'NanumGothic', sans-serif;
+  background-color: #F6F6F6;
+  font-size: 16px;
+  font-weight: 500;
+
+}
+
+/* 메인 컨텐츠 */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* 각 화면 최상단 제목 */
+.studylist-h1-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+}
+
+/* 검색 창을 감싸는 form */
+.studylist-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  border-radius: 100px;
+  border: 1px solid #555;
+  background-color: white;
+  padding: 0 20px;
+
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.studylist-div-btnwrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.studylist-btn-write {
+  width: 150px;
+  height: 50px;
+  padding: 0 15px;
+  background-color: #003161;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+
+/* 검색 창*/
+.studylist-input-search {
+  width: 100%;
+  height: 55px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+
+}
+
+/* 검색 창이 포커스 되었을때*/
+.studylist-input-search:focus {
+  outline: none;
+}
+
+/* 포커스 되었을 때 div의 스타일 (JS로 추가될 클래스) */
+.studylist-div-wrapper.focused {
+  border: solid 4px #003161;
+}
+
+/* 검색 창의 돋보기 버튼*/
+.studylist-img-search {
+  width: 50px;
+  height: 50px;
+}
+
+.studylist-img-search:hover {
+  cursor: pointer;
+}
+
+/* 하단 컨텐츠를 감싸는 래퍼 */
+.studylist-div-contentsWrapper {
+  width: 90%;
+  margin-top: 50px;
+
+}
+
+/* 카테고리를 감싸는 래퍼 */
+.studylist-div-categoryWrapper {
+  display: flex;
+  margin: 0 auto;
+  border-bottom: 1px solid #888;
+}
+
+/* 카테고리 */
+.studylist-div-category {
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.studylist-div-category:hover {
+  cursor: pointer;
+}
+
+/* 카테고리를 선택했을때 적용되는 클래스 */
+.selected {
+  background-color: #003161;
+  color: white;
+}
+
+/* 스터디를 감싸는 래퍼 */
+.studylist-div-groupWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* 요소 간의 간격을 20px로 설정 */
+  padding: 20px;
+}
+
+/* 스터디 */
+.studylist-div-group {
+  width: 320px;
+  height: 250px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #afafaf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.studylist-div-groupinner {
+  width: 85%;
+  height: 85%;
+}
+
+/* 스터디의 마감일과 모집상태를 감싸는 래퍼 */
+.studylist-div-groupinfowrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*스터디의 마감일과 모집상태  */
+.studylist-div-enddate,
+.studylist-div-groupstatus {
+  color: #808080;
+}
+
+/* 스터디명 */
+.studylist-div-grouptitle {
+  width: 80%;
+  height: 63px;
+  font-size: 18px;
+  /* 기본 폰트 사이즈 16px*/
+  text-align: left;
+  font-weight: bold;
+  margin: 20px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* 스터디 카테고리*/
+.studylist-div-groupcategory {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #003161;
+  text-align: center;
+  color: white;
+  border-radius: 100px;
+}
+
+/*스터디 멤버 수*/
+.studylist-div-groupmember {
+  color: #808080;
+}
+
+/*스터디 개설자와 찜을 감싸는 래퍼*/
+.studylist-div-groupmakerwrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 0;
+  border-top: 1px solid #888;
+}
+
+/*스터디 개설자*/
+.studylist-div-groupmaker {
+  color: #333;
+}
+
+/*스터디 찜과 찜 수를 감싸는 래퍼*/
+.studylist-div-likewrapper {
+  display: flex;
+  align-items: center;
+}
+
+/*스터디 찜*/
+.studylist-img-like {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+/* 스터디 찜 수 */
+.studylist-div-likecount {
+  line-height: 40px;
+  margin-left: 10px;
+}
+
+/*페이지네이션*/
+
+.studylist-div-paginationwrapper {
+  width: 100%;
+  margin: 50px 0;
+}
+
+#STUDYLIST-UL-PAGINATION {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/*페이지네이션 리스트*/
+.studylist-li-paginationlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin: 0 5px;
+  cursor: pointer;
+  list-style-type: none;
+
+}
+
+.currentpage {
+  background: #003161;
+  color: white;
+}
+
+.studylist-li-paginationlist:hover:not(.pre, .next) {
+  border: 3px solid #003161;
+
+}
+
+
+
+
+/* 폰트 설정 */
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

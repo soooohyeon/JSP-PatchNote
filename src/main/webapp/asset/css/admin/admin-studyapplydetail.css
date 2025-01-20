@@ -1,0 +1,171 @@
+/* 각 화면 최상단 제목 */
+.adminDetail-span-backbtn {
+  margin-right: 30px;
+  color: #808080;
+  font-weight: 300;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+/* 하단 컨텐츠를 감싸는 래퍼 */
+.adminApply-div-contentsWrapper {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.adminApply-div-contentsWrapper>div:nth-child(1) { margin-bottom: 10px; }
+
+/* 한 행*/
+.adminApply-div-wrapperlayer {
+  display: flex;
+  height: 50px;
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.adminApply-div-longwrapperlayer {
+  border: 1px solid #555555;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.adminApply-div-wrapperlayerDual {
+  display: flex;
+  height: 50px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.adminApply-div-infowrapper {
+  flex: 1;
+  display: flex;
+}
+
+.adminApply-div-infowrapperDual {
+  width: 49%;
+  border: 1px solid #555555;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* 한 줄 각오 출력하는 행 */
+.adminApply-div-wrapperlayer:last-child {
+  height: 300px;
+}
+
+/* info와 label을 감싸는 div */
+.adminApply-div-infowrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.adminApply-div-categoryselectwrapper,
+.adminApply-div-phoneselectwrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/*라벨 */
+.label {
+  width: 140px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #808080;
+  font-weight: bolder;
+  border-right: 1px solid #ccc;
+}
+
+/* 한 줄 각오 칸 */
+.adminApply-div-contentwrapper {
+  width: 100%;
+  height: 150px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+/* 한 줄 각오 칸 */
+.adminApply-div-contentwrapper > .label {
+  width: 140px;
+  line-height: 150px;
+  text-align: center;
+  color: #808080;
+  box-sizing: border-box;
+}
+
+/* 정보 출력 부분 */
+.adminApply-input-groupinfo {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #808080;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+}
+
+/* 탭 선택 */
+.adminApply-div-categoryselector,
+.adminApply-div-shownumberselector {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #808080;
+  font-size: 18px;
+  text-align: center;
+}
+
+.categoryselected,
+.phoneselected {
+  background-color: #003161;
+  color: white;
+}
+
+/*본문 칸*/
+.adminApply-div-studycontents {
+  flex: 1;
+  height: 150px;
+  font-size: 18px;
+  color: #808080;
+  border: none;
+  resize: none;
+  padding: 20px;
+  box-sizing: border-box;
+  border-collapse: separate;
+}
+
+textarea:focus {
+  outline: none;
+}
+.adminApply-div-btnwrapper{
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+.adminApply-btn-submit{
+  width: 100px;
+  height: 50px;
+  background-color: #003161;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  margin-left: 10px;
+  cursor: pointer;
+}

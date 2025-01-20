@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지식의 숲</title>
+    <link rel="stylesheet" href="../../asset/css/study/studylist-detail.css" />
+    <link rel="stylesheet" href="./../../asset/css/main/header.css" />
+    <link rel="stylesheet" href="./../../asset/css/main/footer.css" />
+  </head>
+  <body>
+    <!-- 상단 메뉴바 -->
+    <nav class="main-nav-menuwrap">
+      <img src="/webapp/asset/img/main/logo.png" class="main-img-logo" />
+      <ul class="main-nav-ul">
+        <li><a href="./../notice/noticelist.html">공지</a></li>
+        <li><a href="./../board/boardlist.html">자유게시판</a></li>
+        <li><a href="./../study/studylist.html">스터디 모집</a></li>
+        <li><a href="./../login/join.html">회원가입</a></li>
+        <li><a href="./../login/login.html">로그인</a></li>
+      </ul>
+    </nav>
+    <main>
+      <!-- 페이지 타이틀 -->
+      <div class="studylist-detail-div-titlewrapper">
+        <img
+          src="../../asset/img/study/back.png"
+          alt="뒤로가기"
+          class="studylist-detail-img-back"
+          onclick="goBack()"
+        />
+        <h1 class="studylist-h1-title">같이 코딩테스트 준비 하실 분?</h1>
+      </div>
+      <!-- 수정 / 삭제 버튼 -->
+      <div class="studylist-detail-div-btnwrapper">
+        <span onclick="updateStudy()" class="studylist-span-editbtn">수정</span>
+        <span class="studylist-span-divider">|</span>
+        <span onclick="deleteStudy()" class="studylist-span-deletebtn"
+          >삭제</span
+        >
+      </div>
+      <!-- 전체 내용을 감싸는 래퍼-->
+      <div class="studylist-div-contentsWrapper">
+        <!-- 입력 폼을 감싸는 래퍼 -->
+        <div id="STUDYLIST-FORM-WRITE">
+          <!-- 한 행 -->
+          <div class="studylist-div-wrapperlayer">
+            <!-- label과 input을 묶은 div -->
+
+            <div class="studylist-div-infowrapper">
+              <div class="label">닉네임</div>
+              <div class="studylist-div-groupinfo">닉네임 칸</div>
+            </div>
+            <div class="studylist-div-infowrapper">
+              <div class="label">작성일</div>
+              <div class="studylist-div-groupinfo">2024.12.01 19:40</div>
+            </div>
+          </div>
+
+          <div class="studylist-div-wrapperlayer">
+            <div class="studylist-div-infowrapper">
+              <div class="label">정원 수</div>
+              <div class="studylist-div-groupinfo">3 / 4 명</div>
+            </div>
+            <div class="studylist-div-infowrapper">
+              <div class="label">신청 마감일</div>
+              <div class="studylist-div-groupinfo">2024.12.01 19:40</div>
+            </div>
+          </div>
+          <div class="studylist-div-wrapperlayer">
+            <div class="studylist-div-infowrapper">
+              <div class="label">활동 시간</div>
+              <div class="studylist-div-groupinfo">13 : 00 ~ 16:00</div>
+            </div>
+            <div class="studylist-div-infowrapper">
+              <div class="label">활동 기간</div>
+              <div class="studylist-div-groupinfo">2025.01.05 ~ 2025.07.05</div>
+            </div>
+          </div>
+          <div class="studylist-div-wrapperlayer">
+            <div class="studylist-div-infowrapper">
+              <div class="label">연락처</div>
+              <div class="studylist-div-groupinfo">-</div>
+            </div>
+            <div class="studylist-div-infowrapper">
+              <div class="label">장소</div>
+              <div class="studylist-div-groupinfo">강남역 스터디 카페</div>
+            </div>
+          </div>
+          <div class="studylist-div-wrapperlayer">
+            <div class="studylist-div-textareawrapper">
+              <div class="label">본문</div>
+              <div class="studylist-div-studycontents">
+                6개월 동안 JAVA 코딩테스트 문제 풀이하고 코드해석 해보는 스터디
+                모임입니다. 화, 목 13시부터 16시까지 총 3시간동안 진행
+                예정입니다 다른 분들과 코드 공유해보며 여러 풀이 방법도 경험하고
+                또 색다른 코드들을 경험하며 배울 수 있습니다. 원하시는 분들은
+                코디신청서 작성시 전화번호 또는 카톡 아이디 같이 작성해주세요.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 등록 버튼 -->
+
+      <button
+        class="studylist-btn-submit"
+        type="submit"
+        form="STUDYLIST-FORM-WRITE"
+        onclick="applyStudy()"
+      >
+        스터디 신청
+      </button>
+      <!-- 스터디 신청 후 보이는 버튼 -->
+
+      <!-- 
+      <button
+        class="studylist-btn-submit"
+        type="submit"
+        form="STUDYLIST-FORM-WRITE"
+        onclick="cancelStudy()"
+      >
+        스터디 신청 취소
+      </button>
+  
+      -->
+
+      <!-- 댓글 입력 창 -->
+      <div class="studylist-div-commentinputwrapper">
+        <div class="studylist-div-userNickname">
+          <span>닉네임</span>
+        </div>
+        <div class="studylist-div-commentwrapper">
+          <form action="">
+            <textarea
+              name="studyContents"
+              id="STUDYLIST-TEXTAREA-COMMENT"
+              placeholder="덧글을 남겨 보세요"
+              data-counter="WRITE-COMMENT-COUNTER"
+              oninput="updateCharacterCount(this, 200)"
+            ></textarea>
+          </form>
+        </div>
+
+        <div class="studylist-div-counterwrapper">
+          <span class="studylist-span-counter" id="WRITE-COMMENT-COUNTER"
+            >0/200</span
+          >
+        </div>
+      </div>
+
+      <button
+        class="studylist-btn-commentsubmit"
+        type="submit"
+        form="STUDYLIST-TEXTAREA-COMMENT"
+        onclick="writeComment()"
+      >
+        등록
+      </button>
+
+      <!-- 댓글 목록 -->
+      <div class="studylist-div-commentlistwrapper">
+        <div class="studylist-div-commentlistheader">
+          <span class="studylist-span-comment">댓글</span>
+          <span class="studylist-span-commentcounter">총 2개</span>
+        </div>
+        <div class="studylist-div-commentlist">
+          <div class="studylist-div-commentlayer">
+            <span class="studylist-span-commentnickname">닉네임</span>
+            <span class="studylist-span-commentdate">2025.01.03</span>
+          </div>
+          <div class="studylist-div-commentlayer">
+            <span class="studylist-span-commentcontents">
+              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
+              수 있어요.
+            </span>
+          </div>
+        </div>
+        <div class="studylist-div-commentlist">
+          <div class="studylist-div-commentlayer">
+            <span class="studylist-span-commentnickname">닉네임</span>
+            <span class="studylist-span-commentdate">2025.01.03</span>
+          </div>
+          <div class="studylist-div-commentlayer">
+            <span class="studylist-span-commentcontents">
+              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
+              수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러
+              강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수
+              있고, 여러 강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서
+              코테도 할 수 있고, 여러 강의도 들을 수 있어요.
+            </span>
+            <div class="studylist-detail-div-btnwrapper">
+              <span
+                class="studylist-span-commenteditbtn"
+                onclick="updateComment()"
+                >수정</span
+              >
+              <span class="studylist-span-divider">|</span>
+              <span
+                class="studylist-span-commentdeletebtn"
+                onclick="deleteComment()"
+                >삭제</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 수정 버튼을 눌렀을때 디스플레이 되는 댓글 입력 창 -->
+        <div class="studylist-div-commentlist">
+          <div class="studylist-div-commentlayer">
+            <span class="studylist-span-commentnickname">닉네임</span>
+            <span class="studylist-span-commentdate">2025.01.03</span>
+          </div>
+          <div class="studylist-div-commentlayer">
+            <form action="" id="STUDYLIST-FORM-EDITCOMMENT">
+              <textarea
+                class="studylist-textarea-commentcontents"
+                placeholder="댓글을 남겨보세요."
+                data-counter="EDIT-COMMENT-COUNTER"
+                oninput="updateCharacterCount(this, 200)"
+              ></textarea>
+              <div class="studylist-div-counterwrapper">
+                <span id="EDIT-COMMENT-COUNTER" class="studylist-span-counter"
+                  >0/200</span
+                >
+              </div>
+            </form>
+          </div>
+          <div class="studylist-div-commentlayer">
+            <!-- 댓글 수정 버튼 -->
+            <button
+              class="studylist-btn-editcommentsubmit"
+              type="submit"
+              form="STUDYLIST-FORM-EDITCOMMENT"
+            >
+              등록
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 페이지네이션 -->
+      <div class="studylist-div-paginationwrapper">
+        <ul id="STUDYLIST-UL-PAGINATION">
+          <li class="studylist-li-paginationlist pre">&lt;</li>
+          <li class="studylist-li-paginationlist currentpage">1</li>
+          <li class="studylist-li-paginationlist">2</li>
+          <li class="studylist-li-paginationlist">3</li>
+          <li class="studylist-li-paginationlist">4</li>
+          <li class="studylist-li-paginationlist">5</li>
+          <li class="studylist-li-paginationlist next">&#62;</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="main-footer-container">
+      <div class="main-footer-content">
+        <div class="main-footer-links">
+          <div class="main-footer-policies">
+            <a href="#" class="main-link-policy">개인정보처리방침</a>
+            <span class="main-span-divider">|</span>
+            <a href="#" class="main-link-terms">이용약관</a>
+          </div>
+          <p class="main-paragraph-contact">
+            Contact: team.patchnote.official@gmail.com
+          </p>
+          <p class="main-paragraph-copyright">
+            Copyright Forest Info. All rights reserved
+          </p>
+        </div>
+        <div class="main-footer-logo">
+          <img
+            src="/webapp/asset/img/main/logo.png"
+            alt="Forest of Knowledge Logo"
+            class="main-img-footerlogo"
+          />
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <div id="STUDYLIST-MODAL-APPLY">
+    <div class="studylist-div-applywrapper">
+      <div class="studylist-div-titlewrapper">
+        <h1>STUDY 신청</h1>
+      </div>
+
+      <div class="studylist-div-couragewrapper">
+        <form action="" id="STUDYLIST-FORM-WRITECOURAGE">
+          <textarea
+            name="studyContents"
+            id="STUDYLIST-TEXTAREA-COURAGE"
+            data-counter="COURAGE-COUNTER"
+            placeholder="각오 한마디를 남기세요"
+            oninput="updateCharacterCount(this, 200)"
+          ></textarea>
+        </form>
+
+        <div class="studylist-div-counterwrapper">
+          <span id="COURAGE-COUNTER" class="studylist-span-counter">0/200</span>
+        </div>
+      </div>
+      <div class="studylist-div-bottomlayer">
+        <div class="studylist-div-checkboxwrapper">
+          <!-- <img 
+            src="/webapp/asset/img/study/checkboxOut.png"
+             alt="체크" 
+             class="studylist-img-checkboximg"
+             /> -->
+          <input type="checkbox" id="STUDYLIST-CHECKBOX-AGREE" onchange="" />
+          <p class="studylist-p-infotext">
+            스터디 모임 참여 후 발생할 수 있는 모든 문제는 참여자 간의 사적
+            문제로 간주되며, 본 게시판 및 운영자는 이에 대해 어떠한 법적 책임도
+            지지 않음을 알려드립니다.
+          </p>
+        </div>
+        <div class="studylist-div-btnwrapper">
+          <button
+            class="studylist-btn-couragewrite"
+            type="submit"
+            form="STUDYLIST-FORM-WRITECOURAGE"
+            onclick="writeCourage(event)"
+          >
+            등록
+          </button>
+          <button
+            class="studylist-btn-couragecancel"
+            form="STUDYLIST-FORM-WRITECOURAGE"
+            onclick="closeModel()"
+          >
+            취소
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="../../asset/js/study/studylist-detail.js"></script>
+</html>

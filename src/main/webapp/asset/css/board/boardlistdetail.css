@@ -1,0 +1,322 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body { background-color: #f6f6f6; }
+/* 최상단 제목  */
+.boardlistdetail-div-title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin-top: 50px;
+}
+/* 수정|삭제 버튼 */
+.boardlistdetail-detail-div-btnwrapper {
+  display: flex;
+  padding: 30px 0 20px;
+  color: #808080;
+  flex-direction: row-reverse;
+}
+
+.boardlistdetail-span-divider {
+  margin: 0 5px;
+  color: #808080;
+}
+
+.boardlistdetail-span-editbtn,
+.boardlistdetail-span-commenteditbtn,
+.boardlistdetail-span-deletebtn,
+.boardlistdetail-span-commentdeletebtn {
+  cursor: pointer;
+  color: #ccc;
+}
+
+/* 자유게시판 상세피이지 글 닉네임 */
+.boardlistdetail-div-nickname {
+  display: flex;
+  border-top: 1px solid;
+  border-bottom: 1px solid #ccc;
+  height: 50px;
+  align-items: center;
+}
+
+/* 자유게시판 상세페이지 글 작성일 */
+.boardlistdetail-div-date {
+  display: flex;
+  height: 50px;
+  align-items: center;
+}
+
+.title-rightline {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.title-rightline div { width: 100%; }
+.boardlist-div-contents{
+  flex: 1;
+  padding: 15px 20px;
+  border-left: 1px solid #ccc;
+}
+
+/* 이미지 스타일 */
+.boardlist-div-contents img {
+  max-width: 100%;
+  margin-top: 30px;
+}
+
+/* 자유게시판 상세페이지 글 내용 */
+.boardlistdetail-div-main {
+  display: flex;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+}
+
+.boardlistdetail-div-header {
+  border: 1px;
+  background-color: #fff;
+}
+
+main, .boardlistdetail-detail-div-btnwrapper {
+  width: 80%;
+  margin: auto;
+}
+
+
+/* 자유게시판 상세 등록버튼 */
+.boardlistdetail-btn-commentsubmit:hover{
+  cursor: pointer;
+}
+
+.boardlistdetail-btn-commentsubmit:active {
+  background-color: #011a36;
+}
+.boardlistdetail-div-commentlistwrapper {
+  width: 100%;
+  margin-top: 30px;
+}
+/* 자유게시판 상세 댓글확인  */
+.boardlistdetail-div-commenttitle {
+  background-color: #003161;
+  color: #fff;
+}
+
+.boardlistdetail-div-checkcomment {
+  border: 1px solid;
+  height: 80px;
+  padding : 0 20px;
+}
+.boardlistdtail-div-commentlayer{
+  display: flex;
+  justify-content: space-between;
+}
+.boardlistdetail-div-editdelete{
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 댓글 입력창을 감싸는 래퍼 */
+.boardlistdetail-div-commentinputwrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px solid #333;
+  border-radius: 15px;
+  background-color: white;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+
+/* 닉네임 */
+.boardlistdetail-div-userNickname {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.boardlistdetail-div-commentwrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+/*댓글 입력 칸*/
+#BOARDLISTDETAIL-TEXTAREA-COMMENT {
+  width: 100%;
+  height: 100px;
+  font-size: 18px;
+  border: none;
+  resize: none;
+}
+
+#BOARDLISTDETAIL-TEXTAREA-COMMENT::placeholder {
+  color: #808080;
+}
+
+/* 댓글 글자수 표시 */
+.boardlistdetail-div-counterwrapper {
+  margin: 10px 0 10px 0;
+  align-self: flex-end;
+}
+
+.boardlistdetail-span-counter {
+  color: #808080;
+}
+.boardlistdetail-btn-commentsubmit{
+  margin-left: auto;
+  width: 100px;
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: #003161;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+}
+.boardlistdetail-div-commentwrap{
+  display: flex;
+  flex-direction: row-reverse;
+}
+/* 등록 버튼 호버시시 */
+.boardlistdetail-btn-commentsubmit:hover {
+  cursor: pointer;
+}
+
+/* 등록 버튼 눌렀을 때 */
+.boardlistdetail-btn-commentsubmit:active {
+  background-color: #011a36;
+}
+/* 댓글 리스트를 감싸는 div */
+.boardlistdetail-div-commentlistwrapper {
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* 댓글 리스트 헤더 */
+
+.boardlistdetail-div-commentlistheader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #003161;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 댓글 리스트 헤더 텍스트 */
+.boardlistdetail-span-comment,
+.boardlistdetail-span-commentcounter {
+  color: white;
+  font-size: 18px;
+
+}
+
+/* 댓글칸 */
+.boardlistdetail-div-commentlist {
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 댓글 닉네임, 날짜를 감싸는 레이어 */
+.boardlistdetail-div-commentlayer {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 닉네임 */
+.boardlistdetail-span-commentnickname {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 댓글 날짜 */
+.boardlistdetail-span-commentdate {
+  font-size: 18px;
+  color: #808080;
+}
+
+/* 댓글 내용 */
+.boardlistdetail-span-commentcontents {
+  margin-top: 10px;
+  color: #808080;
+  max-width: 90%;
+}
+
+/* 댓글 작성 부분을 감싸는 form */
+#BOARDLISTDETAIL-FORM-EDITCOMMENT {
+  width: 100%;
+  height: 90%;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 댓글 내용 수정할때 나오는 textarea */
+.boardlistdetail-textarea-commentcontents {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  color: #808080;
+  border: none;
+  resize: none;
+
+}
+
+/* 댓글 수정 버튼 */
+.boardlistdetail-btn-editcommentsubmit {
+  align-self: flex-end;
+}
+/*페이지네이션*/
+.boardlistdetail-div-paginationwrapper {
+  width: 100%;
+  margin: 50px 0;
+
+}
+
+#BOARDLISTDETAIL-UL-PAGINATION {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/*페이지네이션 리스트*/
+.boardlistdetail-li-paginationlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin: 0 5px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.currentpage {
+  background: #003161;
+  color: white;
+}
+
+.boardlistdetail-li-paginationlist:hover:not(.pre, .next) {
+
+  border: 3px solid #003161;
+  box-sizing: border-box;
+
+}
+
+
+

@@ -1,0 +1,22 @@
+/* 각 데이터의 가로 너비 */
+.adminBoard-li-boardid { width: 10%; }
+
+.adminBoard-li-boardtitle {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.boardtitledata { text-align: left; }
+
+.adminBoard-li-usernickname { width: 15%; }
+
+.adminBoard-li-boardwritedate { width: 15%; }
+
+.adminBoard-li-boarddelete {
+  width: 10%;
+  cursor: default;
+}
+
+.admin-ul-datawrap {
+  cursor: pointer;
+}

@@ -1,0 +1,57 @@
+.adminNotice-li-noticeid { width: 15%; }
+.adminNotice-li-noticetitle { width: 45%; }
+.admin-ul-datawrap > .adminNotice-li-noticetitle {
+  text-align: left;
+  padding: 0 5px;
+}
+.adminNotice-li-noticewriter { width: 10%; }
+.adminNotice-li-noticewritedate { width: 20%; }
+li.adminNotice-li-noticebtncontainer {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 10%;
+}
+
+.adminNotice-li-noticebtncontainer > img {
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.adminNotice-div-buttonswrap {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.adminNotice-a-button {
+  line-height: 40px;
+  color: #808080;
+  font-size: 15px;
+}
+
+.adminNotice-a-button:hover {
+  background-color: #eee;
+  border-radius: 5px;
+
+}
+
+.adminNotice-div-buttonswrap a:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  width: 90%;
+  height: 1px;
+  border-bottom: 1px solid #CCCCCC;
+
+}

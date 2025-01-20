@@ -1,0 +1,322 @@
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: -1px;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: 'NanumGothic', sans-serif; */
+  background-color: #F6F6F6;
+  /* font-size: 18px; */
+  /* font-weight: 500; */
+}
+
+/* 메인 컨텐츠가 들어갈 컨테이너 */
+#MYPAGE-DIV-LAYOUTCONTAINER {
+  height: 100%;
+  margin-left: 210px;
+}
+
+.mypage-div-container {
+  padding: 70px 0 40px;
+}
+
+/* 페이지 제목 */
+.mypage-h1-maintitle {
+  align-self: flex-start;
+  margin-top: 30px;
+  margin-left: 130px;
+  /* letter-spacing: 10px; */
+  /* text-align: center; */
+}
+
+.mypage-div-contentscontainer {
+  width: 80%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.mypage-div-contentswrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/*-사이드 테이블 스타일 부분-*/
+aside {
+  position: fixed;
+  background-color: #003161;
+  width: 210px;
+  height: 100%;
+  color: #fff;
+}
+
+.mypage-title{
+  align-self: flex-start;
+  margin-top: 80px;
+  margin-left: 130px;
+}
+
+.mypage-div-menuwrap {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 210px;
+}
+
+/*사이드 테이블 제목*/
+#MYPAGE-H2-TITLE { margin-bottom: 40px; }
+
+
+/* 상단 헤더 - 로고, 홈, 로그아웃 */
+#ADMIN-DIV-HEADERCONTAINER {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  /* margin-left: 210px; */
+}
+
+.admin-img-logo{
+  margin-left: 210px;
+}
+
+#ADMIN-UL-HEADERWRAP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+#ADMIN-UL-HEADERWRAP a {
+  text-decoration: none;
+  color: #003161;
+}
+
+#ADMIN-UL-HEADERWRAP li {
+  width: 100px;
+
+  color: #003161;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+#ADMIN-UL-HEADERWRAP li:nth-child(1) { border-right: 1px solid #003161; }
+
+
+
+/*리스트 부분*/
+.mypage-ul-menuwrap {
+  width: 100%;
+  text-align: right;
+}
+
+.mypage-ul-menuwrap li {
+  /* height: 30px; */
+  padding: 8px 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.mypage-ul-menuwrap li:hover {
+  background-color: #0b2d52;
+  color: white;
+}
+.mypage-ul-menuwrap li:hover > a{
+  color: white;
+}
+
+/* 메뉴 클릭했을 때 */
+.mypage-li-menuactive{
+  background-color: #fff;
+}
+.mypage-li-menuactive>a{
+  color: #003161;
+}
+li { list-style-type: none; }
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+/* 스터디를 감싸는 래퍼 */
+.mypage-div-groupWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+/* 스터디를 감싸는 래퍼 */
+.mypage-div-wrapperinner {
+  width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: first baseline;
+  margin: 0 auto;
+
+}
+/* 스터디 */
+.mypage-div-group {
+  width: 300px;
+  /* height: 230px; */
+  /* width: 400px;
+  height: 300px; */
+  /* margin-left:75px;
+  margin-top: 50px; */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 30px 10px;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  /* cursor: pointer; */
+  border: 1px solid #afafaf;
+}
+
+.mypage-div-grouptitle a {
+  color: #000;
+}
+
+.mypage-div-groupinner{
+  width: 85%;
+  margin: auto;
+}
+/* 스터디의 마감일과 모집상태를 감싸는 래퍼 */
+.mypage-div-groupinfowrapper {
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.datecontent-wrap {
+  margin-bottom: 10px;
+}
+
+/*스터디의 마감일과 모집상태  */
+.mypage-div-enddate,
+.mypage-div-groupstatus {
+  color: #808080;
+}
+
+/* 스터디명 */
+.mypage-div-grouptitle {
+  /* width: 50%; */
+  /* height: 100px; */
+  height: 70px;
+  /* margin-top : 30px; */
+  /* margin-bottom : 40px; */
+  font-size: 18px;  /* 기본 폰트 사이즈 16px*/
+  text-align: left;
+  font-weight: bold;
+}
+/* 스터디 카테고리*/
+.mypage-div-groupcategory {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #003161;
+  text-align: center;
+  color: white;
+  border-radius: 100px;
+}
+/*스터디 멤버 수*/
+.mypage-div-groupmember{
+  color : #808080;
+}
+/*스터디 개설자와 찜을 감싸는 래퍼*/
+.mypage-div-groupmakerwrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:  20px auto 0;
+  border-top : 1px solid #888;
+  padding-top : 10px;
+}
+
+/*스터디 개설자*/
+.mypage-div-groupmaker{
+  color : #333;
+}
+
+/*스터디 찜과 찜 수를 감싸는 래퍼*/
+.mypage-div-likewrapper{
+  display: flex;
+  align-items: center;
+}
+/*스터디 찜*/
+.mypage-img-like{
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+/* 스터디 찜 수 */
+.mypage-div-progress{
+  line-height :40px;
+  margin-left: 10px;
+}
+
+
+
+
+/*페이지네이션*/
+
+.mypage-div-paginationwrapper{
+  width: 100%;
+  margin : 50px 0;
+}
+
+
+
+#mypage-UL-PAGINATION{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top : 50px;
+}
+
+/*페이지네이션 리스트*/
+.mypage-li-paginationlist{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height : 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin : 0 5px;
+  cursor : pointer;
+  list-style-type: none;
+}
+
+.currentpage{
+  background: #003161;
+  color: white;
+}
+
+
+.mypage-btn-cancel{
+  /* padding : 0 10px; */
+  width: 50px;
+  height: 30px;
+  border: 1px solid #afafaf;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  color: #003161;
+  cursor: pointer;
+}
+.mypage-li-paginationlist:hover:not(.pre,.next){
+
+  border: 3px solid #003161;
+}

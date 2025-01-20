@@ -1,0 +1,96 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body { background-color: #f6f6f6; }
+
+h1{
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 50px;
+}
+/* 타이틀틀 */
+.noticelist-div-list{
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  margin-top: 50px;
+  width: 80%;
+}
+/* 타이틀의 li header */
+.noticelist-li-header {
+  display: flex;
+  color: #FFFFFF;
+  background-color: #003161;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  margin: auto;
+}
+/* 메인내용 */
+.noticelist-li-item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+/* 메인내용자식요소 */
+.noticelist-li-item:last-child {
+  border-bottom: none;
+}
+
+.notice-author{
+  flex: 1;
+  text-align: center;
+}
+
+.notice-title {
+  flex: 1;
+  text-align: left;
+}
+.notice-date{
+  flex: 1;
+  text-align: right;
+}
+.notice-title{
+  flex: 2;
+}
+/*페이지네이션 리스트*/
+#NOTICELIST-UL-PAGINATION {
+  display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.noticelist-li-paginationlist{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height : 50px;
+  text-align: center;
+  border-radius: 100px;
+  margin : 0 5px;
+  cursor : pointer;
+  list-style-type: none;
+}
+
+.currentpage{
+  background: #003161;
+  color: white;
+}
+.noticelist-li-paginationlist:hover:not(.pre,.next){
+
+  border: 3px solid #003161;
+}
+.noticelist-li-item:hover{
+  cursor: pointer;
+}
+body {
+  font-family: "NanumGothic", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}

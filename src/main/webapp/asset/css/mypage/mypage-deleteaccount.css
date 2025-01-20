@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  letter-spacing: -1px;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: 'NanumGothic', sans-serif; */
+  background-color: #F6F6F6;
+  /* font-size: 18px; */
+  /* font-weight: 500; */
+}
+
+/* 메인 컨텐츠가 들어갈 컨테이너 */
+#MYPAGE-DIV-LAYOUTCONTAINER {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 210px;
+}
+
+/* 페이지 제목 */
+.mypage-h1-maintitle {
+  align-self: flex-start;
+  margin-top: 30px;
+  margin-left: 130px;
+  /* letter-spacing: 10px; */
+  /* text-align: center; */
+}
+
+.mypage-div-contentscontainer {
+  width: 80%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.mypage-div-contentswrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/*-사이드 테이블 스타일 부분-*/
+aside {
+  position: fixed;
+  background-color: #003161;
+  width: 210px;
+  height: 100%;
+  color: #fff;
+}
+
+.mypage-title{
+  align-self: flex-start;
+  margin-top: 80px;
+  margin-left: 130px;
+}
+
+.mypage-div-menuwrap {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 210px;
+}
+
+/*사이드 테이블 제목*/
+#MYPAGE-H2-TITLE { margin-bottom: 40px; }
+
+/* 상단 헤더 - 로고, 홈, 로그아웃 */
+#ADMIN-DIV-HEADERCONTAINER {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  /* margin-left: 210px; */
+}
+
+.admin-img-logo{
+  margin-left: 210px;
+}
+
+#ADMIN-UL-HEADERWRAP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+#ADMIN-UL-HEADERWRAP a {
+  text-decoration: none;
+  color: #003161;
+}
+
+#ADMIN-UL-HEADERWRAP li {
+  width: 100px;
+
+  color: #003161;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+#ADMIN-UL-HEADERWRAP li:nth-child(1) { border-right: 1px solid #003161; }
+
+
+
+
+/*리스트 부분*/
+.mypage-ul-menuwrap {
+  width: 100%;
+  text-align: right;
+}
+
+.mypage-ul-menuwrap li {
+  /* height: 30px; */
+  padding: 8px 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.mypage-ul-menuwrap li:hover {
+  background-color: #0b2d52;
+  color: white;
+}
+.mypage-ul-menuwrap li:hover > a{
+  color: white;
+}
+
+/* 메뉴 클릭했을 때 */
+.mypage-li-menuactive{
+  background-color: #fff;
+}
+.mypage-li-menuactive>a{
+  color: #003161;
+}
+li { list-style-type: none; }
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+
+/*삭제 확인 문구*/
+.mypage-div-configure{
+  width: 900px;
+  height: 500px;
+  border: 1px solid #afafaf;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 세로 중앙 정렬 */
+  background-color: #FFFFFF;
+  /* text-align: center; */
+  margin: 50px auto;
+}
+
+.mypage-btn-deleteandcancel{
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */ 
+  margin: 10px; 
+}
+
+.mypage-div-delAccountTitle{
+  margin: 40px auto;
+}
+
+.mypage-text-delComment{
+  width: 550px;
+  height: 30px;
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.delete{
+  margin: 5px;
+  width: 120px;
+  height: 40px;
+  border: 1px solid #afafaf;
+  border-radius: 3px;
+  background-color: #afafaf;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+
+.delete:enabled {
+  background-color: #c71010; /* 활성화 빨간색 */
+  cursor: pointer;
+}
+
+.cancel{
+  margin: 5px;
+  width: 50px;
+  height: 30px;
+  border: 1px solid #afafaf;
+  border-radius: 3px;
+  background-color: #003161;
+  color: #FFFFFF;
+}

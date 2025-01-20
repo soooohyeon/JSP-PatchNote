@@ -1,0 +1,50 @@
+/* 각 데이터의 가로 너비 */
+.adminStudyComment-li-studycommentid { width: 10%; }
+.adminStudyComment-li-studyid { width: 11%; }
+.adminStudyComment-li-studycommentcontentwrap { width: 32%; }
+.adminStudyComment-li-studycommentcontent {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  padding: 0 5px;
+  cursor: pointer;
+}
+.commentcontent { text-align: left; }
+
+.adminStudyComment-li-userid { width: 13%; }
+.adminStudyComment-li-usernickname { width: 15%; }
+.adminStudyComment-li-studycommentwritedate { width: 10%; }
+.adminStudyComment-li-commentdelete {
+  width: 9%;
+}
+
+/* 댓글 내용 전체 보기 div 스타일 줌 */
+.commentWrap {
+  display: none;
+  height: 0;
+  background-color: #fff;
+  border: 1px solid #afafaf;
+  border-top: none;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.commentContent {
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toggleBtn { width: 5%; }
+.toggleBtn>img {
+  width: 15px;
+}
+
+/* 댓글 내용 전부 보일때 주는 효과 - JS로 효과 부여 */
+.active {
+  display: block;
+  padding: 20px 30px;
+  height: inherit;
+}
+
+.rotateBtn { transform: rotate(180deg) }
