@@ -1,44 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>지식의 숲 - 관리자</title>
-  <link rel="stylesheet" href="./../../asset/css/admin/adminMenuLayOut.css">
-  <link rel="stylesheet" href="./../../asset/css/admin/admin-studyapplylist.css">
-  <script defer src="./../../asset/js/admin/admin-basic.js"></script>
-  <script defer src="./../../asset/js/admin/admin-studyapplylist.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/admin/admin-studyapplylist.css">
+  <script defer src="${pageContext.request.contextPath}/asset/js/admin/admin-studyapplylist.js"></script>
 </head>
 <body>
   <div id="ADMIN-DIV-LAYOUTCONTAINER">
     <!-- 사이드 메뉴 -->
-    <aside id="ADMIN-MENUCONTAINER">
-      <nav class="admin-div-menuwrap">
-        <h1 id="ADMIN-H2-TITLE"><a href="./admin-main.html">관리자 페이지</a></h1>
-        <ul class="admin-ul-menuwrap">
-          <li><a href="./admin-userlist.html">유저 목록</a></li>
-          <li><a href="./admin-studylist.html">스터디 목록</a></li>
-          <li class="admin-li-menuactive"><a href="./admin-studyapplylist.html">스터디 신청 관리</a></li>
-          <li><a href="./admin-studycommentlist.html">스터디 후기댓글 목록</a></li>
-          <li><a href="./admin-boardlist.html">자유게시판 관리</a></li>
-          <li><a href="./admin-boardcommentlist.html">자유게시판 댓글 관리</a></li>
-          <li><a href="./admin-noticelist.html">공지 목록</a></li>
-          <li><a href="./admin-bannerlist.html">배너 목록</a></li>
-        </ul>
-      </nav>
-    </aside>
+    <jsp:include page = "/html/admin/sidemenu.jsp" />
     <!-- 사이드 메뉴 끝 -->
 
     <!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
     <div id="ADMIN-DIV-CONTENTWRAP">
       <!-- 상단 헤더 -->
-      <div id="ADMIN-DIV-HEADERCONTAINER">
-        <img src="./../../asset/img/main/logo.png" class="admin-img-logo" alt="Logo">
-        <ul id="ADMIN-UL-HEADERWRAP">
-          <li><a href="./../main/main.html">홈</a></li>
-          <li><a href="">로그아웃</a></li>
-        </ul>
-      </div>
+	  <jsp:include page = "/html/admin/header.jsp" />
+      <!-- 상단 헤더 끝 -->
 
       <!-- 메인 컨텐츠가 들어갈 컨테이너 -->
       <main class="admin-div-container">
@@ -52,7 +33,7 @@
             <div class="admin-div-wrapper">
               <input type="text" class="admin-input-search"
                 placeholder="검색어를 입력해주세요." value=""/>
-              <img src="./../../asset/img/study/search-btn.png"
+              <img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
                 alt="search" class="admin-img-search"/>
             </div>
           </form>
