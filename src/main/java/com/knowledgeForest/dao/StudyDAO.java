@@ -16,7 +16,12 @@ public class StudyDAO {
 //		sqlSession.select(null, null);
 	}
 	
-	public void add(StudyDTO studyDTO) {
-		sqlSession.insert("study.list", studyDTO);
+	public int insertStudy(StudyDTO studyDTO) {
+		sqlSession.insert("StudyMapper.insert", studyDTO);
+		
+		int studyNumber = sqlSession.selectOne("study.getCurrentStudyNumber");
+		studyDTO.setStudyNum(studyNumber);
+		System.out.println("마지막 생성된 값 : " + studyNumber);
+		return studyNumber;
 	}
 }
