@@ -1,4 +1,3 @@
-// 배너
 document.addEventListener("DOMContentLoaded", () => {
 	const slides = document.querySelectorAll(".main-div-banner img");
 	let currentIndex = 0;
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /**
- * @feature 로그아웃 된 상태에서 스터디 항목을 클릭했을때, 로그인 페이지로 이동시킵니다.
+ * @feature 로그아웃 된 상태에서 스터디 항목을 클릭 했을 때, 로그인 페이지로 이동 시킵니다.
  * @see   goPage();
  * @author 강후현
  * @since 20250114

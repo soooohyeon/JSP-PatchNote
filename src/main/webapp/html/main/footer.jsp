@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
 <!-- footer -->
         <footer class="main-footer-container">
             <div class="main-footer-content">
@@ -12,8 +13,7 @@
                     <p class="main-paragraph-copyright">Copyright Forest Info. All rights reserved</p>
                 </div>
                 <div class="main-footer-logo">
-                    <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="Forest of Knowledge Logo"
-                        class="main-img-footerlogo">
+                    <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="Forest of Knowledge Logo" class="main-img-footerlogo">
                 </div>
             </div>
         </footer>
