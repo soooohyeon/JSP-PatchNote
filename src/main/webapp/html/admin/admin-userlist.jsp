@@ -33,9 +33,9 @@
 					<h1 class="admin-h1-maintitle">유저 관리</h1>
 
 					<!-- 검색창 -->
-					<form action="" method="">
+					<form action="${pageContext.request.contextPath}/admin/admin-userlist.ad" method="get">
 						<div class="admin-div-wrapper">
-							<input type="text" class="admin-input-search"
+							<input type="text" name="keyWord" class="admin-input-search"
 								placeholder="유저ID 또는 닉네임을 입력해주세요." value="" /> <img
 								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
