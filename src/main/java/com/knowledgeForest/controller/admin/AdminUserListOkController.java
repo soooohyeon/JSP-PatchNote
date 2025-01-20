@@ -24,11 +24,10 @@ public class AdminUserListOkController implements Execute {
 //		유저 목록 조회
 		List<UserDTO> userList = adminDAO.selectUserAll();
 		request.setAttribute("userList", userList);
-		
+		userList.forEach(System.out::println);
 		result.setPath("/html/admin/admin-userlist.jsp");
 		result.setRedirect(false);
 
-		System.out.println("유저 목록 종료");
 		return result;
 	}
 	
