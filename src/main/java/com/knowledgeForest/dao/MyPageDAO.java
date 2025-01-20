@@ -15,7 +15,7 @@ public class MyPageDAO {
   }
 
   //회원정보 조회
-  public UserDTO selectUserInfo(String userId) {
+  public UserDTO getUserInfo(String userId) {
     UserDTO user = sqlsession.selectOne("MyPage.getUserInfo", userId);
     return user;
   }

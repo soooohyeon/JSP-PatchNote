@@ -94,22 +94,33 @@ pageEncoding="UTF-8"%>
             >
               <div class="mypage-div-wrapper">
                 <label for="name">이름</label>
-                <input type="text" id="name"
-                value="<%=request.getAttribute("userName") != null ?
-                request.getAttribute("userName") : "도깨비"%>" name = "userName"
-                readonly >
+                <input
+                  type="text"
+                  id="name"
+                  value="${userInfo.userName}"
+                  name="userName"
+                  readonly
+                />
               </div>
               <div class="mypage-div-wrapper">
                 <label for="birthdate">생년월일</label>
-                <input type="text" id="birthdate" name="userBirth"
-                value="<%=request.getAttribute("userBirth) != null ?
-                request.getAttribute("userBirth") : "0930-03-03"%>" readonly>
+                <input
+                  type="text"
+                  id="birthdate"
+                  name="userBirth"
+                  value="${userInfo.userBirth}"
+                  readonly
+                />
               </div>
               <div class="mypage-div-wrapper">
                 <label for="ID">ID</label>
-                <input type="text" id="ID" name="userId"
-                value="<%=request.getAttribute("id") != null ?
-                request.getAttribute("id") : "dokev333"%>" readonly>
+                <input
+                  type="text"
+                  id="ID"
+                  name="userId"
+                  value="${userInfo.userId}"
+                  readonly
+                />
               </div>
 
               <div class="mypage-div-wrapper2">
@@ -156,6 +167,7 @@ pageEncoding="UTF-8"%>
                     type="text"
                     id="phoneNum"
                     placeholder="숫자만 입력해주세요"
+										name = ${userInfo.userPH}
                   />
                 </div>
                 <button class="mypage-btn-phoneNum-send">전송</button>
