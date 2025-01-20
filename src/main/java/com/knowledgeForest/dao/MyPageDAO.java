@@ -9,21 +9,21 @@ public class MyPageDAO {
   public SqlSession sqlsession;
 
   public MyPageDAO(){
-		System.out.println("=====SQLSESSION 확인======" + sqlsession);
 		sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
-		System.out.println("접속확인 : " + sqlsession);
   }
 
   //회원정보 조회
   public UserDTO getUserInfo(String userId) {
-    UserDTO user = sqlsession.selectOne("MyPage.getUserInfo", userId);
+	  userId = "eunji69"; // 수정 필요 ;
+	System.out.println("회원정보" + userId);
+	UserDTO user = sqlsession.selectOne("UserMapper.getUserInfo", userId);
     return user;
   }
   
   // 회원정보 수정
   public int updateUserInfo(UserDTO user) {
     int result = 0;
-    result = sqlsession.update("MyPage.updateUser", user);
+    result = sqlsession.update("UserMapper.updateUser", user);
     return result;
   }
 

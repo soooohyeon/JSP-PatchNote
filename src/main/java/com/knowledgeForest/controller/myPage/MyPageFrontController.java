@@ -1,15 +1,12 @@
 package com.knowledgeForest.controller.myPage;
 
-import java.io.Console;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.knowledgeForest.Result;
-import com.knowledgeForest.controller.admin.AdminUserListOkController;
 
 /**
  * Servlet implementation class MyPageFrontController
@@ -17,10 +14,6 @@ import com.knowledgeForest.controller.admin.AdminUserListOkController;
 // @WebServlet("/MyPageFrontController")
 public class MyPageFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public MyPageFrontController() {
-		super();
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -40,29 +33,38 @@ public class MyPageFrontController extends HttpServlet {
 
 		// 경로 분기처리
 		switch (target) {
-			case "/mypage/mypage-accountedit.my":
-				result = new MyPageUserInfoController().execute(request, response);
-				break;
 
-			case "/mypage/mypage-applylist.my":
-				request.getRequestDispatcher("/html/mypage/mypage-applylist.jsp").forward(request, response);
-				break;
+		case "/mypage/mypage-accountedit.my":
+			result = new MyPageUserInfoController().execute(request, response);
+			break;
 
-			case "/mypage/mypage-deleteaccount.my":
-				request.getRequestDispatcher("/html/mypage/mypage-deleteaccount.jsp").forward(request, response);
-				break;
+		case "/mypage/mypage-applylist.my":
+			request.getRequestDispatcher("/html/mypage/mypage-applylist.jsp").forward(request, response);
+			break;
 
-			case "/mypage/mypage-hostboard.my":
-				request.getRequestDispatcher("/html/mypage/mypage-hostboard.jsp").forward(request, response);
-				break;
+		case "/mypage/mypage-deleteaccount.my":
+			request.getRequestDispatcher("/html/mypage/mypage-deleteaccount.jsp").forward(request, response);
+			break;
 
-			case "/mypage/mypage-jimlist.my":
-				request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
-				break;
+		case "/mypage/mypage-hostboard.my":
+			request.getRequestDispatcher("/html/mypage/mypage-hostboard.jsp").forward(request, response);
+			break;
 
-			case "/mypage/mypage-writtenboard.my":
-				request.getRequestDispatcher("/html/mypage/mypage-writtenboard.jsp").forward(request, response);
-				break;
+		case "/mypage/mypage-jimlist.my":
+			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
+			break;
+
+		case "/mypage/mypage-writtenboard.my":
+			request.getRequestDispatcher("/html/mypage/mypage-writtenboard.jsp").forward(request, response);
+			break;
+		}
+
+		if (result != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
 		}
 
 	}

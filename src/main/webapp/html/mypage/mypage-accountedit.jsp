@@ -126,7 +126,11 @@ pageEncoding="UTF-8"%>
               <div class="mypage-div-wrapper2">
                 <div class="editpage-input-nickname">
                   <label for="nickname">닉네임</label>
-                  <input type="text" id="nickname" name="userNick" />
+                  <input 
+                  	type="text" 
+                  	id="nickname" 
+                  	value="${userInfo.userNick}"
+                  	name="userNick" />
                 </div>
                 <button
                   class="mypage-btn-nickname"
@@ -167,7 +171,7 @@ pageEncoding="UTF-8"%>
                     type="text"
                     id="phoneNum"
                     placeholder="숫자만 입력해주세요"
-										name = ${userInfo.userPH}
+					name = ${userInfo.userPH}
                   />
                 </div>
                 <button class="mypage-btn-phoneNum-send">전송</button>

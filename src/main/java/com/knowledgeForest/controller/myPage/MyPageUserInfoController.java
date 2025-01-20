@@ -16,12 +16,17 @@ public class MyPageUserInfoController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+//		String userId = request.getParameter("userId");
+		String userId = "eunji69";
+		System.out.println(userId);
 		UserDTO user = new MyPageDAO().getUserInfo(userId);
+		System.out.println(user);
 		request.setAttribute("userId", userId);
-		return new Result(false, "/html/mypage/mypage-accountedit.jsp");
+		Result result = new Result();
+		result.setPath("/html/mypage/mypage-accountedit.jsp");
+		result.setRedirect(false);
 
-		return null;
+		return result;
 	}
 
 }
