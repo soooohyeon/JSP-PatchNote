@@ -27,6 +27,7 @@ public class LoginFrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		doProcess(request, response);
 	}
 
@@ -39,13 +40,12 @@ public class LoginFrontController extends HttpServlet {
 	}
 	
 	protected void doProcess (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("LoginFrontController 들어옴");
 		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println("test");
-		
+	
 		Result result = null;
-		
+		System.out.println("분기처리 전"); // 찍히는건 확인
+		System.out.println(target); // 찍히는건 확인
 //		경로 분기처리
 		switch (target) {
 			
@@ -63,10 +63,10 @@ public class LoginFrontController extends HttpServlet {
 			request.getRequestDispatcher("/html/login/passwordSelect.jsp").forward(request, response);
 			break;
 		
-		case "/login/loginOk.me " :
-			System.out.println("mainPage이동");
+		case "/login/loginOk.me" :
+			System.out.println("loginFrontController test");
+			
 			result = new LoginOkController().execute(request, response);
-			System.out.println(result.isRedirect());
 			break;
 		}
 		if(result != null) {

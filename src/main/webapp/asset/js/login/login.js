@@ -14,11 +14,11 @@ btn_join.addEventListener("click", (e)=>{
 
 
 //페이지 이동함수
-function moveSite(){
+/*function moveSite(){
 
 	window.location.href = "./../main/main-logout.html";
 
-}
+}*/
 
 
 // 아이디 입력조건
