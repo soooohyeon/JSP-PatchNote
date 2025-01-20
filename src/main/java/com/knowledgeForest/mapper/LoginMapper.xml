@@ -3,6 +3,10 @@
 
 <mapper namespace="LoginMapper">
 
-    
+      <select id = "userLogin" parameterType = "UserDTO" resultType = "userDTO">
+    	SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+    	FROM TBL_USER
+    	WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+    </select>
 
 </mapper>

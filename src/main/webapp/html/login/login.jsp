@@ -34,7 +34,7 @@
       </div>
 
       	<div class="login-div-wrapper-btn-box">
-        	<button type = "submit" class="login-btn-join" id="LOGIN-BTN-LOGIN">로그인</button>
+        	<button type = "submit" class="login-btn-join" id="LOGIN-BTN-LOGIN" onclick="login()">로그인</button>
       	</div>
 	  </form>
       <div class="login-div-wrapper-pwd-box">
