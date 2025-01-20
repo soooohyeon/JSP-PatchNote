@@ -1,4 +1,11 @@
-  //메인으로 가기 버튼을 눌렀을때 메인으로 이동시키는 함수
-  function inventory(){
-    window.location.href="./noticelist.html";
-  }
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+   var hostIndex = location.href.indexOf (location.host) + location.host.length;
+   var contextPath = location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+   
+   return contextPath;
+}
+
+function noticedetailpage(){
+  history.back();
+}

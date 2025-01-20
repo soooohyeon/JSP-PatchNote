@@ -15,6 +15,7 @@ public class NoticeDTO {
 	private String noticeUploadDate;
 	private String noticeEditDate;
 	
+	
 	public int getNoticeNum() {
 		return noticeNum;
 	}
@@ -45,5 +46,14 @@ public class NoticeDTO {
 	public void setNoticeEditDate(String noticeEditDate) {
 		this.noticeEditDate = noticeEditDate;
 	}
+	@Override
+	public String toString() {
+		return "NoticeDTO [noticeNum=" + noticeNum + ", noticeTitle=" + noticeTitle + ", noticeContents="
+				+ noticeContents + ", noticeUploadDate=" + noticeUploadDate + ", noticeEditDate=" + noticeEditDate
+				+ "]";
+	}
+	
+	
+	
 	
 }
