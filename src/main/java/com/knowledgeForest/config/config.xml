@@ -28,12 +28,14 @@
 				<property name="driver" value="oracle.jdbc.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe" />
 				<property name="username" value="note" />
-				<property name="password" value="1027" />
+				<property name="pass word" value="1027" />
 			</dataSource>
 		</environment>
 	</environments>
 	
 	<mappers>
+		<mapper resource="com/knowledgeForest/mapper/AdminMapper.xml" />
+		<mapper resource="com/knowledgeForest/mapper/LoginMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/UserMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/BannerMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/BoardMapper.xml" />
