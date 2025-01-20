@@ -7,26 +7,26 @@ import com.knowledgeForest.dto.UserDTO;
 
 public class LoginDAO {
 
-   public SqlSession sqlsession;
-   
-   public LoginDAO() {
-      
-      sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
-      
-   }
-   
-   public void join(UserDTO userDTO) {
-      
-      sqlsession.insert("login.join", userDTO);
-   }
-   
-   public UserDTO login(String userId, String userPw) {
-      UserDTO userDTO = new UserDTO();
-      userDTO.setUserId(userId);
-      userDTO.setUserPw(userPw);
-      System.out.println("login이 되게 해줘");
-      return sqlsession.selectOne("UserMapper.userLogin", userDTO);
-   }
-   
-   
+	public SqlSession sqlsession;
+	
+	public LoginDAO() {
+		
+		sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
+		
+	}
+	
+	public void join(UserDTO userDTO) {
+		
+		sqlsession.insert("login.join", userDTO);
+	}
+	
+	public UserDTO login(String userId, String userPw) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUserId(userId);
+		userDTO.setUserPw(userPw);
+		System.out.println("login이 되게 해줘");
+		return sqlsession.selectOne("UserMapper.userLogin", userDTO);
+	}
+	
+	
 }
