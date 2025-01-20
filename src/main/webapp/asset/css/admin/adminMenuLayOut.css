@@ -218,6 +218,12 @@ li { list-style-type: none; }
   text-overflow: ellipsis;
 }
 
+/* 데이터가 없는 경우 */
+.data-none {
+	height: 300px;
+	line-height: 300px;	
+}
+
 /* 모든 데이터 중 회색 글씨 */
 .lightdata {
   color: #808080;
