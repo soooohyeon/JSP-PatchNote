@@ -17,7 +17,6 @@ public class AdminUserListOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("유저 목록 들어옴");
 		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
 		
