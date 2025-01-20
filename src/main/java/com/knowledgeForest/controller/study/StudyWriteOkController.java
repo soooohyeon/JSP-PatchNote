@@ -43,7 +43,7 @@ public class StudyWriteOkController implements Execute {
 		studyDAO.insertStudy(studyDTO);
 
 		// ++++++++++++++++++++++
-		result.setPath("/study/studyListOk.st");
+		result.setPath("/study/studyList.st");
 		result.setRedirect(false);
 
 		return result;
