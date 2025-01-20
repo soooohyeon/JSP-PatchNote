@@ -62,8 +62,6 @@
               </div>
               <div class="studylist-div-grouptitle">
                 웹 보안의 기초부터 간단한 토이 프로젝트까지
-                웹 보안의 기초부터 간단한 토이 프로젝트까지
-                웹 보안의 기초부터 간단한 토이 프로젝트까지
               </div>
               <div class="studylist-div-groupinfowrapper">
                 <div class="studylist-div-groupcategory">보안</div>
@@ -85,6 +83,39 @@
             </div>
           </div>
         </div>
+
+		<!--  
+        <div class="studylist-div-groupWrapper">
+          <div class="studylist-div-group">
+            <div class="studylist-div-groupinner">
+              <div class="studylist-div-groupinfowrapper datecontent-wrap">
+                <div class="studylist-div-enddate">
+                  마감일 &nbsp;| &nbsp; 2025.01.05
+                </div>
+                <div class="studylist-div-groupstatus">모집 중</div>
+              </div>
+              <div class="studylist-div-grouptitle">
+                웹 보안의 기초부터 간단한 토이 프로젝트까지
+              </div>
+              <div class="studylist-div-groupinfowrapper">
+                <div class="studylist-div-groupcategory">보안</div>
+                <div class="studylist-div-groupmember">7/7</div>
+              </div>
+              <div class="studylist-div-groupmakerwrapper">
+                <div class="studylist-div-groupmaker">김철수</div>
+                <div class="studylist-div-likewrapper">     
+                  <img
+                    src="${pageContext.request.contextPath}/asset/img/study/like.png"
+                    alt="찜"
+                    class="studylist-img-like"
+                    onclick="likeStudy(this)"
+                  />
+                  <div class="studylist-div-likecount">7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
 
         <div class="studylist-div-btnwrapper">
           <button class="studylist-btn-write" onclick="registerStudy()">

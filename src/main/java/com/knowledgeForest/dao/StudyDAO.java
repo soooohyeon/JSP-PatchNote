@@ -12,9 +12,9 @@ public class StudyDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public void showList(StudyDTO studyDTO) {
+//	public void showList(StudyDTO studyDTO) {
 //		sqlSession.select(null, null);
-	}
+//	}
 	
 	public int insertStudy(StudyDTO studyDTO) {
 		sqlSession.insert("StudyMapper.insert", studyDTO);
