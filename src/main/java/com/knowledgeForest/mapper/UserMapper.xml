@@ -3,20 +3,28 @@
 
 <mapper namespace="UserMapper">
 
-    <!-- 사용자 정보 조회 -->
-    <select id="getUserInfo" parameterType="String"  resultType="UserDTO">
-        SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE FROM TBL_USER  WHERE USER_ID = #{userId}
-    </select>
+	<!-- 사용자 정보 조회 -->
+	<select id="getUserInfo" parameterType="String"
+		resultType="UserDTO">
+		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH,USER_PH,USER_NAME, USER_JOIN_DATE FROM TBL_USER WHERE USER_ID =
+		#{userId}
+	</select>
 
-    <!-- 닉네임 중복 확인 -->
-    <select id="checkNickname" resultType="boolean">
-        SELECT COUNT(USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE) > 0 FROM TBL_USER WHERE USER_NICK = #{userNick}
-    </select>
+	<!-- 닉네임 중복 확인 -->
+	<select id="checkNickname" resultType="int">
+		SELECT CASE WHEN (SELECT COUNT(1) FROM TBL_USER WHERE USER_NICK = #{userNick}) > 0 THEN 1 ELSE 0 END FROM DUAL
+	</select>
 
-    <!-- 사용자 정보 업데이트 -->
-    <update id="updateUser"  parameterType="com.knowledgeForest.dto.UserDTO">
-        UPDATE TBL_USER 
-        SET USER_NICK = #{userNick}, USER_PH = #{userPH}, USER_PW = #{userPw}
-        WHERE USER_ID = #{userId}
-    </update>
+	<!-- 사용자 정보 업데이트 -->
+	<update id="updateUser"
+		parameterType="com.knowledgeForest.dto.UserDTO">
+		UPDATE TBL_USER	SET USER_NICK = #{userNick}, USER_PH =#{userPH}, USER_PW = #{userPw} WHERE USER_ID = #{userId}
+	</update>
+
+
+	<!-- 해당 유저 데이터 탈퇴 -->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM TBL_USER WHERE USER_NUM = #{userNum}
+	</delete>
+
 </mapper>

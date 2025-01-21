@@ -1,4 +1,4 @@
-package com.knowledgeForest.controller.study;
+package com.knowledgeForest.controller.main;
 
 import java.io.IOException;
 
@@ -8,20 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
-import com.knowledgeForest.dao.StudyDAO;
-import com.knowledgeForest.dto.StudyDTO;
 
-public class StudyListController implements Execute {
+public class MainContentController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		StudyDAO studyDAO = new StudyDAO();
+
 		Result result = new Result();
-		
-//		List<StudyDTO> studyList = studyDAO.getStudy();
-		
-		return null;
+				
+		result.setPath("/main.jsp");
+		result.setRedirect(false);
+		return result;
 	}
 
 }

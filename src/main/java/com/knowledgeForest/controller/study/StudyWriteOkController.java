@@ -21,7 +21,11 @@ public class StudyWriteOkController implements Execute {
 		
 		Result result = new Result();
 		
-//		studyDTO.setUserNum(Integer.parseInt(request.getParameter("userNum")));
+		System.out.println("나와랏3");
+		
+//		studyDTO.setUserNum(request.getParameter("userNum"));
+		studyDTO.setUserNum(11);
+		
 		studyDTO.setStudyTitle(request.getParameter("studyTitle"));
 		studyDTO.setStudyDescript(request.getParameter("studyDescript"));
 		studyDTO.setStudyLocation(request.getParameter("studyLocation"));
@@ -29,22 +33,26 @@ public class StudyWriteOkController implements Execute {
 		studyDTO.setStudyEndDay(request.getParameter("studyEndDay"));
 		studyDTO.setStudyStartTime(request.getParameter("studyStartTime"));
 		studyDTO.setStudyEndTime(request.getParameter("studyEndTime"));
-		studyDTO.setStudyLimit(Integer.parseInt(request.getParameter("studyLimit")));
+//		studyDTO.setStudyLimit(Integer.parseInt(request.getParameter("studyLimit")));
 		studyDTO.setStudyDeadline(request.getParameter("studyDeadline"));
-		studyDTO.setStudyShowph(Integer.parseInt(request.getParameter("studyShowph")));
-		studyDTO.setStudyCategory(Integer.parseInt(request.getParameter("studyCategory")));
+//		studyDTO.setStudyShowph(Integer.parseInt(request.getParameter("studyShowph")));
+//		studyDTO.setStudyCategory(Integer.parseInt(request.getParameter("studyCategory")));
 		studyDTO.setStudyUploadDate(request.getParameter("studyUploadDate"));
 		studyDTO.setStudyEditDate(request.getParameter("studyEditDate"));
+		
+		System.out.println(studyDTO.getStudyDescript());
 		
 		//게시글 추가
 		int studyNumber = studyDAO.insertStudy(studyDTO);
 		System.out.println("생성된 게시글 번호 : " + studyNumber);
-		
-		studyDAO.insertStudy(studyDTO);
+		System.out.println(studyDTO);
+//		studyDAO.insertStudy(studyDTO);
 
 		// ++++++++++++++++++++++
-		result.setPath("/study/studyList.st");
-		result.setRedirect(false);
+//		result.setPath("/study/studyList.st");
+//		result.setRedirect(false);
+		result.setPath(request.getContextPath() + "/study/studyList.st");
+		result.setRedirect(true);
 
 		return result;
 	}

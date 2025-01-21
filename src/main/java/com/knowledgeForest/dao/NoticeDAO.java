@@ -11,20 +11,20 @@ import com.knowledgeForest.dto.UserDTO;
 
 public class NoticeDAO {
 	public SqlSession sqlSession;
-	
+
 	public NoticeDAO() {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
-	
-	public List<NoticeDTO> getNotice(){
-		List<NoticeDTO> list = sqlSession.selectList("notice.getNotice");
-	
-		return list;
-	}	
-		
-//		해당 게시글 상세 조회
-		public List<UserDTO> selectNotice(int userNum) {
-			return sqlSession.selectList("NoticeMapper.selectUserOne", userNum);
 
-}
+	public List<NoticeDTO> getNotice() {
+		List<NoticeDTO> list = sqlSession.selectList("NoticeMapper.getNotice");
+
+		return list;
+	}
+
+//		해당 게시글 상세 조회
+	public NoticeDTO selectNotice(int noticeNum) {
+		return sqlSession.selectOne("NoticeMapper.selectNotice", noticeNum);
+	}
+	
 }
