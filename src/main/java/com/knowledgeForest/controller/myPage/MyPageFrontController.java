@@ -17,24 +17,31 @@ public class MyPageFrontController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+			System.out.println("doGet");
 		doProcess(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+				System.out.println("doPost");
 		doProcess(request, response);
 	}
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String target = request.getRequestURI().substring(request.getContextPath().length());
-		response.setContentType("text/html; charset=UTF-8");
-		Result result = null;
+		
+		  // 요청과 응답의 인코딩 설정
+		  request.setCharacterEncoding("UTF-8");
+		  response.setContentType("text/html; charset=UTF-8");
+		  
+		  System.out.println("doProcess");
+		  Result result = null;
 
 		// 경로 분기처리
 		switch (target) {
-
 		case "/mypage/mypage-accountedit.my":
+			System.out.println("target : "  + target);
 			result = new MyPageUserInfoController().execute(request, response);
 			break;
 

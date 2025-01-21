@@ -57,6 +57,14 @@ public class BoardDTO {
 	public void setBordEditDate(String bordEditDate) {
 		this.bordEditDate = bordEditDate;
 	}
+	public void setTitle(String title) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setContent(String content) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

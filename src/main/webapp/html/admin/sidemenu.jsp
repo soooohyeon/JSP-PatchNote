@@ -5,6 +5,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/admin/adminMenuLayOut.css">
 <!-- 공통 js -->	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="${pageContext.request.contextPath}/asset/js/admin/admin-basic.js"></script>
 
 <!-- 사이드 메뉴 -->
