@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         encodeURIComponent(nicknameInput.value),
       type: "GET",
       success: (response) => {
+		console.log("response"+response);
         if (response === "1") {
           nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
           nicknameError.style.color = "red";
@@ -164,41 +165,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const saveButton = document.querySelector(".mypage-btn-edit");
 
   saveButton.addEventListener("click", () => {
-    const name = document.getElementById("name").value.trim();
-    const birthdate = document.getElementById("birthdate").value.trim();
-    const ID = document.getElementById("ID").value.trim();
-    const nickname = nicknameInput.value.trim();
-    const password = passwordInput.value.trim();
-    const passwordchk = passwordchkInput.value.trim();
-    const phoneNum = phoneNumInput.value.replace(/[^\d]/g, "");
-    const phoneNumchk = phoneNumchkInput.value.trim();
+  	console.log(checkNickname());
+  	console.log(validatePassword());
+  	console.log(validatePasswordCheck());
+  	console.log(validatePhoneNumberCheck());
+	
 
     if (
-      !name ||
-      !birthdate ||
-      !ID ||
-      !nickname ||
-      !password ||
-      !passwordchk ||
-      !phoneNum ||
-      !phoneNumchk
-    ) {
-      console.log(
-        name +
-          birthdate +
-          ID +
-          nickname +
-          password +
-          passwordchk +
-          phoneNum +
-          phoneNumchk
-      );
-      alert("모든 정보를 입력하세요.");
-      return;
-    }
-
-    if (
-      validateNickname() &&
+      // validateNickname() &&
       checkNickname() &&
       validatePassword() &&
       validatePasswordCheck() &&
