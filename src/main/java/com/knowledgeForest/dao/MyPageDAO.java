@@ -20,8 +20,7 @@ public class MyPageDAO {
       UserDTO user = sqlsession.selectOne("UserMapper.getUserInfo", userId);
       return user;
    }
-
-
+	
   //회원 정보 수정
   public int updateUserInfo(UserDTO user) {
       System.out.println("회원정보 수정 : " + user);
@@ -34,5 +33,5 @@ public class MyPageDAO {
    public boolean checkNickname(String userNick) {
       return sqlsession.selectOne("UserMapper.checkNickname", userNick);
    }
-
 }
+

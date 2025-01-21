@@ -68,6 +68,7 @@ function goBack() {
 function updateStudy() {
   if (confirm("스터디를 등록하시겠습니까?")) {
     alert("스터디가 등록되었습니다.");
+	console.log(userNum);
     location.href = "./studylist.jsp";
   }
 }

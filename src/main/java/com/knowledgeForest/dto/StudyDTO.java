@@ -60,7 +60,8 @@ public class StudyDTO {
    }
 
    public void setUserNum(int userNum) {
-      this.userNum = userNum;
+//      this.userNum = userNum;
+	   this.userNum = 11;
    }
 
    public String getStudyTitle() {

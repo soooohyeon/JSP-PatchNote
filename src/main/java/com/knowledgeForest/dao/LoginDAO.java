@@ -26,7 +26,7 @@ public class LoginDAO{
 		userDTO.setUserId(userId);
 		userDTO.setUserPw(userPw);
 		System.out.println("login이 되게 해줘");
-		return sqlsession.selectOne("UserMapper.userLogin", userDTO);
+		return sqlsession.selectOne("LoginMapper.userLogin", userDTO);
 	}
 	
 	

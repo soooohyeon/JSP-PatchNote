@@ -2,15 +2,25 @@
 //로그인버튼 클릭시 알림창 노출
 const btn_join = document.querySelector("#LOGIN-BTN-LOGIN");
 
-btn_join.addEventListener("click", (e)=>{
-  if(true){
-    alert("정상적으로 로그인이 되었습니다.");
-    
-  }else{
-    alert("아이디 혹은 비밀번호가 일치하지 않습니다");
-    
-  }
-});
+
+console.log(id);
+console.log(pw);
+
+function login(){
+	const id = document.getElementById("LOGIN-INPUT-ID").value;
+	const pw = document.getElementById("LOGIN-INPUT-PWD").value;
+	
+	console.log("id " + id);
+	console.log("pw "+ pw);
+	
+	if(id && pw){
+		alert("입력되었습니다");
+	}else{
+		alert("입력 칸이 비어있습니다");
+	}
+	
+	
+}
 
 
 //페이지 이동함수
@@ -53,7 +63,7 @@ function pwdCheck(){
 	const pwdCheck = document.getElementById("LOGIN-INPUT-PWD").value;
 	
   const exr = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,15}$/; // 첫 글자는 문자만 허용, 최대 15자
-    console.log("TEST"); //입력값 확인
+    //console.log("TEST"); //입력값 확인
 	
 		if (!exr.test(pwdCheck )) {
 			//console.log(pwdCheck); //값 출력확인

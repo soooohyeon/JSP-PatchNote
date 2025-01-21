@@ -1,52 +1,43 @@
 package com.knowledgeForest.controller.notice;
 
+import com.knowledgeForest.Result;
 import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet Filter implementation class NoticeFrontController
- */
-//@WebFilter("/NoticeFrontController")
-public class NoticeFrontController extends HttpFilter implements Filter {
-       
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
-    public NoticeFrontController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class NoticeFrontController extends HttpServlet {
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      this.doProcess(request, response);
+   }
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      this.doProcess(request, response);
+   }
 
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
-	}
+   protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println("공지 컨트롤러 들어옴");
+      String target = request.getRequestURI().substring(request.getContextPath().length());
+      Result result = null;
+      
+      switch(target) {
+      case "/notice/notice-detail.no":
+    	  request.getRequestDispatcher("/html/notice/notice-detail.jsp").forward(request, response);
+    	  break;
+      case "/notice/noticelist.no" :
+    	  request.getRequestDispatcher("/html/notice/notice-list.jsp").forward(request, response);
+    	  break;
+      }
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
-	}
-
+      if (result != null) {
+         if (result.isRedirect()) {
+            response.sendRedirect(result.getPath());
+         } else {
+            request.getRequestDispatcher(result.getPath()).forward(request, response);
+         }
+      }
+  }
 }

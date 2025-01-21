@@ -242,7 +242,7 @@ input:read-only {
   border: 1px solid #afafaf;
 }
 
-#password-error, #nickname-error, #passwordchk-error
+#password-error, #nickname-error, #passwordchk-error ,#phoneNumchk-error
  {
   color: red;
   font-size: 12px;
