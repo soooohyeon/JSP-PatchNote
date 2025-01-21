@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -31,7 +33,7 @@
           class="studylist-detail-img-back"
           onclick="goBack()"
         />
-        <h1 class="studylist-h1-title">같이 코딩테스트 준비 하실 분?</h1>
+        <h1 class="studylist-h1-title"><c:out value="${detailStudy.studyTitle}" /></h1>
       </div>
       <!-- 수정 / 삭제 버튼 -->
       <div class="studylist-detail-div-btnwrapper">
@@ -51,53 +53,49 @@
 
             <div class="studylist-div-infowrapper">
               <div class="label">닉네임</div>
-              <div class="studylist-div-groupinfo">닉네임 칸</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.userNick}" /></div>
             </div>
             <div class="studylist-div-infowrapper">
               <div class="label">작성일</div>
-              <div class="studylist-div-groupinfo">2024.12.01 19:40</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.studyUploadDate}" /></div>
             </div>
           </div>
 
           <div class="studylist-div-wrapperlayer">
             <div class="studylist-div-infowrapper">
               <div class="label">정원 수</div>
-              <div class="studylist-div-groupinfo">3 / 4 명</div>
+              <div class="studylist-div-groupinfo">[신청한 인원수] / <c:out value="${detailStudy.studyLimit}" /> 명</div>
             </div>
             <div class="studylist-div-infowrapper">
               <div class="label">신청 마감일</div>
-              <div class="studylist-div-groupinfo">2024.12.01 19:40</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.studyDeadline}" /></div>
             </div>
           </div>
           <div class="studylist-div-wrapperlayer">
             <div class="studylist-div-infowrapper">
               <div class="label">활동 시간</div>
-              <div class="studylist-div-groupinfo">13 : 00 ~ 16:00</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.studyStartTime}" /> ~ <c:out value="${detailStudy.studyEndTime}" /></div>
             </div>
             <div class="studylist-div-infowrapper">
               <div class="label">활동 기간</div>
-              <div class="studylist-div-groupinfo">2025.01.05 ~ 2025.07.05</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.studyStartDay}" /> ~ <c:out value="${detailStudy.studyEndDay}" /></div>
             </div>
           </div>
           <div class="studylist-div-wrapperlayer">
             <div class="studylist-div-infowrapper">
               <div class="label">연락처</div>
-              <div class="studylist-div-groupinfo">-</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.userPh}" /></div>
             </div>
             <div class="studylist-div-infowrapper">
               <div class="label">장소</div>
-              <div class="studylist-div-groupinfo">강남역 스터디 카페</div>
+              <div class="studylist-div-groupinfo"><c:out value="${detailStudy.studyLocation}" /></div>
             </div>
           </div>
           <div class="studylist-div-wrapperlayer">
             <div class="studylist-div-textareawrapper">
               <div class="label">본문</div>
               <div class="studylist-div-studycontents">
-                6개월 동안 JAVA 코딩테스트 문제 풀이하고 코드해석 해보는 스터디
-                모임입니다. 화, 목 13시부터 16시까지 총 3시간동안 진행
-                예정입니다 다른 분들과 코드 공유해보며 여러 풀이 방법도 경험하고
-                또 색다른 코드들을 경험하며 배울 수 있습니다. 원하시는 분들은
-                코디신청서 작성시 전화번호 또는 카톡 아이디 같이 작성해주세요.
+                <c:out value="${detailStudy.studyDescript}" />
               </div>
             </div>
           </div>
@@ -130,7 +128,7 @@
       <!-- 댓글 입력 창 -->
       <div class="studylist-div-commentinputwrapper">
         <div class="studylist-div-userNickname">
-          <span>닉네임</span>
+          <span>[로그인한 계정닉네임]</span>
         </div>
         <div class="studylist-div-commentwrapper">
           <form action="">
