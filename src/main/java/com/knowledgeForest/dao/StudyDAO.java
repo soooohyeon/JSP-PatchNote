@@ -1,5 +1,7 @@
 package com.knowledgeForest.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
@@ -16,8 +18,17 @@ public class StudyDAO {
 //		sqlSession.select(null, null);
 //	}
 	
+	public List<StudyDTO> getStudy() {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.select");
+		
+		return list;
+	}
+	
 	public int insertStudy(StudyDTO studyDTO) {
+		
+		System.out.println("123123123"+studyDTO);
 		sqlSession.insert("StudyMapper.insert", studyDTO);
+		System.out.println("333333"+studyDTO);
 		
 		int studyNumber = sqlSession.selectOne("study.getCurrentStudyNumber");
 		studyDTO.setStudyNum(studyNumber);
