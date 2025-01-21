@@ -28,7 +28,6 @@ public class StudyFrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doProcess(request, response);
 	}
 
@@ -36,15 +35,12 @@ public class StudyFrontController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doProcess(request, response);
 	}
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("스터디 게시판 컨트롤러 입장!!!!!");
 		String target = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println(target);
-		Result result = new Result();
+		Result result = null;
 		
 		switch(target) {
 		case "/study/studyList.st":
