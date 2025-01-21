@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MainMapper">
 
 	<!-- 위시 리스트 -->
@@ -12,7 +12,7 @@
 	</select>
 
 	<!-- 신규 등록 스터디 -->
-	<select>
+	<select id="insertStudy">
 		SELECT STUDY_NUM STUDY_CATEGORY STUDY_TITLE STUDY_DESCRIPT
 		FROM TBL_STUDY
 		WHERE ROWNUM &lt;= 2
@@ -20,7 +20,7 @@
 	</select>
 
 	<!-- 마감 임박 스터디 -->
-	<select>
+	<select id="deadlineStudy">
 		SELECT STUDY_NUM STUDY_CATEGORY STUDY_TITLE STUDY_DESCRIPT STUDY_DEADLINE
 		FROM TBL_STUDY WHERE ROWNUM &lt;= 2 AND STUDY_DEADLINE >= SYSDATE
 		ORDER BY STUDY_DEADLINE;

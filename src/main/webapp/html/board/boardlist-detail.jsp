@@ -15,12 +15,14 @@
 
 <body>
    <!-- 상단 메뉴바 -->
-   <nav class="main-nav-menuwrap">
+<!--    <nav class="main-nav-menuwrap">
     <img
       src="./../../asset/img/main/logo.png"
       class="main-img-logo"
       onclick="location.href='./main_login.html'"
-    />
+    /> -->
+    <!-- 헤더 - 메뉴바 -->
+	<jsp:include page="/html/main/header.jsp" />
 
     <ul class="main-nav-ul">
       <li><a href="./../notice/noticelist.html">공지</a></li>
@@ -146,7 +148,7 @@
             <li class="boardlistdetail-li-paginationlist next">&#62;</li>
           </ul>
         </div>
-        <!-- footer -->
+       <!--  <!-- footer -->
         <footer class="main-footer-container">
           <div class="main-footer-content">
               <div class="main-footer-links">
@@ -161,9 +163,13 @@
               <div class="main-footer-logo">
                   <img src="./../../asset/img/main/logo.png" alt="Forest of Knowledge Logo"
                       class="main-img-footerlogo">
+              </div> -->
               </div>
+	<!-- 푸터 -->
+	<jsp:include page="/html/main/footer.jsp" />
+              
           </div>
-      </footer>
+      <!-- </footer> -->
     </main>
 </body>
 

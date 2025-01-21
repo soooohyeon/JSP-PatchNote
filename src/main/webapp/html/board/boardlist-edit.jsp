@@ -18,7 +18,7 @@
 
   <body>
     <!-- 상단 메뉴바 -->
-    <nav class="main-nav-menuwrap">
+    <!-- <nav class="main-nav-menuwrap">
       <img src="../../asset/img/main/logo.png" class="main-img-logo" />
       <ul class="main-nav-ul">
         <li><a href="./../notice/noticelist.html">공지</a></li>
@@ -27,7 +27,10 @@
         <li><a href="./../login/join.html">회원가입</a></li>
         <li><a href="./../login/login.html">로그인</a></li>
       </ul>
-    </nav>
+    </nav> -->
+    <!-- 상단 메뉴바  -->
+	<jsp:include page="/html/main/header.jsp" />
+	
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="board-h1-title">게시글 수정</h1>
@@ -84,7 +87,7 @@
       </div>
     </main>
 
-    <footer class="main-footer-container">
+    <!-- <footer class="main-footer-container">
       <div class="main-footer-content">
         <div class="main-footer-links">
           <div class="main-footer-policies">
@@ -107,6 +110,8 @@
           />
         </div>
       </div>
-    </footer>
+    </footer> -->
+    	<!-- 푸터 -->
+	<jsp:include page="/html/main/footer.jsp" />
   </body>
 </html>

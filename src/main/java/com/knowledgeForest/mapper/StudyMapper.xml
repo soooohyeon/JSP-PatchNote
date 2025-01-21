@@ -3,26 +3,18 @@
 
 <mapper namespace="StudyMapper">
 	<!-- 스터디 게시판 조회 : 제목으로 검색 -->
-	<select id="selectByTitle" resultType="StudyDTO">
-		<![CDATA[
-		SELECT 
-			S.STUDY_NUM,
-			S.STUDY_TITLE,
-			S.STUDY_DEADLINE,
-			S.STUDY_LIMIT,     
-			S.STUDY_CATEGORY,                                            
-			S.STUDY_UPLOAD_DATE                                            
-			S.STUDY_EDIT_DATE                                                 
-		CASE
-			WHEN L.USER_NUM IS NOT NULL THEN 'TRUE'                            
-			ELSE 'FALSE'
-		END AS IS_LIKED
-		FROM TBL_STUDY S LEFT JOIN TBL_LIKE L  
-		ON S.STUDY_NUM = L.STUDY_NUM AND L.USER_NUM = [현재 유저 번호]      
-		WHERE
-			S.STUDY_TITLE LIKE % [검색 인풋 입력값] %;                      			
-		ORDER BY S.STUDY_UPLOAD_DATE DESC                              
-		OFFSET (pageNbr -1 ) * pageCnt ROWS FETCH NEXT pageCnt ROWS ONLY
+	<select id="select" resultType="StudyDTO">
+	<![CDATA[
+	SELECT 
+		S.STUDY_NUM,
+		S.STUDY_TITLE,
+		S.STUDY_DEADLINE,
+		S.STUDY_LIMIT,     
+		S.STUDY_CATEGORY,                                            
+		S.STUDY_UPLOAD_DATE,                                            
+		S.STUDY_EDIT_DATE,
+		(SELECT COUNT(USER_NUM) FROM TBL_LIKE tl WHERE S.STUDY_NUM = TL.STUDY_NUM AND TL.USER_NUM = 11)
+	FROM TBL_STUDY S
 		]]>
 	</select>
 	
@@ -51,8 +43,8 @@
 		, #{studyTitle}
 		, #{studyDescript}
 		, #{studyLocation}
-		, TO_DATE(#{studyStartDay}, 'YYYY-MM-DD')
-		, TO_DATE(#{studyEndDay}, 'YYYY-MM-DD')
+		, TO_DATE(#{studyStartDay}, 'YYYY-MM-DD HH24:MI:SS')
+		, TO_DATE(#{studyEndDay}, 'YYYY-MM-DD HH24:MI:SS')
 		, #{studyStartTime}
 		, #{studyEndTime}
 		, #{studyLimit}
