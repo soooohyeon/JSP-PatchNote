@@ -10,7 +10,7 @@
 	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-accountedit.css" />
 <script defer
 	src="${pageContext.request.contextPath}/asset/js/mypage/mypage-accountedit.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>

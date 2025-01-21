@@ -17,20 +17,18 @@ public class MyPageCheckNicknameOk implements Execute {
 		
 		MyPageDAO myPageDAO = new MyPageDAO();
 		Result result = new Result();
-
-		String nickname = request.getParameter("nickname");
-		String id = request.getParameter("id");
-		System.out.println("nickname : " + nickname);
-		System.out.println("id : " + id);
+		String userNick = request.getParameter("userNick");
+		System.out.println("userNick : " + userNick);
 	
-		boolean isExist = myPageDAO.checkNickname(nickname);
-//		result.setData(isExist);
-		
-		request.setAttribute(id, isExist);
-		result.setPath("/html/mypage/mypage-accountedit.jsp");
-		result.setRedirect(false);
-
-		return result;
+		boolean isExist = myPageDAO.checkNickname(userNick);
+		System.out.println("isExist" + isExist);
+		request.setAttribute(userNick, isExist);
+		// result.setPath("/html/mypage/mypage-accountedit.jsp");
+		// result.setRedirect(true);
+		response.setContentType("text/plain; charset=UTF-8");
+		response.getWriter().write(isExist ? "1" : "0");
+		// return result;
+		return null;
 	}
 
 }

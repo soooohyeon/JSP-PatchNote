@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const nickname = nicknameInput.value;
 
     if (nicknameRegex.test(nickname)) {
-      /*nicknameError.textContent = "변경 가능한 닉네임 입니다.";
-				  nicknameError.style.color = "green";
-				  nicknameInput.style.borderColor = "green";*/
+      // nicknameError.textContent = "변경 가능한 닉네임 입니다.";
+      // nicknameError.style.color = "green";
+      // nicknameInput.style.borderColor = "green";
       return true;
     } else {
       nicknameError.textContent =
@@ -37,29 +37,34 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!validateNickname()) {
       return;
     }
-
     $.ajax({
-      /* 유저 삭제 컨트롤러로 이동, 유저 넘버 쿼리스트링으로 전달 */
       url:
         getContextPath() +
         "/mypage/MypageCheckNicknameOk.my?userNick=" +
         encodeURIComponent(nicknameInput.value),
       type: "GET",
-      /* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 */
-      success: () => {
-        nicknameError.textContent = "사용 가능한 닉네임입니다.";
-        nicknameError.style.color = "green";
-        nicknameInput.style.borderColor = "green";
-        location.href = getContextPath() + "/mypage/mypage=accountedit.my";
+      success: (response) => {
+        if (response === "1") {
+          nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
+          nicknameError.style.color = "red";
+          nicknameInput.style.borderColor = "red";
+          return false;
+        }else{
+          nicknameError.textContent = "사용 가능한 닉네임입니다.";
+          nicknameError.style.color = "green";
+          nicknameInput.style.borderColor = "green";
+          return true;
+        }
+      
       },
-      /* 탈퇴 불가시 알람창 */
       error: (xhr, status, error) => {
-        nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
+        nicknameError.textContent = "닉네임 중복 검사 중 오류가 발생했습니다.";
         nicknameError.style.color = "red";
         nicknameInput.style.borderColor = "red";
       },
     });
   }
+
 
   nicknameInput.addEventListener("input", validateNickname);
   nickdupChkButton.addEventListener("click", checkNickname);
@@ -194,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       validateNickname() &&
+      checkNickname() &&
       validatePassword() &&
       validatePasswordCheck() &&
       validatePhoneNumberCheck()

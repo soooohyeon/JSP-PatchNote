@@ -31,8 +31,11 @@ public class MyPageDAO {
 
 	// 닉네임 중복 체크
 	public boolean checkNickname(String userNick) {
-		System.out.println("userNick" + userNick);
-		return sqlsession.selectOne("UserMapper.checkNickname", userNick);
+		System.out.println("닉네임 : " + userNick);
+		int count = sqlsession.selectOne("UserMapper.checkNickname", userNick);
+		System.out.println("count :" + count);
+		return count > 0;
+
 	}
 
 }
