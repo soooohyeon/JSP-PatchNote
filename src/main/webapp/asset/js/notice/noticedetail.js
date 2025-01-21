@@ -6,6 +6,8 @@ function getContextPath() {
    return contextPath;
 }
 
-function noticedetailpage(){
-  history.back();
+/*function noticedetailpage(){
+  history.back();*/
+function inventory(){
+	window.location.href = getContextPath() + "/notice/noticelist.no"
 }
