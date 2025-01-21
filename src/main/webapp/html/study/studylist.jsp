@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -56,7 +58,7 @@
             <div class="studylist-div-groupinner">
               <div class="studylist-div-groupinfowrapper datecontent-wrap">
                 <div class="studylist-div-enddate">
-                  마감일 &nbsp;| &nbsp; 2025.01.05
+                  마감일 &nbsp;| &nbsp; ${study.studyDeadline}
                 </div>
                 <div class="studylist-div-groupstatus">모집 중</div>
               </div>
@@ -82,6 +84,8 @@
               </div>
             </div>
           </div>
+
+
         </div>
 
 		<!--  
