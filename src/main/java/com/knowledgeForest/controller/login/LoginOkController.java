@@ -19,34 +19,27 @@ public class LoginOkController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("LoginOkcontroller test");
 		
 		
 		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
-		System.out.println("test");
-		
-		
-		
 		
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		System.out.println("daotest");
+		HttpSession session = request.getSession();
 		userDTO = loginDAO.login(userId, userPw);
-		System.out.println("test");
+	
 		if(userDTO != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userDTO", userDTO);
 			
-			System.out.println(userDTO);
+			session.setAttribute("userDTO", userDTO);
 			
 			Cookie cookie = new Cookie("userId", userId);
 			cookie.setMaxAge(60*60*24);
 			response.addCookie(cookie);
 			
-			
+			// 왜 안넘어가질까..
 			result.setPath(request.getContextPath());
 			result.setRedirect(true);
 			

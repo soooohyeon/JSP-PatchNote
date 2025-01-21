@@ -17,34 +17,30 @@ public class JoinOkController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
+		System.out.println("joinOkController");
 		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
 		
+		System.out.println("+++++++++++++++++++++"+userDTO);
+		
+		userDTO.setUserId(request.getParameter("userId"));
+		userDTO.setUserNick(request.getParameter("userNick"));
+		userDTO.setUserPw(request.getParameter("userNick"));
+		userDTO.setUserBirth(request.getParameter("userBirth"));
+		userDTO.setUserPH(request.getParameter("userPH"));
+		userDTO.setUserName(request.getParameter("userName"));
 		
 		
-//		 userNum;
-//		 userId;
-//		userPw;
-//		userNick;
-//		 userBirth;
-//		 userPH;
-//		userName;
-//		userJoinDate;
+		loginDAO.join(userDTO);
 		
-		
-		
-		
-		
-		
-		
-		
+		result.setRedirect(true);
+		result.setPath(request.getContextPath());
+		return result;
 		
 		
 		
-		return null;
 	}
 	
 	
