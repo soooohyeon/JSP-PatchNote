@@ -1,7 +1,6 @@
 package com.knowledgeForest.dto;
 
 public class LikeDTO {
-
 	
 	// 위시 리스트 		
 	private int likeNum; // LIKE_NUM

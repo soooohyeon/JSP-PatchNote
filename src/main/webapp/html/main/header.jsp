@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <link rel="stylesheet"
@@ -29,7 +30,7 @@
 						<li><a href="${pageContext.request.contextPath}/admin/admin-main.ad">관리자페이지</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="./../myPage/mypageAccountEdit.html">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">마이페이지</a></li>
 					</c:otherwise>
 				</c:choose>
 				
