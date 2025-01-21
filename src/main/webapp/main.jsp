@@ -175,7 +175,6 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 			</div>
 	</main>
 
-
 	<!-- 푸터 -->
 	<jsp:include page="/html/main/footer.jsp" />
 </body>
