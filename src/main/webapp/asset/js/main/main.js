@@ -42,7 +42,6 @@ function notLogin() {
 	window.location.href = contextPath + "/login/login.me";
 }
 
-
 /**
  * @feature 로그인 된 상태에서 스터디 항목을 클릭했을때, 그 상세 항목으로 이동합니다.
  * @see   notLogin();
@@ -59,7 +58,6 @@ function notLogin() {
 function goPage(studyNum) {
 
 	//  로그인 상태일때 스터디 상세페이지로 이동
-
 	location.href = contextPath + "/login/login.me"; //<----이 링크는 추후 변경 될 수 있습니다.
 }
 
@@ -69,7 +67,6 @@ function wishList() {
 
 	location.href = contextPath + "/login/login.me";
 }
-
 
 function goMain() {
 	// 메인 페이지 이동 링크

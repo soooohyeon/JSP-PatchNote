@@ -35,4 +35,8 @@ public class StudyDAO {
 		System.out.println("마지막 생성된 값 : " + studyNumber);
 		return studyNumber;
 	}
+	
+	public StudyDTO select(int studyNumber) {
+		return sqlSession.selectOne("study.select", studyNumber);
+	}
 }
