@@ -18,60 +18,58 @@ public class MyPageUserInfoController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-				
-		  // 요청과 응답의 인코딩 설정
-		  request.setCharacterEncoding("UTF-8");
-		  response.setContentType("text/html; charset=UTF-8");
-		//POST 요청일 경우
+
+		// POST 요청일 경우
 		if (request.getMethod().equalsIgnoreCase("POST")) {
-	        // 사용자가 입력한 값 가져오기
+			// 사용자가 입력한 값 가져오기
 			response.setContentType("text/html; charset=UTF-8");
 
 			System.out.println("post 요청됨");
-			
-	        String userId = request.getParameter("userId");
-	        String userName = request.getParameter("userName");
-	        String userBirth = request.getParameter("userBirth");
-	        String userNick = request.getParameter("userNick");
-	        String userPH = request.getParameter("userPH");
-            String userPw = request.getParameter("userPw");
+			int userNum = 11;
+//	        int userNum = (int) request.getSession().getAttribute("userNum");
+			String userId = request.getParameter("userId");
+			String userName = request.getParameter("userName");
+			String userBirth = request.getParameter("userBirth");
+			String userNick = request.getParameter("userNick");
+			String userPH = request.getParameter("userPH");
+			String userPw = request.getParameter("userPw");
 
+			// DTO에 값 설정
+			UserDTO user = new UserDTO();
+			user.setUserNum(userNum);
+			user.setUserId(userId);
+			user.setUserName(userName);
+			user.setUserBirth(userBirth);
+			user.setUserNick(userNick);
+			user.setUserPH(userPH);
+			user.setUserPw(userPw);
 
-	        // DTO에 값 설정
-	        UserDTO user = new UserDTO();
-	        user.setUserId(userId);
-	        user.setUserName(userName);
-	        user.setUserBirth(userBirth);
-	        user.setUserNick(userNick);
-	        user.setUserPH(userPH);
-	        user.setUserPw(userPw);
-	        
-	        System.out.println("수정된 user 값 : " +user);
+			System.out.println("수정된 user 값 : " + user);
 
-	        // DAO를 통해 업데이트 수행
-	        MyPageDAO myPageDAO = new MyPageDAO();
-	        int updateResult = myPageDAO.updateUserInfo(user);
+			// DAO를 통해 업데이트 수행
+			MyPageDAO myPageDAO = new MyPageDAO();
+			int updateResult = myPageDAO.updateUserInfo(user);
 
-	        if (updateResult > 0) {
-	            request.setAttribute("message", "회원정보가 성공적으로 수정되었습니다.");
-	        } else {
-	            request.setAttribute("message", "회원정보 수정에 실패했습니다.");
-	        }
+			if (updateResult > 0) {
+				request.setAttribute("userInfo", updateResult);
+				request.setAttribute("message", "회원정보가 성공적으로 수정되었습니다.");
+			} else {
+				request.setAttribute("message", "회원정보 수정에 실패했습니다.");
+			}
 
-	        Result result = new Result();
+			Result result = new Result();
 			result.setPath("/html/mypage/mypage-accountedit.jsp");
 			result.setRedirect(false);
-
 			return result;
-	    }
-		
-		
-	
-	    // GET 요청 시 사용자 정보 조회
-		//String userId = request.getParameter("userId");
-		String userId = "eunji69";
+		}
+
+		// GET 요청 시 사용자 정보 조회
+		System.out.println("GET 요청됨");
+		int userNum = 11;
+//	    int userNum = (int) request.getSession().getAttribute("userNum");
+
 		MyPageDAO myPageDAO = new MyPageDAO();
-		UserDTO userInfo = myPageDAO.getUserInfo(userId);
+		UserDTO userInfo = myPageDAO.getUserInfo(userNum);
 
 		// 날짜 변환 처리 (1986-02-14 00:00:00 -> 19860214)
 		try {

@@ -44,18 +44,18 @@ document.addEventListener("DOMContentLoaded", function () {
         encodeURIComponent(nicknameInput.value),
       type: "GET",
       success: (response) => {
+        console.log("response" + response);
         if (response === "1") {
           nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
           nicknameError.style.color = "red";
           nicknameInput.style.borderColor = "red";
           return false;
-        }else{
+        } else {
           nicknameError.textContent = "사용 가능한 닉네임입니다.";
           nicknameError.style.color = "green";
           nicknameInput.style.borderColor = "green";
           return true;
         }
-      
       },
       error: (xhr, status, error) => {
         nicknameError.textContent = "닉네임 중복 검사 중 오류가 발생했습니다.";
@@ -65,6 +65,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // }
+
+  function checkNickname() {
+    return new Promise((resolve, reject) => {
+      if (!validateNickname()) {
+        resolve(false);
+        return;
+      }
+      $.ajax({
+        url:
+          getContextPath() +
+          "/mypage/MypageCheckNicknameOk.my?userNick=" +
+          encodeURIComponent(nicknameInput.value),
+        type: "GET",
+        success: (response) => {
+          if (response === "1") {
+            nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
+            nicknameError.style.color = "red";
+            nicknameInput.style.borderColor = "red";
+            resolve(false);
+          } else {
+            nicknameError.textContent = "사용 가능한 닉네임입니다.";
+            nicknameError.style.color = "green";
+            nicknameInput.style.borderColor = "green";
+            resolve(true);
+          }
+        },
+        error: () => {
+          nicknameError.textContent =
+            "닉네임 중복 검사 중 오류가 발생했습니다.";
+          nicknameError.style.color = "red";
+          nicknameInput.style.borderColor = "red";
+          reject(false);
+        },
+      });
+    });
+  }
 
   nicknameInput.addEventListener("input", validateNickname);
   nickdupChkButton.addEventListener("click", checkNickname);
@@ -95,7 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function validatePasswordCheck() {
-    if (passwordchkInput.value === passwordInput.value) {
+    if (passwordchkInput.value === "" || passwordInput.value === "") {
+      passwordchkError.textContent = "비밀번호를 입력해주세요.";
+      passwordchkError.style.color = "red";
+      return false;
+
+    } else if (passwordInput.value === passwordchkInput.value) {
       passwordchkError.textContent = "동일한 비밀번호 입니다.";
       passwordchkError.style.color = "green";
       return true;
@@ -140,8 +182,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function validatePhoneNumberCheck() {
     const phoneNumChk = phoneNumchkInput.value.replace(/[^\d]/g, "");
     if (phoneNumChk.length === 6) {
-      phoneNumchkError.textContent = "";
-      alert("확인되었습니다");
+      phoneNumchkError.textContent = "인증되었습니다.";
+      phoneNumchkError.style.color = "green";
       return true;
     } else {
       phoneNumchkError.textContent = "6자리 숫자를 입력해주세요.";
@@ -163,47 +205,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // 저장 버튼 클릭 이벤트
   const saveButton = document.querySelector(".mypage-btn-edit");
 
-  saveButton.addEventListener("click", () => {
-    const name = document.getElementById("name").value.trim();
-    const birthdate = document.getElementById("birthdate").value.trim();
-    const ID = document.getElementById("ID").value.trim();
-    const nickname = nicknameInput.value.trim();
-    const password = passwordInput.value.trim();
-    const passwordchk = passwordchkInput.value.trim();
-    const phoneNum = phoneNumInput.value.replace(/[^\d]/g, "");
-    const phoneNumchk = phoneNumchkInput.value.trim();
+  saveButton.addEventListener("click", async () => {
+    const isNicknameValid = await checkNickname();
+    const isPasswordCheckValid = validatePasswordCheck();
+    const isPhoneValid = validatePhoneNumberCheck();
 
-    if (
-      !name ||
-      !birthdate ||
-      !ID ||
-      !nickname ||
-      !password ||
-      !passwordchk ||
-      !phoneNum ||
-      !phoneNumchk
-    ) {
-      console.log(
-        name +
-          birthdate +
-          ID +
-          nickname +
-          password +
-          passwordchk +
-          phoneNum +
-          phoneNumchk
-      );
-      alert("모든 정보를 입력하세요.");
-      return;
-    }
-
-    if (
-      validateNickname() &&
-      checkNickname() &&
-      validatePassword() &&
-      validatePasswordCheck() &&
-      validatePhoneNumberCheck()
-    ) {
+    if (isNicknameValid && isPasswordCheckValid && isPhoneValid) {
       alert("회원정보가 수정되었습니다.");
       document.getElementById("editForm").submit();
     } else {
