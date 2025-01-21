@@ -24,11 +24,12 @@ public class NoticeFrontController extends HttpServlet {
       Result result = null;
       
       switch(target) {
-      case "/notice/notice-detail.no":
-    	  request.getRequestDispatcher("/html/notice/notice-detail.jsp").forward(request, response);
+      case "/notice/noticedetail.no":
+    	  result = new NoticeDetailOkController().execute(request, response);
     	  break;
+    	  
       case "/notice/noticelist.no" :
-    	  request.getRequestDispatcher("/html/notice/notice-list.jsp").forward(request, response);
+    	  result = new NoticeListOkController().execute(request, response);
     	  break;
       }
 
