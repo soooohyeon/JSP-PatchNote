@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/main/header.css">
 	
 <!-- 상단 메뉴바 -->
 <nav class="main-nav-menuwrap">
 	<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
-		class="main-img-logo" >
+		class="main-img-logo" onclick="goMain()">
 	<ul class="main-nav-ul">
 		<li><a
 			href="${pageContext.request.contextPath}/notice/noticelist.no">공지</a></li>

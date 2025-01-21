@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
 /**
  * @feature 로그아웃 된 상태에서 스터디 항목을 클릭 했을 때, 로그인 페이지로 이동 시킵니다.
  * @see   goPage();
@@ -69,4 +68,10 @@ function goPage(studyNum) {
 function wishList() {
 
 	location.href = contextPath + "/login/login.me";
+}
+
+
+function goMain() {
+	// 메인 페이지 이동 링크
+	location.href = contextPath + "/knowledgeForest.main";
 }

@@ -14,8 +14,12 @@ public class MainContentController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		return null;
+
+		Result result = new Result();
+				
+		result.setPath("/main.jsp");
+		result.setRedirect(false);
+		return result;
 	}
 
 }
