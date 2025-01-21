@@ -33,7 +33,7 @@ public class AdminUserListOkController implements Execute {
 			userList = adminDAO.selectUserAll();
 		}
 		
-		request.setAttribute("userList", userList);
+		request.setAttribufte("userList", userList);
 		result.setPath("/html/admin/admin-userlist.jsp");
 		result.setRedirect(false);
 
