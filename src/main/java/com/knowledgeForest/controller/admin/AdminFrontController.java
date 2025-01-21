@@ -64,7 +64,7 @@ public class AdminFrontController extends HttpServlet {
     	  request.getRequestDispatcher("/html/admin/admin-boardcommentlist.jsp").forward(request, response);
     	  break;
       case "/admin/admin-noticelist.ad":
-    	  request.getRequestDispatcher("/html/admin/admin-noticelist.jsp").forward(request, response);
+    	  result = new AdminNoticeListOkController().execute(request, response);
     	  break;
       case "/admin/admin-bannerlist.ad":
     	  request.getRequestDispatcher("/html/admin/admin-bannerlist.jsp").forward(request, response);
