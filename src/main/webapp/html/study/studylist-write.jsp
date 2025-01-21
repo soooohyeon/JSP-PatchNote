@@ -30,7 +30,10 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="studylist-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="STUDYLIST-FORM-WRITE">
+        <form id="STUDYLIST-FORM-WRITE"
+        	action="${pageContext.request.contextPath}/study/studyWriteOk.st"
+			method="post" enctype="multipart/form-data"
+        >
           <!-- 한 행 -->
           <div class="studylist-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
@@ -154,7 +157,7 @@
           <button
             class="studylist-btn-submit"
             form="STUDYLIST-FORM-WRITE"
-            type="button"
+            type="submit"
             onclick="updateStudy()"
           >
             등록
