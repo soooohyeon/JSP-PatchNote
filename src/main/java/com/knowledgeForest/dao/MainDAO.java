@@ -15,9 +15,9 @@ public class MainDAO {
     }
 
     // 위시리스트 조회
-    public List<LikeDTO> getWishList(int userNum) {
+    public List<String> getWishList(int userNum) {
         System.out.println("사용자 번호로 위시리스트 조회: " + userNum);
-        List<LikeDTO> wishList = sqlsession.selectList("MainMapper.getWishList", userNum);
+        List<String> wishList = sqlsession.selectList("MainMapper.getWishList", userNum);
         return wishList;
         
     }

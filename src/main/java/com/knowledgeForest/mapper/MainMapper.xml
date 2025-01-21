@@ -4,7 +4,7 @@
 
 	<!-- 위시 리스트 -->
 	<select id="getWishList" parameterType="int"
-		resultType="LikeDTO">
+		resultType="String">
 		SELECT STUDY_TITLE FROM TBL_LIKE INNER JOIN TBL_STUDY ON
 		TBL_LIKE.STUDY_NUM = TBL_STUDY.STUDY_NUM
 		WHERE USER_NUM = #{userNum}
