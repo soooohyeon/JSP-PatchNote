@@ -1,4 +1,4 @@
-.<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -21,7 +21,7 @@
 
 		<!-- 상단 헤더 + 헤더 아래 컨텐츠 요소들 -->
 		<div id="ADMIN-DIV-CONTENTWRAP">
-			`<!-- 상단 헤더 -->
+			<!-- 상단 헤더 -->
 			<jsp:include page="/html/admin/header.jsp" />
 			<!-- 상단 헤더 끝 -->
 
@@ -33,9 +33,9 @@
 					<h1 class="admin-h1-maintitle">유저 관리</h1>
 
 					<!-- 검색창 -->
-					<form action="" method="">
+					<form action="${pageContext.request.contextPath}/admin/admin-userlist.ad" method="get">
 						<div class="admin-div-wrapper">
-							<input type="text" class="admin-input-search"
+							<input type="text" name="keyWord" class="admin-input-search"
 								placeholder="유저ID 또는 닉네임을 입력해주세요." value="" /> <img
 								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
@@ -49,7 +49,7 @@
 							<li class="adminUser-li-userid">유저ID</li>
 							<li class="adminUser-li-usernickname">닉네임</li>
 							<li class="adminUser-li-userphone">전화번호</li>
-							<li class="adminUser-li-userbirth">생년월일</li>
+							<li class="adminUser-li-userbirth">가입일</li>
 							<li class="adminUser-li-userquit">강제탈퇴</li>
 						</ul>
 
@@ -71,10 +71,10 @@
 											<c:out value="${user.userPH}" />
 										</li>
 										<li class="adminUser-li-userbirth lightdata">
-											<c:out value="${user.userBirth}" />
+											<c:out value="${user.userJoinDate}" />
 										</li>
 										<li class="adminUser-li-userquit lightdata">
-											<button class="admin-btn-delete" onclick="quitBtn(this)">탈퇴</button>
+											<button class="admin-btn-delete" onclick="quitBtn(${user.userNum})">탈퇴</button>
 										</li>
 									</ul>
 								</c:forEach>
