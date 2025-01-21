@@ -41,6 +41,8 @@
 		<mapper resource="com/knowledgeForest/mapper/BoardMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/NoticeMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/StudyMapper.xml" />
+		<mapper resource="com/knowledgeForest/mapper/MainMapper.xml" />
+		
 	</mappers>
 	
 </configuration>

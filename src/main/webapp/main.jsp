@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
+<%@ page import="com.knowledgeForest.dto.UserDTO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+// 세션에서 사용자 정보 가져오기
+HttpSession Session = request.getSession();
+UserDTO user = (UserDTO) Session.getAttribute("user");
+boolean isLoggedIn = (user != null); // 로그인 여부 확인
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,23 +20,22 @@
 <title>지식의 숲</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/main/main.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/asset/css/main/footer.css">
 <script>
 	const contextPath = '${pageContext.request.contextPath}';
 </script>
 <script src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
 </head>
 
-
 <body>
-	<!-- 헤더 - 메뉴바 -->
+	<!-- 상단 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
 
-
-	<!-- 위시 리스트 -->
+	<!-- 메인 콘텐츠 -->
 	<main>
 		<div class="main-div-wrapper">
-
-			<!-- 찜 공간 -->
+			<!-- 위시 리스트 -->
 			<div class="main-div-wishlist">
 				<h2 style="text-align: center;">
 					<img
@@ -34,7 +44,6 @@
 						style="width: 40px; height: 40px; margin-right: 5px;">
 					Forest of Knowledge
 				</h2>
-
 				<div class="main-div-wishlistcontainer">
 					<div class="main-div-wishlistcontent">
 						<div class="main-div-wishlisttitle">
@@ -43,15 +52,23 @@
 							<h2>WISH</h2>
 							<h2>LIST</h2>
 						</div>
-						<ul class="main-div-ulist">
-							<li class="main-div-wish" onclick="wishList(this)">로그인 후 이용
-								부탁 드립니다.</li>
-						</ul>
+						<c:choose>
+							<c:when test="${not empty sessionScope.memberNumber}">
+								<ul class="main-div-ulist">
+									<li class="main-div-wish">위시리스트 내용을 표시합니다.</li>
+									<li class="main-div-wish">예시 스터디 1</li>
+									<li class="main-div-wish">예시 스터디 2</li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul class="main-div-ulist">
+									<li class="main-div-wish" onclick="wishList()">로그인 후 이용 부탁드립니다.</li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
-
 			</div>
-			<!-- 찜 공간 끝 -->
 
 			<!-- 배너 -->
 			<div class="main-div-banner">
@@ -70,21 +87,32 @@
 						src="${pageContext.request.contextPath}/asset/img/main/banner03.png"
 						alt="이미지3" class="main-img-banner03">
 				</div>
-
 			</div>
-			<!-- 배너 끝 -->
-
 		</div>
-		<!-- 신규/마감 임박 스터디 -->
 
+		
+		
+		<!-- 신규/마감 임박 스터디 -->
 		<div class="main-div-container">
+		
+			
+			<!-- 신규 등록 스터디 -->
+			
 			<div class="main-div-studycard main-div-studynew">
 				<header class="main-div-studycardheader">
 					<span class="main-span-label">NEW </span> <span
 						class="main-span-title"> 신규 등록 스터디</span>
 				</header>
+				
 				<div class="main-div-studycontent">
-					<div class="main-div-studyitem " onclick="notLogin(this)">
+					<c:choose>
+						<c:when test="${not empty sessionScope.memberNumber}">
+							<div class="main-div-studyitem " onclick="goPage(this)">
+						</c:when>
+						<c:otherwise>
+							<div class="main-div-studyitem " onclick="notLogin(this)">
+						</c:otherwise>
+					</c:choose>
 						<span class="main-span-icon">[개발]</span>
 						<div class="main-div-studyname">영국에서 HGXWCH이라는 사람은 1930년에 이
 							편지를 받았습니다. 그는 비서에게 복사해서 보내라고 했습니다. 며칠 뒤에 복권이 당첨되어 20억을 받았습니다</div>
@@ -94,25 +122,51 @@
 							모르지만 사실이 아니지롱.</div>
 					</div>
 
-					<div class="main-div-studyitem" onclick="notLogin(this)">
+					<c:choose>
+						<c:when test="${not empty sessionScope.memberNumber}">
+							<div class="main-div-studyitem " onclick="goPage(this)">
+						</c:when>
+						<c:otherwise>
+							<div class="main-div-studyitem " onclick="notLogin(this)">
+						</c:otherwise>
+					</c:choose>
 						<span class="main-span-icon">[보안]</span>
 						<div class="main-div-studyname">보안 스터디 ㅋㅋ</div>
 						<div class="main-div-studytext">여긴 보안 내용이네.</div>
 					</div>
 				</div>
 			</div>
+			
+			
+			<!-- 마감 임박 스터디 -->
 			<div class="main-div-studycard main-div-studyhurry">
 				<header class="main-div-studycardheader">
-					<span class="main-span-label">Hurry </span> <span
-						class="main-span-title"> 마감 임박 스터디</span>
+					<span class="main-span-label">Hurry </span> 
+					<span class="main-span-title"> 마감 임박 스터디</span>
 				</header>
+				
 				<div class="main-div-studycontent">
-					<div class="main-div-studyitem" onclick="notLogin(this)">
+					<c:choose>
+						<c:when test="${not empty sessionScope.memberNumber}">
+							<div class="main-div-studyitem " onclick="goPage(this)">
+						</c:when>
+						<c:otherwise>
+							<div class="main-div-studyitem " onclick="notLogin(this)">
+						</c:otherwise>
+					</c:choose>
 						<span class="main-span-icon">[보안]</span>
 						<div class="main-div-studyname">ㅋㅋ</div>
 						<div class="main-div-studytext">내용입니다.</div>
 					</div>
-					<div class="main-div-studyitem" onclick="notLogin(this)">
+					
+					<c:choose>
+						<c:when test="${not empty sessionScope.memberNumber}">
+							<div class="main-div-studyitem " onclick="goPage(this)">
+						</c:when>
+						<c:otherwise>
+							<div class="main-div-studyitem " onclick="notLogin(this)">
+						</c:otherwise>
+					</c:choose>
 						<span class="main-span-icon">[개발]</span>
 						<div class="main-div-studyname">너만 오면 시작</div>
 						<div class="main-div-studytext">대충 구한다는 내용.</div>
@@ -121,10 +175,9 @@
 			</div>
 	</main>
 
+
 	<!-- 푸터 -->
 	<jsp:include page="/html/main/footer.jsp" />
-
-
 </body>
 
 </html>
