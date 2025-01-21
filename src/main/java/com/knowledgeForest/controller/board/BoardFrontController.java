@@ -1,31 +1,34 @@
 package com.knowledgeForest.controller.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.knowledgeForest.Execute;
-import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
 import com.knowledgeForest.dto.BoardDTO;
 
-public class BoardFrontController implements Execute{
+public class BoardFrontController extends HttpServlet {
 
-	@Override
-	public Result execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		
-		
-		
-		
-		
-		
-		return null;
-	}
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // DAO 객체 생성
+        BoardDAO boardDAO = new BoardDAO();
+        
+        // 게시판 목록 가져오기
+        List<BoardDTO> boardList = boardDAO.getBoardList();
+        
+        // 데이터를 JSP로 전달
+        request.setAttribute("boardList", boardList);
+        
+        // JSP로 포워딩
+        request.getRequestDispatcher("/board/boardlist.jsp").forward(request, response);
+    }
+
 //    @Override
 //    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
