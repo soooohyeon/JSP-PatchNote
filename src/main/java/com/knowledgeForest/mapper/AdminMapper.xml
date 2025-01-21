@@ -10,6 +10,14 @@
         ORDER BY USER_NUM
     </select>
 
+    <!-- 모든 사용자 중 검색 -->
+    <select id="selectUserSearch" resultType="UserDTO" parameterType="string">
+        SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+		FROM TBL_USER
+		WHERE USER_ID LIKE #{keyword} OR USER_NICK LIKE #{keyword}
+		ORDER BY USER_NUM
+    </select>
+
     <!-- 해당 사용자 정보 조회 -->
     <select id="selectUserOne" resultType="UserDTO" parameterType="int">
     	SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
@@ -21,34 +29,50 @@
 	<select id="countStudy" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 신청한 스터디 개수 -->
 	<select id="countApply" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY_APPLY
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 스터디 댓글 개수 -->
 	<select id="countStudyComment" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_STUDY_COMMENT
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 게시판 글 개수 -->
 	<select id="countBoard" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_BOARD
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
 	
     <!-- 해당 사용자의 작성한 게시판 댓글 개수 -->
 	<select id="countBoardComment" resultType="int" parameterType="int">
 		SELECT COUNT(USER_NUM)
 		FROM TBL_FB_COMMENT
-		WHERE USER_NUM = ${userNum}
+		WHERE USER_NUM = #{userNum}
 	</select>
+	
+	<!-- 해당 유저 데이터 삭제(탈퇴) -->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM TBL_USER
+		WHERE USER_NUM = #{userNum}
+	</delete>
+	
+	<!-- ==================================================================== -->
+	
+    <!-- 모든 스터디 정보 조회 -->
+    <!-- <select id="selectStudyAll" resultType="UserDTO">
+        SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+        FROM TBL_USER
+        ORDER BY USER_NUM
+    </select> -->
+	
 </mapper>

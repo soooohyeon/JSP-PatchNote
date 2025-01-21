@@ -19,7 +19,12 @@ public class AdminDAO {
 	public List<UserDTO> selectUserAll() {
 		return sqlSession.selectList("AdminMapper.selectUserAll");
 	}
-
+	
+//	모든 유저 목록 조회
+	public List<UserDTO> selectUserSearch(String keyword) {
+		return sqlSession.selectList("AdminMapper.selectUserSearch", keyword);
+	}
+	
 //	해당 유저 상세 조회
 	public UserDTO selectUserOne(int userNum) {
 		return sqlSession.selectOne("AdminMapper.selectUserOne", userNum);
@@ -48,6 +53,10 @@ public class AdminDAO {
 //	해당 유저가 작성한 자유게시판 댓글 개수 조회
 	public int countBoardComment(int userNum) {
 		return sqlSession.selectOne("AdminMapper.countBoardComment", userNum);
+	}
+	
+	public void deleteUser(int userNum) {
+		sqlSession.delete("AdminMapper.deleteUser", userNum);
 	}
 	
 }

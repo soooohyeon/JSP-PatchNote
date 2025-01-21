@@ -11,6 +11,7 @@ import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.AdminDAO;
 import com.knowledgeForest.dto.UserDTO;
 
+// 관리자 해당 유저 정보 상세페이지 조회
 public class AdminUserDetailOkController implements Execute {
 
 	@Override
