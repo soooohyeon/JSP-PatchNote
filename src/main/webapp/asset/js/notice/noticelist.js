@@ -6,6 +6,6 @@ function getContextPath() {
    return contextPath;
 }
 
-function noticedetailpage(){
-  window.location.href=getContextPath() + "/notice/notice-detail.no";
+function inventory(noticeNum){
+	window.location.href = getContextPath() + "/notice/noticedetail.no?noticeNum=" + noticeNum;
 }
