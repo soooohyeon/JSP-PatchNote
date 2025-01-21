@@ -28,15 +28,15 @@
         </p>
       </div>
     </div>
-    <form action="">
+    <form action="${pageContext.request.contextPath}/login/joinOk.me"  method = "post">
       <div class="join-div-section-middle">
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label">아이디
             </p>
           </div>
-          <input type="text" class="join-input" name="id" id="JOIN-INPUT-ID" onkeyup="inputLenFunc3()">
-          <button class="join-btn-checkid" type="button" id="JOIN-BTN-IDCHECK">ID중복검사</button>
+          <input type="text" class="join-input" name="userId" id="JOIN-INPUT-ID" onkeyup="inputLenFunc3()">
+          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-IDCHECK">ID중복검사</button>
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-IDCHECK"></div>
 
@@ -45,9 +45,9 @@
             <p class="join-p-label" >닉네임
             </p>
           </div>
-          <input type="text" class="join-input" name="nickName" id="JOIN-INPUT-NICKNAMECHECK" onkeyup="inputLenFunc2()">
+          <input type="text" class="join-input" name="userNick" id="JOIN-INPUT-NICKNAMECHECK" onkeyup="inputLenFunc2()">
 
-          <button class="join-btn-checkid" type="button" id="JOIN-BTN-NICKNAMECHECK">닉네임중복검사</button>
+          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-NICKNAMECHECK">닉네임중복검사</button>
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-NICKNAMECHECK"></div>
 
@@ -55,13 +55,13 @@
           <div class="join-div-labelwrapper">
             <p class="join-p-label" >비밀번호</p>
           </div>
-          <input type="password" class="join-input" id="INPUT-PASSWORD" name="pwd"  maxlength="15">
+          <input type="password" class="join-input" id="INPUT-PASSWORD" name="userPw"  maxlength="15">
         </div>
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label">비밀번호 재확인</p>
           </div>
-          <input type="password" class="join-input" id="JOIN-REPASSWORD" name="repwd" maxlength="15" onblur="validatePassword()">
+          <input type="password" class="join-input" id="JOIN-REPASSWORD" name="userRepw" maxlength="15" onblur="validatePassword()">
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PWALARM"></div>
         <div class="join-div-inputlayer">
@@ -75,7 +75,7 @@
           <div class="join-div-labelwrapper">
             <p class="join-p-label">생년월일</p>
           </div>
-        <input type="number" class="join-input" name="birth" id="JOIN-INPUT-BIRTH" 
+        <input type="text" class="join-input" name="userBirth" id="JOIN-INPUT-BIRTH" 
         onkeydown="inputLenFunc()"
         onblur="birthCheck()">
         </div>
@@ -84,7 +84,7 @@
         <div class="join-div-labelwrapper">
           <p class="join-p-label">핸드폰번호</p>
         </div>
-          <input type="text" class="join-input" name="phoneNumber" id="JOIN-INPUT-PHONNUMBER">
+          <input type="text" class="join-input" name="userPH" id="JOIN-INPUT-PHONNUMBER">
           <button class="join-btn-checkid" type="button" id="JOIN-BTN-PHONNUMBER">인증번호 받기</button>
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PHONENUMBER"></div>
@@ -92,7 +92,7 @@
           <div class="join-div-labelwrapper">
           </div>
           <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" onkeydown="inputLenFunc1()">
-          <button class="join-btn-checkid" type="button" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
+          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
   
         </div>
       </div>
@@ -323,8 +323,8 @@
         </textarea>
       </div>
 
-      <button type="button" class="join-btn-check" id="JOIN-BTN-INSITE" onclick="moveSite()">가입하기</button>
-
+      <button type="submit"  class="join-btn-check" id="JOIN-BTN-INSITE" onclick="moveSite()">가입하기</button>
+	
     </div>     <!-- section-middle /div -->
   </form>
   </main>

@@ -30,7 +30,7 @@
       </div>
 
       <div class="login-div-wrapper-join-box">
-        <a href="http://localhost:8888/KnowledgeForest/login/join.me" target="_self" class="login-a-join">회원가입</a>
+        <a href="${pageContext.request.contextPath}/login/join.me" target="_self" class="login-a-join">회원가입</a>
       </div>
 
       	<div class="login-div-wrapper-btn-box">
@@ -38,7 +38,7 @@
       	</div>
 	  </form>
       <div class="login-div-wrapper-pwd-box">
-        <a href="http://localhost:8888/KnowledgeForest/login/passwordSelect.me" target="_self" class="login-a-pwd">비밀번호를 까먹었나요?</a>
+        <a href="${pageContext.request.contextPath}/login/passwordSelect.me" target="_self" class="login-a-pwd">비밀번호를 까먹었나요?</a>
       
       </div>
     </div>
