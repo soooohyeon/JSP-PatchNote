@@ -39,15 +39,20 @@ public class StudyFrontController extends HttpServlet {
 	}
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  // 요청과 응답의 인코딩 설정
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 		Result result = null;
 		
 		switch(target) {
 		case "/study/studyList.st":
-			request.getRequestDispatcher("/html/study/studylist.jsp").forward(request, response);
+			System.out.println("안뇽");
+//			request.getRequestDispatcher("/html/study/studylist.jsp").forward(request, response);
+			result = new StudyListOkController().execute(request, response);
 			break;
 		case "/study/studyWrite.st":
-			System.out.println("ddddd");
 			request.getRequestDispatcher("/html/study/studylist-write.jsp").forward(request, response);
 			break;
 		case "/study/studyWriteOk.st":

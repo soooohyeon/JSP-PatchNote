@@ -42,10 +42,6 @@ public class StudyDTO {
    private int studyCategory;
    private String studyUploadDate;
    private String studyEditDate;
-   
-   public StudyDTO() {
-      super();
-   }
 
    public int getStudyNum() {
       return studyNum;
