@@ -44,9 +44,13 @@ public class AdminFrontController extends HttpServlet {
     	  result = new AdminUserDeleteOkController().execute(request, response);
     	  break;
     	  
+//    모든 스터디 목록 조회
       case "/admin/admin-studylist.ad":
-    	  request.getRequestDispatcher("/html/admin/admin-studylist.jsp").forward(request, response);
+    	  result = new AdminStudyListOkController().execute(request, response);
+//    	  request.getRequestDispatcher("/html/admin/admin-studylist.jsp").forward(request, response);
     	  break;
+    	  
+    	  
       case "/admin/admin-studyapplylist.ad":
     	  request.getRequestDispatcher("/html/admin/admin-studyapplylist.jsp").forward(request, response);
     	  break;
