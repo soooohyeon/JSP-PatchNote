@@ -1,11 +1,12 @@
 package com.knowledgeForest.dao;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
-import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 import com.knowledgeForest.dto.UserDTO;
 
@@ -64,23 +65,28 @@ public class AdminDAO {
 	
 //	스터디 목록 조회
 	public List<StudyUserDTO> selectStudyAll() {
-		System.out.println("DAO 드루와");
-		List<StudyUserDTO> studyList = sqlSession.selectList("AdminMapper.selectStudyAll");
-		System.out.println("adminDAO - selectStudyAll : " + studyList);
-		return studyList;
+		return sqlSession.selectList("AdminMapper.selectStudyAll");
 	}
 	
 //	스터디 목록 조회 - 검색
+	public List<StudyUserDTO> selectStudySearch(String keyword) {
+		return sqlSession.selectList("AdminMapper.selectStudySearch", keyword);
+	}
+	
+//	해당 스터디 탈퇴
+	public void deleteStudy (int studyNum) {
+		sqlSession.delete("AdminMapper.deleteStudy", studyNum);
+	}
 
 	
-//	공지 목록 조회
-	public List<NoticeDTO> selectNoticeAll() {
-		return sqlSession.selectList("AdminMapper.selectNoticeAll");
-	}
-	
-//	공지 목록 조회 - 검색
-	public List<NoticeDTO> selectNoticeSearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectNoticeSearch", keyword);
-	}
+////	공지 목록 조회
+//	public List<NoticeDTO> selectNoticeAll() {
+//		return sqlSession.selectList("AdminMapper.selectNoticeAll");
+//	}
+//	
+////	공지 목록 조회 - 검색
+//	public List<NoticeDTO> selectNoticeSearch(String keyword) {
+//		return sqlSession.selectList("AdminMapper.selectNoticeSearch", keyword);
+//	}
 	
 }

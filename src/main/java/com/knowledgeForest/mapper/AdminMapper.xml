@@ -68,11 +68,35 @@
 	
 	<!-- ==================================================================== -->
 	
-    <!-- 모든 스터디 정보 조회 -->
-    <!-- <select id="selectStudyAll" resultType="UserDTO">
-        SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
-        FROM TBL_USER
-        ORDER BY USER_NUM
-    </select> -->
+    <!-- 스터디 목록 조회 -->
+    <select id="selectStudyAll" resultType="StudyUserDTO">
+        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
+		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
+		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu
+		ON ts.USER_NUM = tu.USER_NUM
+		ORDER BY STUDY_NUM DESC
+    </select>
+
+    <!-- 스터디 목록 조회 - 검색 -->
+    <select id="selectStudySearch" resultType="StudyUserDTO" parameterType="string">
+        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
+		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
+		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu
+		ON ts.USER_NUM = tu.USER_NUM
+		WHERE ts.STUDY_TITLE LIKE #{keyword} OR ts.STUDY_DESCRIPT LIKE #{keyword}
+		ORDER BY STUDY_NUM DESC
+    </select>
+	
+	<!-- 해당 스터디 데이터 삭제 -->
+	<delete id="deleteStudy" parameterType="int">
+		DELETE FROM TBL_STUDY
+		WHERE STUDY_NUM = #{studyNum}
+	</delete>
 	
 </mapper>
