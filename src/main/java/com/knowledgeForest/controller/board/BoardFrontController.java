@@ -61,4 +61,3 @@ public class BoardFrontController extends HttpServlet {
 	
 	
     }
-}

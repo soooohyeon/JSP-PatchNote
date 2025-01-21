@@ -21,17 +21,22 @@ public class MyPageDAO {
 		return user;
 	}
 
-
-  //회원 정보 수정
-  public int updateUserInfo(UserDTO user) {
+	// 회원 정보 수정
+	public int updateUserInfo(UserDTO user) {
 		System.out.println("회원정보 수정 : " + user);
 		int result = 0;
 		result = sqlsession.update("UserMapper.updateUser", user);
 		return result;
 	}
 
-//	public boolean checkNickname(String userNick) {
-//		return sqlSession.selectOne("UserMapper.checkNickname", userNick);
-//	}
+	// 닉네임 중복 체크
+	public boolean checkNickname(String userNick) {
+		System.out.println("닉네임 : " + userNick);
+		int count = sqlsession.selectOne("UserMapper.checkNickname", userNick);
+		System.out.println("count :" + count);
+		return count > 0;
+
+	}
 
 }
+

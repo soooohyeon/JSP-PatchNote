@@ -21,8 +21,8 @@ public class BoardDAO {
         return boardList;
     }
 
-	public boolean insertBoard(BoardDTO board) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+   public boolean insertBoard(BoardDTO board) {
+      // TODO Auto-generated method stub
+      return false;
+   }
 }

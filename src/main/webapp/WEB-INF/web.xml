@@ -9,6 +9,11 @@
 	</welcome-file-list>
 
 	<!--Servlet root -->
+	
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>com.knowledgeForest.controller.main.MainFrontController</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>Admin</servlet-name>
@@ -23,11 +28,6 @@
 	<servlet>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.knowledgeForest.controller.login.LoginFrontController</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>Main</servlet-name>
-		<servlet-class>com.knowledgeForest.controller.main.MainFrontController</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -46,6 +46,10 @@
 	</servlet>
 	
 	<!-- URL to JSP Mappings -->
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>*.main</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Admin</servlet-name>
 		<url-pattern>*.ad</url-pattern>
