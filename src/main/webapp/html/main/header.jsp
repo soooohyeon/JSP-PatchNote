@@ -7,7 +7,11 @@
             <li><a href="${pageContext.request.contextPath}/notice/noticelist.no">공지</a></li>
             <li><a href="${pageContext.request.contextPath}/board/boradlist.bo">자유게시판</a></li>
             <li><a href="${pageContext.request.contextPath}/study/studylist.st">스터디 모집</a></li>
+            
+            
             <li><a href="${pageContext.request.contextPath}/login/join.me">회원가입</a></li>
             <li><a href="${pageContext.request.contextPath}/login/login.me">로그인</a></li>
+            
+            
         </ul>
     </nav>

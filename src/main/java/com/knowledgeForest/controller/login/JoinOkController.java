@@ -17,32 +17,42 @@ public class JoinOkController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("joinOkController");
+		System.out.println("joinOkController+++++++++");
 		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
 		
-		System.out.println("+++++++++++++++++++++"+userDTO);
+	
 		
 		userDTO.setUserId(request.getParameter("userId"));
 		userDTO.setUserNick(request.getParameter("userNick"));
-		userDTO.setUserPw(request.getParameter("userNick"));
-		userDTO.setUserBirth(request.getParameter("userBirth"));
+		userDTO.setUserPw(request.getParameter("userPw"));
+		userDTO.setUserBirth(String(request.getParameter("userBirth")));
+		//수정중 -> Controller - mapper ORA-01861 : 리터럴 형식 문자열과 일치하지않음
+		
 		userDTO.setUserPH(request.getParameter("userPH"));
 		userDTO.setUserName(request.getParameter("userName"));
-		
+		System.out.println("+++++++++++++++++++++"+userDTO);
 		
 		loginDAO.join(userDTO);
 		
+		
+		result.setPath(request.getContextPath()+"/login/login.me");
 		result.setRedirect(true);
-		result.setPath(request.getContextPath());
+		
 		return result;
 		
 		
 		
 	}
-	
+
+	private String String(String parameter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 	
 	

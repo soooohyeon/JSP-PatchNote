@@ -55,10 +55,16 @@ public class LoginFrontController extends HttpServlet {
 			
 		case "/login/join.me" :
 			System.out.println("회원가입");
-			result = new JoinOkController().execute(request, response); //404 에러
+			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response);
+			break;
+			
+		case "/login/joinOk.me" :
+			System.out.println("회원가입완료");
+			result = new JoinOkController().execute(request, response); //404 에러 공존
 //			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response); //JoinOkController로 안넘어가짐
 			break;
 			
+			//해야할것
 		case "/login/passwordSelect.me" :
 			System.out.println("비밀번호찾기");
 			request.getRequestDispatcher("/html/login/passwordSelect.jsp").forward(request, response);

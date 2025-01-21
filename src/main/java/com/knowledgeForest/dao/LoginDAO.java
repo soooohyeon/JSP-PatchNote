@@ -21,12 +21,10 @@ public class LoginDAO{
 		sqlsession.insert("LoginMapper.join", userDTO);
 	}
 	
-	public UserDTO login(String userId, String userPw) {
-		UserDTO userDTO = new UserDTO();
-		userDTO.setUserId(userId);
-		userDTO.setUserPw(userPw);
-		System.out.println("login이 되게 해줘");
-		return sqlsession.selectOne("LoginMapper.Login", userDTO);
+	public int login(UserDTO userDTO) {
+		
+		Integer userNumber = sqlsession.selectOne("LoginMapper.Login", userDTO);
+		return userNumber == null? -1 : userNumber;
 	}
 	
 	

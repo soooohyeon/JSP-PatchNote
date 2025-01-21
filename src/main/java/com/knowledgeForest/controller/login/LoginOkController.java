@@ -20,34 +20,51 @@ public class LoginOkController implements Execute {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
 		
+		int userNumber = 0;
+				
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		HttpSession session = request.getSession();
-		userDTO = loginDAO.login(userId, userPw);
-	
-		if(userDTO != null) {
+		HttpSession session = request.getSession(); //session에 저장
+		
+		userDTO.setUserId(userId);
+		userDTO.setUserPw(userPw);
+		
+		userNumber = loginDAO.login(userDTO);
+		
+		System.out.println("#############" + userNumber);
+		
+		
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+ session.getId());
+		
+		if(userNumber != -1) {
 			
-			session.setAttribute("userDTO", userDTO);
-			
-			Cookie cookie = new Cookie("userId", userId);
-			cookie.setMaxAge(60*60*24);
-			response.addCookie(cookie);
-			
-			// 왜 안넘어가질까..
-			result.setPath(request.getContextPath());
-			result.setRedirect(true);
+			session.setAttribute("userNumber", userNumber);
+			result.setPath(request.getContextPath()+"/main.jsp");
+			System.out.println("@@@@@@"+userNumber);
+			session.setMaxInactiveInterval(10*60);
+		
+//			if(userNumber != null) {
+//			
+//			session.setAttribute("userDTO", userDTO);
+//			
+//			Cookie cookie = new Cookie("userId", userId);
+//			cookie.setMaxAge(60*60*24);
+//			response.addCookie(cookie);
+//			
+//			// 왜 안넘어가질까..
+//			result.setPath(request.getContextPath());
+//			result.setRedirect(true);
 			
 		}else {
-			result.setPath(request.getContextPath()+"/html/login/login.jsp");
-			result.setRedirect(true);
+			result.setPath(request.getContextPath()+"/login/login.me");
+			
 		}
-		
+		result.setRedirect(true);
 		return result;
 	}
 	

@@ -3,17 +3,15 @@
 
 <mapper namespace="LoginMapper">
 
-      <select id = "Login" parameterType = "UserDTO" resultType = "userDTO">
+      <select id = "Login" parameterType = "UserDTO" resultType = "int">
     	SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
     	FROM TBL_USER
     	WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
     </select>
 
 	<insert id="join" parameterType = "UserDTO">
-		insert into tbl_user(user_num, user_id,  user_nick, user_pw, user_birth, user_ph, user_name)
-		values(seq_user.nextVal, #{userId}, #{userNick}, #{userPw}, #{user_birth}, #{user_ph})
-	
-	
+		INSERT INTO TBL_USER(USER_NUM, USER_ID, USER_NICK, USER_PW, USER_BIRTH, USER_PH, USER_NAME)
+		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, #{userBirth}, #{userPH}, #{userName})
 	</insert>
 
 </mapper>
