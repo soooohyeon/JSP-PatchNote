@@ -38,8 +38,9 @@
               <input
                 type="text"
                 class="studylist-input-groupinfo"
-                name="groupName"
+                name="studyTitle"
                 placeholder="스터디 그룹명을 입력해주세요."
+                value="${board.getStudyTitle()}"
               />
             </div>
           </div>
@@ -68,7 +69,7 @@
               <input
                 type="text"
                 class="studylist-input-groupinfo"
-                name="groupLimit"
+                name="studyLimit"
                 placeholder="정원 수를 입력해주세요."
               />
             </div>
@@ -77,6 +78,7 @@
               <input
                 class="studylist-input-groupinfo"
                 placeholder="신청 마감일을 입력해주세요 ex) 20250110"
+                name = "studyDeadline"
               />
             </div>
           </div>
@@ -86,6 +88,7 @@
               <input
                 class="studylist-input-groupinfo"
                 placeholder="시작날짜를 입력해주세요 ex) 20250110"
+                name ="studyStartDay"
               />
             </div>
             <div class="studylist-div-infowrapperDual">
@@ -93,6 +96,7 @@
               <input
                 class="studylist-input-groupinfo"
                 placeholder="시작날짜를 입력해주세요 ex) 20250110"
+                name="studyEndDay"
               />
             </div>
           </div>
@@ -104,6 +108,7 @@
                 class="studylist-input-groupinfo"
                 type="time"
                 placeholder="시작시간을 입력해주세요 ex) 20250110"
+                name ="studyStartTime"
               />
             </div>
             <div class="studylist-div-infowrapperDual">
@@ -112,6 +117,7 @@
                 class="studylist-input-groupinfo"
                 type="time"
                 placeholder="종료시간를 입력해주세요 ex) 20250110"
+                name="studyEndTime"
               />
             </div>
           </div>
@@ -122,7 +128,7 @@
               <input
                 type="text"
                 class="studylist-input-groupinfo"
-                name="groupLocation"
+                name="studyLocation"
                 placeholder="장소를 입력해주세요."
               />
             </div>
@@ -131,13 +137,10 @@
           <div class="studylist-div-longwrapperlayer">
             <div class="studylist-div-textareawrapper">
               <div class="label">설명</div>
-              <textarea class="studylist-div-studycontents">
-                6개월 동안 JAVA 코딩테스트 문제 풀이하고 코드해석 해보는 스터디
-                모임입니다. 화, 목 13시부터 16시까지 총 3시간동안 진행
-                예정입니다 다른 분들과 코드 공유해보며 여러 풀이 방법도 경험하고
-                또 색다른 코드들을 경험하며 배울 수 있습니다. 원하시는 분들은
-                코디신청서 작성시 전화번호 또는 카톡 아이디 같이 작성해주세요.
-              </textarea>
+              <textarea 
+              placeholder="설명을 작성해주세요."
+              name="studyDescript"
+              class="studylist-div-studycontents"></textarea>
             </div>
             <div class="studylist-div-filewrap">
               <div class="label">첨부파일</div>
@@ -148,6 +151,25 @@
             </div>
           </div>
         </form>
+        
+        <div class="studylist-div-btnwrapper">
+          <button
+            class="studylist-btn-submit"
+            form="STUDYLIST-FORM-WRITE"
+            type="submit"
+            onclick="updateStudy()"
+          >
+            등록
+          </button>
+          <button
+            class="studylist-btn-cancel"
+            form="STUDYLIST-FORM-WRITE"
+            type="button"
+            onclick="goBack()"
+          >
+            취소
+          </button>
+        </div>
       </div>
     </main>
     <footer class="main-footer-container">

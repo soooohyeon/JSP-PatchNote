@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.StudyDTO;
+import com.knowledgeForest.dto.StudyUserDTO;
 
 public class StudyDAO {
 	public SqlSession sqlSession;
@@ -38,5 +39,20 @@ public class StudyDAO {
 	
 	public StudyDTO select(int studyNumber) {
 		return sqlSession.selectOne("study.select", studyNumber);
+	}
+	
+	//해당 게시글 상세 조회
+	public StudyUserDTO selectStudy(int studyNum) {
+		return sqlSession.selectOne("StudyMapper.selectDetail", studyNum);
+	}
+	
+	//게시글 수정
+	public void update(StudyDTO studyDTO) {
+		sqlSession.update("StudyMapper.editStudy", studyDTO);
+	}
+
+	public void delete(int studyNumber) {
+		sqlSession.delete("studyMapper.deleteStudy", studyNumber);
+		
 	}
 }
