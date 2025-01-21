@@ -8,24 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
+import com.knowledgeForest.dao.BoardDAO;
 import com.knowledgeForest.dao.StudyDAO;
 
-public class StudyUpdateController implements Execute {
+public class StudyDeleteOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-		int studyNumber = Integer.valueOf(request.getParameter("studyNumber"));
-		System.out.println(studyNumber);
 		StudyDAO studyDAO = new StudyDAO();
+		Result result = new Result();
+		int studyNumber = Integer.valueOf(request.getParameter("studyNumber"));
 		
-		request.setAttribute("study", studyDAO.select(studyNumber));
+		studyDAO.delete(studyNumber);
 		
-		request.getRequestDispatcher("/html/study/studylist-edit.jsp").forward(request, response);
-		
-		return null;
+//		response.sendRedirect("/board/boardListOk.bo");
+		result.setPath("/study/studyListOk.bo");
+		result.setRedirect(true);
+		return result;
 	}
 
 }
