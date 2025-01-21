@@ -36,13 +36,18 @@ public class MyPageFrontController extends HttpServlet {
 		  response.setContentType("text/html; charset=UTF-8");
 		  
 		  System.out.println("doProcess");
+		  System.out.println(request.getRequestURI());
 		  Result result = null;
 
 		// 경로 분기처리
 		switch (target) {
 		case "/mypage/mypage-accountedit.my":
-			System.out.println("target : "  + target);
 			result = new MyPageUserInfoController().execute(request, response);
+			break;
+			
+		case "/mypage/MypageCheckNicknameOk.my":
+			System.out.println("마이페이지 닉네임 중복처리");
+			result = new MyPageCheckNicknameOk().execute(request, response);
 			break;
 
 		case "/mypage/mypage-applylist.my":

@@ -2,15 +2,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // 닉네임 유효성 검사
   const nicknameInput = document.getElementById("nickname");
   const nicknameError = document.getElementById("nickname-error");
-  const identifyBtn = document.querySelector(".mypage-btn-nickname");
+  const nickdupChkButton = document.querySelector(".mypage-btn-nickname");
   const nicknameRegex = /^[a-zA-Z가-힣][a-zA-Z가-힣0-9]{0,14}$/;
+
+  /* 루트 경로 담은 함수 */
+  function getContextPath() {
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    var contextPath = location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
+
+    return contextPath;
+  }
 
   function validateNickname() {
     const nickname = nicknameInput.value;
+
     if (nicknameRegex.test(nickname)) {
-      nicknameError.textContent = "사용 가능한 닉네임입니다.";
-      nicknameError.style.color = "green";
-      nicknameInput.style.borderColor = "green";
+      /*nicknameError.textContent = "변경 가능한 닉네임 입니다.";
+				  nicknameError.style.color = "green";
+				  nicknameInput.style.borderColor = "green";*/
       return true;
     } else {
       nicknameError.textContent =
@@ -21,6 +33,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function checkNickname() {
+    if (!validateNickname()) {
+      return;
+    }
+
+    $.ajax({
+      /* 유저 삭제 컨트롤러로 이동, 유저 넘버 쿼리스트링으로 전달 */
+      url:
+        getContextPath() +
+        "/mypage/MypageCheckNicknameOk.my?userNick=" +
+        encodeURIComponent(nicknameInput.value),
+      type: "GET",
+      /* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 */
+      success: () => {
+        nicknameError.textContent = "사용 가능한 닉네임입니다.";
+        nicknameError.style.color = "green";
+        nicknameInput.style.borderColor = "green";
+        location.href = getContextPath() + "/mypage/mypage=accountedit.my";
+      },
+      /* 탈퇴 불가시 알람창 */
+      error: (xhr, status, error) => {
+        nicknameError.textContent = "이미 사용 중인 닉네임입니다.";
+        nicknameError.style.color = "red";
+        nicknameInput.style.borderColor = "red";
+      },
+    });
+  }
+
+  nicknameInput.addEventListener("input", validateNickname);
+  nickdupChkButton.addEventListener("click", checkNickname);
   nicknameInput.addEventListener("input", validateNickname);
 
   // 비밀번호 유효성 검사
@@ -39,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordInput.style.borderColor = "green";
       return true;
     } else {
-      passwordError.textContent = "비밀번호는 8~20자, 대소문자, 숫자, 특수문자를 포함해야 합니다.";
+      passwordError.textContent =
+        "비밀번호는 8~20자, 대소문자, 숫자, 특수문자를 포함해야 합니다.";
       passwordError.style.color = "red";
       passwordInput.style.borderColor = "red";
       return false;
@@ -71,8 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function formatPhoneNumber() {
     let phoneNum = phoneNumInput.value.replace(/[^\d]/g, "");
     if (phoneNum.length > 11) phoneNum = phoneNum.slice(0, 11);
-    if (phoneNum.length > 7) phoneNum = phoneNum.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-    else if (phoneNum.length > 3) phoneNum = phoneNum.replace(/(\d{3})(\d{4})?/, "$1-$2");
+    if (phoneNum.length > 7)
+      phoneNum = phoneNum.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+    else if (phoneNum.length > 3)
+      phoneNum = phoneNum.replace(/(\d{3})(\d{4})?/, "$1-$2");
     phoneNumInput.value = phoneNum;
   }
 
@@ -133,15 +178,28 @@ document.addEventListener("DOMContentLoaded", function () {
       !phoneNum ||
       !phoneNumchk
     ) {
-      console.log(name + birthdate + ID + nickname + password + passwordchk + phoneNum + phoneNumchk)
+      console.log(
+        name +
+          birthdate +
+          ID +
+          nickname +
+          password +
+          passwordchk +
+          phoneNum +
+          phoneNumchk
+      );
       alert("모든 정보를 입력하세요.");
       return;
     }
 
-    if (validateNickname() && validatePassword() && validatePasswordCheck() && validatePhoneNumberCheck()) {
+    if (
+      validateNickname() &&
+      validatePassword() &&
+      validatePasswordCheck() &&
+      validatePhoneNumberCheck()
+    ) {
       alert("회원정보가 수정되었습니다.");
-	  document.getElementById("editForm").submit();
-	  
+      document.getElementById("editForm").submit();
     } else {
       alert("모든 정보를 올바르게 입력하세요.");
     }
