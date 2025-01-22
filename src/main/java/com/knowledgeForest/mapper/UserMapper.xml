@@ -52,11 +52,7 @@
 	
 	<!-- 찜한 목록 리스트 -->
 	<select id="getLikeList" resultType="StudyDTO" parameterType="int">
-		SELECT * 
-		FROM TBL_STUDY_APPLY ta 
-		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM
-		JOIN TBL_USER u ON ta.USER_NUM = u.USER_NUM  
-		WHERE ta.USER_NUM = #{userNum}
+		SELECT * FROM TBL_LIKE tl JOIN TBL_STUDY ts ON ts.STUDY_NUM = tl.STUDY_NUM WHERE tl.USER_NUM = #{studyNum}
 	</select>
 	
 	<!-- 신청 스터디 취소 -->
