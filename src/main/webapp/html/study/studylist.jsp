@@ -19,7 +19,7 @@
       <ul class="main-nav-ul">
         <li><a href="${pageContext.request.contextPath}/html/notice/notice-list.jsp">공지</a></li>
         <li><a href="${pageContext.request.contextPath}/html/board/board-list.jsp">자유게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/html/study/studylist.jsp">스터디 모집</a></li>
+        <li><a href="${pageContext.request.contextPath}/study/studyList.st">스터디 모집</a></li>
         <li><a href="${pageContext.request.contextPath}/html/login/join.jsp">회원가입</a></li>
         <li><a href="${pageContext.request.contextPath}/html/login/login.jsp">로그인</a></li>
       </ul>
@@ -27,10 +27,12 @@
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="studylist-h1-title">STUDY</h1>
+      
       <!-- 검색창 -->
-      <form class="studylist-form-wrapper" action="">
+      <form class="studylist-form-wrapper" 
+      	action="${pageContext.request.contextPath}/study/studyList.st" method="get">
         <input
-          type="text"
+          type="text" name="keyword"
           class="studylist-input-search"
           placeholder="검색어를 입력하세요."
         />
@@ -42,6 +44,7 @@
           />
         </button>
       </form>
+      
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="studylist-div-contentsWrapper">
         <div class="studylist-div-categoryWrapper">
@@ -54,23 +57,37 @@
         <div class="studylist-div-groupWrapper">
           <!-- 모임 항목-->
 
+		<c:forEach var="study" items="${studyList}">
           <div class="studylist-div-group">
             <div class="studylist-div-groupinner">
               <div class="studylist-div-groupinfowrapper datecontent-wrap">
                 <div class="studylist-div-enddate">
                   마감일 &nbsp;| &nbsp; ${study.studyDeadline}
                 </div>
-                <div class="studylist-div-groupstatus">모집 중</div>
+                <div class="studylist-div-groupstatus"><!-- 마감, 모집 중 -->
+	                <c:choose>
+					    <c:when test="${study.participants == study.studyLimit or study.studyDeadline < today}">
+					        <li class="studylist-div-groupstatus">마감</li>
+					    </c:when>
+					    <c:otherwise>
+					        <li class="studylist-div-groupstatus">모집 중</li>
+					    </c:otherwise>
+					</c:choose>
+                </div>
               </div>
-              <div class="studylist-div-grouptitle">
-                웹 보안의 기초부터 간단한 토이 프로젝트까지
+              <div class="studylist-div-grouptitle" onclick = "moveDetail(${study.studyNum})">
+                <c:out value="${study.studyTitle}" />
               </div>
               <div class="studylist-div-groupinfowrapper">
                 <div class="studylist-div-groupcategory">보안</div>
-                <div class="studylist-div-groupmember">7/7</div>
+                <div class="studylist-div-groupmember">
+					<c:out value="${study.participants}" />/<c:out value="${study.studyLimit}" />
+				</div>
               </div>
               <div class="studylist-div-groupmakerwrapper">
-                <div class="studylist-div-groupmaker">김철수</div>
+                <div class="studylist-div-groupmaker">
+					<c:out value="${study.userNick}" />
+				</div>
                 <div class="studylist-div-likewrapper">
       
                   <img
@@ -79,12 +96,13 @@
                     class="studylist-img-like"
                     onclick="likeStudy(this)"
                   />
-                  <div class="studylist-div-likecount">7</div>
+                  <div class="studylist-div-likecount"><c:out value="${study.likeCount}" /></div>
                 </div>
               </div>
             </div>
           </div>
 
+        </c:forEach>
 
         </div>
 

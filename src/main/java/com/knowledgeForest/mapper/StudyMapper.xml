@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StudyMapper">
 	<!-- 스터디 게시판 조회 : 제목으로 검색 -->
-	<select id="select" resultType="StudyDTO">
+<!-- 	<select id="select" resultType="StudyDTO">
 	<![CDATA[
 	SELECT 
 		S.STUDY_NUM,
@@ -15,7 +15,34 @@
 		(SELECT COUNT(USER_NUM) FROM TBL_LIKE tl WHERE S.STUDY_NUM = TL.STUDY_NUM AND TL.USER_NUM = 11)
 	FROM TBL_STUDY S
 		]]>
-	</select>
+	</select> -->
+	
+	    <!-- 스터디 목록 조회 -->
+    <select id="selectStudyAll" resultType="StudyUserDTO" parameterType="int">
+        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
+		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
+		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants,
+		(SELECT COUNT(user_num) FROM TBL_LIKE WHERE USER_NUM = #{userNum}) as likeCount
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu
+		ON ts.USER_NUM = tu.USER_NUM
+		ORDER BY STUDY_NUM DESC
+    </select>
+	
+	    <!-- 스터디 목록 조회 - 검색 -->
+    <select id="selectStudySearch" resultType="StudyUserDTO" parameterType="string">
+        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
+		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
+		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants,
+		(SELECT COUNT(user_num) FROM TBL_LIKE WHERE USER_NUM = #{userNum}) as likeCount
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu
+		ON ts.USER_NUM = tu.USER_NUM
+		WHERE ts.STUDY_TITLE LIKE #{keyword} OR ts.STUDY_DESCRIPT LIKE #{keyword}
+		ORDER BY STUDY_NUM DESC
+    </select>
 	
 	
 	<!-- 스터디 게시글 추가 -->
@@ -96,16 +123,31 @@
 		, STUDY_START_TIME = #{studyStartTime}
 		, STUDY_END_TIME = #{studyEndTime}
 		, STUDY_LIMIT = #{studyLimit}
-		, STUDY_DEADLINE = TO_DATE(#{studyDeadline}, 'YYYY-MM-DD')
+		, STUDY_DEADLINE = TO_DATE(#{studyDeadline}, 'YYYY-MM-DD HH24:MI:SS')
+		, STUDY_SHOWPH = #{studyShowph}
+		, STUDY_CATEGORY = #{studyCategory}
+		, STUDY_EDIT_DATE = SYSDATE
+		WHERE STUDY_NUM = #{studyNum}
+<!-- 		UPDATE TBL_STUDY
+		SET 
+		STUDY_TITLE = #{studyTitle}
+		, STUDY_DESCRIPT = #{studyDescript}
+		, STUDY_LOCATION = #{studyLocation}
+		, STUDY_START_DAY = TO_DATE(#{studyStartDay}, 'YYYY-MM-DD HH24:MI:SS')
+		, STUDY_END_DAY = TO_DATE(#{studyEndDay}, 'YYYY-MM-DD HH24:MI:SS')
+		, STUDY_START_TIME = #{studyStartTime}
+		, STUDY_END_TIME = #{studyEndTime}
+		, STUDY_LIMIT = #{studyLimit}
+		, STUDY_DEADLINE = TO_DATE(#{studyDeadline}, 'YYYY-MM-DD HH24:MI:SS')
 		, STUDY_SHOWPH = #{studyShowph}
 		, STUDY_CATEGORY = #{studyCategory}
 		, STUDY_UPLOAD_DATE = SYSDATE
 		, STUDY_EDIT_DATE = SYSDATE
-		WHERE STUDY_NUM = 1 AND USER_NUM = 13;
+		WHERE STUDY_NUM = 1 AND USER_NUM = 13; -->
 	</update>
 	
 	<!-- 게시판 삭제 -->
-	<delete id="delete" parameterType="int">
+	<delete id="deleteStudy" parameterType="int">
 		DELETE FROM TBL_STUDY ts 
 		WHERE STUDY_NUM = #{studyNum}
 	</delete>	

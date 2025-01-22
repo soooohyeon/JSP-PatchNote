@@ -13,16 +13,16 @@
 
   <body>
      <!-- 상단 메뉴바 -->
-     <nav class="main-nav-menuwrap">
-      <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="main-img-logo">
+    <nav class="main-nav-menuwrap">
+      <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="main-img-logo" />
       <ul class="main-nav-ul">
-          <li><a href="./../notice/noticelist.html">공지</a></li>
-          <li><a href="./../board/boardlist.html">자유게시판</a></li>
-          <li><a href="./../study/studylist.html">스터디 모집</a></li>
-          <li><a href="./../login/join.html">회원가입</a></li>
-          <li><a href="./../login/login.html">로그인</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/notice/notice-list.jsp">공지</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/board/board-list.jsp">자유게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/study/studyList.st">스터디 모집</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/login/join.jsp">회원가입</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/login/login.jsp">로그인</a></li>
       </ul>
-  </nav>
+    </nav>
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="studylist-h1-title">STUDY 등록</h1>
@@ -162,8 +162,8 @@
           <button
             class="studylist-btn-submit"
             form="STUDYLIST-FORM-WRITE"
-            type="submit"
-            onclick="updateStudy()"
+            type="button"
+            onclick="insertStudy(event)"
           >
             등록
           </button>
@@ -204,5 +204,5 @@
       </div>
     </footer>
   </body>
-  <script defer src="../../asset/js/study/studylist-write.js"></script>
+  <script defer src="${pageContext.request.contextPath}/asset/js/study/studylist-write.js"></script>
 </html>

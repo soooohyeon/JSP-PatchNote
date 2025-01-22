@@ -15,13 +15,13 @@ public class StudyUpdateController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("업데이트 컨트롤러");
 		
-		
-		int studyNumber = Integer.valueOf(request.getParameter("studyNumber"));
-		System.out.println(studyNumber);
+		int studyNum = Integer.valueOf(request.getParameter("studyNum"));
+		System.out.println(studyNum);
 		StudyDAO studyDAO = new StudyDAO();
 		
-		request.setAttribute("study", studyDAO.select(studyNumber));
+		request.setAttribute("study", studyDAO.selectStudy(studyNum));
 		
 		request.getRequestDispatcher("/html/study/studylist-edit.jsp").forward(request, response);
 		

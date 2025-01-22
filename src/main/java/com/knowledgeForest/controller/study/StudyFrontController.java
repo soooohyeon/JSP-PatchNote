@@ -72,6 +72,10 @@ public class StudyFrontController extends HttpServlet {
 			System.out.println("studyUpdateOk!");
 			result = new StudyUpdateOkController().execute(request, response);
 			break;
+		case "/study/studyDeleteOk.st":
+			System.out.println("studyDeleteOk!");
+			result = new StudyDeleteOkController().execute(request, response);
+			break;
 		}
 		
 		if(result != null) {
