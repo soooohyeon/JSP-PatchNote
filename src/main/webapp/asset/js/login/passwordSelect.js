@@ -1,16 +1,14 @@
 const btn_check = document.getElementById("PASSWORDSELECT-BTN-CHECK");
-const input_authentication_number = document.getElementById(".input-authentication-number");
 
-btn_check.addEventListener("click", (e)=>{
-  if(true){
+btn_check.addEventListener("click", (event)=>{
+  if(false){
     alert("인증번호가 일치합니다.");
-    window.location.href="./passwordSelect-detail.html";
+ 
   }else{
     alert("인증번호가 일치하지 않습니다.");
     
   }
 });
-
 
 //핸드폰 번호 변수
 const phoneNumInput = document.getElementById('PASSWORDSELECT-INPUT-PHONENUMBER');
@@ -23,11 +21,12 @@ sendButtonPhone.addEventListener('click', (event) => {
 
 // 핸드폰 번호 시작
 // 핸드폰 번호 자동 포맷팅 및 길이 제한
-function formatPhoneNumber(event) {
+function formatPhoneNumber() {
   let phoneNum = phoneNumInput.value.replace(/[^\d]/g, ''); // 숫자만 칠수있게 하기
-
+console.log("######################"+phoneNum);
   if (phoneNum.length > 11) {
     phoneNum = phoneNum.slice(0, 11); // 11자리에서 넘어가면 타자못침
+	consoel.log("!!!!!!!!!!!!"+phoneNum);
   }
 
   // '000-0000-0000' 형태로 변환
@@ -61,15 +60,16 @@ function validatePhoneNumber() {
 
 
 //글자수 제한 로직 - 인증번호 
-const inpSec1 = document.querySelector('#PASSWORDSELECT-AUTHENTICATIONNUMBER');
+
 //글자수 제한 로직 - 인증번호 
-function inputLenFunc1() {
-	if (inpSec1.value.length > 6) {
-			inpSec1.value = inpSec1.value.slice(0, 6);
+function inputLenFunc6() {
+	const inpSec5 = document.querySelector('#PASSWORDSELECT-AUTHENTICATIONNUMBER');
+	if (inpSec5.value.length > 6) {
+			inpSec5.value = inpSec5.value.slice(0, 6);
 	};
-	console.log(inpSec1.value)
+	console.log(inpSec5.value)
 }
-inpSec1.addEventListener('input', inputLenFunc1);
+inpSec5.addEventListener('input', inputLenFunc6);
 
 
 
@@ -81,9 +81,10 @@ function idCheck(){
     
 	
 		if (!exr.test(idCheck)) { //거짓일 때
-      //console.log("TEST"); //입력값 확인
+      console.log("TEST"); //입력값 확인
+	  
 		}else{
-		  //console.log("abc"); //입력값 확인
+		 console.log("abc"); //입력값 확인
 		}
 	}
 

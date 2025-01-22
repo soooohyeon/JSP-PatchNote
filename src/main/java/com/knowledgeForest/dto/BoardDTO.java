@@ -14,6 +14,7 @@ public class BoardDTO {
 //               REFERENCES TBL_USER(USER_NUM) ON DELETE CASCADE
 //      );
 
+
 	private int boardNum;
 	private int userNum;
 	private String boardTitle;
@@ -87,5 +88,16 @@ public class BoardDTO {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle
+				+ ", boardContents=" + boardContents + ", boardAuthor=" + boardAuthor + ", boardUploadDate="
+				+ boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
+	}
+
+
+	
+	
 
 }

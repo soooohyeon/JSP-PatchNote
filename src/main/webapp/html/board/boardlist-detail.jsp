@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +13,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
   <script defer src="${pageContext.request.contextPath}/asset/js/board/boardlistdetail.js"></script>
+	<!-- jquery 사용시 필요함 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -24,22 +28,14 @@
     <!-- 헤더 - 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
 
-    <ul class="main-nav-ul">
-      <li><a href="./../notice/noticelist.html">공지</a></li>
-      <li><a href="./../board/boardlist.html">자유게시판</a></li>
-      <li><a href="./../study/studylist.html">스터디 모집</a></li>
-      <li><a href="./../myPage/mypageAccountEdit.html">마이페이지</a></li>
-      <li><a href="">로그아웃</a></li>
-    </ul>
-  </nav>
   <div class="boardlistdetail-div-title">
     <h2>자유게시판</h2>
   </div>
   <!-- 수정 / 삭제 버튼 -->
   <div class="boardlistdetail-detail-div-btnwrapper">
-    <span onclick="updateStudy()" class="boardlistdetail-span-editbtn">수정</span>
+    <span onclick="updateBoard(${boardDetail.boardNum})" class="boardlistdetail-span-editbtn">수정</span>
     <span class="boardlistdetail-span-divider">|</span>
-    <span onclick="deleteStudy()" class="boardlistdetail-span-deletebtn">삭제</span>
+    <span onclick="deleteBoard(${boardDetail.boardNum})" class="boardjfdslkfasjd boardlistdetail-span-deletebtn">삭제</span>
   </div>
     
     <!-- 본문내용 닉네임 작성일 내용 -->
@@ -47,16 +43,18 @@
       <div class="boardlistdetail-div-header">
         <div class="boardlistdetail-div-nickname">
           <div class="title-rightline"><div>닉네임</div></div>
-          <div class="boardlist-div-contents">닉네임1</div>
+          <div class="boardlist-div-contents"><c:out value="${boardDetail.userNick}" /></div>
+       
         </div>
         <div class="boardlistdetail-div-date">
           <div class="title-rightline"><div>등록일</div></div>
-          <div  class="boardlist-div-contents">2025.01.01</div>
+          <div  class="boardlist-div-contents"><c:out value="${boardDetail.boardUploadDate}" /></div>
         </div>
         <div class="boardlistdetail-div-main">
           <div class="title-rightline"><div>본문</div></div>
-          <div  class="boardlist-div-contents">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용=vhjl;lkbjvhjlk;kknbvjlk;kknbjlk;kjkblsdkfjba,jf.wfvas.dfnasdnfvahsdjfglweiuqgrwelifjblj,fnbasd,mncfvasdfkjgqlweruljb
-            <img src="./../../asset/img/main/logo.png" alt="임시">
+          <div  class="boardlist-div-contents">
+			<c:out value="${boardDetail.boardContents}" />
+            <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="임시">
           </div>
         </div>
       </div>
@@ -148,29 +146,10 @@
             <li class="boardlistdetail-li-paginationlist next">&#62;</li>
           </ul>
         </div>
-       <!--  <!-- footer -->
-        <footer class="main-footer-container">
-          <div class="main-footer-content">
-              <div class="main-footer-links">
-                  <div class="main-footer-policies">
-                      <a href="#" class="main-link-policy">개인정보처리방침</a>
-                      <span class="main-span-divider">|</span>
-                      <a href="#" class="main-link-terms">이용약관</a>
-                  </div>
-                  <p class="main-paragraph-contact">Contact: team.patchnote.official@gmail.com</p>
-                  <p class="main-paragraph-copyright">Copyright Forest Info. All rights reserved</p>
-              </div>
-              <div class="main-footer-logo">
-                  <img src="./../../asset/img/main/logo.png" alt="Forest of Knowledge Logo"
-                      class="main-img-footerlogo">
-              </div> -->
-              </div>
+     </div>
+    </main>
 	<!-- 푸터 -->
 	<jsp:include page="/html/main/footer.jsp" />
-              
-          </div>
-      <!-- </footer> -->
-    </main>
 </body>
 
 </html>

@@ -43,11 +43,11 @@ public class MyPageDAO {
 	}
 
 	// 찜한 목록 조회
-	public List<StudyUserDTO> getLikeList(int userNum) {
-		List<StudyUserDTO> boardList = sqlsession.selectList("UserMapper.getLikeList", userNum);
-		System.out.println("userMapper.getLikeList: " + boardList);
-		return boardList;
-	}
+//	public List<StudyUserDTO> getLikeList(int userNum) {
+//		List<StudyUserDTO> likeList = sqlsession.selectList("UserMapper.getLikeList", userNum);
+//		System.out.println("userMapper.getLikeList: " + likeList);
+//		return likeList;
+//	}
 
 	// 만든 스터디 조회
 	public int countStudy(int userNum) {
