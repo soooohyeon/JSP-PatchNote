@@ -24,6 +24,10 @@
 
 .boardlist-li-header span { background-color: #003161; }
 
+.boardlist-btn-search > img {
+	background-color: inherit;
+}
+
 /* 메인내용 */
 .boardlist-li-item {
   display: flex;

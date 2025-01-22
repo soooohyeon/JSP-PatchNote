@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
+import com.knowledgeForest.dto.BoardDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
 
 public class BoardUploadOkController implements Execute{
@@ -17,15 +18,19 @@ public class BoardUploadOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		BoardDAO boardDAO = new BoardDAO();
+		BoardDTO boardDTO = new BoardDTO();
 		Result result = new Result();
 		
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		
-		BoardUserDTO boarddetail = boardDAO.selectBoard(boardNum);
+		boardDTO.setUserNum(0);
+		boardDTO.setBoardTitle(request.getParameter("boardTitle"));
+		boardDTO.setBoardContents(request.getParameter("boardContents"));
 		
-		request.setAttribute("boarddetail", boarddetail);
-		result.setPath("/html/board/board-detail.jsp");
-		result.setRedirect(false);
+		boardDAO.insertBoard(boardDTO);
+		
+		result.setPath(request.getContextPath() + "/board/board-list.bo");
+		result.setRedirect(true);
+		
 		return result;
 		
 	}

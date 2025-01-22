@@ -27,9 +27,14 @@ public class BoardDAO {
 	public BoardUserDTO selectBoard(int boardNum) {
 		return sqlsession.selectOne("BoardMapper.selectBoard", boardNum);
 	}
+	
 	// 등록
-	public void uploadBoard(BoardDTO BoardDTO) {
-		sqlsession.insert("BoardMapper.uploadBoard");
+	public void insertBoard(BoardDTO boardDTO) {
+		sqlsession.insert("BoardMapper.insertBoard", boardDTO);
 	}
 	
+	// 삭제
+		public void deleteBoard(int boardDTO) {
+			sqlsession.delete("BoardMapper.deleteBoard", boardDTO);
+		}
 }

@@ -39,6 +39,11 @@ public class BoardFrontController extends HttpServlet {
 	    	  System.out.println("자유게시판 목록!!!!!!!!!!!!!!!!!!!!!!!!!!!들어옴");
 	    	  result = new BoardListOkController().execute(request, response);
 	    	  break;
+	      
+		case "/board/boardDeleteOk.bo" :
+			System.out.println("자유게시판 목록!!!!!!!!!!!!!!!!!!!!!!!!!!!들어옴");
+			result = new BoardDeleteOkController().execute(request, response);
+			break;
 	      }
 
 	      if (result != null) {

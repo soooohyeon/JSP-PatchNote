@@ -10,20 +10,23 @@ import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
 
-public class BoardEditOkController implements Execute{
-	
+public class BoardDeleteOkController implements Execute {
+
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
+			throws ServletException, IOException {
+		
 		BoardDAO boardDAO = new BoardDAO();
 		Result result = new Result();
+		
+		
+		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+		
+		boardDAO.deleteBoard(boardNum);
+		
+		result.setPath(request.getContextPath() + "/board/board-list.bo");
+		result.setRedirect(true);
 		return result;
-		try {
-			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-			String boardTitle = request.getParameter("boardTitle");
-			String boardContents = request.getParameter("boardContents");
-			String userNick = request.getParameter("userNick");
-			
-		}
-}			
+		
+	}
 }

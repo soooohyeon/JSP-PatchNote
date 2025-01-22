@@ -88,11 +88,16 @@ public class BoardDTO {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public String toString() {
-		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle + ",boardAuthor = " + boardAuthor, boardContents="
-				+ boardContents + ", boardUploadDate=" + boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
+		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle
+				+ ", boardContents=" + boardContents + ", boardAuthor=" + boardAuthor + ", boardUploadDate="
+				+ boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
 	}
+
+
+	
+	
 
 }

@@ -32,7 +32,7 @@
 		<input type="text" class="boardlist-input-search"
 			placeholder="검색어를 입력하세요." />
 		<button class="boardlist-btn-search">
-			<img src="./../../asset/img/study/search-btn.png" alt="search"
+			<img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png" alt="search"
 				class="boardlist-img-search" />
 		</button>
 	</form>
@@ -46,7 +46,7 @@
 				<span class="board-date">작성일</span>
 			</li>
 		<c:forEach var="board" items="${boardList}">
-			<!-- 메인내용용 내용들 -->
+			<!-- 메인내용 내용들 -->
 			<li class="boardlist-li-item" onclick="movetodetailedpage(${board.boardNum})">
 				<span class="board-number">
 					<c:out value="${board.boardNum}" />

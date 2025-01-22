@@ -28,21 +28,23 @@
     </update>
     
     <!-- 삭제 쿼리 -->
-    <delete id="delete" parameterType="int">
+    <delete id="deleteBoard" parameterType="int">
     	delete from TBL_BOARD
     	where BOARD_NUM = #{boardNum}
     </delete>
     
  	<!-- 해당 게시글 조회 -->
  	<select id="selectBoard" resultType="BoardUserDTO" parameterType="int">
- 		SELECT BOARD_NUM, USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, USER_NICK
-        FROM TBL_BOARD 
+        SELECT BOARD_NUM, TL.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, USER_NICK
+        FROM TBL_BOARD TB
+        LEFT JOIN TBL_USER TL
+        ON TB.USER_NUM = TL.USER_NUM 
         WHERE BOARD_NUM = #{boardNum}
  	</select>
  	
  	<!-- 등록 쿼리 -->
  	<insert id="upload" parameterType="boardDTO">
- 		INSERT INTO TBL_BOARD (userId, boardTitle, boardContents) 
- 		VALUES ('작성자','제목', '내용')";
+ 		INSERT INTO TBL_BOARD (BOARD_NUM, USER_NUM, BOARD_TITLE, BOARD_CONTENTS) 
+ 		VALUES (seq_board.NEXTVAL, #{userNum}, #{boardTitle}, #{boardContents )
  	</insert>
 </mapper>

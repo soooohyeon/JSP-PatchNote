@@ -8,17 +8,19 @@
     <title>지식의 숲</title>
     <link
       rel="stylesheet"
-      href="${pageContext.request.contextPath}/asset/css/board/boardlistedit.css"
+      href="./../../asset/css/board/boardlistregistration.css"
     />
     <link rel="stylesheet" href="./../../asset/css/main/header.css" />
     <link rel="stylesheet" href="./../../asset/css/main/footer.css" />
-    <script defer src="${pageContext.request.contextPath}/asset/js/board/boardlistedit.js"></script>
-
+    <script
+      defer
+      src="./../../asset/js/board/boardlistregistration.js"
+    ></script>
   </head>
 
   <body>
     <!-- 상단 메뉴바 -->
-    <!-- <nav class="main-nav-menuwrap">
+    <nav class="main-nav-menuwrap">
       <img src="../../asset/img/main/logo.png" class="main-img-logo" />
       <ul class="main-nav-ul">
         <li><a href="./../notice/noticelist.html">공지</a></li>
@@ -27,13 +29,10 @@
         <li><a href="./../login/join.html">회원가입</a></li>
         <li><a href="./../login/login.html">로그인</a></li>
       </ul>
-    </nav> -->
-    <!-- 상단 메뉴바  -->
-	<jsp:include page="/html/main/header.jsp" />
-	
+    </nav>
     <main>
       <!-- 페이지 타이틀 -->
-      <h1 class="board-h1-title">게시글 수정</h1>
+      <h1 class="board-h1-title">게시글 등록</h1>
 
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
@@ -56,7 +55,10 @@
           <div class="board-div-longwrapperlayer">
             <div class="board-div-textareawrapper">
               <div class="label">설명</div>
-              <textarea class="board-div-studycontents" name="boardDescription"></textarea>
+              <textarea
+                class="board-div-studycontents"
+                name="boardDescription"
+              ></textarea>
             </div>
             <div class="board-div-filewrap">
               <div class="label">첨부파일</div>
@@ -74,7 +76,7 @@
             form="board-FORM-WRITE"
             onclick="updateBoard()"
           >
-            수정
+            등록
           </button>
           <button
             class="board-btn-cancel"
@@ -87,7 +89,7 @@
       </div>
     </main>
 
-    <!-- <footer class="main-footer-container">
+    <footer class="main-footer-container">
       <div class="main-footer-content">
         <div class="main-footer-links">
           <div class="main-footer-policies">
@@ -110,8 +112,6 @@
           />
         </div>
       </div>
-    </footer> -->
-    	<!-- 푸터 -->
-	<jsp:include page="/html/main/footer.jsp" />
+    </footer>
   </body>
 </html>
