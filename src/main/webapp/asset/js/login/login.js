@@ -1,11 +1,6 @@
 
 //로그인버튼 클릭시 알림창 노출
 const btn_join = document.querySelector("#LOGIN-BTN-LOGIN");
-
-
-console.log(id);
-console.log(pw);
-
 function login(){
 	const id = document.getElementById("LOGIN-INPUT-ID").value;
 	const pw = document.getElementById("LOGIN-INPUT-PWD").value;

@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardDTO;
+import com.knowledgeForest.dto.StudyDTO;
+import com.knowledgeForest.dto.StudyUserDTO;
 import com.knowledgeForest.dto.UserDTO;
 
 public class MyPageDAO {
@@ -40,20 +42,35 @@ public class MyPageDAO {
 		return count > 0;
 	}
 
-	// 작성한 스터디 조회
+	// 찜한 목록 조회
+	public List<StudyUserDTO> getLikeList(int userNum) {
+		List<StudyUserDTO> boardList = sqlsession.selectList("UserMapper.getLikeList", userNum);
+		System.out.println("userMapper.getLikeList: " + boardList);
+		return boardList;
+	}
+
+	// 만든 스터디 조회
 	public int countStudy(int userNum) {
 		return sqlsession.selectOne("UserMapper.countStudy", userNum);
 	}
 
 	// 신청한 스터디 조회
-	public int countApply(int userNum) {
-		return sqlsession.selectOne("UserMapper.countApply", userNum);
+	public List<StudyDTO> getStudyList(int userNum) {
+		List<StudyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
+		System.out.println("userMapper.getStudyList: " + studyList);
+		return studyList;
+	}
+
+	// 신청한 스터디 취소
+	public void deleteStudyApply(int studyNum) {
+		sqlsession.delete("UserMapper.deleteStudyApply", studyNum);
+		System.out.println("스터디 신청 취소됨");
 	}
 
 	// 게시글 목록 조회
 	public List<BoardDTO> getBoardList(int userNum) {
 		List<BoardDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", userNum);
-		System.out.println("userMapper.getBoardList: "  + boardList);
+		System.out.println("userMapper.getBoardList: " + boardList);
 		return boardList;
 	}
 

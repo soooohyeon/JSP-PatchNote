@@ -50,5 +50,7 @@
 	<jsp:include page="/html/main/footer.jsp"/>
 
 </body>
-
+<script>
+   let userNum = "${sessionScope.userNum}";
+</script>
 </html>

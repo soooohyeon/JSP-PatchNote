@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,8 @@
 	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-applylist.css" />
 <script defer
 	src="${pageContext.request.contextPath}/asset/js/mypage/mypage-applylist.js"></script>
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 	<!-- <header></header> -->
@@ -44,10 +50,10 @@
 
 	<!-- 상단 헤더 -->
 	<div id="ADMIN-DIV-HEADERCONTAINER">
-		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="admin-img-logo"
-			alt="Logo">
+		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
+			class="admin-img-logo" alt="Logo">
 		<ul id="ADMIN-UL-HEADERWRAP">
-			<li><a href="./../main/main.html">홈</a></li>
+			<li><a href="${pageContext.request.contextPath}/main/main.html">홈</a></li>
 			<li><a href="">로그아웃</a></li>
 		</ul>
 	</div>
@@ -58,156 +64,60 @@
 			<!-- 현재 페이지 제목 -->
 			<div class="mypage-h1-maintitle">
 				<h1>신청한 스터디</h1>
-				<br />
-				<p>''님이 신청하신 스터디 목록 입니다</p>
 			</div>
 			<!-- 게시판 컨텐츠 정렬을 위한 div -->
 			<div class="mypage-div-contentscontainer">
 				<div class="mypage-div-contentswrap">
-					<!-- 모임 항목 컨텐츠 1 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">승인</div>
+					<c:forEach var="study" items="${studyList}">
+
+						<!-- 모임 항목 컨텐츠 -->
+						<div class="mypage-div-group">
+							<div class="mypage-div-groupinner">
+								<div class="mypage-div-groupinfowrapper datecontent-wrap">
+									<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
+										${study.studyApplyDate}</div>
+									<span class="study-deadline"
+										data-deadline="${study.studyDeadline}">
+										${study.studyDeadline}</span>
+
+								</div>
+								<div class="mypage-div-grouptitle">
+									<a href="/webapp/html/study/studylist-detail.html">${study.studyTitle}</a>
+								</div>
+								<div class="mypage-div-groupinfowrapper">
+									<c:choose>
+										<c:when test="${study.studyCategory == 0}">
+											<div class="mypage-div-groupcategory">개발</div>
+										</c:when>
+										<c:when test="${study.studyCategory == 1}">
+											<div class="mypage-div-groupcategory">보안</div>
+										</c:when>
+
+									</c:choose>
+
+									<button class="mypage-btn-cancel" onclick="cancelAction(${study.studyNum})">취소</button>
+								</div>
+								<div class="mypage-div-groupmakerwrapper">
+									<div class="mypage-div-groupmaker">${study.userNick}</div>
+									<div class="mypage-div-likewrapper">
+										<div class="mypage-div-progress">
+											<c:choose>
+												<c:when test="${studyApplyStatus == 0}">
+													대기중
+												</c:when>
+												<c:when test="${studyApplyStatus == 1}">
+													수락
+												</c:when>
+												<c:when test="${studyApplyStatus == 2}">
+													거절
+												</c:when>
+											</c:choose>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 2 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">마감</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">개발</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">대기중</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 3 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">삭제됨</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 2 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">개발</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">신지원</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">거절</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 2 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">이하니</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">승인</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 2 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">마감</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">개발</div>
-								<button class="mypage-btn-cancel" onclick="cancelAction()">취소</button>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">나혜리</div>
-								<div class="mypage-div-likewrapper">
-									<div class="mypage-div-progress">대기중</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 
 				<!-- 페이지네이션 -->

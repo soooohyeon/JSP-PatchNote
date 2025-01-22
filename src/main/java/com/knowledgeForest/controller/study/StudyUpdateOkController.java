@@ -11,6 +11,7 @@ import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.StudyDAO;
 import com.knowledgeForest.dto.StudyDTO;
+import com.knowledgeForest.dto.StudyUserDTO;
 
 public class StudyUpdateOkController implements Execute {
 
@@ -22,20 +23,39 @@ public class StudyUpdateOkController implements Execute {
 		
 		Result result = new Result();
 		
-		HttpSession session = request.getSession();
-		Integer studyNumber = (Integer)session.getAttribute("studyNumber");
-		String path = null;
+		System.out.println("업데이트 ok 컨트롤러");
 		
-		if(studyNumber == null) {
-			path = "/app/main/main-login.html";
-		}else {
-			path = "/app/board/boardUpdate.jsp";
-			request.setAttribute(path, session);
-		}
+//		studyDTO.setUserNum(request.getParameter("userNum"));
+		studyDTO.setUserNum(11);
 		
-		result.setPath(path);
-		result.setRedirect(false);
-		return null;
+		studyDTO.setStudyNum(Integer.parseInt(request.getParameter("studyNum")));
+		studyDTO.setStudyTitle(request.getParameter("studyTitle"));
+		studyDTO.setStudyDescript(request.getParameter("studyDescript"));
+		studyDTO.setStudyLocation(request.getParameter("studyLocation"));
+		studyDTO.setStudyStartDay(request.getParameter("studyStartDay"));
+		studyDTO.setStudyEndDay(request.getParameter("studyEndDay"));
+		studyDTO.setStudyStartTime(request.getParameter("studyStartTime"));
+		studyDTO.setStudyEndTime(request.getParameter("studyEndTime"));
+		studyDTO.setStudyLimit(Integer.parseInt(request.getParameter("studyLimit")));
+		studyDTO.setStudyDeadline(request.getParameter("studyDeadline"));
+//		studyDTO.setStudyShowph(Integer.parseInt(request.getParameter("studyShowph")));
+//		studyDTO.setStudyCategory(Integer.parseInt(request.getParameter("studyCategory")));
+		studyDTO.setStudyUploadDate(request.getParameter("studyUploadDate"));
+		studyDTO.setStudyEditDate(request.getParameter("studyEditDate"));
+		
+//		if(userNumber == null) {
+//			path = "/app/main/main-login.html";
+//		}else {
+//			path = "/app/board/boardUpdate.jsp";
+//			request.setAttribute(path, session);
+//		}
+		System.out.println("55555 : " + studyDTO.getStudyTitle());
+		
+		studyDAO.update(studyDTO);
+		
+		result.setPath(request.getContextPath() + "/study/studyList.st");
+		result.setRedirect(true);
+		return result;
 	}
 
 }
