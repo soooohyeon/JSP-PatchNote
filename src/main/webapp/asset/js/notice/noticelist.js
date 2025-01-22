@@ -9,3 +9,9 @@ function getContextPath() {
 function inventory(noticeNum){
 	window.location.href = getContextPath() + "/notice/noticedetail.no?noticeNum=" + noticeNum;
 }
+function goMain() {
+	// 메인 페이지 이동 링크
+	location.href = getContextPath()+ "/knowledgeForest.main";
+	
+	console.log("로고 클릭" + location.href)
+}

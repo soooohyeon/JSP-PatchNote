@@ -6,6 +6,12 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/main/header.css">
+	<script defer
+	src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
+	
+	<!-- 상단 헤더 메뉴바 -->
+	<%-- <jsp:include page="/html/main/header.jsp" /> --%> <!-- <<- 헤더 주석 해제 후 옆에 주소 내용 복사해서 사용 !! -->
+	
 	
 <!-- 상단 메뉴바 -->
 <nav class="main-nav-menuwrap">

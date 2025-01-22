@@ -3,6 +3,8 @@
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page import="com.knowledgeForest.dto.UserDTO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <%
 // 세션에서 사용자 정보 가져오기
@@ -35,7 +37,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 	<!-- 메인 콘텐츠 -->
 	<main>
 		<div class="main-div-wrapper">
-			<!-- 위시 리스트 -->
+			<!-- 위시 리스트 아이콘 -->
 			<div class="main-div-wishlist">
 				<h2 style="text-align: center;">
 					<img
@@ -44,6 +46,19 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 						style="width: 40px; height: 40px; margin-right: 5px;">
 					Forest of Knowledge
 				</h2>
+				
+				<!-- 임시 / 로그인 테스트  -->
+				<c:choose>
+					<c:when test="${sessionScope.userId eq null}">
+						<div>로그인 안댐</div>
+					</c:when>
+					<c:otherwise>
+						<div>로그인 댐 세션값 저장댐</div>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				<!-- 위시리스트 -->
 				<div class="main-div-wishlistcontainer">
 					<div class="main-div-wishlistcontent">
 						<div class="main-div-wishlisttitle">
@@ -62,8 +77,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 							</c:when>
 							<c:otherwise>
 								<ul class="main-div-ulist">
-									<li class="main-div-wish" onclick="wishList()">로그인 후 이용
-										부탁드립니다.</li>
+									<li class="main-div-wish" onclick="wishList()">로그인 후 이용 부탁 드립니다.</li>
 								</ul>
 							</c:otherwise>
 						</c:choose>
@@ -100,14 +114,17 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 			<!-- 신규 등록 스터디 -->
 
 			<div class="main-div-studycard main-div-studynew">
-			
+
 				<header class="main-div-studycardheader">
-				
+
 					<span class="main-span-label">NEW </span> <span
 						class="main-span-title"> 신규 등록 스터디</span>
 				</header>
 
 				<div class="main-div-studycontent">
+				
+				<!--  -->
+				<c:forEach var="newStudy" items="${newStudyList}">
 					<c:choose>
 						<c:when test="${not empty sessionScope.memberNumber}">
 							<div class="main-div-studyitem " onclick="goPage(this)">
@@ -117,27 +134,16 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 						</c:otherwise>
 					</c:choose>
 					<span class="main-span-icon">[개발]</span>
-					<div class="main-div-studyname">영국에서 HGXWCH이라는 사람은 1930년에 이
-						편지를 받았습니다. 그는 비서에게 복사해서 보내라고 했습니다. 며칠 뒤에 복권이 당첨되어 20억을 받았습니다</div>
-					<div class="main-div-studytext">이 편지는 영국에서 최초로 시작되어 일년에 한바퀴를
-						돌면서 받는 사람에게 행운을 주었고 지금은 당신에게로 옮겨진 이 편지는 4일 안에 당신 곁을 떠나야 합니다. 이 편지를
-						포함해서 7통을 행운이 필요한 사람에게 보내 주셔야 합니다. 복사를 해도 좋습니다. 혹 미신이라 하실지 모르지만 사실이
-						아니지롱.</div>
+					<div class="main-div-studyname">
+						<c:out value="${newStudy.studyTitle}" />
+					</div>
+					<div class="main-div-studytext">
+						<c:out value="${newStudy.studyDescript}" />
+					</div>
 				</div>
+				</c:forEach>
+				<!-- 끝 -->
 
-				<c:choose>
-					<c:when test="${not empty sessionScope.memberNumber}">
-						<div class="main-div-studyitem " onclick="goPage(this)">
-					</c:when>
-					<c:otherwise>
-						<div class="main-div-studyitem " onclick="notLogin(this)">
-					</c:otherwise>
-				</c:choose>
-				<span class="main-span-icon">[보안]</span>
-				<div class="main-div-studyname">보안 스터디 ㅋㅋ</div>
-				<div class="main-div-studytext">여긴 보안 내용이네.</div>
-			</div>
-			
 		</div>
 		</div>
 

@@ -46,7 +46,7 @@ public class LoginOkController implements Execute {
 			session.setAttribute("userNumber", userNumber);
 			result.setPath(request.getContextPath()+"/main.jsp");
 			System.out.println("@@@@@@"+userNumber);
-			session.setMaxInactiveInterval(10*60);
+//		session.setMaxInactiveInterval(10*60); // 세션 유지 시간 10분
 		
 //			if(userNumber != null) {
 //			

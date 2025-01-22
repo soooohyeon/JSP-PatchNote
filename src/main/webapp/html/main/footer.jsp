@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
+
 <!-- footer -->
+
+<%-- <jsp:include page="/html/main/footer.jsp" /> --%>   <!-- 푸터 사용 시 주석 해제 후 옆 주소 복사 해서 사용!! -->
+
         <footer class="main-footer-container">
             <div class="main-footer-content">
                 <div class="main-footer-links">
