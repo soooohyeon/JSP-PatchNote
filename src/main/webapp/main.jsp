@@ -31,9 +31,12 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 </head>
 
 <body>
+
+	
+	<!-- 위시 리스트 -->
 	<!-- 상단 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
-
+	
 	<!-- 메인 콘텐츠 -->
 	<main>
 		<div class="main-div-wrapper">

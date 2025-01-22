@@ -34,19 +34,20 @@ public class LoginOkController implements Execute {
 		userDTO.setUserPw(userPw);
 		
 		userNumber = loginDAO.login(userDTO);
-		
+		session.setAttribute("userNumber", userNumber);
 		System.out.println("#############" + userNumber);
+		session.setAttribute("userDTO", userDTO.getUserId());
+		session.setAttribute("userNick", userDTO.getUserNick());
 		
 		
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!"+ session.getId());
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+ session.getAttribute(userDTO.getUserNick()));
 		
 		if(userNumber != -1) {
 			
-			session.setAttribute("userNumber", userNumber);
+			session.getAttribute("userDTO");
 			result.setPath(request.getContextPath()+"/main.jsp");
 			System.out.println("@@@@@@"+userNumber);
-//		session.setMaxInactiveInterval(10*60); // 세션 유지 시간 10분
+
 		
 //			if(userNumber != null) {
 //			
