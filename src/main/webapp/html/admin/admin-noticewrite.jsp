@@ -29,7 +29,7 @@
           <h1 class="admin-h1-detailtitle">공지 등록</h1>
           
           <!--  폼 시작 -->
-          <form action="" method="">
+          <form action="${pageContext.request.contextPath}/admin/admin-noticewriteOk.ad" method="post">
             <!-- 공지 데이터 입력하는 부분 -->
             <div class="adminWrite-div-formwrapper">
 

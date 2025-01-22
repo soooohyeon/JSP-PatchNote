@@ -5,7 +5,7 @@
   padding: 0 5px;
 }
 .adminBanner-li-bannerwritedate { width: 20%; }
-li.adminBanner-li-bannerbtncontainer {
+.admin-ul-datawrap li.adminBanner-li-bannerbtncontainer {
   position: relative;
   overflow: visible;
   display: flex;

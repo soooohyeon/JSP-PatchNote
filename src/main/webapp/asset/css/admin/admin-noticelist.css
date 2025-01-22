@@ -6,7 +6,7 @@
 }
 .adminNotice-li-noticewriter { width: 10%; }
 .adminNotice-li-noticewritedate { width: 20%; }
-li.adminNotice-li-noticebtncontainer {
+.admin-ul-datawrap li.adminNotice-li-noticebtncontainer {
   position: relative;
   overflow: visible;
   display: flex;
