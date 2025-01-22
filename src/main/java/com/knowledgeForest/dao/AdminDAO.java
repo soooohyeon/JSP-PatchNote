@@ -64,14 +64,18 @@ public class AdminDAO {
 	
 //	스터디 목록 조회
 	public List<StudyUserDTO> selectStudyAll() {
-		System.out.println("DAO 드루와");
-		List<StudyUserDTO> studyList = sqlSession.selectList("AdminMapper.selectStudyAll");
-		System.out.println("adminDAO - selectStudyAll : " + studyList);
-		return studyList;
+		return sqlSession.selectList("AdminMapper.selectStudyAll");
 	}
 	
 //	스터디 목록 조회 - 검색
-
+	public List<StudyUserDTO> selectStudySearch(String keyword) {
+		return sqlSession.selectList("AdminMapper.selectStudySearch", keyword);
+	}
+	
+//	해당 스터디 삭제
+	public void deleteStudy (int studyNum) {
+		sqlSession.delete("AdminMapper.deleteStudy", studyNum);
+	}
 	
 //	공지 목록 조회
 	public List<NoticeDTO> selectNoticeAll() {
@@ -81,6 +85,21 @@ public class AdminDAO {
 //	공지 목록 조회 - 검색
 	public List<NoticeDTO> selectNoticeSearch(String keyword) {
 		return sqlSession.selectList("AdminMapper.selectNoticeSearch", keyword);
+	}
+	
+//	공지 상세 조회
+	public NoticeDTO selectOneNotice(int noticeNum) {
+		return sqlSession.selectOne("AdminMapper.selectOneNotice", noticeNum);
+	}
+	
+//	해당 공지 삭제
+	public void deleteNotice (int noticeNum) {
+		sqlSession.delete("AdminMapper.deleteNotice", noticeNum);
+	}
+	
+//	공지 등록
+	public void insertNotice (NoticeDTO noticeDTO) {
+		sqlSession.insert("AdminMapper.insertNotice", noticeDTO);
 	}
 	
 }

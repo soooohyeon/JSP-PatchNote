@@ -19,42 +19,53 @@ public class LoginOkController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("LoginOkcontroller test");
-		
-		
 		
 		LoginDAO loginDAO = new LoginDAO();
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
-		System.out.println("test");
 		
-		
-		
-		
+		int userNumber = 0;
+				
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		System.out.println("daotest");
-		userDTO = loginDAO.login(userId, userPw);
-		System.out.println("test");
-		if(userDTO != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userDTO", userDTO);
+		HttpSession session = request.getSession(); //session에 저장
+		
+		userDTO.setUserId(userId);
+		userDTO.setUserPw(userPw);
+		
+		userNumber = loginDAO.login(userDTO);
+		session.setAttribute("userNumber", userNumber);
+		System.out.println("#############" + userNumber);
+		session.setAttribute("userDTO", userDTO.getUserId());
+		session.setAttribute("userNick", userDTO.getUserNick());
+		
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+ session.getAttribute(userDTO.getUserNick()));
+		
+		if(userNumber != -1) {
 			
-			System.out.println(userDTO);
-			
-			Cookie cookie = new Cookie("userId", userId);
-			cookie.setMaxAge(60*60*24);
-			response.addCookie(cookie);
-			
-			
-			result.setPath(request.getContextPath());
-			result.setRedirect(true);
+			session.getAttribute("userDTO");
+			result.setPath(request.getContextPath()+"/main.jsp");
+			System.out.println("@@@@@@"+userNumber);
+//			session.setMaxInactiveInterval(10*60);
+		
+//			if(userNumber != null) {
+//			
+//			session.setAttribute("userDTO", userDTO);
+//			
+//			Cookie cookie = new Cookie("userId", userId);
+//			cookie.setMaxAge(60*60*24);
+//			response.addCookie(cookie);
+//			
+//			// 왜 안넘어가질까..
+//			result.setPath(request.getContextPath());
+//			result.setRedirect(true);
 			
 		}else {
-			result.setPath(request.getContextPath()+"/html/login/login.jsp");
-			result.setRedirect(true);
+			result.setPath(request.getContextPath()+"/login/login.me");
+			
 		}
-		
+		result.setRedirect(true);
 		return result;
 	}
 	

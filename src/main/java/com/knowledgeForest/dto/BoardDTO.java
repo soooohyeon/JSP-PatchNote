@@ -13,61 +13,86 @@ public class BoardDTO {
 //         CONSTRAINT FK_USER FOREIGN KEY (USER_NUM)
 //               REFERENCES TBL_USER(USER_NUM) ON DELETE CASCADE
 //      );
-   
-   private int boardNum;
-   private int userNum;
-   private String boardTitle;
-   private String boardContents;
-   private String boardUploadDate;
-   private String bordEditDate;
-   
-   public int getBoardNum() {
-      return boardNum;
-   }
-   public void setBoardNum(int boardNum) {
-      this.boardNum = boardNum;
-   }
-   public int getUserNum() {
-      return userNum;
-   }
-   public void setUserNum(int userNum) {
-      this.userNum = userNum;
-   }
-   public String getBoardTitle() {
-      return boardTitle;
-   }
-   public void setBoardTitle(String boardTitle) {
-      this.boardTitle = boardTitle;
-   }
-   public String getBoardContents() {
-      return boardContents;
-   }
-   public void setBoardContents(String boardContents) {
-      this.boardContents = boardContents;
-   }
-   public String getBoardUploadDate() {
-      return boardUploadDate;
-   }
-   public void setBoardUploadDate(String boardUploadDate) {
-      this.boardUploadDate = boardUploadDate;
-   }
-   public String getBordEditDate() {
-      return bordEditDate;
-   }
-   public void setBordEditDate(String bordEditDate) {
-      this.bordEditDate = bordEditDate;
-   }
-   public void setTitle(String title) {
-      // TODO Auto-generated method stub
-      
-   }
-   public void setContent(String content) {
-      // TODO Auto-generated method stub
-   }
+
+
+	private int boardNum;
+	private int userNum;
+	private String boardTitle;
+	private String boardContents;
+	private String boardAuthor;
+	private String boardUploadDate;
+	private String bordEditDate;
+
+	public int getBoardNum() {
+		return boardNum;
+	}
+
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
+
+	public int getUserNum() {
+		return userNum;
+	}
+
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+
+	public String getBoardContents() {
+		return boardContents;
+	}
+
+	public void setBoardContents(String boardContents) {
+		this.boardContents = boardContents;
+	}
+
+	public String getBoardAuthor() {
+		return boardAuthor;
+	}
+
+	public void setBoardAuthor(String boardAuthor) {
+		this.boardAuthor = boardAuthor;
+	}
+
+	public String getBoardUploadDate() {
+		return boardUploadDate;
+	}
+
+	public void setBoardUploadDate(String boardUploadDate) {
+		this.boardUploadDate = boardUploadDate;
+	}
+
+	public String getBordEditDate() {
+		return bordEditDate;
+	}
+
+	public void setBordEditDate(String bordEditDate) {
+		this.bordEditDate = bordEditDate;
+	}
+
+	public void setTitle(String title) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setContent(String content) {
+		// TODO Auto-generated method stub
+
+	}
+	
 	@Override
 	public String toString() {
-		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle + ", boardContents="
+		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle + ",boardAuthor = " + boardAuthor, boardContents="
 				+ boardContents + ", boardUploadDate=" + boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
 	}
-   
+
 }

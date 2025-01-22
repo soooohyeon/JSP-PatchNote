@@ -4,27 +4,42 @@
 <mapper namespace="UserMapper">
 
 	<!-- 사용자 정보 조회 -->
-	<select id="getUserInfo" parameterType="String"
+	<select id="getUserInfo" parameterType="int"
 		resultType="UserDTO">
-		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH,USER_PH,USER_NAME, USER_JOIN_DATE FROM TBL_USER WHERE USER_ID =
-		#{userId}
+		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,
+		USER_BIRTH,USER_PH,USER_NAME, USER_JOIN_DATE FROM TBL_USER WHERE
+		USER_NUM =
+		#{userNum}
 	</select>
 
 	<!-- 닉네임 중복 확인 -->
 	<select id="checkNickname" resultType="int">
-		SELECT CASE WHEN (SELECT COUNT(1) FROM TBL_USER WHERE USER_NICK = #{userNick}) > 0 THEN 1 ELSE 0 END FROM DUAL
+		SELECT CASE WHEN (SELECT
+		COUNT(1) FROM TBL_USER WHERE USER_NICK = #{userNick}) > 0 THEN 1 ELSE
+		0 END FROM DUAL
 	</select>
 
 	<!-- 사용자 정보 업데이트 -->
-	<update id="updateUser"
-		parameterType="com.knowledgeForest.dto.UserDTO">
-		UPDATE TBL_USER	SET USER_NICK = #{userNick}, USER_PH =#{userPH}, USER_PW = #{userPw} WHERE USER_ID = #{userId}
+	<update id="updateUser" parameterType="UserDTO">
+		UPDATE TBL_USER SET
+		USER_NICK = #{userNick}, USER_PH =#{userPH}, USER_PW = #{userPw} WHERE
+		USER_ID = #{userId}
 	</update>
-
 
 	<!-- 해당 유저 데이터 탈퇴 -->
 	<delete id="deleteUser" parameterType="int">
-		DELETE FROM TBL_USER WHERE USER_NUM = #{userNum}
+		DELETE FROM TBL_USER WHERE
+		USER_NUM = #{userNum}
 	</delete>
+
+	<!-- 작성한 게시판 글 -->
+	<select id="getBoardList" resultType="BoardDTO"
+		parameterType="int">
+		SELECT b.BOARD_NUM, b.USER_NUM, b.BOARD_TITLE, b.BOARD_CONTENTS,  TO_CHAR(b.BOARD_UPLOAD_DATE, 'YYYY-MM-DD') AS BOARD_UPLOAD_DATE, b.BOARD_EDIT_DATE,u.USER_NAME	AS BOARD_AUTHOR
+		FROM TBL_BOARD b JOIN TBL_USER u ON b.USER_NUM = u.USER_NUM WHERE
+		b.USER_NUM = #{userNum}
+	</select>
+
+
 
 </mapper>

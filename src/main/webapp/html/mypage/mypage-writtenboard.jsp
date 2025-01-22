@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +48,8 @@
 			<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
 				class="admin-img-logo" alt="Logo">
 			<ul id="ADMIN-UL-HEADERWRAP">
-				<li><a href="${pageContext.request.contextPath}/main/main.jsp">홈</a></li>
-				<li><a href="">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/main.jsp">홈</a></li>
+				<li><a href="${pageContext.request.contextPath}/main.jsp">로그아웃</a></li>
 			</ul>
 		</div>
 
@@ -55,8 +59,6 @@
 				<!-- 현재 페이지 제목 -->
 				<div class="mypage-h1-maintitle">
 					<h1>작성한 자유게시글</h1>
-					<br />
-					<p>''님이 작성한 자유게시글 목록 입니다</p>
 				</div>
 				<!-- 게시판 컨텐츠 정렬을 위한 div -->
 				<div class="mypage-div-contentscontainer">
@@ -67,56 +69,17 @@
 							<li class="board-header"><span class="board-number">번호</span>
 								<span class="board-title">제목</span> <span class="board-author">작성자</span>
 								<span class="board-date">작성일</span></li>
-							<li class="board-item"><span class="board-number">1</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 1</a></span> <span
-								class="board-author">작성자1</span> <span class="board-date">2025-01-11</span>
-							</li>
-							<li class="board-item"><span class="board-number">2</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 2</a></span> <span
-								class="board-author">작성자2</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">3</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 3</a></span> <span
-								class="board-author">작성자3</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">4</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 4</a></span> <span
-								class="board-author">작성자4</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">5</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 5</a></span> <span
-								class="board-author">작성자5</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">6</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 6</a></span> <span
-								class="board-author">작성자6</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">7</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 7</a></span> <span
-								class="board-author">작성자7</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">8</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 8</a></span> <span
-								class="board-author">작성자8</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">9</span> <span
-								class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 9</a></span> <span
-								class="board-author">작성자9</span> <span class="board-date">2025-01-10</span>
-							</li>
-							<li class="board-item"><span class="board-number">10</span>
-								<span class="board-title"><a
-									href="./../board/boardlistdetail.html">게시판 제목 10</a></span> <span
-								class="board-author">작성자10</span> <span class="board-date">2025-01-10</span>
-							</li>
+					
+							<c:forEach var="board" items="${boardList}">
+								<li class="board-item"
+									style="cursor: pointer;"
+									onclick="location.href='${pageContext.request.contextPath}/board/boardDetail.jsp?boardNum=${board.boardNum}'">
+									<span class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
+									<span class="board-author">${board.boardAuthor}</span> <span
+									class="board-date">${board.boardUploadDate}</span>
+								</li>
+							</c:forEach>
+
 						</ul>
 					</div>
 				</div>

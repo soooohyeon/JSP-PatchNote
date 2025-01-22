@@ -7,6 +7,8 @@
     <title>찜한 목록</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/mypage/mypage-deleteaccount.css" />
     <script defer src="${pageContext.request.contextPath}/asset/js/mypage/mypage-deleteaccount.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
   </head>
   <body>
     <!-- <header></header> -->

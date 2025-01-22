@@ -1,36 +1,41 @@
 package com.knowledgeForest.controller.study;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.StudyDAO;
 import com.knowledgeForest.dto.StudyDTO;
 
-public class StudyListOkController implements Execute {
+public class StudyUpdateOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		StudyDAO studyDAO = new StudyDAO();
+		StudyDTO studyDTO = new StudyDTO();
+		
 		Result result = new Result();
 		
-		List<StudyDTO> studyList = studyDAO.getStudy();
+		HttpSession session = request.getSession();
+		Integer studyNumber = (Integer)session.getAttribute("studyNumber");
+		String path = null;
 		
-		System.out.println("testtesttest" + studyList);
+		if(studyNumber == null) {
+			path = "/app/main/main-login.html";
+		}else {
+			path = "/app/board/boardUpdate.jsp";
+			request.setAttribute(path, session);
+		}
 		
-		request.setAttribute("studyList", studyList);
-		
-		result.setPath("/html/study/studylist.jsp");
+		result.setPath(path);
 		result.setRedirect(false);
-		
-		return result;
+		return null;
 	}
 
 }

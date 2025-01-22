@@ -1,7 +1,6 @@
 package com.knowledgeForest.controller.study;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,27 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.StudyDAO;
-import com.knowledgeForest.dto.StudyDTO;
 
-public class StudyListOkController implements Execute {
+public class StudyUpdateController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
+		int studyNumber = Integer.valueOf(request.getParameter("studyNumber"));
+		System.out.println(studyNumber);
 		StudyDAO studyDAO = new StudyDAO();
-		Result result = new Result();
 		
-		List<StudyDTO> studyList = studyDAO.getStudy();
+		request.setAttribute("study", studyDAO.select(studyNumber));
 		
-		System.out.println("testtesttest" + studyList);
+		request.getRequestDispatcher("/html/study/studylist-edit.jsp").forward(request, response);
 		
-		request.setAttribute("studyList", studyList);
-		
-		result.setPath("/html/study/studylist.jsp");
-		result.setRedirect(false);
-		
-		return result;
+		return null;
 	}
 
 }
