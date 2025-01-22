@@ -18,13 +18,10 @@ public class AdminStudyDeleteOkController implements Execute {
 		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
 
-//		boardNum 변수에 저장
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		
-		System.out.println("boardNum : " + boardNum);
-		
+//		studyNum 변수에 저장
+		int studyNum = Integer.parseInt(request.getParameter("studyNum"));
 //		스터디 데이터 삭제 메소드 실행 - boardNum 전달
-		adminDAO.deleteStudy(boardNum);
+		adminDAO.deleteStudy(studyNum);
 
 //		경로 설정
 		result.setPath(request.getContextPath() + "/admin/admin-studylist.ad");
