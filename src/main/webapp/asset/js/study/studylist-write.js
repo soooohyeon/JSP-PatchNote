@@ -37,7 +37,7 @@ tabList.forEach((item) => {
 });
 
 //정원 입력 시 숫자만 입력 가능
-const capacityInput = document.querySelector("input[name='groupLimit']");
+const capacityInput = document.querySelector("input[name='studyLimit']");
 capacityInput.addEventListener("input", (e) => {
   e.target.value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 입력가능
 
@@ -65,10 +65,11 @@ function goBack() {
 }
 
 // 글 등록을 눌렀을 때  alert, 스터디 목록 페이지로 이동
-function updateStudy() {
+function insertStudy(e) {
+	e.preventDefault(); // 기본 동작 방지
   if (confirm("스터디를 등록하시겠습니까?")) {
     alert("스터디가 등록되었습니다.");
-	console.log(userNum);
+	document.getElementById("STUDYLIST-FORM-WRITE").submit();
     location.href = "./studylist.jsp";
   }
 }

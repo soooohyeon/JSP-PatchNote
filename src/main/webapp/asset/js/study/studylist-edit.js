@@ -48,3 +48,15 @@ const categoryWrapper = document.querySelector(
     }
   });
   
+  function updateStudy(studyNum) {
+    if (
+      confirm("글 수정시 첨부파일이 삭제 됩니다." + "\n" + "수정하시겠습니까?")
+    ) {
+  	/*window.location.href = getContextPath() + "/study/studyUpdateOk.st?studyNum=" + studyNum;*/
+	document.getElementById("STUDYLIST-FORM-WRITE").submit();
+
+	console.log(studyNum);
+	alert("수정이 완료되었습니다.")
+    }
+  }
+  

@@ -34,7 +34,7 @@ function getContextPath() {
 	return contextPath;
 }
 
-//스터디 리스트에서 스터디를 선택하면
+/*//스터디 리스트에서 스터디를 선택하면
 //해당 스터디 상세로 이동시키는 함수
   const studyList = document.querySelectorAll(".studylist-div-grouptitle");
   studyList.forEach((item) => {
@@ -42,6 +42,13 @@ function getContextPath() {
       window.location.href = "studylist-detail.jsp"; // 이동
     });
   });
+*/
+
+/* 게시글 클릭시 상세페이지로 이동하는 함수 */
+function moveDetail(studyNum) {
+	console.log("studyList.js : moveDetail 함수 실행");
+	window.location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum; // 이동
+}
 
   //등록 버튼을 누르면 스터디 등록으로 이동
   function registerStudy(){
