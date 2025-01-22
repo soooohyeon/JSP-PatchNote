@@ -12,9 +12,8 @@
                     <p class="main-paragraph-contact">Contact: team.patchnote.official@gmail.com</p>
                     <p class="main-paragraph-copyright">Copyright Forest Info. All rights reserved</p>
                 </div>
-                <div class="main-footer-logo" >
-                    <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="Forest of Knowledge Logo" 
-                    class="main-img-footerlogo" onclick="goMain()">
+                <div class="main-footer-logo">
+                    <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="Forest of Knowledge Logo" class="main-img-footerlogo">
                 </div>
             </div>
         </footer>
