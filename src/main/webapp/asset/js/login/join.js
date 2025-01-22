@@ -235,8 +235,8 @@ const inpSec = document.querySelector('#JOIN-INPUT-BIRTH');
 
 // input 입력 글자수 제한하기 (number) - 생년월일
 function inputLenFunc() {
-    if (inpSec.value.length > 6) {
-        inpSec.value = inpSec.value.slice(0, 6);
+    if (inpSec.value.length > 8) {
+        inpSec.value = inpSec.value.slice(0, 8);
     };
     console.log(inpSec.value)
 }
