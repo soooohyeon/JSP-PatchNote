@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +31,13 @@
           <h1 class="admin-h1-detailtitle">공지 수정</h1>
           
           <!--  폼 시작 -->
-          <form action="" method="">
+          <form action="admin-noticeupdateOk.ad" method="post">
             <!-- 공지 데이터 입력하는 부분 -->
             <div class="adminWrite-div-formwrapper">
-
+				
+				<!-- 공지 번호를 받기 위해 사용 -->
+				<input type="hidden" name="noticeNum" value="${notice.noticeNum}">
+				
               <!-- 공지 제목 -->
               <div class="adminWrite-div-datawrap">
                 <div class="adminWrite-div-title">
@@ -40,7 +45,8 @@
                 </div>
                 <div class="adminWrite-div-content">
                   <div class="inputwrap">
-                    <input type="text" name="noticeTitle" id="noticeTitle" class="inputStyle" placeholder="공지 제목을 입력하세요.">
+                    <input type="text" name="noticeTitle" id="noticeTitle" class="inputStyle"
+						placeholder="공지 제목을 입력하세요." value="${notice.noticeTitle}">
                   </div>
                 </div>
               </div>
@@ -53,7 +59,7 @@
                   </div>
                   <div class="adminWrite-div-content">
                     <div class="inputwrap">
-                      <textarea name="noticeCotent" id="noticeCotent" class="inputStyle" placeholder="공지 내용을 입력하세요."></textarea>
+                      <textarea name="noticeCotent" id="noticeCotent" class="inputStyle" placeholder="공지 내용을 입력하세요."><c:out value="${notice.noticeContents}" /></textarea>
                     </div>
                   </div>
                 </div>
