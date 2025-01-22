@@ -26,7 +26,9 @@ public class StudyDTO {
     * TO_DATE('2025-01-12', 'YYYY-MM-DD'), TO_DATE('2025-01-12', 'YYYY-MM-DD'));
     * 
     */
-   
+	
+	
+	
    private int studyNum;
    private int userNum;
    private String studyTitle;

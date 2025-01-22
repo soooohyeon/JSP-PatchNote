@@ -45,7 +45,7 @@ public class LoginOkController implements Execute {
 		if(userNumber != -1) {
 			
 			session.getAttribute("userDTO");
-			result.setPath(request.getContextPath()+"/main.jsp");
+			result.setPath(request.getContextPath()+"/knowledgeForest.main");
 			System.out.println("@@@@@@"+userNumber);
 
 		

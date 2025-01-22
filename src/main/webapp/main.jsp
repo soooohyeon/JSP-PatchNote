@@ -5,14 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-
-<%
+<%-- <%
 // 세션에서 사용자 정보 가져오기
-HttpSession Session = request.getSession();
-UserDTO user = (UserDTO) Session.getAttribute("user");
+HttpSession session = request.getSession();
+int user = session.getAttribute("userDTO.getUserNum())");
 boolean isLoggedIn = (user != null); // 로그인 여부 확인
 %>
-
+ --%>
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,16 +30,30 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 <script src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
 </head>
 
-<body>
 
+			
+				
+				<!-- 임시 / 로그인 테스트  -->
+ <%-- 		<c:choose>
+					<c:when test="${sessionScope.userNumber eq null}">
+						<div>로그인 안댐</div>
+					</c:when>
+					<c:otherwise>
+						<div>로그인 댐 세션값 저장댐</div>
+					</c:otherwise>
+				</c:choose> --%> 
+				
+
+<body>
 	
-	<!-- 위시 리스트 -->
 	<!-- 상단 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
 	
 	<!-- 메인 콘텐츠 -->
+				
 	<main>
-		<div class="main-div-wrapper">
+		<div class="main-div-wrapper">				
+				
 			<!-- 위시 리스트 아이콘 -->
 			<div class="main-div-wishlist">
 				<h2 style="text-align: center;">
@@ -49,18 +63,6 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 						style="width: 40px; height: 40px; margin-right: 5px;">
 					Forest of Knowledge
 				</h2>
-				
-				<!-- 임시 / 로그인 테스트  -->
-				<c:choose>
-					<c:when test="${sessionScope.userId eq null}">
-						<div>로그인 안댐</div>
-					</c:when>
-					<c:otherwise>
-						<div>로그인 댐 세션값 저장댐</div>
-					</c:otherwise>
-				</c:choose>
-				
-				
 				<!-- 위시리스트 -->
 				<div class="main-div-wishlistcontainer">
 					<div class="main-div-wishlistcontent">
@@ -73,7 +75,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 						<c:choose>
 							<c:when test="${not empty sessionScope.memberNumber}">
 								<ul class="main-div-ulist">
-									<li class="main-div-wish">위시리스트 내용을 표시합니다.</li>
+									<li class="main-div-wish">위시 리스트 내용을 표시합니다.</li>
 									<li class="main-div-wish">예시 스터디 1</li>
 									<li class="main-div-wish">예시 스터디 2</li>
 								</ul>
@@ -88,7 +90,6 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 				</div>
 			</div>
 
-			<!-- 배너 -->
 			<div class="main-div-banner">
 				<div class="main-div-slide1">
 					<img
@@ -109,12 +110,9 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 		</div>
 
 
-
-		<!-- 신규/마감 임박 스터디 -->
 		<div class="main-div-container">
 
 
-			<!-- 신규 등록 스터디 -->
 
 			<div class="main-div-studycard main-div-studynew">
 
@@ -126,7 +124,6 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 
 				<div class="main-div-studycontent">
 				
-				<!--  -->
 				<c:forEach var="newStudy" items="${newStudyList}">
 					<c:choose>
 						<c:when test="${not empty sessionScope.memberNumber}">
@@ -145,13 +142,11 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 					</div>
 				</div>
 				</c:forEach>
-				<!-- 끝 -->
 
 		</div>
 		</div>
 
 
-		<!-- 마감 임박 스터디 -->
 		<div class="main-div-studycard main-div-studyhurry">
 			<header class="main-div-studycardheader">
 				<span class="main-span-label">Hurry </span> <span
@@ -188,8 +183,20 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 		</div>
 
 	</main>
+	
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<!-- 푸터 -->
+
+      <script>
+         let user = "${sessionScope.userNumber}";
+         console.log("main.jsp ======" + user + " 확인!!!!!");
+         console.log("main.jsp ======" +  + " 확인!!!!!");
+      </script>
+      
+       	<c:out value="${sessionScope.userNumber}" ></c:out>	
+       	<c:out value="${sessionScope.userNum}" />
+       	
+      
 	<jsp:include page="/html/main/footer.jsp" />
 </body>
 
