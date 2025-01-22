@@ -40,6 +40,11 @@
 		b.USER_NUM = #{userNum}
 	</select>
 
-
+	<!-- 신청한 게시판 글 -->
+	<select id="getStudyList" resultType="StudyDTO" parameterType="int">
+		SELECT * 
+		FROM TBL_STUDY_APPLY ts JOIN TBL_STUDY ts2 ON ts.STUDY_NUM = TS2.STUDY_NUM 
+		WHERE ts.USER_NUM = #{userNum}
+	</select>
 
 </mapper>

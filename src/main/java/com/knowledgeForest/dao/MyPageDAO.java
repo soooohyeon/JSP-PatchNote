@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardDTO;
+import com.knowledgeForest.dto.StudyDTO;
 import com.knowledgeForest.dto.UserDTO;
 
 public class MyPageDAO {
@@ -46,14 +47,16 @@ public class MyPageDAO {
 	}
 
 	// 신청한 스터디 조회
-	public int countApply(int userNum) {
-		return sqlsession.selectOne("UserMapper.countApply", userNum);
+	public List<StudyDTO> getStudyList(int userNum) {
+		List<StudyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
+		System.out.println("userMapper.getStudyList: " + studyList);
+		return studyList;
 	}
 
 	// 게시글 목록 조회
 	public List<BoardDTO> getBoardList(int userNum) {
 		List<BoardDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", userNum);
-		System.out.println("userMapper.getBoardList: "  + boardList);
+		System.out.println("userMapper.getBoardList: " + boardList);
 		return boardList;
 	}
 
