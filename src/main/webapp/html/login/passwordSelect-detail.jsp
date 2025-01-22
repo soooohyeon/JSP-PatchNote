@@ -15,7 +15,7 @@
 
 	<!-- 헤더 - 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
-	<form action="">
+	<form action="${pageContext.request.contextPath}/login/passwrdDetailOk.me" method = "post">
 		<main>
 			<div class="passwordSelect-detail-div-wrapper-h1-box">
 				<h1 class="passwordSelect-detail-h1-title">비밀번호 찾기</h1>
@@ -34,7 +34,7 @@
 
 				</div>
 				<div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PWALARM"></div>
-				<button type="button" class="passwordSelect-detail-btn-complete">완료</button>
+				<button type="submit" class="passwordSelect-detail-btn-complete">완료</button>
 			</div>
 
 		</main>

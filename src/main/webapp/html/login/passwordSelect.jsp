@@ -16,33 +16,32 @@
 	<jsp:include page="/html/main/header.jsp" />
 	
 	 <main>
-      <form action="">
+      <form action="${pageContext.request.contextPath}/login/passwordSelectOk.me">
       <div class="passwordSelect-div-wrapper-pwd-select">
         <div class="passwordSelect-div-h1-box">
           <h1 class="h1-title">비밀번호 찾기</h1>
         </div>
         <div class="passwordSelect-div-wrapper-all-box">
           <div class="passwordSelect-div-wrapper-input-box">
-            <input type="text" class="passwordSelect-input" placeholder="아이디" name="id" maxlength="10" id="PASSWORDSELECT-INPUT-ID" onkeyup="inputLenFunc2()" onblur="idCheck()">
+            <input type="text" class="passwordSelect-input" placeholder="아이디" name="userId" maxlength="10" id="PASSWORDSELECT-INPUT-ID" onkeyup="inputLenFunc2()" onblur="idCheck()">
           </div>
 
           <div class="passwordSelect-div-wrapper-input-box">
             <input
               type="text"
               class="passwordSelect-input"
-              placeholder="휴대폰 번호" name="phoneNumber" id="PASSWORDSELECT-INPUT-PHONENUMBER"
-            />
-            <button class="passwordSelect-btn" id="PASSWORDSELECT-BTN-SEND">발송</button>
+              placeholder="휴대폰 번호" name="userPH" id="PASSWORDSELECT-INPUT-PHONENUMBER"/>
+            <button type = "submit" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-SEND">발송</button>
           </div>
 
           <div class="passwordSelect-div-wrapper-input-box">
             <input
-              type="text"
+              type="number"
               class="passwordSelect-input"
-              placeholder="인증번호" name="authenticationNumber" id="PASSWORDSELECT-AUTHENTICATIONNUMBER" onkeydown="inputLenFunc1()"
+              placeholder="인증번호" name="authenticationNumber" id="PASSWORDSELECT-AUTHENTICATIONNUMBER" onkeyup="inputLenFunc6()"
             />
 
-            <button type="button" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-CHECK">확인</button>
+            <button type="submit" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-CHECK">확인</button>
           </div>
         </div>
       </div>

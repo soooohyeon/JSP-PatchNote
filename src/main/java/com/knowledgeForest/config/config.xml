@@ -23,7 +23,8 @@
 		<typeAlias type="com.knowledgeForest.dto.StudyApplyUserDTO" alias="StudyApplyUserDTO" />		
 
 		<typeAlias type="com.knowledgeForest.dto.BoardUserDTO" alias="BoardUserDTO" />		
-		<typeAlias type="com.knowledgeForest.dto.StudyUserDTO" alias="StudyUserDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.StudyUserDTO" alias="StudyUserDTO" />
+		<typeAlias type="com.knowledgeForest.dto.StudyApplyUserDTO" alias="StudyApplyUserDTO" />		
 	</typeAliases>
 
 	<environments default="oracle">
