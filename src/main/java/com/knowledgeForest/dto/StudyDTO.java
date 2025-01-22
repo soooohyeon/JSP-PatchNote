@@ -2,6 +2,7 @@ package com.knowledgeForest.dto;
 
 public class StudyDTO {
 
+
 	/*
 	 * -INSERT INTO TBL_STUDY ( STUDY_NUM , USER_NUM , STUDY_TITLE , STUDY_DESCRIPT
 	 * , STUDY_LOCATION , STUDY_START_DAY , STUDY_END_DAY , STUDY_START_TIME ,
@@ -187,5 +188,4 @@ public class StudyDTO {
 				+ ", studyUploadDate=" + studyUploadDate + ", studyEditDate=" + studyEditDate + ", studyApplyDate="
 				+ studyApplyDate + ", studyApplyStatus=" + studyApplyStatus + "]";
 	}
-
 }

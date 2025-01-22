@@ -75,7 +75,6 @@
 		<url-pattern>*.st</url-pattern>
 	</servlet-mapping>
 
-
 	<!-- Error Pages -->
 	<error-page>
 		<error-code>404</error-code>
