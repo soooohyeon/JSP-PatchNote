@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardDTO;
+import com.knowledgeForest.dto.BoardUserDTO;
 
 public class BoardDAO {
 
@@ -16,13 +17,24 @@ public class BoardDAO {
     }
 
     // 게시글 목록 조회
-    public List<BoardDTO> getBoardList() {
-        List<BoardDTO> boardList = sqlsession.selectList("BoardMapper.getBoardList");
+    public List<BoardUserDTO> getBoard() {
+    	System.out.println("boardListDao______________________");
+        List<BoardUserDTO> boardList = sqlsession.selectList("BoardMapper.getBoardList");
         return boardList;
     }
 
-   public boolean insertBoard(BoardDTO board) {
-      // TODO Auto-generated method stub
-      return false;
-   }
+	//	해당 게시글 상세 조회
+	public BoardUserDTO selectBoard(int boardNum) {
+		return sqlsession.selectOne("BoardMapper.selectBoard", boardNum);
+	}
+	
+	// 등록
+	public void insertBoard(BoardDTO boardDTO) {
+		sqlsession.insert("BoardMapper.insertBoard", boardDTO);
+	}
+	
+	// 삭제
+		public void deleteBoard(int boardDTO) {
+			sqlsession.delete("BoardMapper.deleteBoard", boardDTO);
+		}
 }

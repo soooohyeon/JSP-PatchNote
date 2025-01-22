@@ -1,10 +1,18 @@
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+	var hostIndex = location.href.indexOf(location.host) + location.host.length;
+	var contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
+
+	return contextPath;
+}
+
 //뒤로 가기 버튼을 눌렀을 때 이전 페이지로 이동
 function goBack() {
   window.history.back();
 }
 
 // 글 수정을 눌렀을 때  alert, 글 수정 페이지로 이동
-function updateStudy() {
+function updateBoard(boardNum) {
   if (
     confirm("글 수정시 첨부파일이 삭제 됩니다." + "\n" + "수정하시겠습니까?")
   ) {
@@ -12,15 +20,23 @@ function updateStudy() {
   }
 }
 //글 삭제를 눌렀을 때 띄워지는 alert
-function deleteStudy() {
+function deleteBoard(boardNum) {
   if (confirm("해당 스터디 글을 삭제하시겠습니까?")) {
-    //삭제 후 스터디 목록 화면으로 이동
-
-    alert("해당 스터디 글이 삭제되었습니다.");
-    window.location.href = "studylist.html"; // 이동
-  } else {
-    alert("취소되었습니다.");
-  }
+	$.ajax({
+		/* 글 삭제 컨트롤러로 이동, 보드넘버를 쿼리스트링으로 전달 */
+		url: getContextPath() + "/board/boardDeleteOk.bo?boardNum=" + boardNum,
+		type: "GET",
+		/* 글 삭제 성공 시 알람창 뜨면서 자유게시판 목록 페이지로 이동 */
+		success: () => {
+			alert('삭제가 완료되었습니다.');
+			location.href = getContextPath() + "/board/boardlist.bo";
+		},
+		/* 삭제 불가시 알람창 */
+		error: (xhr, status, error) => {
+			console.error("삭제 실패:", error);
+			alert("글 삭제에 실패했습니다.");
+		}
+	});
 }
 // 댓글 등록
 function writeComment() {
@@ -106,4 +122,5 @@ function writeCourage() {
   }
 
   alert("신청이 완료되었습니다.");
+}
 }
