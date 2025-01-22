@@ -77,9 +77,20 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/admin-noticewriteOk.ad":
 			result = new AdminNoticeWriteOkController().execute(request, response);
 			break;
+			
+//    	공지 등록
+		case "/admin/admin-updatewrite.ad":
+//			request.getRequestDispatcher("/html/admin/admin-noticewrite.jsp").forward(request, response);
+			result = new AdminNoticeUpdateController().execute(request, response);
+			break;
+			
+//    	공지 등록 완료
+		case "/admin/admin-updatewriteOk.ad":
+			result = new AdminNoticeUpdateOkController().execute(request, response);
+			break;
 
 //		공지 삭제
-		case "/admin/admin-noticeDeleteOk.ad":
+		case "/git admin/admin-noticeDeleteOk.ad":
 			result = new AdminNoticeDeleteOkController().execute(request, response);
 			break;
 
@@ -87,11 +98,11 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/admin-studyapplylist.ad":
 			request.getRequestDispatcher("/html/admin/admin-studyapplylist.jsp").forward(request, response);
 			break;
-		case "/admin/admin-studycommentlist.ad":
-			request.getRequestDispatcher("/html/admin/admin-studycommentlist.jsp").forward(request, response);
-			break;
 		case "/admin/admin-boardlist.ad":
 			request.getRequestDispatcher("/html/admin/admin-boardlist.jsp").forward(request, response);
+			break;
+		case "/admin/admin-studycommentlist.ad":
+			request.getRequestDispatcher("/html/admin/admin-studycommentlist.jsp").forward(request, response);
 			break;
 		case "/admin/admin-boardcommentlist.ad":
 			request.getRequestDispatcher("/html/admin/admin-boardcommentlist.jsp").forward(request, response);
