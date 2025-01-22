@@ -44,8 +44,8 @@
 
 	<!-- 상단 헤더 -->
 	<div id="ADMIN-DIV-HEADERCONTAINER">
-		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="admin-img-logo"
-			alt="Logo">
+		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
+			class="admin-img-logo" alt="Logo">
 		<ul id="ADMIN-UL-HEADERWRAP">
 			<li><a href="./../main/main.html">홈</a></li>
 			<li><a href="">로그아웃</a></li>
@@ -59,14 +59,11 @@
 			<!-- 현재 페이지 제목 -->
 			<div class="mypage-h1-maintitle">
 				<h1>찜한 목록</h1>
-				<br />
-				<p>''님이 찜하신 게시글 목록 입니다</p>
 			</div>
 			<!-- 게시판 컨텐츠 정렬을 위한 div -->
 			<div class="mypage-div-contentscontainer">
 				<div class="mypage-div-contentswrap">
 
-					<!-- 모임 항목 컨텐츠 1 -->
 					<div class="mypage-div-group">
 						<div class="mypage-div-groupinner">
 							<div class="mypage-div-groupinfowrapper datecontent-wrap">
@@ -99,205 +96,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- 모임 항목 컨텐츠 2 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 3 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 4 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 5 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 6 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 모임 항목 컨텐츠 7 -->
-					<div class="mypage-div-group">
-						<div class="mypage-div-groupinner">
-							<div class="mypage-div-groupinfowrapper datecontent-wrap">
-								<div class="mypage-div-enddate">마감일 &nbsp;| &nbsp;
-									2025.01.05</div>
-								<div class="mypage-div-groupstatus">모집 중</div>
-							</div>
-							<div class="mypage-div-grouptitle">
-								<a href="/webapp/html/study/studylist-detail.html"> 웹 보안의
-									기초부터 간단한 토이 프로젝트까지 </a>
-							</div>
-							<div class="mypage-div-groupinfowrapper">
-								<div class="mypage-div-groupcategory">보안</div>
-								<div class="mypage-div-groupmember">7/7</div>
-							</div>
-							<div class="mypage-div-groupmakerwrapper">
-								<div class="mypage-div-groupmaker">김철수</div>
-								<div class="mypage-div-likewrapper">
-									<img
-										src="${pageContext.request.contextPath}/asset/img/mypage/like.png"
-										alt="찜" class="mypage-img-like"
-										style="width: 30px; height: 30px; display: inline-block;"
-										onclick="toggleLike(this, true)" /> <img
-										src="${pageContext.request.contextPath}/asset/img/mypage/no-like.png"
-										alt="찜" class="mypage-img-nolike"
-										style="width: 30px; height: 30px; display: none;"
-										onclick="toggleLike(this, false)" />
-									<div class="mypage-div-likecount">7</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
 				</div>
 
 				<!-- 페이지네이션 -->

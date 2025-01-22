@@ -32,7 +32,7 @@
 		USER_NUM = #{userNum}
 	</delete>
 
-	<!-- 작성한 게시판 글 -->
+	<!-- 작성한 자유게시판 글 -->
 	<select id="getBoardList" resultType="BoardDTO"
 		parameterType="int">
 		SELECT b.BOARD_NUM, b.USER_NUM, b.BOARD_TITLE, b.BOARD_CONTENTS,  TO_CHAR(b.BOARD_UPLOAD_DATE, 'YYYY-MM-DD') AS BOARD_UPLOAD_DATE, b.BOARD_EDIT_DATE,u.USER_NAME	AS BOARD_AUTHOR
@@ -40,6 +40,26 @@
 		b.USER_NUM = #{userNum}
 	</select>
 
-
+	<!-- 신청한 스터디게시판 글 -->
+	<select id="getStudyList" resultType="StudyDTO" parameterType="int">
+		SELECT * 
+		FROM TBL_STUDY_APPLY ta 
+		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM
+		JOIN TBL_USER u ON ta.USER_NUM = u.USER_NUM  
+		WHERE ta.USER_NUM = #{userNum}
+	</select>
+	
+	
+	<!-- 찜한 목록 리스트 -->
+	<select id="getLikeList" resultType="StudyDTO" parameterType="int">
+		SELECT * FROM TBL_LIKE tl JOIN TBL_STUDY ts ON ts.STUDY_NUM = tl.STUDY_NUM WHERE tl.USER_NUM = #{studyNum}
+	</select>
+	
+	<!-- 신청 스터디 취소 -->
+	<delete id="deleteStudyApply" parameterType="int">
+		DELETE FROM TBL_STUDY_APPLY WHERE
+		STUDY_NUM = #{studyNum}
+	</delete>
+	
 
 </mapper>
