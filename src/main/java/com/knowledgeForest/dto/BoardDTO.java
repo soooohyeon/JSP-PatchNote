@@ -63,8 +63,11 @@ public class BoardDTO {
    }
    public void setContent(String content) {
       // TODO Auto-generated method stub
-      
    }
-   
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle + ", boardContents="
+				+ boardContents + ", boardUploadDate=" + boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
+	}
    
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
 <!DOCTYPE html>
@@ -35,74 +36,33 @@
 				class="boardlist-img-search" />
 		</button>
 	</form>
-
-	<!--타이틀   -->
-	<!--    <div class="boardlist-div-list">
-      <ul class="boardlist-ul-list">
-         <li class="boardlist-li-header"><span class="board-number">카테고리</span>
-            <span class="board-title">제목</span> <span class="board-author">작성자</span>
-            <span class="board-date">작성일</span></li> -->
-
+	
 	<div class="boardlist-div-list">
 		<ul class="boardlist-ul-list">
-			<li class="boardlist-li-header"><span class="board-number">카테고리</span>
-				<span class="board-title">제목</span> <span class="board-author">작성자</span>
-				<span class="board-date">작성일</span></li>
-
-			<c:forEach var="board" items="${boardList}">
-
-				<li class="boardlist-li-item"
-					onclick="location.href='boardDetail.jsp?id=${board.id}'"><span
-					class="board-number">${board.category}</span> <span
-					class="board-title">${board.title}</span> <span
-					class="board-author">${board.author}</span> <span
-					class="board-date">${board.createdDate}</span></li>
-			</c:forEach>
+			<li class="boardlist-li-header">
+				<span class="board-number">번호</span>
+				<span class="board-title">제목</span>
+				<span class="board-author">작성자</span>
+				<span class="board-date">작성일</span>
+			</li>
+		<c:forEach var="board" items="${boardList}">
+			<!-- 메인내용용 내용들 -->
+			<li class="boardlist-li-item" onclick="movetodetailedpage(${board.boardNum})">
+				<span class="board-number">
+					<c:out value="${board.boardNum}" />
+				</span>
+				<span class="board-title">
+					<c:out value="${board.boardTitle}" />
+				</span>
+				<span class="board-author">
+					<c:out value="${board.userNick}" />
+				</span>
+				<span class="board-date">
+					<c:out value="${board.boardUploadDate}" />
+				</span>
+			</li>
+		</c:forEach>
 		</ul>
-	</div>
-
-	<!-- 메인내용용 내용들 -->
-	<li class="boardlist-li-item" onclick="movetodetailedpage()"><span
-		class="board-number">카테고리</span> <span class="board-title">게시판
-			제목1 [숫자]</span> <span class="board-author">작성자1</span> <span
-		class="board-date">2025-01-11</span></li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목2 [숫자]</span> <span
-		class="board-author">작성자2</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목3 [숫자]</span> <span
-		class="board-author">작성자3</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목4 [숫자]</span> <span
-		class="board-author">작성자4</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목5 [숫자]</span> <span
-		class="board-author">작성자5</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목6 [숫자]</span> <span
-		class="board-author">작성자6</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목7 [숫자]</span> <span
-		class="board-author">작성자7</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목8 [숫자]</span> <span
-		class="board-author">작성자8</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목9 [숫자]</span> <span
-		class="board-author">작성자9</span> <span class="board-date">2025-01-10</span>
-	</li>
-	<li class="boardlist-li-item"><span class="board-number">카테고리</span>
-		<span class="board-title">게시판 제목10 [숫자]</span> <span
-		class="board-author">작성자10</span> <span class="board-date">2025-01-10</span>
-	</li>
-	</ul>
 	</div>
 
 	<!-- 글쓰기 버튼 -->
