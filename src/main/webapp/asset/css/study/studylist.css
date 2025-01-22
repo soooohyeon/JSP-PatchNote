@@ -168,6 +168,7 @@ button {
 /*스터디의 마감일과 모집상태  */
 .studylist-div-enddate,
 .studylist-div-groupstatus {
+  list-style-type: none;
   color: #808080;
 }
 

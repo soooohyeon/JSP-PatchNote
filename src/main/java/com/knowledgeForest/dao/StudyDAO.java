@@ -19,22 +19,33 @@ public class StudyDAO {
 //		sqlSession.select(null, null);
 //	}
 	
-	public List<StudyDTO> getStudy() {
-		List<StudyDTO> list = sqlSession.selectList("StudyMapper.select");
-		
-		return list;
+//	public List<StudyDTO> getStudy() {
+//		List<StudyDTO> list = sqlSession.selectList("StudyMapper.select");
+//		
+//		return list;
+//	}
+	
+//	스터디 목록 조회
+	public List<StudyUserDTO> selectStudyAll() {
+		return sqlSession.selectList("StudyMapper.selectStudyAll");
 	}
 	
-	public int insertStudy(StudyDTO studyDTO) {
+//	스터디 목록 조회 - 검색
+	public List<StudyUserDTO> selectStudySearch(String keyword) {
+		return sqlSession.selectList("StudyMapper.selectStudySearch", keyword);
+	}
+	
+	public void insertStudy(StudyDTO studyDTO) {
 		
 		System.out.println("123123123"+studyDTO);
 		sqlSession.insert("StudyMapper.insert", studyDTO);
 		System.out.println("333333"+studyDTO);
 		
-		int studyNumber = sqlSession.selectOne("study.getCurrentStudyNumber");
-		studyDTO.setStudyNum(studyNumber);
-		System.out.println("마지막 생성된 값 : " + studyNumber);
-		return studyNumber;
+//		int studyNumber = sqlSession.selectOne("study.getCurrentStudyNumber");
+//		studyDTO.setStudyNum(studyNumber);
+//		System.out.println("마지막 생성된 값 : " + studyNumber);
+//		return studyNumber;
+		
 	}
 	
 	public StudyDTO select(int studyNumber) {
@@ -48,11 +59,12 @@ public class StudyDAO {
 	
 	//게시글 수정
 	public void update(StudyDTO studyDTO) {
+		System.out.println(studyDTO);
 		sqlSession.update("StudyMapper.editStudy", studyDTO);
 	}
 
 	public void delete(int studyNumber) {
-		sqlSession.delete("studyMapper.deleteStudy", studyNumber);
+		sqlSession.delete("StudyMapper.deleteStudy", studyNumber);
 		
 	}
 }

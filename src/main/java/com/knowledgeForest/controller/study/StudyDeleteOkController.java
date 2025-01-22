@@ -18,12 +18,12 @@ public class StudyDeleteOkController implements Execute {
 			throws ServletException, IOException {
 		StudyDAO studyDAO = new StudyDAO();
 		Result result = new Result();
-		int studyNumber = Integer.valueOf(request.getParameter("studyNumber"));
+		int studyNumber = Integer.valueOf(request.getParameter("studyNum"));
 		
 		studyDAO.delete(studyNumber);
 		
 //		response.sendRedirect("/board/boardListOk.bo");
-		result.setPath("/study/studyListOk.bo");
+		result.setPath(request.getContextPath() + "/study/studyList.st");
 		result.setRedirect(true);
 		return result;
 	}

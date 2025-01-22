@@ -19,10 +19,10 @@ public class StudyDetailOkController implements Execute {
 		StudyDAO studyDAO = new StudyDAO();
 		Result result =new Result();
 		
-//		int studyUserNum = Integer.parseInt(request.getParameter("studyNum"));
+		int studyNum = Integer.parseInt(request.getParameter("studyNum"));
 		
 //		StudyUserDTO detailStudy = studyDAO.selectStudy(studyUserNum);
-		StudyUserDTO detailStudy = studyDAO.selectStudy(3);	//3에 해당하는 게시글 조회
+		StudyUserDTO detailStudy = studyDAO.selectStudy(studyNum);	//3에 해당하는 게시글 조회
 		
 		request.setAttribute("detailStudy", detailStudy);
 		result.setPath("/html/study/studylist-detail.jsp");
