@@ -14,4 +14,19 @@
 		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
 	</insert>
 
+	<select id="pwSelect" parameterType = "UserDTO">
+		SELECT USER_ID, USER_PH
+		FROM TBL_USER
+		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
+	</select>
+
+	<update id="" parameterType = "">
+	
+		UPDATE TBL_USER
+		SET	#{userPw}
+		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
+	
+	
+	</update>
+
 </mapper>

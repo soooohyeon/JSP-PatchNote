@@ -27,5 +27,12 @@ public class LoginDAO{
 		return userNumber == null ? -1 : userNumber;
 	}
 	
+	//첫번째 비밀번호 찾기 페이지
+	public void selectPw(UserDTO userDTO) {
+		sqlsession.selectOne("LoginMapper.selectPw");
+		
+	}
 	
+	
+	//두번째 비밀번호 찾기 페이지
 }
