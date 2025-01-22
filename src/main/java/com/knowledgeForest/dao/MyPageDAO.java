@@ -41,7 +41,7 @@ public class MyPageDAO {
 		return count > 0;
 	}
 
-	// 작성한 스터디 조회
+	// 만든 스터디 조회
 	public int countStudy(int userNum) {
 		return sqlsession.selectOne("UserMapper.countStudy", userNum);
 	}
@@ -51,6 +51,12 @@ public class MyPageDAO {
 		List<StudyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
 		System.out.println("userMapper.getStudyList: " + studyList);
 		return studyList;
+	}
+
+	// 신청한 스터디 취소
+	public void deleteStudyApply(int studyNum) {
+		sqlsession.delete("UserMapper.deleteStudyApply", studyNum);
+		System.out.println("스터디 신청 취소됨");
 	}
 
 	// 게시글 목록 조회
