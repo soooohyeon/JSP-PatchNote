@@ -135,4 +135,41 @@
 		VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle}, #{noticeContents})
 	</insert>
 	
+	<!-- 공지 수정 -->
+	<update id="updateNotice" parameterType="NoticeDTO">
+		UPDATE TBL_NOTICE
+		SET NOTICE_TITLE=#{noticeTitle}, NOTICE_CONTENTS=#{noticeContents}, NOTICE_EDIT_DATE=SYSDATE 
+		WHERE NOTICE_NUM=#{noticeNum}
+	</update>
+	
+	<!-- ==================================================================== -->
+	
+	<!-- 스터디 신청 목록 -->
+	<select id="selectStudyApplyAll" resultType="StudyApplyUserDTO">
+		SELECT tsa.STUDY_APPLY_NUM, tsa.STUDY_NUM, tu.USER_NUM, tsa.STUDY_APPLY_STATUS, tu.USER_ID, tu.USER_NICK,
+			(SELECT COUNT(tsa2.STUDY_APPLY_NUM) FROM TBL_STUDY_APPLY tsa2 WHERE tsa.STUDY_NUM = tsa2.STUDY_NUM) AS participants,
+			(SELECT ts.STUDY_LIMIT FROM TBL_STUDY ts WHERE ts.STUDY_NUM = tsa.STUDY_NUM) AS limitParticipants,
+			(SELECT ts2.STUDY_DEADLINE FROM TBL_STUDY ts2 WHERE ts2.STUDY_NUM = tsa.STUDY_NUM) AS deadline
+		FROM TBL_STUDY_APPLY tsa
+		INNER JOIN TBL_USER tu
+		ON tsa.USER_NUM = tu.USER_NUM
+		ORDER BY STUDY_APPLY_NUM DESC
+	</select>
+	
+	<!-- 스터디 신청 목록 - 검색 -->
+	<select id="selectStudyApplySearch" resultType="StudyApplyUserDTO">
+		SELECT tsa.STUDY_APPLY_NUM, tsa.STUDY_NUM, tsa.STUDY_APPLY_STATUS, tu.USER_NUM, tu.USER_ID, tu.USER_NICK,
+			(SELECT COUNT(tsa2.STUDY_APPLY_NUM) FROM TBL_STUDY_APPLY tsa2 WHERE tsa.STUDY_NUM = tsa2.STUDY_NUM) AS participants,
+			(SELECT ts.STUDY_LIMIT FROM TBL_STUDY ts WHERE ts.STUDY_NUM = tsa.STUDY_NUM) AS limitParticipants,
+			(SELECT ts2.STUDY_DEADLINE FROM TBL_STUDY ts2 WHERE ts2.STUDY_NUM = tsa.STUDY_NUM) AS deadline
+		FROM TBL_STUDY_APPLY tsa
+		INNER JOIN TBL_USER tu
+		ON tsa.USER_NUM = tu.USER_NUM
+		WHERE tu.USER_ID LIKE #{keyword} OR tu.USER_NICK LIKE #{keyword}
+		ORDER BY STUDY_APPLY_NUM DESC
+	</select>
+	
+	
+	
+	
 </mapper>
