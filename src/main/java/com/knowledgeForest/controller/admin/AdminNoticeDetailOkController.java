@@ -1,7 +1,6 @@
 package com.knowledgeForest.controller.admin;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,30 +11,27 @@ import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.AdminDAO;
 import com.knowledgeForest.dto.NoticeDTO;
 
-public class AdminNoticeListOkController implements Execute {
+public class AdminNoticeDetailOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		AdminDAO adminDAO = new AdminDAO();
+		
 		Result result = new Result();
+		AdminDAO adminDAO = new AdminDAO();
 		
-		String keyword = request.getParameter("keyword");
-		List<NoticeDTO> noticeList = null;
+//		공지 번호 저장
+		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+//		공지 번호 전달 후 공지 정보 불러오기
+		NoticeDTO notice = adminDAO.selectOneNotice(noticeNum);
 		
-//		유저 목록 조회
-		if (keyword != null) {
-			keyword = '%' + keyword + '%';
-			noticeList = adminDAO.selectNoticeSearch(keyword);
-		} else {
-			noticeList = adminDAO.selectNoticeAll();
-		}
+//		화면으로 전달
+		request.setAttribute("notice", notice);
 		
-		request.setAttribute("noticeList", noticeList);
-		result.setPath("/html/admin/admin-noticelist.jsp");
+		result.setPath("/html/admin/admin-noticedetail.jsp");
 		result.setRedirect(false);
-
+		
 		return result;
 	}
-	
+
 }

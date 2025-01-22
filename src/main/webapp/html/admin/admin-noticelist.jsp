@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +35,7 @@
 					<!-- 검색창 -->
 					<form action="${pageContext.request.contextPath}/admin/admin-noticelist.ad" method="get">
 						<div class="admin-div-wrapper">
-							<input type="text" name="keyWord" class="admin-input-search"
+							<input type="text" name="keyword" class="admin-input-search"
 								placeholder="제목 또는 내용을 입력해주세요." value="" /> <img
 								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
@@ -60,7 +62,7 @@
 											<c:out value="${notice.noticeNum}" />
 										</li>
 										<li class="adminNotice-li-noticetitle">
-											<a href="./admin-noticedetail.html">
+											<a href="${pageContext.request.contextPath}/admin/admin-noticedetail.ad?noticeNum=${notice.noticeNum}">
 												<c:out value="${notice.noticeTitle}" />
 											</a>
 										</li>
@@ -72,8 +74,8 @@
 											src="${pageContext.request.contextPath}/asset/img/admin/menu-btn.png"
 											class="adminNotice-img-menubtn" alt="메뉴 버튼">
 											<div class="adminNotice-div-buttonswrap">
-												<a href="${pageContext.request.contextPath}/admin/admin-noticeupdate.ad?noticeNum=${notice.noticeUploadDate}" class="adminNotice-a-button">수정</a>
-												<a href="#" onclick="clickDeleteBtn(${notice.noticeNum})" class="adminNotice-a-button">삭제</a>
+												<a href="${pageContext.request.contextPath}/admin/admin-noticeupdate.ad?noticeNum=${notice.noticeNum}" class="adminNotice-a-button">수정</a>
+												<a href="" onclick="clickDeleteBtn(${notice.noticeNum})" class="adminNotice-a-button">삭제</a>
 											</div>
 										</li>
 									</ul>

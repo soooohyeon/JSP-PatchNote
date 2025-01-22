@@ -7,7 +7,7 @@ function getContextPath() {
 }
 
 // 삭제버튼 클릭 시
-function clickDeleteBtn(boardNum) {
+function clickDeleteBtn(studyNum) {
   // 확인, 취소 버튼 선택
   const isdelete = confirm('정말 삭제하시겠습니까?');
 
@@ -16,7 +16,7 @@ function clickDeleteBtn(boardNum) {
   if (isdelete) {
   	$.ajax({
   		/* 유저 삭제 컨트롤러로 이동, 유저 넘버 쿼리스트링으로 전달 */
-  		url: getContextPath() + "/admin/studyDeleteOk.ad?boardNum=" + boardNum,
+  		url: getContextPath() + "/admin/studyDeleteOk.ad?studyNum=" + studyNum,
   		type: "GET",
   		/* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지 새로고침 */
   		success: () => {

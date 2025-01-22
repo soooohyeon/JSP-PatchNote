@@ -99,4 +99,40 @@
 		WHERE STUDY_NUM = #{studyNum}
 	</delete>
 	
+	<!-- ==================================================================== -->
+	
+    <!-- 공지 목록 조회 -->
+    <select id="selectNoticeAll" resultType="NoticeDTO">
+		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS, NOTICE_UPLOAD_DATE, NOTICE_EDIT_DATE
+		FROM TBL_NOTICE
+		ORDER BY NOTICE_NUM DESC
+    </select>
+
+    <!-- 공지 목록 조회 - 검색 -->
+    <select id="selectNoticeSearch" resultType="NoticeDTO" parameterType="string">
+		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS, NOTICE_UPLOAD_DATE, NOTICE_EDIT_DATE
+		FROM TBL_NOTICE
+		WHERE NOTICE_TITLE LIKE #{keyword} OR NOTICE_CONTENTS LIKE #{keyword}
+		ORDER BY NOTICE_NUM DESC
+    </select>
+	
+	<!-- 해당 공지 상세 조회 -->
+	<select id="selectOneNotice" resultType="NoticeDTO" parameterType="int">
+		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS, NOTICE_UPLOAD_DATE, NOTICE_EDIT_DATE
+		FROM TBL_NOTICE
+		WHERE NOTICE_NUM = #{noticeNum}
+	</select>
+	
+	<!-- 해당 공지 데이터 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM TBL_NOTICE
+		WHERE NOTICE_NUM = #{noticeNum}
+	</delete>
+	
+	<!-- 공지 등록 -->
+	<insert id="insertNotice" parameterType="NoticeDTO">
+		INSERT INTO TBL_NOTICE (NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS)
+		VALUES(SEQ_NOTICE.NEXTVAL, #{noticeTitle}, #{noticeContents})
+	</insert>
+	
 </mapper>
