@@ -1,8 +1,18 @@
 const searchInput = document.querySelector(".boardlist-input-search");
 const wrapper = document.querySelector(".boardlist-div-wrapper");
 
-function movetodetailedpage(){
-  window.location.href="./boardlistdetail.html";
+
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+   var hostIndex = location.href.indexOf (location.host) + location.host.length;
+   var contextPath = location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+   
+   return contextPath;
+}
+
+
+function movetodetailedpage(boardNum){
+  window.location.href = getContextPath() + "/board/boarddetail.bo?boardNum=" + boardNum;
 }
 
 // input이 포커스 될 때 wrapper에 클래스 추가
