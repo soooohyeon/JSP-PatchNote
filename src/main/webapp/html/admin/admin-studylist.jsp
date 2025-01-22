@@ -68,7 +68,7 @@
 										</li>
 										<li class="adminStudy-li-studytitle">
 											<!-- 사용자 화면의 스터디 상세페이지로 이동 -->
-											<a href="./../study/studylist-detail.html">
+											<a href="${pageContext.request.contextPath}/study/studyDetailOk.st?studyNum=${study.studyNum}">
 												<c:out value="${study.studyTitle}" />
 											</a>
 										</li>

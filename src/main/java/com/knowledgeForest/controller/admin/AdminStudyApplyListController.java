@@ -57,7 +57,6 @@ public class AdminStudyApplyListController implements Execute {
 
 //        현재 시스템 DATE 전달
 		request.setAttribute("today", LocalDate.now());
-		
 		request.setAttribute("studyApplyList", studyApplyList);
 		result.setPath("/html/admin/admin-studyapplylist.jsp");
 		result.setRedirect(false);

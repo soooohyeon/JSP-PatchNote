@@ -169,7 +169,19 @@
 		ORDER BY STUDY_APPLY_NUM DESC
 	</select>
 	
+	<!-- 스터디 신청 취소 -->
+	<delete id="deleteStudyApply" parameterType="int">
+		DELETE FROM TBL_STUDY_APPLY
+		WHERE STUDY_APPLY_NUM= #{applyNum}
+	</delete>
 	
-	
-	
+	<!-- 스터디 신청 상세 조회 -->
+	<select id="selectStudyApplyOne" parameterType="int" resultType="StudyApplyDTO">
+		SELECT ts.STUDY_NUM, STUDY_TITLE, STUDY_LIMIT, STUDY_DEADLINE, STUDY_START_DAY, STUDY_END_DAY,
+			STUDY_START_TIME, STUDY_END_TIME, STUDY_CATEGORY, tsa.STUDY_APPLY_NUM, tsa.STUDY_APPLY_DATE, tsa.STUDY_APPLY_STATUS, tsa.USER_DETERMINATION
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_STUDY_APPLY tsa
+		ON ts.STUDY_NUM = tsa.STUDY_NUM
+		WHERE tsa.STUDY_APPLY_NUM = #{studyApplyNum}
+	</select>
 </mapper>
