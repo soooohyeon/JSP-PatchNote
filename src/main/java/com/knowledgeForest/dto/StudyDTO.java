@@ -2,190 +2,176 @@ package com.knowledgeForest.dto;
 
 public class StudyDTO {
 
+   /*
+    * -INSERT INTO TBL_STUDY ( 
+    * STUDY_NUM 
+    * , USER_NUM 
+    * , STUDY_TITLE 
+    * , STUDY_DESCRIPT
+    * , STUDY_LOCATION 
+    * , STUDY_START_DAY 
+    * , STUDY_END_DAY 
+    * , STUDY_START_TIME 
+    * , STUDY_END_TIME 
+    * , STUDY_LIMIT
+    * , STUDY_DEADLINE 
+    * , STUDY_SHOWPH 
+    * , STUDY_CATEGORY
+    * , STUDY_UPLOAD_DATE 
+    * , STUDY_EDIT_DATE)
+    *  VALUES (1, 17, 'dolorum 스터디',
+    * 'Assumenda veritatis architecto sunt illo. 스터디입니다.', '정선군 백제고분',
+    * TO_DATE('2025-01-21', 'YYYY-MM-DD'), TO_DATE('2025-01-29', 'YYYY-MM-DD'),
+    * '14:00', '23:00', 16, TO_DATE('2025-01-17', 'YYYY-MM-DD'), 0, 1,
+    * TO_DATE('2025-01-12', 'YYYY-MM-DD'), TO_DATE('2025-01-12', 'YYYY-MM-DD'));
+    * 
+    */
+   
+   private int studyNum;
+   private int userNum;
+   private String studyTitle;
+   private String studyDescript;
+   private String studyLocation;
+   private String studyStartDay;
+   private String studyEndDay;
+   private String studyStartTime;
+   private String studyEndTime;
+   private int studyLimit;
+   private String studyDeadline;
+   private int studyShowph;
+   private int studyCategory;
+   private String studyUploadDate;
+   private String studyEditDate;
 
-	/*
-	 * -INSERT INTO TBL_STUDY ( STUDY_NUM , USER_NUM , STUDY_TITLE , STUDY_DESCRIPT
-	 * , STUDY_LOCATION , STUDY_START_DAY , STUDY_END_DAY , STUDY_START_TIME ,
-	 * STUDY_END_TIME , STUDY_LIMIT , STUDY_DEADLINE , STUDY_SHOWPH , STUDY_CATEGORY
-	 * , STUDY_UPLOAD_DATE , STUDY_EDIT_DATE) VALUES (1, 17, 'dolorum 스터디',
-	 * 'Assumenda veritatis architecto sunt illo. 스터디입니다.', '정선군 백제고분',
-	 * TO_DATE('2025-01-21', 'YYYY-MM-DD'), TO_DATE('2025-01-29', 'YYYY-MM-DD'),
-	 * '14:00', '23:00', 16, TO_DATE('2025-01-17', 'YYYY-MM-DD'), 0, 1,
-	 * TO_DATE('2025-01-12', 'YYYY-MM-DD'), TO_DATE('2025-01-12', 'YYYY-MM-DD'));
-	 * 
-	 */
+   public int getStudyNum() {
+      return studyNum;
+   }
 
-	private int studyNum;
-	private int userNum;
-	private String userNick;
-	private String studyTitle;
-	private String studyDescript;
-	private String studyLocation;
-	private String studyStartDay;
-	private String studyEndDay;
-	private String studyStartTime;
-	private String studyEndTime;
-	private int studyLimit;
-	private String studyDeadline;
-	private int studyShowph;
-	private int studyCategory;
-	private String studyUploadDate;
-	private String studyEditDate;
-	private String studyApplyDate;
-	private int studyApplyStatus;
+   public void setStudyNum(int studyNum) {
+      this.studyNum = studyNum;
+   }
 
-	public int getStudyNum() {
-		return studyNum;
-	}
+   public int getUserNum() {
+      return userNum;
+   }
 
-	public void setStudyNum(int studyNum) {
-		this.studyNum = studyNum;
-	}
+   public void setUserNum(int userNum) {
+//      this.userNum = userNum;
+	   this.userNum = 11;
+   }
 
-	public int getUserNum() {
-		return userNum;
-	}
+   public String getStudyTitle() {
+      return studyTitle;
+   }
 
-	public String getuserNick() {
-		return userNick;
-	}
+   public void setStudyTitle(String studyTitle) {
+      this.studyTitle = studyTitle;
+   }
 
-	public void setUserNick(String userNick) {
-		this.userNick = userNick;
-	}
+   public String getStudyDescript() {
+      return studyDescript;
+   }
 
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
-	}
+   public void setStudyDescript(String studyDescript) {
+      this.studyDescript = studyDescript;
+   }
 
-	public String getStudyTitle() {
-		return studyTitle;
-	}
+   public String getStudyLocation() {
+      return studyLocation;
+   }
 
-	public void setStudyTitle(String studyTitle) {
-		this.studyTitle = studyTitle;
-	}
+   public void setStudyLocation(String studyLocation) {
+      this.studyLocation = studyLocation;
+   }
 
-	public String getStudyDescript() {
-		return studyDescript;
-	}
+   public String getStudyStartDay() {
+      return studyStartDay;
+   }
 
-	public void setStudyDescript(String studyDescript) {
-		this.studyDescript = studyDescript;
-	}
+   public void setStudyStartDay(String studyStartDay) {
+      this.studyStartDay = studyStartDay;
+   }
 
-	public String getStudyLocation() {
-		return studyLocation;
-	}
+   public String getStudyEndDay() {
+      return studyEndDay;
+   }
 
-	public void setStudyLocation(String studyLocation) {
-		this.studyLocation = studyLocation;
-	}
+   public void setStudyEndDay(String studyEndDay) {
+      this.studyEndDay = studyEndDay;
+   }
 
-	public String getStudyStartDay() {
-		return studyStartDay;
-	}
+   public String getStudyStartTime() {
+      return studyStartTime;
+   }
 
-	public void setStudyStartDay(String studyStartDay) {
-		this.studyStartDay = studyStartDay;
-	}
+   public void setStudyStartTime(String studyStartTime) {
+      this.studyStartTime = studyStartTime;
+   }
 
-	public String getStudyEndDay() {
-		return studyEndDay;
-	}
+   public String getStudyEndTime() {
+      return studyEndTime;
+   }
 
-	public void setStudyEndDay(String studyEndDay) {
-		this.studyEndDay = studyEndDay;
-	}
+   public void setStudyEndTime(String studyEndTime) {
+      this.studyEndTime = studyEndTime;
+   }
 
-	public String getStudyStartTime() {
-		return studyStartTime;
-	}
+   public int getStudyLimit() {
+      return studyLimit;
+   }
 
-	public void setStudyStartTime(String studyStartTime) {
-		this.studyStartTime = studyStartTime;
-	}
+   public void setStudyLimit(int studyLimit) {
+      this.studyLimit = studyLimit;
+   }
 
-	public String getStudyEndTime() {
-		return studyEndTime;
-	}
+   public String getStudyDeadline() {
+      return studyDeadline;
+   }
 
-	public void setStudyEndTime(String studyEndTime) {
-		this.studyEndTime = studyEndTime;
-	}
+   public void setStudyDeadline(String studyDeadline) {
+      this.studyDeadline = studyDeadline;
+   }
 
-	public int getStudyLimit() {
-		return studyLimit;
-	}
+   public int getStudyShowph() {
+      return studyShowph;
+   }
 
-	public void setStudyLimit(int studyLimit) {
-		this.studyLimit = studyLimit;
-	}
+   public void setStudyShowph(int studyShowph) {
+      this.studyShowph = studyShowph;
+   }
 
-	public String getStudyDeadline() {
-		return studyDeadline;
-	}
+   public int getStudyCategory() {
+      return studyCategory;
+   }
 
-	public void setStudyDeadline(String studyDeadline) {
-		this.studyDeadline = studyDeadline;
-	}
+   public void setStudyCategory(int studyCategory) {
+      this.studyCategory = studyCategory;
+   }
 
-	public int getStudyShowph() {
-		return studyShowph;
-	}
+   public String getStudyUploadDate() {
+      return studyUploadDate;
+   }
 
-	public void setStudyShowph(int studyShowph) {
-		this.studyShowph = studyShowph;
-	}
+   public void setStudyUploadDate(String studyUploadDate) {
+      this.studyUploadDate = studyUploadDate;
+   }
 
-	public int getStudyCategory() {
-		return studyCategory;
-	}
+   public String getStudyEditDate() {
+      return studyEditDate;
+   }
 
-	public void setStudyCategory(int studyCategory) {
-		this.studyCategory = studyCategory;
-	}
+   public void setStudyEditDate(String studyEditDate) {
+      this.studyEditDate = studyEditDate;
+   }
 
-	public String getStudyUploadDate() {
-		return studyUploadDate;
-	}
-
-	public void setStudyUploadDate(String studyUploadDate) {
-		this.studyUploadDate = studyUploadDate;
-	}
-
-	public String getStudyEditDate() {
-		return studyEditDate;
-	}
-
-	public void setStudyEditDate(String studyEditDate) {
-		this.studyEditDate = studyEditDate;
-	}
-
-	public String getStudyApplyDate() {
-		return studyApplyDate;
-	}
-
-	public void setStudyApplyDate(String studyApplyDate) {
-		this.studyApplyDate = studyApplyDate;
-	}
-
-	public int getStudyApplyStatus() {
-		return studyApplyStatus;
-	}
-
-	public void setStudyApplyStatus(int studyApplyStatus) {
-		this.studyApplyStatus = studyApplyStatus;
-	}
-
-	@Override
-	public String toString() {
-		return "StudyDTO [studyNum=" + studyNum + ", userNum=" + userNum + ", userNick=" + userNick + ", studyTitle="
-				+ studyTitle + ", studyDescript=" + studyDescript + ", studyLocation=" + studyLocation
-				+ ", studyStartDay=" + studyStartDay + ", studyEndDay=" + studyEndDay + ", studyStartTime="
-				+ studyStartTime + ", studyEndTime=" + studyEndTime + ", studyLimit=" + studyLimit + ", studyDeadline="
-				+ studyDeadline + ", studyShowph=" + studyShowph + ", studyCategory=" + studyCategory
-				+ ", studyUploadDate=" + studyUploadDate + ", studyEditDate=" + studyEditDate + ", studyApplyDate="
-				+ studyApplyDate + ", studyApplyStatus=" + studyApplyStatus + "]";
-	}
+   @Override
+   public String toString() {
+      return "StudyDTO [studyNum=" + studyNum + ", userNum=" + userNum + ", studyTitle=" + studyTitle
+            + ", studyDescript=" + studyDescript + ", studyLocation=" + studyLocation + ", studyStartDay="
+            + studyStartDay + ", studyEndDay=" + studyEndDay + ", studyStartTime=" + studyStartTime
+            + ", studyEndTime=" + studyEndTime + ", studyLimit=" + studyLimit + ", studyDeadline=" + studyDeadline
+            + ", studyShowph=" + studyShowph + ", studyCategory=" + studyCategory + ", studyUploadDate="
+            + studyUploadDate + ", studyEditDate=" + studyEditDate + "]";
+   }
+   
 }

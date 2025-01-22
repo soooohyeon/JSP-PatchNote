@@ -79,7 +79,19 @@
                 <c:out value="${study.studyTitle}" />
               </div>
               <div class="studylist-div-groupinfowrapper">
-                <div class="studylist-div-groupcategory">보안</div>
+                <div class="studylist-div-groupcategory">
+	                <c:choose>
+				        <c:when test="${study.studyCategory == 0}">
+				            개발
+				        </c:when>
+				        <c:when test="${study.studyCategory == 1}">
+				            보안
+				        </c:when>
+				        <c:otherwise>
+				            알 수 없음
+				        </c:otherwise>
+				    </c:choose>
+				</div>
                 <div class="studylist-div-groupmember">
 					<c:out value="${study.participants}" />/<c:out value="${study.studyLimit}" />
 				</div>
