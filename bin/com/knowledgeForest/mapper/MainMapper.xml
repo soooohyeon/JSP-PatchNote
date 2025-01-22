@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="MainMapper">
+
+	<!-- 위시 리스트 -->
+	<select id="getWishList" parameterType="int" resultType="LikeDTO">
+		SELECT STUDY_TITLE FROM TBL_LIKE INNER JOIN TBL_STUDY ON
+		TBL_LIKE.STUDY_NUM = TBL_STUDY.STUDY_NUM
+		WHERE USER_NUM = #{userNum}
+		AND ROWNUM &lt;= 3 ORDER BY LIKE_NUM DESC
+	</select>
+
+	<!-- 신규 등록 스터디 -->
+	<select id="newStudy" resultType="studyDTO"> 
+		SELECT STUDY_NUM STUDY_CATEGORY STUDY_TITLE STUDY_DESCRIPT
+		FROM TBL_STUDY
+		WHERE ROWNUM &lt;= 2
+		ORDER BY STUDY_NUM DESC;
+	</select>
+
+	
+	<!-- 마감 임박 스터디 -->
+	<select id="endStudy" resultType="studyDTO">
+		SELECT STUDY_NUM STUDY_CATEGORY STUDY_TITLE STUDY_DESCRIPT STUDY_DEADLINE
+		FROM TBL_STUDY WHERE ROWNUM &lt;= 2 AND STUDY_DEADLINE >= SYSDATE
+		ORDER BY STUDY_DEADLINE;
+	</select>
+
+</mapper>

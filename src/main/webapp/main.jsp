@@ -100,7 +100,9 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 			<!-- 신규 등록 스터디 -->
 
 			<div class="main-div-studycard main-div-studynew">
+			
 				<header class="main-div-studycardheader">
+				
 					<span class="main-span-label">NEW </span> <span
 						class="main-span-title"> 신규 등록 스터디</span>
 				</header>
@@ -108,10 +110,10 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 				<div class="main-div-studycontent">
 					<c:choose>
 						<c:when test="${not empty sessionScope.memberNumber}">
-							<div class="main-div-studyitem " onclick="goPage(this)"></div>
+							<div class="main-div-studyitem " onclick="goPage(this)">
 						</c:when>
 						<c:otherwise>
-							<div class="main-div-studyitem " onclick="notLogin(this)"></div>
+							<div class="main-div-studyitem " onclick="notLogin(this)">
 						</c:otherwise>
 					</c:choose>
 					<span class="main-span-icon">[개발]</span>
@@ -125,16 +127,18 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 
 				<c:choose>
 					<c:when test="${not empty sessionScope.memberNumber}">
-						<div class="main-div-studyitem " onclick="goPage(this)"></div>
+						<div class="main-div-studyitem " onclick="goPage(this)">
 					</c:when>
 					<c:otherwise>
-						<div class="main-div-studyitem " onclick="notLogin(this)"></div>
+						<div class="main-div-studyitem " onclick="notLogin(this)">
 					</c:otherwise>
 				</c:choose>
 				<span class="main-span-icon">[보안]</span>
 				<div class="main-div-studyname">보안 스터디 ㅋㅋ</div>
 				<div class="main-div-studytext">여긴 보안 내용이네.</div>
 			</div>
+			
+		</div>
 		</div>
 
 
@@ -148,10 +152,10 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 			<div class="main-div-studycontent">
 				<c:choose>
 					<c:when test="${not empty sessionScope.memberNumber}">
-						<div class="main-div-studyitem " onclick="goPage(this)"></div>
+						<div class="main-div-studyitem " onclick="goPage(this)">
 					</c:when>
 					<c:otherwise>
-						<div class="main-div-studyitem " onclick="notLogin(this)"></div>
+						<div class="main-div-studyitem " onclick="notLogin(this)">
 					</c:otherwise>
 				</c:choose>
 				<span class="main-span-icon">[보안]</span>
@@ -161,15 +165,17 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 
 			<c:choose>
 				<c:when test="${not empty sessionScope.memberNumber}">
-					<div class="main-div-studyitem " onclick="goPage(this)"></div>
+					<div class="main-div-studyitem " onclick="goPage(this)">
 				</c:when>
 				<c:otherwise>
-					<div class="main-div-studyitem " onclick="notLogin(this)"></div>
+					<div class="main-div-studyitem " onclick="notLogin(this)">
 				</c:otherwise>
 			</c:choose>
 			<span class="main-span-icon">[개발]</span>
 			<div class="main-div-studyname">너만 오면 시작</div>
 			<div class="main-div-studytext">대충 구한다는 내용.</div>
+		</div>
+		</div>
 		</div>
 
 	</main>
