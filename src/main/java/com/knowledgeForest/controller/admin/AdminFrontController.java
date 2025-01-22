@@ -58,6 +58,16 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminStudyDeleteOkController().execute(request, response);
 			break;
 
+//		스터디 신청 관리
+		case "/admin/admin-studyapplylist.ad":
+			result = new AdminStudyApplyListController().execute(request, response);
+			break;
+			
+//		스터디 신청 상세
+		case "/admin/admin-studyapplydetail.ad":
+			request.getRequestDispatcher("/html/admin/admin-studyapplylist.jsp").forward(request, response);
+			break;
+			
 //    	공지 목록 조회
 		case "/admin/admin-noticelist.ad":
 			result = new AdminNoticeListOkController().execute(request, response);
@@ -79,25 +89,24 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 //    	공지 등록
-		case "/admin/admin-updatewrite.ad":
+		case "/admin/admin-noticeupdate.ad":
 //			request.getRequestDispatcher("/html/admin/admin-noticewrite.jsp").forward(request, response);
 			result = new AdminNoticeUpdateController().execute(request, response);
 			break;
 			
 //    	공지 등록 완료
-		case "/admin/admin-updatewriteOk.ad":
+		case "/admin/admin-noticeupdateOk.ad":
 			result = new AdminNoticeUpdateOkController().execute(request, response);
 			break;
 
 //		공지 삭제
-		case "/git admin/admin-noticeDeleteOk.ad":
+		case "/admin/admin-noticeDeleteOk.ad":
 			result = new AdminNoticeDeleteOkController().execute(request, response);
 			break;
+			
 
 			
-		case "/admin/admin-studyapplylist.ad":
-			request.getRequestDispatcher("/html/admin/admin-studyapplylist.jsp").forward(request, response);
-			break;
+			
 		case "/admin/admin-boardlist.ad":
 			request.getRequestDispatcher("/html/admin/admin-boardlist.jsp").forward(request, response);
 			break;

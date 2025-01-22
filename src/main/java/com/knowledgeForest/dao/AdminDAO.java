@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.NoticeDTO;
+import com.knowledgeForest.dto.StudyApplyUserDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 import com.knowledgeForest.dto.UserDTO;
 
@@ -101,5 +102,21 @@ public class AdminDAO {
 	public void insertNotice (NoticeDTO noticeDTO) {
 		sqlSession.insert("AdminMapper.insertNotice", noticeDTO);
 	}
+	
+//	공지 수정
+	public void updateNotice (NoticeDTO noticeDTO) {
+		sqlSession.insert("AdminMapper.updateNotice", noticeDTO);
+	}
+	
+//	스터디 신청 목록 조회
+	public List<StudyApplyUserDTO> selectStudyApplyAll () {
+		return sqlSession.selectList("AdminMapper.selectStudyApplyAll");
+	}
+
+//	스터디 신청 목록 조회 - 검색
+	public List<StudyApplyUserDTO> selectStudyApplySearch(String keyword) {
+		return sqlSession.selectList("AdminMapper.selectStudyApplySearch", keyword);
+	}
+	
 	
 }
