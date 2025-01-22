@@ -1,3 +1,13 @@
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+	var hostIndex = location.href.indexOf(location.host) + location.host.length;
+	var contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
+
+	return contextPath;
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
 	const slides = document.querySelectorAll(".main-div-banner img");
 	let currentIndex = 0;
@@ -39,7 +49,7 @@ function notLogin() {
 	// 비로그인일 때 스터디 글 클릭시
 	alert("로그인 후 이용바랍니다.");
 	// 비로그인 상태일때 로그인 페이지로 webapp/html이동
-	window.location.href = contextPath + "/login/login.me";
+	window.location.href = getContextPath() + "/login/login.me";
 }
 
 /**
@@ -58,17 +68,27 @@ function notLogin() {
 function goPage(studyNum) {
 
 	//  로그인 상태일때 스터디 상세페이지로 이동
-	location.href = contextPath + "/login/login.me"; //<----이 링크는 추후 변경 될 수 있습니다.
+	location.href = getContextPath() + "/login/login.me"; //<----이 링크는 추후 변경 될 수 있습니다.
 }
 
 // 비로그인 상태일 때 클릭 시 로그인 화면으로 이동
 
 function wishList() {
 
-	location.href = contextPath + "/login/login.me";
+	location.href = getContextPath() + "/login/login.me";
+	
 }
 
 function goMain() {
 	// 메인 페이지 이동 링크
-	location.href = contextPath + "/knowledgeForest.main";
+	location.href = getContextPath() + "/knowledgeForest.main";
+	
+	console.log("로고 클릭" + location.href)
 }
+
+
+
+
+
+
+

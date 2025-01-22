@@ -33,7 +33,7 @@ public class MainDAO {
 	// 마감 임박 스터디
 	public List<StudyDTO> getEndStudy() {
 		System.out.println("마감 임박 스터디 조회");
-		List<StudyDTO> endStudyList = sqlsession.selectList("MainMapper.endStudy");
+		List<StudyDTO> endStudyList = sqlsession.selectList("MainMapper.deadlineStudy");
 		return endStudyList;
 	}
 

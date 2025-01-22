@@ -43,8 +43,9 @@ public class StudyWriteOkController implements Execute {
 		System.out.println(studyDTO.getStudyDescript());
 		
 		//게시글 추가
-		int studyNumber = studyDAO.insertStudy(studyDTO);
-		System.out.println("생성된 게시글 번호 : " + studyNumber);
+//		int studyNumber = studyDAO.insertStudy(studyDTO);
+		studyDAO.insertStudy(studyDTO);
+//		System.out.println("생성된 게시글 번호 : " + studyNumber);
 		System.out.println(studyDTO);
 //		studyDAO.insertStudy(studyDTO);
 

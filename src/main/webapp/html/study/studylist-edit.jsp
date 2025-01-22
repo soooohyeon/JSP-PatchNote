@@ -15,11 +15,11 @@
     <nav class="main-nav-menuwrap">
       <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="main-img-logo" />
       <ul class="main-nav-ul">
-        <li><a href="./../notice/noticelist.html">공지</a></li>
-        <li><a href="./../board/boardlist.html">자유게시판</a></li>
-        <li><a href="./../study/studylist.html">스터디 모집</a></li>
-        <li><a href="./../login/join.html">회원가입</a></li>
-        <li><a href="./../login/login.html">로그인</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/notice/notice-list.jsp">공지</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/board/board-list.jsp">자유게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/study/studyList.st">스터디 모집</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/login/join.jsp">회원가입</a></li>
+        <li><a href="${pageContext.request.contextPath}/html/login/login.jsp">로그인</a></li>
       </ul>
     </nav>
     <main>
@@ -29,8 +29,11 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="studylist-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="STUDYLIST-FORM-WRITE">
+        <form id="STUDYLIST-FORM-WRITE"
+        	action="${pageContext.request.contextPath}/study/studyUpdateOk.st"
+			method="post">
           <!-- 한 행 -->
+          <input type="hidden" name="studyNum" value="${study.getStudyNum()}">
           <div class="studylist-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
             <div class="studylist-div-infowrapper">
@@ -40,7 +43,7 @@
                 class="studylist-input-groupinfo"
                 name="studyTitle"
                 placeholder="스터디 그룹명을 입력해주세요."
-                value="${board.getStudyTitle()}"
+                value="${study.getStudyTitle()}"
               />
             </div>
           </div>
@@ -71,6 +74,7 @@
                 class="studylist-input-groupinfo"
                 name="studyLimit"
                 placeholder="정원 수를 입력해주세요."
+                value="${study.getStudyLimit()}"
               />
             </div>
             <div class="studylist-div-infowrapperDual">
@@ -79,6 +83,7 @@
                 class="studylist-input-groupinfo"
                 placeholder="신청 마감일을 입력해주세요 ex) 20250110"
                 name = "studyDeadline"
+                value="${study.getStudyDeadline()}"
               />
             </div>
           </div>
@@ -89,6 +94,7 @@
                 class="studylist-input-groupinfo"
                 placeholder="시작날짜를 입력해주세요 ex) 20250110"
                 name ="studyStartDay"
+                value="${study.getStudyStartDay()}"
               />
             </div>
             <div class="studylist-div-infowrapperDual">
@@ -97,6 +103,7 @@
                 class="studylist-input-groupinfo"
                 placeholder="시작날짜를 입력해주세요 ex) 20250110"
                 name="studyEndDay"
+                value="${study.getStudyEndDay()}"
               />
             </div>
           </div>
@@ -109,6 +116,7 @@
                 type="time"
                 placeholder="시작시간을 입력해주세요 ex) 20250110"
                 name ="studyStartTime"
+                value="${study.getStudyStartTime()}"
               />
             </div>
             <div class="studylist-div-infowrapperDual">
@@ -118,6 +126,7 @@
                 type="time"
                 placeholder="종료시간를 입력해주세요 ex) 20250110"
                 name="studyEndTime"
+                value="${study.getStudyEndTime()}"
               />
             </div>
           </div>
@@ -130,6 +139,7 @@
                 class="studylist-input-groupinfo"
                 name="studyLocation"
                 placeholder="장소를 입력해주세요."
+                value="${study.getStudyLocation()}"
               />
             </div>
           </div>
@@ -140,7 +150,7 @@
               <textarea 
               placeholder="설명을 작성해주세요."
               name="studyDescript"
-              class="studylist-div-studycontents"></textarea>
+              class="studylist-div-studycontents">${study.getStudyDescript()}</textarea>
             </div>
             <div class="studylist-div-filewrap">
               <div class="label">첨부파일</div>
