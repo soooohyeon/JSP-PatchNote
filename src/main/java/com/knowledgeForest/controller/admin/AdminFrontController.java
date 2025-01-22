@@ -63,9 +63,14 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminStudyApplyListController().execute(request, response);
 			break;
 			
+//		스터디 신청 취소
+		case "/admin/admin-studyapplyDeleteOk.ad":
+			result = new AdminStudyApplyDeleteOkController().execute(request, response);
+			break;
+			
 //		스터디 신청 상세
 		case "/admin/admin-studyapplydetail.ad":
-			request.getRequestDispatcher("/html/admin/admin-studyapplylist.jsp").forward(request, response);
+			result = new AdminStudyApplyDetailController().execute(request, response);
 			break;
 			
 //    	공지 목록 조회
