@@ -1,5 +1,7 @@
 package com.knowledgeForest.dto;
 
+import java.util.Date;
+
 public class UserDTO {
 	
 	//field
@@ -8,6 +10,7 @@ public class UserDTO {
 	private String userPw;
 	private String userNick;
 	private String userBirth;
+//	private Date userBirth;
 	private String userPH;
 	private String userName;
 	private String userJoinDate;
@@ -44,7 +47,6 @@ public class UserDTO {
 	public void setUserBirth(String userBirth) {
 		this.userBirth = userBirth;
 	}
-
 	public String getUserPH() {
 		return userPH;
 	}
@@ -63,17 +65,12 @@ public class UserDTO {
 	public void setUserJoinDate(String userJoinDate) {
 		this.userJoinDate = userJoinDate;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "UserDTO [userNum=" + userNum + ", userId=" + userId + ", userPw=" + userPw + ", userNick=" + userNick
 				+ ", userBirth=" + userBirth + ", userPH=" + userPH + ", userName=" + userName + ", userJoinDate="
 				+ userJoinDate + "]";
 	}
-	
-
 
 	
-
 }

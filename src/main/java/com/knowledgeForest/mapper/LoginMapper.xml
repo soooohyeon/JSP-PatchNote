@@ -11,7 +11,7 @@
 
 	<insert id="join" parameterType = "UserDTO">
 		INSERT INTO TBL_USER(USER_NUM, USER_ID, USER_NICK, USER_PW, USER_BIRTH, USER_PH, USER_NAME)
-		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, #{userBirth}, #{userPH}, #{userName})
+		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
 	</insert>
 
 </mapper>
