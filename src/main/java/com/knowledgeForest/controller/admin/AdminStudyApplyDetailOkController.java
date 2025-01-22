@@ -14,7 +14,7 @@ import com.knowledgeForest.dao.AdminDAO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 
-public class AdminStudyApplyDetailController implements Execute {
+public class AdminStudyApplyDetailOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
@@ -35,15 +35,16 @@ public class AdminStudyApplyDetailController implements Execute {
 
 		try {
 			Date date1 = originalFormat.parse(originalDeadline); // 문자열 -> Date 변환
-			Date date2 = originalFormat.parse(originalStudyStartDay); // 문자열 -> Date 변환
-			Date date3 = originalFormat.parse(originalStudyEndDay); // 문자열 -> Date 변환
 			String deadline = targetFormat.format(date1); // 새로운 형식으로 변환 : yyyy-MM-dd
-			String studyStartDay = targetFormat.format(date2); // 새로운 형식으로 변환 : yyyy-MM-dd
-			String studyEndDay = targetFormat.format(date3); // 새로운 형식으로 변환 : yyyy-MM-dd
 			studyApply.setStudyDeadline(deadline); // DTO에 다시 설정
-			studyApply.setStudyDeadline(studyStartDay); // DTO에 다시 설정
-			studyApply.setStudyDeadline(studyEndDay); // DTO에 다시 설정
+			
+			Date date2 = originalFormat.parse(originalStudyStartDay); // 문자열 -> Date 변환
+			String studyStartDay = targetFormat.format(date2); // 새로운 형식으로 변환 : yyyy-MM-dd
+			studyApply.setStudyStartDay(studyStartDay); // DTO에 다시 설정
 
+			Date date3 = originalFormat.parse(originalStudyEndDay); // 문자열 -> Date 변환
+			String studyEndDay = targetFormat.format(date3); // 새로운 형식으로 변환 : yyyy-MM-dd
+			studyApply.setStudyEndDay(studyEndDay); // DTO에 다시 설정
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

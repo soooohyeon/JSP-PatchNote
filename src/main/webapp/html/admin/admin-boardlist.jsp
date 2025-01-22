@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +31,10 @@
           <h1 class="admin-h1-maintitle">자유게시판 관리</h1>
 
           <!-- 검색창 -->
-          <form action="" method="">
+          <form action="${pageContext.request.contextPath}/admin/admin-boardlist.ad" method="get">
             <div class="admin-div-wrapper">
-              <input type="text" class="admin-input-search"
-                placeholder="검색어를 입력해주세요." value=""/>
+              <input type="text" name="keyword" class="admin-input-search"
+                placeholder="제목 또는 작성자를 입력해주세요." value="<c:out value='${param.keyword}'/>"/>
               <img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
                 alt="search" class="admin-img-search"/>
             </div>
@@ -49,22 +51,30 @@
               <li class="adminBoard-li-boarddelete"></li>
             </ul>
 
-            <!-- 데이터 넣는 부분 - 임시데이터 (1) -->
-            <ul class="admin-ul-datawrap">
-              <li class="adminBoard-li-boardid lightdata">319</li>
-              <li class="adminBoard-li-boardtitle boardtitledata">
-                <!-- 사용자 화면의 자유게시판 상세페이지로 이동 -->
-                <a href="./../board/">
-                  안녕하세요 이번에 처음 가입했습니다.
-                </a>
-              </li>
-              <li class="adminBoard-li-usernickname lightdata">풀잎나무</li>
-              <li class="adminBoard-li-boardwritedate lightdata">1999.01.01</li>
-              <li class="adminBoard-li-boarddelete">
-                <input type="button" class="admin-btn-delete" onclick="clickDeleteBtn(event)" value="삭제">
-              </li>
-            </ul>
-
+			<c:choose>
+				<c:when test="${not empty boardList}">
+					<c:forEach var="board" items="${boardList}">
+			            <!-- 데이터 넣는 부분 - 임시데이터 (1) -->
+			            <ul class="admin-ul-datawrap">
+			              <li class="adminBoard-li-boardid lightdata"><c:out value="${board.boardNum}" /></li>
+			              <li class="adminBoard-li-boardtitle boardtitledata">
+			                <!-- 사용자 화면의 자유게시판 상세페이지로 이동 -->
+			                <a href="${pageContext.request.contextPath}/board/boarddetail.bo?boardNum=${board.boardNum}">
+			                  <c:out value="${board.boardTitle}" />
+			                </a>
+			              </li>
+			              <li class="adminBoard-li-usernickname lightdata"><c:out value="${board.userNick}" /></li>
+			              <li class="adminBoard-li-boardwritedate lightdata"><c:out value="${board.boardUploadDate}" /></li>
+			              <li class="adminBoard-li-boarddelete">
+			                <input type="button" class="admin-btn-delete" onclick="clickDeleteBtn(${board.boardNum})" value="삭제">
+			              </li>
+			            </ul>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div class="data-none">현재 등록된 공지가 없습니다.</div>
+				</c:otherwise>
+			</c:choose>
           </div>
           <!-- 자유게시판 글 테이블 끝 -->
           

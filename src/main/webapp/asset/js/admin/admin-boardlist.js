@@ -7,25 +7,25 @@ function getContextPath() {
 }
 
 // 삭제 버튼 클릭시
-function clickDeleteBtn(noticeNum) {
+function clickDeleteBtn(boardNum) {
 	// 확인, 취소 버튼 선택
 	const isdelete = confirm('정말 삭제하시겠습니까?');
 
 	// 확인 버튼 클릭시
 	if (isdelete) {
 		$.ajax({
-			/* 공지 삭제 컨트롤러로 이동, 공지 넘버 쿼리스트링으로 전달 */
-			url: getContextPath() + "/admin/noticeDeleteOk.ad?noticeNum=" + noticeNum,
+			/* 자유게시판 글 삭제 컨트롤러로 이동, 공지 넘버 쿼리스트링으로 전달 */
+			url: getContextPath() + "/admin/admin-boardDeleteOk.ad?boardNum=" + boardNum,
 			type: "GET",
-			/* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 */
+			/* 자유게시판 글 삭제 성공 시 알람창 뜨면서 목록 페이지로 이동 */
 			success: () => {
 				alert('삭제가 완료되었습니다.');
-				location.href = getContextPath() + "/admin/admin-noticelist.ad";
+				location.href = getContextPath() + "/admin/admin-boardlist.ad";
 			},
-			/* 탈퇴 불가시 알람창 */
+			/* 삭제 불가시 알람창 */
 			error: (xhr, status, error) => {
-				console.error("공지 삭제 실패:", error);
-				alert("공지 삭제 실패했습니다.");
+				console.error("자유게시판 글 삭제 실패:", error);
+				alert("삭제 실패했습니다.");
 			}
 		});
 	}

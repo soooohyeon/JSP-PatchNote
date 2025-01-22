@@ -38,7 +38,7 @@
 						method="get">
 						<div class="admin-div-wrapper">
 							<input type="text" name="keyword" class="admin-input-search"
-								placeholder="제목 또는 내용을 입력해주세요." value="" /> <img
+								placeholder="제목 또는 내용을 입력해주세요." value="<c:out value='${param.keyword}'/>" /> <img
 								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
 						</div>

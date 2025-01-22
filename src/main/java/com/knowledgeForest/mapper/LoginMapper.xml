@@ -20,13 +20,13 @@
 		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
 	</select>
 
-	<update id="" parameterType = "">
+<!-- 	<update id="" parameterType = "">
 	
 		UPDATE TBL_USER
 		SET	#{userPw}
 		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
 	
 	
-	</update>
+	</update> -->
 
 </mapper>

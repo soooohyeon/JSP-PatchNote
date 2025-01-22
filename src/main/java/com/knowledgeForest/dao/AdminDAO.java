@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
+import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
@@ -18,11 +19,32 @@ public class AdminDAO {
 	public AdminDAO() {
 		this.sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
+	
+//	신규 유저 최대 5명
+	public List<UserDTO> selectUserFive() {
+		return sqlSession.selectList("AdminMapper.selectUserFive");
+	}
 
+//	최신 스터디 최대 5개
+	public List<StudyUserDTO> selectStudyFive() {
+		return sqlSession.selectList("AdminMapper.selectStudyFive");
+	}
+
+//	최신 자유게시판 최대 5개
+	public List<BoardUserDTO> selectBoardFive() {
+		return sqlSession.selectList("AdminMapper.selectBoardFive");
+	}
+	
+//	최신 공지 최대 5개
+	public List<NoticeDTO> selectNoticeFive() {
+		return sqlSession.selectList("AdminMapper.selectNoticeFive");
+	}
+	
 //	모든 유저 목록 조회
 	public List<UserDTO> selectUserAll() {
 		return sqlSession.selectList("AdminMapper.selectUserAll");
 	}
+	
 	
 //	모든 유저 목록 조회 - 검색
 	public List<UserDTO> selectUserSearch(String keyword) {
@@ -129,5 +151,18 @@ public class AdminDAO {
 		return sqlSession.selectOne("AdminMapper.selectStudyApplyOne", studyApplyNum);
 	}
 	
+//	자유게시판 목록 조회
+	public List<BoardUserDTO> selectBoardAll () {
+		return sqlSession.selectList("AdminMapper.selectBoardAll");
+	}
+
+//	자유게시판 목록 조회 - 검색
+	public List<BoardUserDTO> selectBoardSearch(String keyword) {
+		return sqlSession.selectList("AdminMapper.selectBoardSearch", keyword);
+	}
 	
+//	자유게시판 글 삭제
+	public void deleteBoard(int boardNum) {
+		sqlSession.selectList("AdminMapper.deleteBoard", boardNum);
+	}
 }
