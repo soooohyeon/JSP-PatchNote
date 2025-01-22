@@ -80,7 +80,7 @@
 					<div class="studylist-div-infowrapper">
 						<div class="label">정원 수</div>
 						<div class="studylist-div-groupinfo">
-							[신청한 인원수] /
+							<c:out value="${detailStudy.participants}" /> /
 							<c:out value="${detailStudy.studyLimit}" />
 							명
 						</div>
@@ -277,8 +277,8 @@
 		</div>
 
 		<div class="studylist-div-couragewrapper">
-			<form action="" id="STUDYLIST-FORM-WRITECOURAGE">
-				<textarea name="studyContents" id="STUDYLIST-TEXTAREA-COURAGE"
+			<form action="get" id="STUDYLIST-FORM-WRITECOURAGE">
+				<textarea name="studyDeterMination" id="STUDYLIST-TEXTAREA-COURAGE"
 					data-counter="COURAGE-COUNTER" placeholder="각오 한마디를 남기세요"
 					oninput="updateCharacterCount(this, 200)"></textarea>
 			</form>
@@ -299,11 +299,11 @@
 					간의 사적 문제로 간주되며, 본 게시판 및 운영자는 이에 대해 어떠한 법적 책임도 지지 않음을 알려드립니다.</p>
 			</div>
 			<div class="studylist-div-btnwrapper">
-				<button class="studylist-btn-couragewrite" type="submit"
-					form="STUDYLIST-FORM-WRITECOURAGE" onclick="writeCourage(event)">
+				<button class="studylist-btn-couragewrite" type="button"
+					form="STUDYLIST-FORM-WRITECOURAGE" onclick="writeCourage(${detailStudy.studyNum})">
 					등록</button>
 				<button class="studylist-btn-couragecancel"
-					form="STUDYLIST-FORM-WRITECOURAGE" onclick="closeModel()">
+					form="STUDYLIST-FORM-WRITECOURAGE" onclick="closeModal()">
 					취소</button>
 			</div>
 		</div>
