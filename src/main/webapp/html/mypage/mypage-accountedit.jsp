@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
 	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-accountedit.css" />
 <script defer
 	src="${pageContext.request.contextPath}/asset/js/mypage/mypage-accountedit.js"></script>
-	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -54,7 +57,7 @@
 				</li>
 			</ul>
 		</div>
-
+		
 		<main>
 			<div class="mypage-div-main">
 				<div class="mypage-title">
@@ -103,7 +106,8 @@
 						<div class="mypage-div-wrapper2">
 							<div class="editpage-input-phoneNum">
 								<label for="phoneNum">전화번호</label> <input type="text"
-									id="phoneNum" placeholder="숫자만 입력해주세요" value="${userInfo.userPH}" name="userPH"/>
+									id="phoneNum" placeholder="숫자만 입력해주세요"
+									value="${userInfo.userPH}" name="userPH" />
 							</div>
 							<button class="mypage-btn-phoneNum-send" type="button">전송</button>
 						</div>

@@ -49,7 +49,12 @@ public class MyPageFrontController extends HttpServlet {
 			System.out.println("마이페이지 닉네임 중복처리");
 			result = new MyPageCheckNicknameOk().execute(request, response);
 			break;
-
+			
+		case "/mypage/MyPageDeleteOkController.my":
+			System.out.println("유저 탈퇴 처리");
+			result = new MyPageDeleteOkController().execute(request, response);
+			break;
+			
 		case "/mypage/mypage-applylist.my":
 			request.getRequestDispatcher("/html/mypage/mypage-applylist.jsp").forward(request, response);
 			break;
@@ -67,7 +72,8 @@ public class MyPageFrontController extends HttpServlet {
 			break;
 
 		case "/mypage/mypage-writtenboard.my":
-			request.getRequestDispatcher("/html/mypage/mypage-writtenboard.jsp").forward(request, response);
+			System.out.println("작성한 자유게시판");
+			result = new MyPageBoardListOkController().execute(request, response);
 			break;
 		}
 

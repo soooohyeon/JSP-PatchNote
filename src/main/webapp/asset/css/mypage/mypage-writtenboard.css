@@ -173,10 +173,6 @@ a{
   border-bottom: 1px solid #ddd;
 }
 
-.board-item:last-child {
-  border-bottom: none;
-}
-
 .board-number,
 .board-title,
 .board-author,

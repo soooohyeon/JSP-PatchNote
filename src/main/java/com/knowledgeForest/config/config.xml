@@ -19,6 +19,7 @@
 		<typeAlias type="com.knowledgeForest.dto.StudyDTO" alias="StudyDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.NoticeDTO" alias="NoticeDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.BannerDTO" alias="BannerDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.StudyUserDTO" alias="StudyUserDTO" />		
 	</typeAliases>
 
 	<environments default="oracle">
