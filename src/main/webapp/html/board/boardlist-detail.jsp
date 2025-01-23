@@ -32,11 +32,13 @@
     <h2>자유게시판</h2>
   </div>
   <!-- 수정 / 삭제 버튼 -->
-  <div class="boardlistdetail-detail-div-btnwrapper">
-    <span onclick="updateBoard(${boardDetail.boardNum})" class="boardlistdetail-span-editbtn">수정</span>
-    <span class="boardlistdetail-span-divider">|</span>
-    <span onclick="deleteBoard(${boardDetail.boardNum})" class="boardjfdslkfasjd boardlistdetail-span-deletebtn">삭제</span>
-  </div>
+  <c:if test="${sessionScope.userNumber == boardDetail.userNum}">
+	  <div class="boardlistdetail-detail-div-btnwrapper">
+	    <span onclick="updateBoard(${boardDetail.boardNum})" class="boardlistdetail-span-editbtn">수정</span>
+	    <span class="boardlistdetail-span-divider">|</span>
+	    <span onclick="deleteBoard(${boardDetail.boardNum})" class="boardjfdslkfasjd boardlistdetail-span-deletebtn">삭제</span>
+	  </div>
+  </c:if>
     
     <!-- 본문내용 닉네임 작성일 내용 -->
     <main>
@@ -52,10 +54,10 @@
         </div>
         <div class="boardlistdetail-div-main">
           <div class="title-rightline"><div>본문</div></div>
-          <div  class="boardlist-div-contents">
-			<c:out value="${boardDetail.boardContents}" />
-            <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="임시">
-          </div>
+         	<div  class="boardlist-div-contents">
+			 <c:out value="${boardDetail.boardContents}" /> 
+            <%-- <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" alt="임시"> --%>
+          </div> 
         </div>
       </div>
       <!-- 댓글 입력 창 -->

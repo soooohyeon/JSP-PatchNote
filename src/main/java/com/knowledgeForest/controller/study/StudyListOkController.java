@@ -44,7 +44,7 @@ public class StudyListOkController implements Execute {
 		
 //		검색어 저장
 		String keyword = request.getParameter("keyword");
-//		유저 목록 조회
+//		스터디 목록 조회
 		if (keyword != null) {
 			keyword = '%' + keyword + '%';
 			studyList = studyDAO.selectStudySearch(keyword);

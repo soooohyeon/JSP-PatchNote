@@ -8,19 +8,19 @@
     <title>지식의 숲</title>
     <link
       rel="stylesheet"
-      href="./../../asset/css/board/boardlistregistration.css"
+      href="${pageContext.request.contextPath}/asset/css/board/boardlistregistration.css"
     />
-    <link rel="stylesheet" href="./../../asset/css/main/header.css" />
-    <link rel="stylesheet" href="./../../asset/css/main/footer.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css" />
     <script
       defer
-      src="./../../asset/js/board/boardlistregistration.js"
+      src="${pageContext.request.contextPath}/asset/js/board/boardlistregistration.js"
     ></script>
   </head>
 
   <body>
     <!-- 상단 메뉴바 -->
-    <nav class="main-nav-menuwrap">
+    <!-- <nav class="main-nav-menuwrap">
       <img src="../../asset/img/main/logo.png" class="main-img-logo" />
       <ul class="main-nav-ul">
         <li><a href="./../notice/noticelist.html">공지</a></li>
@@ -29,7 +29,9 @@
         <li><a href="./../login/join.html">회원가입</a></li>
         <li><a href="./../login/login.html">로그인</a></li>
       </ul>
-    </nav>
+    </nav> -->
+    <!-- 상단 메뉴바  -->
+	<jsp:include page="/html/main/header.jsp" />
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="board-h1-title">게시글 등록</h1>
@@ -37,7 +39,7 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="board-FORM-WRITE">
+        <form id="board-FORM-WRITE" action="boardWriteOk.bo" method="post">
           <!-- 한 행 -->
           <div class="board-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
@@ -46,7 +48,7 @@
               <input
                 type="text"
                 class="board-input-groupinfo"
-                name="boardlistName"
+                name="boardTitle"
                 placeholder="제목을 입력해주세요"
               />
             </div>
@@ -57,7 +59,7 @@
               <div class="label">설명</div>
               <textarea
                 class="board-div-studycontents"
-                name="boardDescription"
+                name="boardContents"
               ></textarea>
             </div>
             <div class="board-div-filewrap">
@@ -74,7 +76,7 @@
           <button
             class="board-btn-submit"
             form="board-FORM-WRITE"
-            onclick="updateBoard()"
+            onclick="updateBoard(event)"
           >
             등록
           </button>
@@ -89,7 +91,7 @@
       </div>
     </main>
 
-    <footer class="main-footer-container">
+    <!-- <footer class="main-footer-container">
       <div class="main-footer-content">
         <div class="main-footer-links">
           <div class="main-footer-policies">
@@ -112,6 +114,8 @@
           />
         </div>
       </div>
-    </footer>
+    </footer> -->
+    	<!-- 푸터 -->
+	<jsp:include page="/html/main/footer.jsp" />
   </body>
 </html>

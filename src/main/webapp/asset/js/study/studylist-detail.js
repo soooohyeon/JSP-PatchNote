@@ -40,7 +40,7 @@ function updateStudy(studyNum) {
 */
 // 버튼 클릭 시 alert 창 표시
 function deleteStudy(studyNum) {
-
+	let userDetermination = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
 	console.log(studyNum);
 	$.ajax({
 
@@ -150,10 +150,12 @@ function writeCourage(studyNum) {
 	
 	console.log("함수실행!!!");
 
-	let courage = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
+	let userDetermination = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
 	let disclaimer = document.getElementById("STUDYLIST-CHECKBOX-AGREE").checked;
 
-	if (courage === "") {
+	console.log("dfsfsdf : "  + userDetermination);
+	
+	if (userDetermination === "") {
 		alert("각오를 입력해주세요.");
 		return;
 	}
@@ -172,15 +174,22 @@ function writeCourage(studyNum) {
 	if(confirm("스터디를 신청하시겠습니까?")){
 		$.ajax({
 			url:
-				getContextPath() + "/study/studyApplyInsertOk.st?studyNum=" + studyNum&&,
+				getContextPath() + "/study/studyApplyInsertOk.st?studyNum=" + studyNum,
 			type: "POST",
+			data: {
+				studyNum: studyNum,  // 전송할 데이터
+				userDetermination: userDetermination
+			},
 			success: () => {
 					alert("신청이 완료되었습니다.");
+					closeModal();
+					
 					location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
 			},
 			error: (xhr, status, error) => {
 				console.error("스터디 신청 실패:", error);
 				alert("스터디 신청에 실패했습니다.");
+				console.log(studyNum);
 			},
 		});
 	}
