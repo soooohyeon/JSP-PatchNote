@@ -58,14 +58,14 @@ public class LoginFrontController extends HttpServlet {
 		case "/login/login.me":
 			request.getRequestDispatcher("/html/login/login.jsp").forward(request, response);
 			break;
-		
+
 		case "/login/loginOk.me":
 			System.out.println("loginFrontController test");
 			result = new LoginOkController().execute(request, response);
-			break;	
+			break;
 
 		// 로그아웃 처리 추가
-			
+
 		case "/login/logout.me":
 			System.out.println("로그아웃 처리 시작");
 			HttpSession session = request.getSession(false); // 현재 세션 가져오기
@@ -75,8 +75,7 @@ public class LoginFrontController extends HttpServlet {
 			}
 			response.sendRedirect(request.getContextPath() + "/knowledgeForest.main"); // 메인 페이지로 이동
 			break;
-	    
-				
+
 		case "/login/join.me":
 			System.out.println("회원가입");
 			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response);
@@ -94,24 +93,21 @@ public class LoginFrontController extends HttpServlet {
 			request.getRequestDispatcher("/html/login/passwordSelect.jsp").forward(request, response);
 			break;
 
-		case "/login/passwordSelectOk.me" :
+		case "/login/passwordSelectOk.me":
 			System.out.println("비밀번호찾기 OK 페이지 프컨");
 			result = new PasswordOkController().execute(request, response);
 			break;
-			
-		case "/login/passwordDetail.me" :
+
+		case "/login/passwordDetail.me":
 			System.out.println("비밀번호 찾기 상세 프컨");
 			request.getRequestDispatcher("/html/login/passwordSelect-detail.jsp").forward(request, response);
 			break;
-			
+
 		case "/login/passwrdDetailOk.me":
 			System.out.println("비밀번호 찾기 OK 상세 프컨");
-			result = new PasswordDetailOkController().execute(request,response);
+			result = new PasswordDetailOkController().execute(request, response);
 			break;
 		}
-			
-			
-
 
 		if (result != null) {
 			System.out.println("로그인좀");

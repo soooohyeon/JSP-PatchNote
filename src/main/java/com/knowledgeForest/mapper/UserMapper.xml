@@ -41,7 +41,7 @@
 	</select>
 
 	<!-- 신청한 스터디게시판 글 -->
-	<select id="getStudyList" resultType="StudyDTO" parameterType="int">
+	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="int">
 		SELECT * 
 		FROM TBL_STUDY_APPLY ta 
 		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM

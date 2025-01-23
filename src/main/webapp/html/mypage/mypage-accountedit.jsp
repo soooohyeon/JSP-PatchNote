@@ -47,9 +47,9 @@
          <img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
             class="admin-img-logo" alt="Logo" />
          <ul id="ADMIN-UL-HEADERWRAP">
-            <li><a href="${request.getContextPath}/main/main-login.jsp">홈</a>
+            <li><a href="${pageContext.request.contextPath}/knowledgeForest.main">홈</a>
             </li>
-            <li><a href="${request.getContextPath}/main/main-logout.jsp">로그아웃</a>
+            <li><a href="${pageContext.request.contextPath}/login/logout.me">로그아웃</a>
             </li>
          </ul>
       </div>

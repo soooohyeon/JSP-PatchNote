@@ -46,10 +46,14 @@
 		<!-- 상단 헤더 -->
 		<div id="ADMIN-DIV-HEADERCONTAINER">
 			<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
-				class="admin-img-logo" alt="Logo">
+				class="admin-img-logo" alt="Logo" />
 			<ul id="ADMIN-UL-HEADERWRAP">
-				<li><a href="${pageContext.request.contextPath}/main.jsp">홈</a></li>
-				<li><a href="${pageContext.request.contextPath}/main.jsp">로그아웃</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/knowledgeForest.main">홈</a>
+				</li>
+				<li><a
+					href="${pageContext.request.contextPath}/login/logout.me">로그아웃</a>
+				</li>
 			</ul>
 		</div>
 
@@ -69,10 +73,9 @@
 							<li class="board-header"><span class="board-number">번호</span>
 								<span class="board-title">제목</span> <span class="board-author">작성자</span>
 								<span class="board-date">작성일</span></li>
-					
+
 							<c:forEach var="board" items="${boardList}">
-								<li class="board-item"
-									style="cursor: pointer;"
+								<li class="board-item" style="cursor: pointer;"
 									onclick="location.href='${pageContext.request.contextPath}/board/boardDetail.jsp?boardNum=${board.boardNum}'">
 									<span class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
 									<span class="board-author">${board.boardAuthor}</span> <span

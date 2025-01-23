@@ -51,10 +51,13 @@
 	<!-- 상단 헤더 -->
 	<div id="ADMIN-DIV-HEADERCONTAINER">
 		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
-			class="admin-img-logo" alt="Logo">
+			class="admin-img-logo" alt="Logo" />
 		<ul id="ADMIN-UL-HEADERWRAP">
-			<li><a href="${pageContext.request.contextPath}/main/main.html">홈</a></li>
-			<li><a href="">로그아웃</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/knowledgeForest.main">홈</a>
+			</li>
+			<li><a href="${pageContext.request.contextPath}/login/logout.me">로그아웃</a>
+			</li>
 		</ul>
 	</div>
 
@@ -76,10 +79,17 @@
 								<div class="mypage-div-groupinfowrapper datecontent-wrap">
 									<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
 										${study.studyApplyDate}</div>
-									<span class="study-deadline"
-										data-deadline="${study.studyDeadline}">
-										${study.studyDeadline}</span>
-
+									<span class="study-deadline"> ${study.studyDeadline}</span>
+									<!-- 마감, 모집 중 -->
+									<c:choose>
+										<c:when
+											test="${study.participants == study.studyLimit or study.studyDeadline < today}">
+											<li class="studylist-div-groupstatus">마감</li>
+										</c:when>
+										<c:otherwise>
+											<li class="studylist-div-groupstatus">모집 중</li>
+										</c:otherwise>
+									</c:choose>
 								</div>
 								<div class="mypage-div-grouptitle">
 									<a href="/webapp/html/study/studylist-detail.html">${study.studyTitle}</a>
@@ -95,7 +105,8 @@
 
 									</c:choose>
 
-									<button class="mypage-btn-cancel" onclick="cancelAction(${study.studyNum})">취소</button>
+									<button class="mypage-btn-cancel"
+										onclick="cancelAction(${study.studyNum})">취소</button>
 								</div>
 								<div class="mypage-div-groupmakerwrapper">
 									<div class="mypage-div-groupmaker">${study.userNick}</div>
