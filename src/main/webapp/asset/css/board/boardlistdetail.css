@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+
 }
 
 body { background-color: #f6f6f6; }
@@ -11,6 +12,7 @@ body { background-color: #f6f6f6; }
   font-weight: 500;
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 30px;
 }
 /* 수정|삭제 버튼 */
 .boardlistdetail-detail-div-btnwrapper {
@@ -76,6 +78,8 @@ body { background-color: #f6f6f6; }
   border-bottom: 1px solid #ccc;
   align-items: center;
 }
+
+.boardlistdetail-div-main > .boardlist-div-contents { padding: 50px 20px; }
 
 .boardlistdetail-div-header {
   border: 1px;

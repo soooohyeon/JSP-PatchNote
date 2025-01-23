@@ -40,16 +40,17 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="board-FORM-WRITE">
+        <form id="board-FORM-WRITE" action="boardEditOk.bo" method="post">
           <!-- 한 행 -->
           <div class="board-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
             <div class="board-div-infowrapper">
               <div class="label">제목</div>
+              <input type="hidden" name="boardNum" value = "${boardDetail.boardNum}">
               <input
                 type="text"
                 class="board-input-groupinfo"
-                name="boardlistName"
+                name="boardTitle"
                 placeholder="제목을 입력해주세요"
                 value = "${boardDetail.boardTitle}"
               />
@@ -59,7 +60,7 @@
           <div class="board-div-longwrapperlayer">
             <div class="board-div-textareawrapper">
               <div class="label">설명</div>
-              <textarea class="board-div-studycontents" name="boardDescription"><c:out value="${boardDetail.boardContents}" /></textarea>
+              <textarea class="board-div-studycontents" name="boardContents"><c:out value="${boardDetail.boardContents}" /></textarea>
             </div>
             <div class="board-div-filewrap">
               <div class="label">첨부파일</div>
@@ -75,7 +76,7 @@
           <button
             class="board-btn-submit"
             form="board-FORM-WRITE"
-            onclick="updateBoard()"
+            onclick="updateBoard(event)"
           >
             수정
           </button>

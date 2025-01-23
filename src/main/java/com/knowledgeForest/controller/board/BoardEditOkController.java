@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
+import com.knowledgeForest.dto.BoardDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
 
 public class BoardEditOkController implements Execute{
@@ -22,15 +23,16 @@ public class BoardEditOkController implements Execute{
 			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 			String boardTitle = request.getParameter("boardTitle");
 			String boardContents = request.getParameter("boardContents");
-			String userNick = request.getParameter("userNick");
 			
-			BoardUserDTO boardDetail = boardDAO.editBoard(boardNum);
+			BoardDTO boardDTO = new BoardDTO();
+			boardDTO.setBoardNum(boardNum);
+			boardDTO.setBoardTitle(boardTitle);
+			boardDTO.setBoardContents(boardContents);
+			System.out.println(boardDTO);
+			boardDAO.editBoard(boardDTO);
 			
-			request.setAttribute("boardDetail", boardDetail);
-			result.setPath("/html/board/boardlist-detail.jsp");
-					
-			
-			result.setRedirect(false);
+			result.setPath(request.getContextPath() + "/board/boardlist.bo");
+			result.setRedirect(true);
 			return result;
 	}
 }

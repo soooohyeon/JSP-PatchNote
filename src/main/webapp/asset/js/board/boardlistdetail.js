@@ -13,12 +13,12 @@ function goBack() {
 
 // 글 수정을 눌렀을 때  alert, 글 수정 페이지로 이동
 function updateBoard(boardNum) {
-  if (
+ /* if (
     confirm("글 수정시 첨부파일이 삭제 됩니다." + "\n" + "수정하시겠습니까?")
-  ) {
+  ) {*/
     alert("수정 페이지로 이동합니다.");
 	location.href = getContextPath() + "/board/boardEdit.bo?boardNum=" + boardNum;
-  }
+  /*}*/
 }
 //글 삭제를 눌렀을 때 띄워지는 alert
 function deleteBoard(boardNum) {

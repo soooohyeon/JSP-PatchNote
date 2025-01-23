@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Result;
 import com.knowledgeForest.controller.notice.NoticeDetailOkController;
@@ -29,7 +30,9 @@ public class BoardFrontController extends HttpServlet {
 	      System.out.println("자유게시판 컨트롤러 들어옴");
 	      String target = request.getRequestURI().substring(request.getContextPath().length());
 	      Result result = null;
-	
+
+	      request.setCharacterEncoding("UTF-8");
+	      
 	      switch(target) {
 	      case "/board/boarddetail.bo":
 	    	  result = new BoardDetailOkController().execute(request, response);
@@ -41,12 +44,14 @@ public class BoardFrontController extends HttpServlet {
 	    	  break;
 	      
 		case "/board/boardDeleteOk.bo" :
-			System.out.println("자유게시판 목록!!!!!!!!!!!!!!!!!!!!!!!!!!!들어옴");
 			result = new BoardDeleteOkController().execute(request, response);
 			break;
 	      
+		case "/board/boardWrite.bo" :
+			request.getRequestDispatcher("/html/board/boardlist-write.jsp").forward(request, response);
+			break;
+			
 		case "/board/boardWriteOk.bo" :
-			System.out.println("자유게시판 목록!!!!!!!!!!!!!!!!!!!!!!!!!!!들어옴");
 			result = new BoardWriteOkController().execute(request, response);
 			break;
 			

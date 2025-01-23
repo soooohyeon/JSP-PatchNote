@@ -13,11 +13,10 @@ function goBack() {
 }
 
 // 글 등록을 눌렀을 때  alert, 스터디 목록 페이지로 이동
-function updateBoard() {
+function updateBoard(event) {
   if (validateForm()) {
-    if (confirm("게시글을 등록하시겠습니까?")) {
-      alert("스터디가 등록되었습니다.");
-      location.href = "./boardlist.html";
+    if (!confirm("게시글을 등록하시겠습니까?")) {
+		event.preventDefault(); // 기본 동작(제출) 막기
     }
   }
 }

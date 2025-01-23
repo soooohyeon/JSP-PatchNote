@@ -39,7 +39,7 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="board-FORM-WRITE" action="" method="post">
+        <form id="board-FORM-WRITE" action="boardWriteOk.bo" method="post">
           <!-- 한 행 -->
           <div class="board-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
@@ -48,7 +48,7 @@
               <input
                 type="text"
                 class="board-input-groupinfo"
-                name="boardlistName"
+                name="boardTitle"
                 placeholder="제목을 입력해주세요"
               />
             </div>
@@ -56,11 +56,10 @@
 
           <div class="board-div-longwrapperlayer">
             <div class="board-div-textareawrapper">
-            <form id="board-FORM-WRITE" action="" method="post">
               <div class="label">설명</div>
               <textarea
                 class="board-div-studycontents"
-                name="boardDescription"
+                name="boardContents"
               ></textarea>
             </div>
             <div class="board-div-filewrap">
@@ -77,7 +76,7 @@
           <button
             class="board-btn-submit"
             form="board-FORM-WRITE"
-            onclick="updateBoard()"
+            onclick="updateBoard(event)"
           >
             등록
           </button>
