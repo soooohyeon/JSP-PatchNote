@@ -5,7 +5,7 @@
 <div id="ADMIN-DIV-HEADERCONTAINER">
   <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="admin-img-logo" alt="Logo">
   <ul id="ADMIN-UL-HEADERWRAP">
-    <li><a href="${pageContext.request.contextPath}/main.jsp">홈</a></li>
+    <li><a href="${pageContext.request.contextPath}/knowledgeForest.main">홈</a></li>
     <li><a href="${pageContext.request.contextPath}/main.jsp">로그아웃</a></li>
   </ul>
 </div>

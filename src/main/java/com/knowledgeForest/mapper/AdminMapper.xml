@@ -2,7 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AdminMapper">
-
+	<!-- 관리자 메인 -->
+	<!-- 신규 유저 최대 5명 -->
+	<select id="selectUserFive" resultType="UserDTO">
+		SELECT USER_NUM, USER_ID, USER_NICK, USER_JOIN_DATE
+		FROM TBL_USER
+		ORDER BY USER_NUM DESC
+		OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY
+	</select>
+	
+	<!-- 최신 스터디 최대 5개 -->
+	<select id="selectStudyFive" resultType="StudyUserDTO">
+		SELECT STUDY_NUM, STUDY_TITLE, tu.USER_NICK, STUDY_UPLOAD_DATE
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu 
+		ON ts.USER_NUM = tu.USER_NUM 
+		ORDER BY STUDY_NUM DESC
+		OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY
+	</select>
+	
+	<!-- 최신 자유게시판 최대 5개 -->
+	<select id="selectBoardFive" resultType="BoardUserDTO">
+		SELECT BOARD_NUM, BOARD_TITLE, tu.USER_NICK, BOARD_UPLOAD_DATE
+		FROM TBL_BOARD tb
+		INNER JOIN TBL_USER tu 
+		ON tb.USER_NUM = tu.USER_NUM 
+		ORDER BY BOARD_NUM DESC
+		OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY
+	</select>
+	
+	<!-- 최신 공지 최대 5개 -->
+	<select id="selectNoticeFive" resultType="NoticeDTO">
+		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_UPLOAD_DATE 
+		FROM TBL_NOTICE
+		ORDER BY NOTICE_NUM DESC
+		OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY
+	</select>
+	
+	<!-- ==================================================================== -->
+	
     <!-- 모든 사용자 정보 조회 -->
     <select id="selectUserAll" resultType="UserDTO">
         SELECT USER_NUM, USER_ID, USER_PW, USER_NICK, USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
@@ -169,7 +207,47 @@
 		ORDER BY STUDY_APPLY_NUM DESC
 	</select>
 	
+	<!-- 스터디 신청 취소 -->
+	<delete id="deleteStudyApply" parameterType="int">
+		DELETE FROM TBL_STUDY_APPLY
+		WHERE STUDY_APPLY_NUM= #{applyNum}
+	</delete>
 	
+	<!-- 스터디 신청 상세 조회 -->
+	<select id="selectStudyApplyOne" parameterType="int" resultType="StudyApplyDTO">
+		SELECT ts.STUDY_NUM, STUDY_TITLE, STUDY_LIMIT, STUDY_DEADLINE, STUDY_START_DAY, STUDY_END_DAY,
+			STUDY_START_TIME, STUDY_END_TIME, STUDY_CATEGORY, tsa.STUDY_APPLY_NUM, tsa.STUDY_APPLY_DATE, tsa.STUDY_APPLY_STATUS, tsa.USER_DETERMINATION
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_STUDY_APPLY tsa
+		ON ts.STUDY_NUM = tsa.STUDY_NUM
+		WHERE tsa.STUDY_APPLY_NUM = #{studyApplyNum}
+	</select>
 	
+	<!-- ==================================================================== -->
+
+	<!-- 자유게시판 목록 -->
+	<select id="selectBoardAll" resultType="BoardUserDTO">
+		SELECT BOARD_NUM, tu.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, tu.USER_NICK 
+		FROM TBL_BOARD tb
+		INNER JOIN TBL_USER tu 
+		ON tb.USER_NUM = tu.USER_NUM 
+		ORDER BY BOARD_NUM DESC
+	</select>
+	
+	<!-- 자유게시판 목록 - 검색 -->
+	<select id="selectBoardSearch" resultType="BoardUserDTO" parameterType="string">
+		SELECT BOARD_NUM, tu.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, tu.USER_NICK 
+		FROM TBL_BOARD tb
+		INNER JOIN TBL_USER tu 
+		ON tb.USER_NUM = tu.USER_NUM 
+		WHERE tb.BOARD_TITLE LIKE #{keyword} OR tu.USER_NICK LIKE #{keyword}
+		ORDER BY BOARD_NUM DESC
+	</select>
+	
+	<!-- 자유게시판 글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM TBL_BOARD
+		WHERE BOARD_NUM= #{boardNum}
+	</delete>
 	
 </mapper>

@@ -48,6 +48,7 @@ public class StudyFrontController extends HttpServlet {
 		
 		switch(target) {
 		case "/study/studyList.st":
+
 //			request.getRequestDispatcher("/html/study/studylist.jsp").forward(request, response);
 			result = new StudyListOkController().execute(request, response);
 			break;

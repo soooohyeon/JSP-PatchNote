@@ -1,6 +1,8 @@
 package com.knowledgeForest.controller.admin;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.AdminDAO;
 import com.knowledgeForest.dto.NoticeDTO;
+import com.knowledgeForest.dto.StudyUserDTO;
 
 public class AdminNoticeListOkController implements Execute {
 
@@ -30,6 +33,24 @@ public class AdminNoticeListOkController implements Execute {
 		} else {
 			noticeList = adminDAO.selectNoticeAll();
 		}
+		
+//		날짜 형식 변환해서 다시 저장
+        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd"); // DB 날짜 포맷
+        SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd"); // 변환 포맷
+        
+        for (NoticeDTO notice : noticeList) {
+            String originalDate = notice.getNoticeUploadDate();
+            if (originalDate != null) {
+                try {
+                    Date date = originalFormat.parse(originalDate); // 문자열 -> Date 변환
+                    String uploadDate = targetFormat.format(date); // 새로운 형식으로 변환 : yyyy-MM-dd
+                    notice.setNoticeUploadDate(uploadDate); // DTO에 다시 설정
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 		
 		request.setAttribute("noticeList", noticeList);
 		result.setPath("/html/admin/admin-noticelist.jsp");

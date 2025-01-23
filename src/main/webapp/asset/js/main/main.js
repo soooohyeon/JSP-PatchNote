@@ -66,9 +66,8 @@ function notLogin() {
  */
 
 function goPage(studyNum) {
-
 	//  로그인 상태일때 스터디 상세페이지로 이동
-	location.href = getContextPath() + "/login/login.me"; //<----이 링크는 추후 변경 될 수 있습니다.
+	location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
 }
 
 // 비로그인 상태일 때 클릭 시 로그인 화면으로 이동
@@ -81,14 +80,9 @@ function wishList() {
 
 function goMain() {
 	// 메인 페이지 이동 링크
+	
+	console.log("hhhh");
 	location.href = getContextPath() + "/knowledgeForest.main";
 	
 	console.log("로고 클릭" + location.href)
 }
-
-
-
-
-
-
-

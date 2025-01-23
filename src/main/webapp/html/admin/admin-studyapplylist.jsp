@@ -36,7 +36,7 @@
 					<form action="admin-studyapplylist.ad" method="get">
 						<div class="admin-div-wrapper">
 							<input type="text" name="keyword" class="admin-input-search"
-								placeholder="신청 회원의 아이나 닉네임을 입력해주세요." value="" /> <img
+								placeholder="신청 회원의 아이디나 닉네임을 입력해주세요." value="<c:out value='${param.keyword}'/>" /> <img
 								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
 						</div>
@@ -63,20 +63,19 @@
 									<!-- 데이터 넣는 부분 - 임시데이터 (1) -->
 									<ul class="admin-ul-datawrap">
 										<li class="adminStudyApply-li-applyid lightdata">
-											<!-- 관리자 화면의 스터디 신청 상세페이지로 이동 --> <a
-											href="${pageContext.request.contextPath}/admin/admin-studyapplydetail.ad?studyApplyNum="
-											+ ${studyApply.studyApplyNum}> <c:out
-													value="${studyApply.studyApplyNum}" />
-										</a>
+											<!-- 관리자 화면의 스터디 신청 상세페이지로 이동 -->
+											<a href="${pageContext.request.contextPath}/admin/admin-studyapplydetail.ad?studyApplyNum=${studyApply.studyApplyNum}">
+												<c:out value="${studyApply.studyApplyNum}" />
+											</a>
 										</li>
 										<li class="adminStudyApply-li-studyid lightdata">
 											<!-- 사용자 화면의 스터디 상세페이지로 이동 -->
-											<a href="./../study/studylist-detail.html">
+											<a href="${pageContext.request.contextPath}/study/studyDetailOk.st?studyNum=${studyApply.studyNum}">
 												<c:out value="${studyApply.studyNum}" />
 											</a>
 										</li>
 										<li class="adminStudyApply-li-studymemberwrap">
-											(<c:out value="${studyApply.participants}" /> / <c:out value="${studyApply.limitParticipants}" />)
+											<c:out value="${studyApply.participants}" /> / <c:out value="${studyApply.limitParticipants}" />
 										</li>
 
 										<c:choose>
@@ -89,7 +88,11 @@
 										</c:choose>
 										
 										<li class="adminStudyApply-li-applystatus">
-											수락<!--  -->
+											<c:choose>
+											    <c:when test="${studyApply.studyApplyStatus == 0}">대기 중</c:when>
+											    <c:when test="${studyApply.studyApplyStatus == 1}">수락</c:when>
+											    <c:otherwise>거절</c:otherwise>
+											</c:choose>
 										</li>
 										<li class="adminStudyApply-li-userid lightdata">
 											<c:out value="${studyApply.userId}" /></li>
