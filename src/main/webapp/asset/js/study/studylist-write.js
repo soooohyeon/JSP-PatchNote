@@ -64,12 +64,20 @@ function goBack() {
   window.history.back();
 }
 
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+   var hostIndex = location.href.indexOf (location.host) + location.host.length;
+   var contextPath = location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+   
+   return contextPath;
+}
+
 // 글 등록을 눌렀을 때  alert, 스터디 목록 페이지로 이동
 function insertStudy(e) {
 	e.preventDefault(); // 기본 동작 방지
   if (confirm("스터디를 등록하시겠습니까?")) {
-    alert("스터디가 등록되었습니다.");
 	document.getElementById("STUDYLIST-FORM-WRITE").submit();
-    location.href = "./studylist.jsp";
+    alert("스터디가 등록되었습니다.");
+    location.href = getContextPath() + "/study/studyWriteOk.st";
   }
 }

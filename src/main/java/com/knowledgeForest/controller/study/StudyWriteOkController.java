@@ -40,6 +40,8 @@ public class StudyWriteOkController implements Execute {
 		studyDTO.setStudyUploadDate(request.getParameter("studyUploadDate"));
 		studyDTO.setStudyEditDate(request.getParameter("studyEditDate"));
 		
+		
+		System.out.println(studyDTO.getStudyTitle());
 		System.out.println(studyDTO.getStudyDescript());
 		
 		//게시글 추가

@@ -74,6 +74,7 @@
             <div class="studylist-div-infowrapperDual">
               <div class="label">신청 마감일</div>
               <input
+              	type="text"
                 class="studylist-input-groupinfo"
                 placeholder="신청 마감일을 입력해주세요 ex) 20250110"
                 name = "studyDeadline"
