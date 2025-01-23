@@ -23,7 +23,7 @@ public class StudyDetailOkController implements Execute {
 		
 //		StudyUserDTO detailStudy = studyDAO.selectStudy(studyUserNum);
 		StudyUserDTO detailStudy = studyDAO.selectStudy(studyNum);	//3에 해당하는 게시글 조회
-		
+		System.out.println("찍기" + detailStudy);
 		request.setAttribute("detailStudy", detailStudy);
 		result.setPath("/html/study/studylist-detail.jsp");
 		result.setRedirect(false);

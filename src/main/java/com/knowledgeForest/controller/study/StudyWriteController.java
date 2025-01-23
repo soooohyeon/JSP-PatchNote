@@ -18,13 +18,13 @@ public class StudyWriteController implements Execute {
 		StudyDAO studyDAO = new StudyDAO();
 		Result result = new Result();
 		HttpSession session = request.getSession();
-		Integer studyNumber = (Integer)session.getAttribute("studyNumber");
+		Integer userNum = (Integer)session.getAttribute("userNum");
 		String path = null;
 		
-		if(studyNumber == null) {
-			path = "/app/main/main-login.html";
+		if(userNum == null) {
+			path = request.getContextPath() + "/main/main-login.html";
 		}else {
-			path = "/app/board/boardWrite.jsp";
+			path = request.getContextPath() + "/study/studyWrite.st";
 			request.setAttribute(path, session);
 		}
 		

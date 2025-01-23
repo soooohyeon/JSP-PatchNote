@@ -23,7 +23,7 @@
 	<li><a
 		href="${pageContext.request.contextPath}/board/boardlist.bo">자유게시판</a></li>
 	<li><a
-		href="${pageContext.request.contextPath}/study/studylist.st">스터디
+		href="${pageContext.request.contextPath}/study/studyList.st">스터디
 			모집</a></li>
 
 	<c:choose>

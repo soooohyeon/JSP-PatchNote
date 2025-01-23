@@ -144,9 +144,11 @@ function closeModal() {
 	document.getElementById("STUDYLIST-MODAL-APPLY").style.display = "none";
 }
 //각오 등록
-function writeCourage(event) {
+function writeCourage(studyNum) {
 	//각오를 입력했는지 여부를 판단
-	event.preventDefault();
+	//event.preventDefault();
+	
+	console.log("함수실행!!!");
 
 	let courage = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
 	let disclaimer = document.getElementById("STUDYLIST-CHECKBOX-AGREE").checked;
@@ -161,6 +163,26 @@ function writeCourage(event) {
 		alert("주의사항 체크 후 진행바랍니다.");
 		return;
 	}
-	alert("신청이 완료되었습니다.");
-	window.location.href = "studylist.jsp"
+	
+	var formData = {
+	   name: $('input[name="name"]').val(),
+	   email: $('input[name="email"]').val()
+	 };
+	 
+	if(confirm("스터디를 신청하시겠습니까?")){
+		$.ajax({
+			url:
+				getContextPath() + "/study/studyApplyInsertOk.st?studyNum=" + studyNum&&,
+			type: "POST",
+			success: () => {
+					alert("신청이 완료되었습니다.");
+					location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
+			},
+			error: (xhr, status, error) => {
+				console.error("스터디 신청 실패:", error);
+				alert("스터디 신청에 실패했습니다.");
+			},
+		});
+	}
+	
 }
