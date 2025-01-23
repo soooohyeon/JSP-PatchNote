@@ -48,7 +48,7 @@ public class StudyFrontController extends HttpServlet {
 		
 		switch(target) {
 		case "/study/studyList.st":
-			System.out.println("스터디 목록 드드등장");
+
 //			request.getRequestDispatcher("/html/study/studylist.jsp").forward(request, response);
 			result = new StudyListOkController().execute(request, response);
 			break;
