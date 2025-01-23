@@ -28,4 +28,8 @@ function cancelAction(studyNum) {
 			alert("스터디 취소에 실패했습니다.");
 		},
 	});
+};
+
+function goPage(studyNum){
+		location.href = getContextPath() + "/board/boarddetail.bo?boardNum=" + boardNum;
 }

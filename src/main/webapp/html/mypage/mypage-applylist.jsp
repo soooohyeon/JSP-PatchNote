@@ -25,7 +25,7 @@
 		<nav class="mypage-div-menuwrap">
 			<h1 id="MYPAGE-H2-TITLE">마이 페이지</h1>
 			<ul class="mypage-ul-menuwrap">
-				<li class="mypage-li-menuactive"><a
+				<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
 						수정</a></li>
 				<%-- <li><a
@@ -34,7 +34,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
 						스터디</a></li>
-				<li><a
+				<li  class="mypage-li-menuactive"><a
 					href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 						스터디</a></li>
 				<li><a
@@ -79,11 +79,9 @@
 								<div class="mypage-div-groupinfowrapper datecontent-wrap">
 									<div class="mypage-div-enddate">신청일 &nbsp;| &nbsp;
 										${study.studyApplyDate}</div>
-									<span class="study-deadline"> ${study.studyDeadline}</span>
 									<!-- 마감, 모집 중 -->
 									<c:choose>
-										<c:when
-											test="${study.participants == study.studyLimit or study.studyDeadline < today}">
+										<c:when test="${study.participants == study.studyLimit or study.studyDeadline < today}">
 											<li class="studylist-div-groupstatus">마감</li>
 										</c:when>
 										<c:otherwise>
@@ -91,7 +89,7 @@
 										</c:otherwise>
 									</c:choose>
 								</div>
-								<div class="mypage-div-grouptitle">
+								<div class="mypage-div-grouptitle" onclick= "goPage(${study.studyNum})">
 									<a href="/webapp/html/study/studylist-detail.html">${study.studyTitle}</a>
 								</div>
 								<div class="mypage-div-groupinfowrapper">

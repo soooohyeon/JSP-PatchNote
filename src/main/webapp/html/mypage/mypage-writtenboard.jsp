@@ -12,6 +12,9 @@
 <title>작성한 자유게시글</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-writtenboard.css">
+	
+<script defer
+   src="${pageContext.request.contextPath}/asset/js/mypage/mypage-writtenboard.js"></script>
 </head>
 <body>
 	<div class="main-container">
@@ -20,7 +23,7 @@
 			<nav class="mypage-div-menuwrap">
 				<h1 id="MYPAGE-H2-TITLE">마이 페이지</h1>
 				<ul class="mypage-ul-menuwrap">
-					<li class="mypage-li-menuactive"><a
+					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
 							수정</a></li>
 					<%-- <li><a
@@ -32,7 +35,7 @@
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 							스터디</a></li>
-					<li><a
+					<li class="mypage-li-menuactive"><a
 						href="${pageContext.request.contextPath}/mypage/mypage-writtenboard.my">작성한
 							자유게시글</a></li>
 					<li><a
@@ -75,8 +78,8 @@
 								<span class="board-date">작성일</span></li>
 
 							<c:forEach var="board" items="${boardList}">
-								<li class="board-item" style="cursor: pointer;"
-									onclick="location.href='${pageContext.request.contextPath}/board/boardDetail.jsp?boardNum=${board.boardNum}'">
+								<li class="board-item" style="cursor: pointer;"	
+									onclick="goPage(${board.boardNum})">
 									<span class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
 									<span class="board-author">${board.boardAuthor}</span> <span
 									class="board-date">${board.boardUploadDate}</span>

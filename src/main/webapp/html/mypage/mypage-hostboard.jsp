@@ -31,7 +31,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 						스터디</a></li>
-				<li><a
+				<li class="mypage-li-menuactive"><a
 					href="${pageContext.request.contextPath}/mypage/mypage-writtenboard.my">작성한
 						자유게시글</a></li>
 				<li><a
