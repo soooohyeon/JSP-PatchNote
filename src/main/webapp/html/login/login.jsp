@@ -22,7 +22,7 @@
       <div class="login-div-h1-box">
         <h1 class="login-h1-title">로그인</h1>
       </div>
-      <form action="" method = "post">
+      <form action="${pageContext.request.contextPath}/login/loginOk.me" method = "post">
       <div class="login-div-wrapper-input-box">
         <input type="text" class="login-input" placeholder="아이디" name="userId" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" > 
 

@@ -25,7 +25,7 @@ function closeModal() {
 }
 
 function handleModalAction(action) {
-  alert(`${action} go`);
+  /*alert(`${action} go`);*/
   closeModal(); 
 }
 
@@ -40,6 +40,14 @@ function closeApplicantModal() {
   document.getElementById("REQUEST-LIST-MODAL").classList.add("hidden");
 }
 
+  /* 루트 경로 담은 함수 */
+  function getContextPath() {
+     var hostIndex = location.href.indexOf (location.host) + location.host.length;
+     var contextPath = location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1));
+     
+     return contextPath;
+  }
+  
 // 드롭다운 토글
 function toggleDropdown(img) {
   const body = img.parentElement.nextElementSibling;
@@ -48,10 +56,10 @@ function toggleDropdown(img) {
   console.log(img);
 
   if(img.src.includes("down.png")){
-    img.src="./../../asset/img/mypage/up.png"
+    img.src= getContextPath() + "/asset/img/mypage/up.png"
 
   } else{
-    img.src="./../../asset/img/mypage/down.png"
+    img.src=getContextPath() + "/asset/img/mypage/down.png"
   }
 }
 

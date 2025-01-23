@@ -15,7 +15,6 @@
 <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<!-- 
 <body>
    <div class="main-container">
       <aside id="MYPAGE-MENUCONTAINER">
@@ -128,8 +127,8 @@
       </main>
    </div>
 </body>
- -->
- <body>
+
+<%--  <body>
    <div class="errorPage">
       <img src="${pageContext.request.contextPath}/asset/img/mypage/404.png" 
       class="error-img"
@@ -137,7 +136,7 @@
       <h1>Oops.</h1>
       <h1>현재 페이지에 오류가 있어, 작업 중입니다.</h1>
    </div>
-</body>
+</body> --%>
  
  
  

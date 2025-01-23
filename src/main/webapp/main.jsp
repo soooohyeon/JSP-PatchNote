@@ -67,16 +67,15 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 					<div class="main-div-wishlistcontent">
 						<div class="main-div-wishlisttitle">
 							<h2>MY</h2>
-							<br>
 							<h2>WISH</h2>
 							<h2>LIST</h2>
 						</div>
 						<c:choose>
 							<c:when test="${not empty sessionScope.userNumber}">
 								<ul class="main-div-ulist">
-									<li class="main-div-wish">위시 리스트 내용을 표시합니다.</li>
-									<li class="main-div-wish">예시 스터디 1</li>
-									<li class="main-div-wish">예시 스터디 2</li>
+									<li class="main-div-wish">[포트폴리오]카풀 예약 서비스를 작게 만들어볼 프론트 구해요</li>
+									<li class="main-div-wish">실제 수요가 검증된 서비스 만들어가실 팀원 모집</li>
+									<li class="main-div-wish">[PM, 프론트엔드 개발자] 커뮤니티 사이드 프로젝트 팀원 구합니다.</li>
 								</ul>
 							</c:when>
 							<c:otherwise>
