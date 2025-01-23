@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,8 +12,8 @@
       rel="stylesheet"
       href="${pageContext.request.contextPath}/asset/css/board/boardlistedit.css"
     />
-    <link rel="stylesheet" href="./../../asset/css/main/header.css" />
-    <link rel="stylesheet" href="./../../asset/css/main/footer.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css" />
     <script defer src="${pageContext.request.contextPath}/asset/js/board/boardlistedit.js"></script>
 
   </head>
@@ -49,6 +51,7 @@
                 class="board-input-groupinfo"
                 name="boardlistName"
                 placeholder="제목을 입력해주세요"
+                value = "${boardDetail.boardTitle}"
               />
             </div>
           </div>
@@ -56,7 +59,7 @@
           <div class="board-div-longwrapperlayer">
             <div class="board-div-textareawrapper">
               <div class="label">설명</div>
-              <textarea class="board-div-studycontents" name="boardDescription"></textarea>
+              <textarea class="board-div-studycontents" name="boardDescription"><c:out value="${boardDetail.boardContents}" /></textarea>
             </div>
             <div class="board-div-filewrap">
               <div class="label">첨부파일</div>

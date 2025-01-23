@@ -5,9 +5,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <link rel="stylesheet"
+<<<<<<< HEAD
 	href="${pageContext.request.contextPath}/asset/css/main/header.css">
 <script defer
 	src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
+=======
+   href="${pageContext.request.contextPath}/asset/css/main/header.css">
+   <script defer
+   src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
+   
+   <!-- 상단 헤더 메뉴바 -->
+   <%-- <jsp:include page="/html/main/header.jsp" /> ← 헤더 주석 해제 후 옆에 주소 내용 복사해서 사용 !!--%> 
+   
+   
+<!-- 상단 메뉴바 -->
+<nav class="main-nav-menuwrap">
+   <img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
+      class="main-img-logo" onclick="goMain()">
+   <ul class="main-nav-ul">
+      <li><a
+         href="${pageContext.request.contextPath}/notice/noticelist.no">공지</a></li>
+      <li><a
+         href="${pageContext.request.contextPath}/board/boardlist.bo">자유게시판</a></li>
+      <li><a
+         href="${pageContext.request.contextPath}/study/studylist.st">스터디 모집</a></li>
+>>>>>>> hjh
 
 <!-- 상단 헤더 메뉴바 -->
 <%-- <jsp:include page="/html/main/header.jsp" /> ← 헤더 주석 해제 후 옆에 주소 내용 복사해서 사용 !!--%>
