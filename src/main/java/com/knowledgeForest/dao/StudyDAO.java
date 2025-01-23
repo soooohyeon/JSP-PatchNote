@@ -47,7 +47,6 @@ public class StudyDAO {
 	}
 	
 	public void insertStudyApply(StudyApplyUserDTO studyApplyUserDTO) {
-		System.out.println("1");
 		System.out.println("젭알" + studyApplyUserDTO);
 		sqlSession.insert("StudyMapper.insertStudyApply", studyApplyUserDTO);
 	}
