@@ -31,7 +31,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 						스터디</a></li>
-				<li><a
+				<li class="mypage-li-menuactive"><a
 					href="${pageContext.request.contextPath}/mypage/mypage-writtenboard.my">작성한
 						자유게시글</a></li>
 				<li><a
@@ -44,13 +44,15 @@
 
 	<!-- 상단 헤더 -->
 	<div id="ADMIN-DIV-HEADERCONTAINER">
-		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="admin-img-logo"
-			alt="Logo">
-		<ul id="ADMIN-UL-HEADERWRAP">
-			<li><a href="./../main/main.html">홈</a></li>
-			<li><a href="">로그아웃</a></li>
-		</ul>
-	</div>
+         <img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
+            class="admin-img-logo" alt="Logo" />
+         <ul id="ADMIN-UL-HEADERWRAP">
+            <li><a href="${pageContext.request.contextPath}/knowledgeForest.main">홈</a>
+            </li>
+            <li><a href="${pageContext.request.contextPath}/login/logout.me">로그아웃</a>
+            </li>
+         </ul>
+      </div>
 
 	<!-- 메인 컨텐츠가 들어갈 컨테이너 -->
 	<div id="MYPAGE-DIV-LAYOUTCONTAINER">
