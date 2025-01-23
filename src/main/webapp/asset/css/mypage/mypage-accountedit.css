@@ -7,9 +7,6 @@
   /* font-family: "Nanum Gothic"; */
 }
 
-header {
-  /* height: vh; */
-}
 body {
   background-color: #f6f6f6;
   /* height: 100vh; */
@@ -249,3 +246,24 @@ input:read-only {
   margin-top: -15px;
   margin-bottom: 20px;
 }
+
+
+.errorPage{
+   height: 100vh;
+  margin : auto;
+   display: flex;
+   flex-direction : column;
+   align-items: center;
+   justify-content: center;
+   text-align : center;
+
+   
+}
+
+.error-img{
+   width: 200px;
+   height : 200px;
+   margin-bottom : 20px;
+}
+
+

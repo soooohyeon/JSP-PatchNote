@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
@@ -19,14 +20,15 @@ public class MyPageUserInfoController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession(false); // 현재 세션 가져오기
+		
+		int userNum = (int) session.getAttribute("userNumber");
 		// POST 요청일 경우
 		if (request.getMethod().equalsIgnoreCase("POST")) {
 			// 사용자가 입력한 값 가져오기
 			response.setContentType("text/html; charset=UTF-8");
 
 			System.out.println("post 요청됨");
-			int userNum = 11;
-//	        int userNum = (int) request.getSession().getAttribute("userNum");
 			String userId = request.getParameter("userId");
 			String userName = request.getParameter("userName");
 			String userBirth = request.getParameter("userBirth");
@@ -58,15 +60,13 @@ public class MyPageUserInfoController implements Execute {
 			}
 
 			Result result = new Result();
-			result.setPath("/html/mypage/mypage-accountedit.jsp");
+			result.setPath(request.getContextPath() + "/mypage/mypage-accountedit.my");
 			result.setRedirect(false);
 			return result;
 		}
 
 		// GET 요청 시 사용자 정보 조회
 		System.out.println("GET 요청됨");
-		int userNum = 11;
-//	    int userNum = (int) request.getSession().getAttribute("userNum");
 
 		MyPageDAO myPageDAO = new MyPageDAO();
 		UserDTO userInfo = myPageDAO.getUserInfo(userNum);
@@ -86,7 +86,7 @@ public class MyPageUserInfoController implements Execute {
 		// JSP에서 사용할 데이터 저장
 		request.setAttribute("userInfo", userInfo);
 		Result result = new Result();
-		result.setPath("/html/mypage/mypage-accountedit.jsp");
+		result.setPath(request.getContextPath() + "/mypage/mypage-accountedit.my");
 		result.setRedirect(false);
 
 		return result;

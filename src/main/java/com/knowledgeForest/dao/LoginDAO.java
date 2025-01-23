@@ -23,8 +23,9 @@ public class LoginDAO{
 	
 	//로그인
 	public int login(UserDTO userDTO) {
-		Integer userNumber = (int)sqlsession.selectOne("LoginMapper.Login", userDTO);
-		return userNumber == null ? -1 : userNumber;
+		UserDTO user = sqlsession.selectOne("LoginMapper.Login", userDTO);
+		int userNumber = -1;
+		return user == null ? -1 : user.getUserNum();
 	}
 	
 	//첫번째 비밀번호 찾기 페이지

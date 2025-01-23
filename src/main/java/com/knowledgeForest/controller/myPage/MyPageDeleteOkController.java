@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
@@ -19,6 +20,7 @@ public class MyPageDeleteOkController implements Execute {
 		
 		MyPageDAO mypageDAO = new MyPageDAO();
 		Result result = new Result();
+		HttpSession session = request.getSession(false);
 
 //		userNum 변수에 저장
 		int userNum = Integer.parseInt(request.getParameter("userNum"));
@@ -28,8 +30,10 @@ public class MyPageDeleteOkController implements Execute {
 //		유저 데이터 삭제 메소드 실행 - userNum 전달
 		mypageDAO.deleteUser(userNum);
 
+		session.invalidate(); // 세션 무효화
 //		경로 설정
 		result.setPath(request.getContextPath() + "/main.jsp");
+
 		result.setRedirect(true);
 		
 		return result;

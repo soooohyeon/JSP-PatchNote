@@ -22,9 +22,9 @@
 				<li class="mypage-li-menuactive"><a
 					href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
 						수정</a></li>
-				<li><a
+			<%--<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
-						목록</a></li>
+						목록</a></li> --%>
 				<li><a
 					href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
 						스터디</a></li>

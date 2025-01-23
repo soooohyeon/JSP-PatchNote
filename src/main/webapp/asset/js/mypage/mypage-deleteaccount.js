@@ -44,7 +44,5 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("유저 탈퇴에 실패했습니다.");
       },
     });
-
-    alert("탈퇴되었습니다");
   });
 });
