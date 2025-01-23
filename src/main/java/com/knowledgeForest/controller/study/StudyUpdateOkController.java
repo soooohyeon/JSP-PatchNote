@@ -24,8 +24,7 @@ public class StudyUpdateOkController implements Execute {
 		Result result = new Result();
 		
 		System.out.println("업데이트 ok 컨트롤러");
-		
-//		studyDTO.setUserNum(request.getParameter("userNum"));
+
 		studyDTO.setUserNum(11);
 		
 		studyDTO.setStudyNum(Integer.parseInt(request.getParameter("studyNum")));
@@ -38,17 +37,9 @@ public class StudyUpdateOkController implements Execute {
 		studyDTO.setStudyEndTime(request.getParameter("studyEndTime"));
 		studyDTO.setStudyLimit(Integer.parseInt(request.getParameter("studyLimit")));
 		studyDTO.setStudyDeadline(request.getParameter("studyDeadline"));
-//		studyDTO.setStudyShowph(Integer.parseInt(request.getParameter("studyShowph")));
-//		studyDTO.setStudyCategory(Integer.parseInt(request.getParameter("studyCategory")));
 		studyDTO.setStudyUploadDate(request.getParameter("studyUploadDate"));
 		studyDTO.setStudyEditDate(request.getParameter("studyEditDate"));
-		
-//		if(userNumber == null) {
-//			path = "/app/main/main-login.html";
-//		}else {
-//			path = "/app/board/boardUpdate.jsp";
-//			request.setAttribute(path, session);
-//		}
+
 		System.out.println("55555 : " + studyDTO.getStudyTitle());
 		
 		studyDAO.update(studyDTO);
