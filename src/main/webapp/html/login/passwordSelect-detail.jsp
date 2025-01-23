@@ -18,7 +18,7 @@
 	<form action="${pageContext.request.contextPath}/login/passwrdDetailOk.me" method = "post">
 		<main>
 			<div class="passwordSelect-detail-div-wrapper-h1-box">
-				<h1 class="passwordSelect-detail-h1-title">비밀번호 찾기</h1>
+				<h1 class="passwordSelect-detail-h1-title">비밀번호 변경</h1>
 			</div>
 
 			<div class="passwordSelect-detail-div-wrapper-allinput-box">

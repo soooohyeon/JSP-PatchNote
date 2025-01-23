@@ -1,3 +1,10 @@
+/* 루트 경로 담은 함수 */
+function getContextPath() {
+	var hostIndex = location.href.indexOf(location.host) + location.host.length;
+	var contextPath = location.href.substring(hostIndex, location.href.indexOf('/', hostIndex + 1));
+
+	return contextPath;
+}
 
 //로그인버튼 클릭시 알림창 노출
 const btn_join = document.querySelector("#LOGIN-BTN-LOGIN");
@@ -8,10 +15,30 @@ function login(){
 	console.log("id " + id);
 	console.log("pw "+ pw);
 	
-	if(id && pw){
-		alert("입력되었습니다");
-	}else{
-		alert("입력 칸이 비어있습니다");
+	if(!id || !pw){
+		alert("아이디 또는 비밀번호를 입력해주세요.");
+	} else {
+
+		$.ajax({
+			/* 유저 삭제 컨트롤러로 이동, 유저 넘버 쿼리스트링으로 전달 */
+			url: getContextPath() + "/login/loginOk",
+			type: "POST",
+			data: {
+				userId : id,
+				userPw : pw,
+			},
+			/* 로그인 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 */
+			success: () => {
+				alert('로그인 되었습니다.');
+				location.href = getContextPath() + "/knowledgeForest.main";
+			},
+			/* 로그인 불가시 알람창 */
+			error: (xhr, status, error) => {
+				console.error("로그인 실패:", error);
+				alert("로그인 실패했습니다.");
+				location.href = getContextPath() + "/login/login.me";
+			}
+		});
 	}
 	
 	

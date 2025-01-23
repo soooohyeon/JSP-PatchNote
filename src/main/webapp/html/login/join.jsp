@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
 		<!-- 헤더 - 메뉴바 -->
 		<jsp:include page="/html/main/header.jsp" />
 	

@@ -16,7 +16,6 @@
 	<jsp:include page="/html/main/header.jsp" />
 	
 	 <main>
-      <form action="${pageContext.request.contextPath}/login/passwordSelectOk.me">
       <div class="passwordSelect-div-wrapper-pwd-select">
         <div class="passwordSelect-div-h1-box">
           <h1 class="h1-title">비밀번호 찾기</h1>
@@ -40,6 +39,7 @@
               class="passwordSelect-input"
               placeholder="인증번호" name="authenticationNumber" id="PASSWORDSELECT-AUTHENTICATIONNUMBER" onkeyup="inputLenFunc6()"
             />
+      <form action="${pageContext.request.contextPath}/login/passwordSelectOk.me">
 
             <button type="submit" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-CHECK">확인</button>
           </div>

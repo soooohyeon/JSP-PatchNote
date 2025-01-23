@@ -42,11 +42,7 @@ public class LoginOkController implements Execute {
 		
 		System.out.println("!!!!!!!!!!!!!!!!!!!"+ session.getAttribute(userDTO.getUserNick()));
 		
-		if(userNumber != -1) {
-			
-			session.getAttribute("userDTO");
-			result.setPath(request.getContextPath()+"/knowledgeForest.main");
-			System.out.println("@@@@@@"+userNumber);
+		if(userNumber == -1) {
 
 		
 //			if(userNumber != null) {
@@ -60,9 +56,12 @@ public class LoginOkController implements Execute {
 //			// 왜 안넘어가질까..
 //			result.setPath(request.getContextPath());
 //			result.setRedirect(true);
-			
-		}else {
+			session.invalidate(); // 저장된 -1 삭제
 			result.setPath(request.getContextPath()+"/login/login.me");
+		}else {
+			session.getAttribute("userDTO");
+			result.setPath(request.getContextPath()+"/knowledgeForest.main");
+			System.out.println("@@@@@@"+userNumber);
 			
 		}
 		result.setRedirect(true);
