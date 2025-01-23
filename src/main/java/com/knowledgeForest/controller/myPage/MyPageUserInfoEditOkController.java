@@ -24,27 +24,42 @@ public class MyPageUserInfoEditOkController implements Execute {
 		int userNum = (int) session.getAttribute("userNumber");
 
 		MyPageDAO myPageDAO = new MyPageDAO();
-		UserDTO userInfo = myPageDAO.getUserInfo(userNum);
 
-		// 날짜 변환 처리 (1986-02-14 00:00:00 -> 19860214)
-		try {
-			SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			SimpleDateFormat outputFormat = new SimpleDateFormat("yyyyMMdd");
+		// 폼 데이터 가져오기
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String userBirth = request.getParameter("userBirth");
+		String userNick = request.getParameter("userNick");
+		String userPw = request.getParameter("userPw");
+		String userPH = request.getParameter("userPH");
 
-			Date birthDate = inputFormat.parse(userInfo.getUserBirth());
-			String formattedBirthDate = outputFormat.format(birthDate);
-			userInfo.setUserBirth(formattedBirthDate); // 변환된 값 설정
-		} catch (Exception e) {
-			e.printStackTrace();
+		// userDTO 객체 생성 및 데이터 설정
+		UserDTO userInfo = new UserDTO();
+		userInfo.setUserId(userId);
+		userInfo.setUserNum(userNum);
+		userInfo.setUserName(userName);
+		userInfo.setUserBirth(userBirth);
+		userInfo.setUserPH(userPH);
+		userInfo.setUserNick(userNick);
+		userInfo.setUserPw(userPw);
+
+		// DAO메소드 호출
+		int updateResult = myPageDAO.updateUserInfo(userInfo);
+
+		// 결과 처리
+		if (updateResult > 0) {
+			request.setAttribute("message", "회원정보가 수정되었습니다.");
+		} else {
+			request.setAttribute("message", "회원정보 수정에 실패했습니다.");
 		}
 
 		// JSP에서 사용할 데이터 저장
 		request.setAttribute("userInfo", userInfo);
 		Result result = new Result();
-		result.setPath(request.getContextPath() + "/html/mypage/mypage-accountedit.jsp");
-		result.setRedirect(false);
-
+		
+		result.setPath(request.getContextPath() + "/mypage/mypage-accountedit.my"); // 리다이렉션 경로 수정
+		result.setRedirect(true); // 리다이렉션 설정
 		return result;
 	}
-	
+
 }

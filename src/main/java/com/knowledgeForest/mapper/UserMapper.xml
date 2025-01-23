@@ -22,7 +22,7 @@
 	<!-- 사용자 정보 업데이트 -->
 	<update id="updateUser" parameterType="UserDTO">
 		UPDATE TBL_USER SET
-		USER_NICK = #{userNick}, USER_PH =#{userPH}, USER_PW = #{userPw} WHERE
+		USER_NICK = #{userNick}, USER_PW = #{userPw} WHERE
 		USER_ID = #{userId}
 	</update>
 

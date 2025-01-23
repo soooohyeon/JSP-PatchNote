@@ -10,7 +10,6 @@ function getContextPath() {
 	return contextPath;
 }
 
-
 function cancelAction(studyNum) {
 	$.ajax({
 		url:
@@ -30,6 +29,6 @@ function cancelAction(studyNum) {
 	});
 };
 
-function goPage(studyNum){
-		location.href = getContextPath() + "/board/boarddetail.bo?boardNum=" + boardNum;
+function goPage(studyNum) {
+	location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=?studyNum=" + studyNum;
 }

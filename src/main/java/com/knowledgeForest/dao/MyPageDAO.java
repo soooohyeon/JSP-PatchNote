@@ -31,6 +31,7 @@ public class MyPageDAO {
 		System.out.println("회원정보 수정 : " + user);
 		int result = 0;
 		result = sqlsession.update("UserMapper.updateUser", user);
+		System.out.println("result : " + result);
 		return result;
 	}
 

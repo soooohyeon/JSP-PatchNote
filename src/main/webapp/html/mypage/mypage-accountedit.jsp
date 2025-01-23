@@ -27,9 +27,9 @@
                <%-- <li><a
                   href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
                      목록</a></li> --%>
-               <li><a
+               <%-- <li><a
                   href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
-                     스터디</a></li>
+                     스터디</a></li> --%>
                <li><a
                   href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
                      스터디</a></li>
@@ -61,7 +61,7 @@
             </div>
             <section class="mypage-section">
                <form id="editForm"
-                  action="${pageContext.request.contextPath}/mypage/mypage-accountedit.my"
+                  action="${pageContext.request.contextPath}/mypage/mypage-accounteditOk.my"
                   method="post">
                   <div class="mypage-div-wrapper">
                      <label for="name">이름</label> <input type="text" id="name"
@@ -88,7 +88,7 @@
                   <div id="nickname-error"></div>
 
                   <div class="mypage-div-wrapper">
-                     <label for="password">비밀번호</label> <input type="password"
+                     <label for="password">새로운 비밀번호</label> <input type="password"
                         id="password" name="userPw" />
                   </div>
                   <div id="password-error"></div>
@@ -98,8 +98,7 @@
                         id="passwordchk" placeholder="비밀번호를 한번 더 입력해주세요" />
                   </div>
                   <div id="passwordchk-error"></div>
-
-                  <div class="mypage-div-wrapper2">
+                  <%-- <div class="mypage-div-wrapper2">
                      <div class="editpage-input-phoneNum">
                         <label for="phoneNum">전화번호</label> <input type="text"
                            id="phoneNum" placeholder="숫자만 입력해주세요"
@@ -116,8 +115,7 @@
                      </div>
                      <button class="mypage-btn-phoneNum-check" type="button">확인</button>
                   </div>
-                  <div id="phoneNumchk-error"></div>
-
+ --%>
                </form>
             </section>
             <div class="mypage-div-edit">
