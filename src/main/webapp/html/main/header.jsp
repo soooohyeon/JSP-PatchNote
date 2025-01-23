@@ -21,7 +21,7 @@
       <li><a
          href="${pageContext.request.contextPath}/notice/noticelist.no">공지</a></li>
       <li><a
-         href="${pageContext.request.contextPath}/board/boradlist.bo">자유게시판</a></li>
+         href="${pageContext.request.contextPath}/board/boardlist.bo">자유게시판</a></li>
       <li><a
          href="${pageContext.request.contextPath}/study/studylist.st">스터디 모집</a></li>
 

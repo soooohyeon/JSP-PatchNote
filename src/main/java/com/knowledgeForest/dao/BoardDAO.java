@@ -23,7 +23,7 @@ public class BoardDAO {
         return boardList;
     }
 
-	//	해당 게시글 상세 조회
+	//	해당 게시글 상세 조회,  
 	public BoardUserDTO selectBoard(int boardNum) {
 		return sqlsession.selectOne("BoardMapper.selectBoard", boardNum);
 	}
@@ -31,6 +31,10 @@ public class BoardDAO {
 	// 등록
 	public void insertBoard(BoardDTO boardDTO) {
 		sqlsession.insert("BoardMapper.insertBoard", boardDTO);
+	}
+	
+	public BoardUserDTO editBoard(int boardNum){
+		return sqlsession.selectOne("BoardMapper.ediBoard",boardNum);
 	}
 	
 	// 삭제

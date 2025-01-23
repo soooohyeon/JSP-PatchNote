@@ -19,7 +19,8 @@
 		<typeAlias type="com.knowledgeForest.dto.StudyDTO" alias="StudyDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.NoticeDTO" alias="NoticeDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.BannerDTO" alias="BannerDTO" />		
-		<typeAlias type="com.knowledgeForest.dto.BoardUserDTO" alias="BoardUserDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.BoardUserDTO" alias="BoardUserDTO" />
+		<typeAlias type="com.knowledgeForest.dto.StudyApplyUserDTO" alias="StudyApplyUserDTO" />				
 		<typeAlias type="com.knowledgeForest.dto.StudyUserDTO" alias="StudyUserDTO" />		
 	</typeAliases>
 
