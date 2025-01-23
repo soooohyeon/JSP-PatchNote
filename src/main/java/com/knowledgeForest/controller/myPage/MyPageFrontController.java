@@ -41,11 +41,12 @@ public class MyPageFrontController extends HttpServlet {
 
 		// 경로 분기처리
 		switch (target) {
+//		마이페이지 기본화면 - 개인정보 수정 화면 이동
 		case "/mypage/mypage-accountedit.my":
-			request.getRequestDispatcher("/html/mypage/mypage-accountedit.jsp").forward(request, response);
+			result = new MyPageUserInfoController().execute(request, response);
 			break;
 		case "/mypage/mypage-accounteditOk.my":
-			result = new MyPageUserInfoController().execute(request, response);
+			result = new MyPageUserInfoEditOkController().execute(request, response);
 			break;
 
 		case "/mypage/MypageCheckNicknameOk.my":

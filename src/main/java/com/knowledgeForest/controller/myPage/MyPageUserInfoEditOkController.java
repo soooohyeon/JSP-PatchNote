@@ -1,6 +1,8 @@
 package com.knowledgeForest.controller.myPage;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,23 +13,19 @@ import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.MyPageDAO;
 import com.knowledgeForest.dto.UserDTO;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class MyPageUserInfoController implements Execute {
+public class MyPageUserInfoEditOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-//		현재 세션 가져오기
-		HttpSession session = request.getSession(false);
+
+		HttpSession session = request.getSession(false); // 현재 세션 가져오기
 		int userNum = (int) session.getAttribute("userNumber");
 
 		MyPageDAO myPageDAO = new MyPageDAO();
 		UserDTO userInfo = myPageDAO.getUserInfo(userNum);
 
-		
 		// 날짜 변환 처리 (1986-02-14 00:00:00 -> 19860214)
 		try {
 			SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -43,10 +41,10 @@ public class MyPageUserInfoController implements Execute {
 		// JSP에서 사용할 데이터 저장
 		request.setAttribute("userInfo", userInfo);
 		Result result = new Result();
-		result.setPath("/html/mypage/mypage-accountedit.jsp");
+		result.setPath(request.getContextPath() + "/html/mypage/mypage-accountedit.jsp");
 		result.setRedirect(false);
 
 		return result;
 	}
-
+	
 }

@@ -20,8 +20,6 @@ public class MyPageDAO {
 
 	// 회원정보 조회
 	public UserDTO getUserInfo(int userNum) {
-		userNum = 11; // 수정 필요 ;
-		System.out.println("회원정보" + userNum);
 		UserDTO user = sqlsession.selectOne("UserMapper.getUserInfo", userNum);
 		return user;
 	}
