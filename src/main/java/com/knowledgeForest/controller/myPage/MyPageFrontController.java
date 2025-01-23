@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Result;
 
@@ -41,11 +42,12 @@ public class MyPageFrontController extends HttpServlet {
 
 		// 경로 분기처리
 		switch (target) {
+//		마이페이지 기본화면 - 개인정보 수정 화면 이동
 		case "/mypage/mypage-accountedit.my":
-			request.getRequestDispatcher("/html/mypage/mypage-accountedit.jsp").forward(request, response);
+			result = new MyPageUserInfoController().execute(request, response);
 			break;
 		case "/mypage/mypage-accounteditOk.my":
-			result = new MyPageUserInfoController().execute(request, response);
+			result = new MyPageUserInfoEditOkController().execute(request, response);
 			break;
 
 		case "/mypage/MypageCheckNicknameOk.my":
@@ -55,7 +57,7 @@ public class MyPageFrontController extends HttpServlet {
 
 		case "/mypage/mypage-deleteaccount.my":
 			System.out.println("유저 탈퇴 페이지 이동");
-			
+
 			request.getRequestDispatcher("/html/mypage/mypage-deleteaccount.jsp").forward(request, response);
 			break;
 
@@ -65,7 +67,7 @@ public class MyPageFrontController extends HttpServlet {
 			break;
 
 		case "/mypage/mypage-applylist.my":
-			System.out.println("신청한 자유게시판");
+			System.out.println("신청한 스터디");
 			result = new MyPageStudyListOkController().execute(request, response);
 			break;
 
@@ -74,9 +76,6 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPageStudyCancelOkController().execute(request, response);
 			break;
 
-		case "/mypage/mypage-hostboard.my":
-			request.getRequestDispatcher("/html/mypage/mypage-hostboard.jsp").forward(request, response);
-			break;
 
 		case "/mypage/mypage-jimlist.my":
 			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
@@ -85,6 +84,18 @@ public class MyPageFrontController extends HttpServlet {
 		case "/mypage/mypage-writtenboard.my":
 			System.out.println("작성한 자유게시판");
 			result = new MyPageBoardListOkController().execute(request, response);
+			break;
+
+		// 로그아웃 처리 추가
+
+		case "/login/logout.me":
+			System.out.println("로그아웃 처리 시작");
+			HttpSession session = request.getSession(false); // 현재 세션 가져오기
+			if (session != null) {
+				session.invalidate(); // 세션 무효화
+				System.out.println("세션 종료 완료");
+			}
+			response.sendRedirect(request.getContextPath() + "/knowledgeForest.main"); // 메인 페이지로 이동
 			break;
 		}
 

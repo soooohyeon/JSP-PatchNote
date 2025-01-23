@@ -23,17 +23,17 @@ public class MyPageDeleteOkController implements Execute {
 		HttpSession session = request.getSession(false);
 
 //		userNum 변수에 저장
-		int userNum = Integer.parseInt(request.getParameter("userNum"));
+		int userNum = (int) session.getAttribute("userNumber");
 
 		System.out.println(userNum);
 		
 //		유저 데이터 삭제 메소드 실행 - userNum 전달
 		mypageDAO.deleteUser(userNum);
 
-		session.invalidate(); // 세션 무효화
+//		세션 무효화
+		session.invalidate();
 //		경로 설정
-		result.setPath(request.getContextPath() + "/main.jsp");
-
+		result.setPath(request.getContextPath() + "/knowledgeForest.main");
 		result.setRedirect(true);
 		
 		return result;

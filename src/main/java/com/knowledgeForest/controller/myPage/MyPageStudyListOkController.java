@@ -9,12 +9,12 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.MyPageDAO;
-import com.knowledgeForest.dto.BoardDTO;
-import com.knowledgeForest.dto.StudyDTO;
+import com.knowledgeForest.dto.StudyApplyDTO;
 
 public class MyPageStudyListOkController implements Execute {
 
@@ -24,10 +24,11 @@ public class MyPageStudyListOkController implements Execute {
 		MyPageDAO mypageDAO = new MyPageDAO();
 		Result result = new Result();
 
-		// userNum = (int) request.getSession().getAttribute("userNum");
-		int userNum = 18;
+		HttpSession session = request.getSession(false); // 현재 세션 가져오기
+		
+		int userNum = (int) session.getAttribute("userNumber");
 
-		List<StudyDTO> studyList = null;
+		List<StudyApplyDTO> studyList = null;
 
 		studyList = mypageDAO.getStudyList(userNum);
 		System.out.println("studyList : " + studyList);
@@ -36,7 +37,7 @@ public class MyPageStudyListOkController implements Execute {
 		SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd"); // DB 날짜 포맷
 		SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd"); // 변환 포맷
 
-		for (StudyDTO study : studyList) {
+		for (StudyApplyDTO study : studyList) {
 			String originalApplyDate = study.getStudyApplyDate();
 			String originalDeadLineDate = study.getStudyDeadline();
 			if (originalApplyDate != null) {
