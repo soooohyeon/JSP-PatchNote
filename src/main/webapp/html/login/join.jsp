@@ -37,7 +37,7 @@
             </p>
           </div>
           <input type="text" class="join-input" name="userId" id="JOIN-INPUT-ID" onkeyup="inputLenFunc3()">
-          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-IDCHECK">ID중복검사</button>
+          <button class="join-btn-checkid" type="button" id="JOIN-BTN-IDCHECK">ID중복검사</button>
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-IDCHECK"></div>
 
@@ -48,7 +48,7 @@
           </div>
           <input type="text" class="join-input" name="userNick" id="JOIN-INPUT-NICKNAMECHECK" onkeyup="inputLenFunc2()">
 
-          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-NICKNAMECHECK">닉네임중복검사</button>
+          <button class="join-btn-checkid" type="button" id="JOIN-BTN-NICKNAMECHECK">닉네임중복검사</button>
         </div>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-NICKNAMECHECK"></div>
 
@@ -93,7 +93,7 @@
           <div class="join-div-labelwrapper">
           </div>
           <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" onkeydown="inputLenFunc1()">
-          <button class="join-btn-checkid" type="submit" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
+          <button class="join-btn-checkid" type="button" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
   
         </div>
       </div>
