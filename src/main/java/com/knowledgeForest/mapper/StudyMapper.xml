@@ -49,7 +49,7 @@
 		FROM TBL_STUDY ts
 		INNER JOIN TBL_USER tu
 		ON ts.USER_NUM = tu.USER_NUM
-		WHERE ts.STUDY_TITLE LIKE #{keyword} OR ts.STUDY_DESCRIPT LIKE #{keyword}
+		WHERE ts.STUDY_TITLE LIKE #{keyword}
 		ORDER BY STUDY_NUM DESC
     </select>
 	
