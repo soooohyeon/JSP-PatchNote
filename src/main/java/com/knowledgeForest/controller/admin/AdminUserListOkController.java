@@ -21,19 +21,16 @@ public class AdminUserListOkController implements Execute {
 		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
 		
-		String keyword = request.getParameter("keyWord");
-		System.out.println("keyWord : " + keyword);
 		List<UserDTO> userList = null;
-		
-//		유저 목록 조회
+		String keyword = request.getParameter("keyWord");
 		if (keyword != null) {
 			keyword = '%' + keyword + '%';
 			userList = adminDAO.selectUserSearch(keyword);
 		} else {
 			userList = adminDAO.selectUserAll();
 		}
-		
 		request.setAttribute("userList", userList);
+		
 		result.setPath("/html/admin/admin-userlist.jsp");
 		result.setRedirect(false);
 
