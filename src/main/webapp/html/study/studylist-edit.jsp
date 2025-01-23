@@ -12,16 +12,10 @@
   </head>
   
   <body>
-    <nav class="main-nav-menuwrap">
-      <img src="${pageContext.request.contextPath}/asset/img/main/logo.png" class="main-img-logo" />
-      <ul class="main-nav-ul">
-        <li><a href="${pageContext.request.contextPath}/html/notice/notice-list.jsp">공지</a></li>
-        <li><a href="${pageContext.request.contextPath}/html/board/board-list.jsp">자유게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/study/studyList.st">스터디 모집</a></li>
-        <li><a href="${pageContext.request.contextPath}/html/login/join.jsp">회원가입</a></li>
-        <li><a href="${pageContext.request.contextPath}/html/login/login.jsp">로그인</a></li>
-      </ul>
-    </nav>
+  
+	<!-- 상단 메뉴바 -->
+	<jsp:include page="/html/main/header.jsp" />
+	
     <main>
       <!-- 페이지 타이틀 -->
       <h1 class="studylist-h1-title">STUDY 수정</h1>
@@ -182,30 +176,9 @@
         </div>
       </div>
     </main>
-    <footer class="main-footer-container">
-      <div class="main-footer-content">
-        <div class="main-footer-links">
-          <div class="main-footer-policies">
-            <a href="#" class="main-link-policy">개인정보처리방침</a>
-            <span class="main-span-divider">|</span>
-            <a href="#" class="main-link-terms">이용약관</a>
-          </div>
-          <p class="main-paragraph-contact">
-            Contact: team.patchnote.official@gmail.com
-          </p>
-          <p class="main-paragraph-copyright">
-            Copyright Forest Info. All rights reserved
-          </p>
-        </div>
-        <div class="main-footer-logo">
-          <img
-            src="/webapp/asset/img/main/logo.png"
-            alt="Forest of Knowledge Logo"
-            class="main-img-footerlogo"
-          />
-        </div>
-      </div>
-    </footer>
+    
+	<jsp:include page="/html/main/footer.jsp" />
+	
   </body>
   <script defer src="../../asset/js/study/studylist-edit.js"></script>
 </html>

@@ -15,27 +15,14 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/main/footer.css" />
 <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script defer
+	src="${pageContext.request.contextPath}/asset/js/study/studylist-detail.js"></script>
 </head>
 <body>
+
 	<!-- 상단 메뉴바 -->
-	<nav class="main-nav-menuwrap">
-		<img src="${pageContext.request.contextPath}/asset/img/main/logo.png"
-			class="main-img-logo" />
-		<ul class="main-nav-ul">
-			<li><a
-				href="${pageContext.request.contextPath}/html/notice/notice-list.jsp">공지</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/html/board/board-list.jsp">자유게시판</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/study/studyList.st">스터디
-					모집</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/html/login/join.jsp">회원가입</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/html/login/login.jsp">로그인</a></li>
-		</ul>
-	</nav>
+	<jsp:include page="/html/main/header.jsp" />
+	
 	<main>
 		<!-- 페이지 타이틀 -->
 		<div class="studylist-detail-div-titlewrapper">
@@ -154,7 +141,7 @@
       -->
 
 		<!-- 댓글 입력 창 -->
-		<div class="studylist-div-commentinputwrapper">
+<!-- 		<div class="studylist-div-commentinputwrapper">
 			<div class="studylist-div-userNickname">
 				<span>[로그인한 계정닉네임]</span>
 			</div>
@@ -173,10 +160,10 @@
 
 		<button class="studylist-btn-commentsubmit" type="submit"
 			form="STUDYLIST-TEXTAREA-COMMENT" onclick="writeComment()">
-			등록</button>
+			등록</button> -->
 
 		<!-- 댓글 목록 -->
-		<div class="studylist-div-commentlistwrapper">
+<!-- 		<div class="studylist-div-commentlistwrapper">
 			<div class="studylist-div-commentlistheader">
 				<span class="studylist-span-comment">댓글</span> <span
 					class="studylist-span-commentcounter">총 2개</span>
@@ -210,7 +197,7 @@
 				</div>
 			</div>
 
-			<!-- 수정 버튼을 눌렀을때 디스플레이 되는 댓글 입력 창 -->
+			수정 버튼을 눌렀을때 디스플레이 되는 댓글 입력 창
 			<div class="studylist-div-commentlist">
 				<div class="studylist-div-commentlayer">
 					<span class="studylist-span-commentnickname">닉네임</span> <span
@@ -227,12 +214,12 @@
 					</form>
 				</div>
 				<div class="studylist-div-commentlayer">
-					<!-- 댓글 수정 버튼 -->
+					댓글 수정 버튼
 					<button class="studylist-btn-editcommentsubmit" type="submit"
 						form="STUDYLIST-FORM-EDITCOMMENT">등록</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- 페이지네이션 -->
 		<div class="studylist-div-paginationwrapper">
@@ -248,26 +235,8 @@
 		</div>
 	</main>
 
-	<footer class="main-footer-container">
-		<div class="main-footer-content">
-			<div class="main-footer-links">
-				<div class="main-footer-policies">
-					<a href="#" class="main-link-policy">개인정보처리방침</a> <span
-						class="main-span-divider">|</span> <a href="#"
-						class="main-link-terms">이용약관</a>
-				</div>
-				<p class="main-paragraph-contact">Contact:
-					team.patchnote.official@gmail.com</p>
-				<p class="main-paragraph-copyright">Copyright Forest Info. All
-					rights reserved</p>
-			</div>
-			<div class="main-footer-logo">
-				<img
-					src="${pageContext.request.contextPath}/asset/img/main/logo.png"
-					alt="Forest of Knowledge Logo" class="main-img-footerlogo" />
-			</div>
-		</div>
-	</footer>
+	<jsp:include page="/html/main/footer.jsp" />
+	
 </body>
 
 <div id="STUDYLIST-MODAL-APPLY">
@@ -277,8 +246,8 @@
 		</div>
 
 		<div class="studylist-div-couragewrapper">
-			<form action="get" id="STUDYLIST-FORM-WRITECOURAGE">
-				<textarea name="studyDeterMination" id="STUDYLIST-TEXTAREA-COURAGE"
+			<form action="studyApplyInsertOk.st" method="post" id="STUDYLIST-FORM-WRITECOURAGE">
+				<textarea name="userDetermination" id="STUDYLIST-TEXTAREA-COURAGE"
 					data-counter="COURAGE-COUNTER" placeholder="각오 한마디를 남기세요"
 					oninput="updateCharacterCount(this, 200)"></textarea>
 			</form>
@@ -310,6 +279,5 @@
 	</div>
 </div>
 
-<script defer
-	src="${pageContext.request.contextPath}/asset/js/study/studylist-detail.js"></script>
+
 </html>
