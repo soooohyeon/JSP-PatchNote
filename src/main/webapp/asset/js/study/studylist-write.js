@@ -73,11 +73,35 @@ function getContextPath() {
 }
 
 // 글 등록을 눌렀을 때  alert, 스터디 목록 페이지로 이동
-function insertStudy(e) {
+/*function insertStudy(e) {
 	e.preventDefault(); // 기본 동작 방지
   if (confirm("스터디를 등록하시겠습니까?")) {
 	document.getElementById("STUDYLIST-FORM-WRITE").submit();
-    alert("스터디가 등록되었습니다.");
     location.href = getContextPath() + "/study/studyWriteOk.st";
+    alert("스터디가 등록되었습니다.");
   }
+}*/
+
+function insertStudy(e) {
+    e.preventDefault(); // 기본 동작 방지
+
+    const form = document.getElementById("STUDYLIST-FORM-WRITE");
+
+    // 유효성 검사 (필요 시 추가)
+    const studyDescript = document.querySelector("[name='studyDescript']").value;
+    if (!studyDescript.trim()) {
+        alert("설명을 작성해주세요.");
+        return;
+    }
+
+    if (confirm("스터디를 등록하시겠습니까?")) {
+        // alert 표시
+        alert("스터디가 등록되었습니다.");
+
+        // 폼을 전송하고, 서버 처리가 끝난 뒤 페이지 이동
+        form.submit(); // 폼 데이터를 서버로 전송
+        setTimeout(() => {
+            location.href = getContextPath() + "/study/studyWriteOk.st"; // 페이지 이동
+        }, 100); // 약간의 딜레이를 주어 submit 완료 후 동작
+    }
 }
