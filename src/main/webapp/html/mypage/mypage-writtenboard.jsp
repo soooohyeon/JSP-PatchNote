@@ -28,10 +28,10 @@
 							수정</a></li>
 					<%-- <li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
-							목록</a></li> --%>
+							목록</a></li> 
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
-							스터디</a></li>
+							스터디</a></li>--%>
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 							스터디</a></li>
@@ -78,6 +78,9 @@
 								<span class="board-date">작성일</span></li>
 
 							<c:forEach var="board" items="${boardList}">
+							
+							 <a href="${pageContext.request.contextPath}/board/boarddetail.bo?boardNum=${board.boardNum}">
+			                </a>
 								<li class="board-item" style="cursor: pointer;"	
 									onclick="goPage(${board.boardNum})">
 									<span class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
@@ -91,7 +94,7 @@
 				</div>
 
 				<!-- 페이지네이션 -->
-				<div class="mypage-div-paginationwrapper">
+				<!-- <div class="mypage-div-paginationwrapper">
 					<ul id="mypage-UL-PAGINATION">
 						<li class="mypage-li-paginationlist pre">&lt;</li>
 						<li class="mypage-li-paginationlist currentpage">1</li>
@@ -101,7 +104,7 @@
 						<li class="mypage-li-paginationlist">5</li>
 						<li class="mypage-li-paginationlist next">&#62;</li>
 					</ul>
-				</div>
+				</div> -->
 
 			</main>
 		</div>

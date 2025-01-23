@@ -21,10 +21,7 @@ public class MyPageStudyCancelOkController implements Execute {
 
 //		studyNum 변수에 저장
 		int studyNum = Integer.parseInt(request.getParameter("studyNum"));
-
-		System.out.println(studyNum);
-		System.out.println("ㅗㅗㅗㅗ" + request.getContextPath());
-		
+	
 //		신청 취소 메소드 실행 - studyNum 전달
 		mypageDAO.deleteStudyApply(studyNum);
 		

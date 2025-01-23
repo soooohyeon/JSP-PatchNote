@@ -23,28 +23,28 @@
 	<!-- 사이드 메뉴 -->
 	<aside id="MYPAGE-MENUCONTAINER">
 		<nav class="mypage-div-menuwrap">
-			<h1 id="MYPAGE-H2-TITLE">마이 페이지</h1>
-			<ul class="mypage-ul-menuwrap">
-				<li><a
-					href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
-						수정</a></li>
-				<%-- <li><a
-					href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
-						목록</a></li> --%>
-				<li><a
-					href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
-						스터디</a></li>
-				<li  class="mypage-li-menuactive"><a
-					href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
-						스터디</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/mypage/mypage-writtenboard.my">작성한
-						자유게시글</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/mypage/mypage-deleteaccount.my">회원
-						탈퇴</a></li>
-			</ul>
-		</nav>
+            <h1 id="MYPAGE-H2-TITLE">마이 페이지</h1>
+            <ul class="mypage-ul-menuwrap">
+               <li><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
+                     수정</a></li>
+               <%-- <li><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
+                     목록</a></li> --%>
+               <%-- <li><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
+                     스터디</a></li> --%>
+               <li class="mypage-li-menuactive"><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
+                     스터디</a></li>
+               <li><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-writtenboard.my">작성한
+                     자유게시글</a></li>
+               <li><a
+                  href="${pageContext.request.contextPath}/mypage/mypage-deleteaccount.my">회원
+                     탈퇴</a></li>
+            </ul>
+         </nav>
 	</aside>
 	<!-- 사이드 메뉴 끝 -->
 
@@ -89,8 +89,8 @@
 										</c:otherwise>
 									</c:choose>
 								</div>
-								<div class="mypage-div-grouptitle" onclick= "goPage(${study.studyNum})">
-									<a href="/webapp/html/study/studylist-detail.html">${study.studyTitle}</a>
+								<div class="mypage-div-grouptitle">
+									<a href="${pageContext.request.contextPath}/study/studyDetailOk.st?studyNum=${study.studyNum}">${study.studyTitle}</a>
 								</div>
 								<div class="mypage-div-groupinfowrapper">
 									<c:choose>
@@ -130,7 +130,7 @@
 				</div>
 
 				<!-- 페이지네이션 -->
-				<div class="mypage-div-paginationwrapper">
+				<!-- <div class="mypage-div-paginationwrapper">
 					<ul id="mypage-UL-PAGINATION">
 						<li class="mypage-li-paginationlist pre">&lt;</li>
 						<li class="mypage-li-paginationlist currentpage">1</li>
@@ -140,7 +140,7 @@
 						<li class="mypage-li-paginationlist">5</li>
 						<li class="mypage-li-paginationlist next">&#62;</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 			<!-- 게시판 컨텐츠 정렬을 위한 div 끝 -->
 		</main>
