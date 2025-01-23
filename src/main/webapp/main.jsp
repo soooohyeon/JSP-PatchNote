@@ -12,7 +12,7 @@ int user = session.getAttribute("userDTO.getUserNum())");
 boolean isLoggedIn = (user != null); // 로그인 여부 확인
 %>
  --%>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,29 +31,28 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 </head>
 
 
-			
-				
-				<!-- 임시 / 로그인 테스트  -->
- <%-- 		<c:choose>
+
+<!-- 임시 / 로그인 테스트  -->
+<%-- 		<c:choose>
 					<c:when test="${sessionScope.userNumber eq null}">
 						<div>로그인 안댐</div>
 					</c:when>
 					<c:otherwise>
 						<div>로그인 댐 세션값 저장댐</div>
 					</c:otherwise>
-				</c:choose> --%> 
-				
+				</c:choose> --%>
+
 
 <body>
-	
+
 	<!-- 상단 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
-	
+
 	<!-- 메인 콘텐츠 -->
-				
+
 	<main>
-		<div class="main-div-wrapper">				
-				
+		<div class="main-div-wrapper">
+
 			<!-- 위시 리스트 아이콘 -->
 			<div class="main-div-wishlist">
 				<h2 style="text-align: center;">
@@ -63,7 +62,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 						style="width: 40px; height: 40px; margin-right: 5px;">
 					Forest of Knowledge
 				</h2>
-				<!-- 위시리스트 -->
+				
 				<div class="main-div-wishlistcontainer">
 					<div class="main-div-wishlistcontent">
 						<div class="main-div-wishlisttitle">
@@ -73,7 +72,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 							<h2>LIST</h2>
 						</div>
 						<c:choose>
-							<c:when test="${not empty sessionScope.memberNumber}">
+							<c:when test="${not empty sessionScope.userNumber}">
 								<ul class="main-div-ulist">
 									<li class="main-div-wish">위시 리스트 내용을 표시합니다.</li>
 									<li class="main-div-wish">예시 스터디 1</li>
@@ -109,94 +108,75 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 			</div>
 		</div>
 
-
 		<div class="main-div-container">
 
-
-
 			<div class="main-div-studycard main-div-studynew">
-
 				<header class="main-div-studycardheader">
-
-					<span class="main-span-label">NEW </span> <span
+					<span class="main-span-label"> NEW </span> <span
 						class="main-span-title"> 신규 등록 스터디</span>
 				</header>
-
 				<div class="main-div-studycontent">
-				
-				<c:forEach var="newStudy" items="${newStudyList}">
-					<c:choose>
-						<c:when test="${not empty sessionScope.memberNumber}">
-							<div class="main-div-studyitem " onclick="goPage(this)">
-						</c:when>
-						<c:otherwise>
-							<div class="main-div-studyitem " onclick="notLogin(this)">
-						</c:otherwise>
-					</c:choose>
-					<span class="main-span-icon">[개발]</span>
-					<div class="main-div-studyname">
-						<c:out value="${newStudy.studyTitle}" />
-					</div>
-					<div class="main-div-studytext">
-						<c:out value="${newStudy.studyDescript}" />
-					</div>
+
+					<c:forEach var="newStudy" items="${newStudyList}">
+						<c:choose>
+							<c:when test="${not empty sessionScope.userNumber}">
+								<div class="main-div-studyitem " onclick="goPage(${newStudy.studyNum})">
+							</c:when>
+							<c:otherwise>
+								<div class="main-div-studyitem " onclick="notLogin(this)">
+							</c:otherwise>
+						</c:choose>
+						<span class="main-span-icon">[개발]</span>
+						<div class="main-div-studyname">
+							<c:out value="${newStudy.studyTitle}" />
+						</div>
+						<div class="main-div-studytext">
+							<c:out value="${newStudy.studyDescript}" />
+						</div>
 				</div>
 				</c:forEach>
-
+			</div>
 		</div>
-		</div>
-
 
 		<div class="main-div-studycard main-div-studyhurry">
-			<header class="main-div-studycardheader">
-				<span class="main-span-label">Hurry </span> <span
-					class="main-span-title"> 마감 임박 스터디</span>
-			</header>
+         <header class="main-div-studycardheader">
+            <span class="main-span-label">Hurry </span> <span class="main-span-title"> 마감 임박 스터디</span>
+         </header>
 
-			<div class="main-div-studycontent">
-				<c:choose>
-					<c:when test="${not empty sessionScope.memberNumber}">
-						<div class="main-div-studyitem " onclick="goPage(this)">
-					</c:when>
-					<c:otherwise>
-						<div class="main-div-studyitem " onclick="notLogin(this)">
-					</c:otherwise>
-				</c:choose>
-				<span class="main-span-icon">[보안]</span>
-				<div class="main-div-studyname">ㅋㅋ</div>
-				<div class="main-div-studytext">내용입니다.</div>
+         <div class="main-div-studycontent">
+
+
+				<c:forEach var="deadlineStudy" items="${deadlineStudyList}">
+					<c:choose>
+						<c:when test="${not empty sessionScope.userNumber}">
+							<div class="main-div-studyitem" onclick="goPage(${deadlineStudy.studyNum})">
+						</c:when>
+						<c:otherwise>
+							<div class="main-div-studyitem" onclick="notLogin(this)">
+						</c:otherwise>
+					</c:choose>
+					<span class="main-span-icon">[보안]</span>
+					<div class="main-div-studyname">
+						<c:out value="${deadlineStudy.studyTitle}" />
+					</div>
+					<div class="main-div-studytext">
+						<c:out value="${deadlineStudy.studyDescript}" />
+					</div>
 			</div>
+			</c:forEach>
 
-			<c:choose>
-				<c:when test="${not empty sessionScope.memberNumber}">
-					<div class="main-div-studyitem " onclick="goPage(this)">
-				</c:when>
-				<c:otherwise>
-					<div class="main-div-studyitem " onclick="notLogin(this)">
-				</c:otherwise>
-			</c:choose>
-			<span class="main-span-icon">[개발]</span>
-			<div class="main-div-studyname">너만 오면 시작</div>
-			<div class="main-div-studytext">대충 구한다는 내용.</div>
 		</div>
 		</div>
 		</div>
 
 	</main>
-	
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-      <script>
-         let user = "${sessionScope.userNumber}";
-         console.log("main.jsp ======" + user + " 확인!!!!!");
-         console.log("main.jsp ======" +  + " 확인!!!!!");
-      </script>
-      
-       	<c:out value="${sessionScope.userNumber}" ></c:out>	
-       	<c:out value="${sessionScope.userNum}" />
-       	
-      
+	<%-- <c:out value="${sessionScope.userNumber}"></c:out> --%>
+	<%-- <c:out value="${sessionScope.userNum}" /> --%>
+
 	<jsp:include page="/html/main/footer.jsp" />
 </body>
 

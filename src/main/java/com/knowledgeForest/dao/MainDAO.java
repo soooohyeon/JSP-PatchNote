@@ -1,11 +1,12 @@
 package com.knowledgeForest.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
 import com.knowledgeForest.config.MyBatisConfig;
-import com.knowledgeForest.dto.LikeDTO;
 import com.knowledgeForest.dto.StudyDTO;
 
-import java.util.List;
 
 public class MainDAO {
 
@@ -31,10 +32,10 @@ public class MainDAO {
 	}
 
 	// 마감 임박 스터디
-	public List<StudyDTO> getEndStudy() {
+	public List<StudyDTO> getDeadlineStudy() {
 		System.out.println("마감 임박 스터디 조회");
-		List<StudyDTO> endStudyList = sqlsession.selectList("MainMapper.deadlineStudy");
+		List<StudyDTO> endStudyList = sqlsession.selectList("MainMapper.getDeadlineStudy");
 		return endStudyList;
 	}
-
+	
 }
