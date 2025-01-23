@@ -36,8 +36,8 @@
 					<form action="${pageContext.request.contextPath}/admin/admin-userlist.ad" method="get">
 						<div class="admin-div-wrapper">
 							<input type="text" name="keyWord" class="admin-input-search"
-								placeholder="유저ID 또는 닉네임을 입력해주세요." value="<c:out value='${param.keyWord}'/>" /> <img
-								src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
+								placeholder="유저ID 또는 닉네임을 입력해주세요." value="<c:out value='${param.keyWord}'/>" />
+								<img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
 						</div>
 					</form>
