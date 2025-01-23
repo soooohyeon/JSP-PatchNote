@@ -24,10 +24,13 @@ searchInput.addEventListener("focus", () => {
 searchInput.addEventListener("blur", () => {
   wrapper.classList.remove("focused");
 });
-// writeInput이라는 변수 선언 후 .bord..div-wr..를 불러옴옴
-const writeInput = document.querySelector(".borderlist-div-writewrap");
-//writeInput에 이벤트를 클릭으로 주고  alret창을 띄움 그리고 로그인화면으로 이동
-writeInput.addEventListener("click", function(){
-  alert("로그인먼저진행해주세요.");
-  window.location.href="./../login/login.html";
-});
+
+//비로그인시 writeInput에 이벤트를 클릭으로 주고  alret창을 띄움 그리고 로그인화면으로 이동
+function notLogin(){
+  window.location.href=getContextPath() + "/login/login.me";
+};
+
+/* 로그인일 때 글 작성 페이지로 이동 */
+function goWrite(){
+  window.location.href=getContextPath() + "/board/boardWrite.bo";
+};

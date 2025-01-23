@@ -1,4 +1,4 @@
-package com.knowledgeForest.controller.board;
+ package com.knowledgeForest.controller.board;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,11 +22,21 @@ public class BoardListOkController implements Execute {
 			throws ServletException, IOException{
 		BoardDAO boardDAO = new BoardDAO();
 		Result result = new Result();
+		List<BoardUserDTO> boardList = null;
 		
-		System.out.println("Dddddd : ");
+		String keyword = request.getParameter("keyword");
+		if (keyword == null) {
+			System.out.println("검색 아님");
+			boardList = boardDAO.getBoard();
+		} else {
+			System.out.println("검색 좀");
+			keyword = '%' + keyword + '%';
+			boardList = boardDAO.selectBoardSearch(keyword);
+		}
 		
-		List<BoardUserDTO> boardList = boardDAO.getBoard();
 		request.setAttribute("boardList", boardList);
+		
+//		검색어 저장
 		
 		result.setPath("/html/board/board-list.jsp");
 		result.setRedirect(false);

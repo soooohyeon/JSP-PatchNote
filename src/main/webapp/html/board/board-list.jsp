@@ -28,8 +28,8 @@
 
 	<h1 class="board-title ">자유게시판</h1>
 	<!-- 검색창 -->
-	<form class="boardlist-form-wrapper" action="">
-		<input type="text" class="boardlist-input-search"
+	<form class="boardlist-form-wrapper" action="${pageContext.request.contextPath}/board/boardlist.bo" method="get">
+		<input type="text" class="boardlist-input-search" name="keyword" value="<c:out value='${param.keyword}'/>"
 			placeholder="검색어를 입력하세요." />
 		<button class="boardlist-btn-search">
 			<img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png" alt="search"
@@ -67,7 +67,14 @@
 
 	<!-- 글쓰기 버튼 -->
 	<div class="borderlist-div-writewrap">
-		<button class="boardlist-btn-write">글쓰기</button>
+		<c:choose>
+			<c:when test="${not empty sessionScope.userNumber}">
+				<button class="boardlist-btn-write" onclick="goWrite()">글쓰기</button>
+			</c:when>
+			<c:otherwise>
+				<button class="boardlist-btn-write" onclick="notLogin()">글쓰기</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 	<!-- 페이지네이션 -->
