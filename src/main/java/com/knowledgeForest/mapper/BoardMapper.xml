@@ -9,6 +9,7 @@
         FROM TBL_BOARD UL
         LEFT JOIN TBL_USER TL
         ON UL.USER_NUM = TL.USER_NUM
+		ORDER BY BOARD_NUM DESC
     </select>
 
     <!-- 자유게시판 목록 - 검색 -->

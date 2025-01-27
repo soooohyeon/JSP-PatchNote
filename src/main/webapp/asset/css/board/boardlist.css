@@ -3,6 +3,12 @@
     margin: 0;
     background-color: #F6F6F6;
 }
+
+
+.main-footer-container {
+	margin-top : 40px;
+}
+
 /* 타이틀 */
 .boardlist-div-list {
   list-style: none;

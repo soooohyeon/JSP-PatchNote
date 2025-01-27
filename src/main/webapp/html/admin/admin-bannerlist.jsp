@@ -89,7 +89,7 @@
             <button class="admin-btn-write" onclick="location.href='${pageContext.request.contextPath}/admin/admin-bannerwrite.ad'">등록</button>
           </div>
 
-          <!-- 페이지네이션 -->
+          <!-- <!-- 페이지네이션 -->
           <div class="admin-div-paginationwrapper">
             <ul id="admin-UL-PAGINATION">
               <li class="admin-li-paginationlist pre">&lt;</li>
@@ -100,7 +100,7 @@
               <li class="admin-li-paginationlist">5</li>
               <li class="admin-li-paginationlist next">&#62;</li>
             </ul>
-          </div>
+          </div> -->
 
         </div>
       </main>

@@ -10,6 +10,11 @@ h1{
   margin-bottom: 5px;
   margin-top: 50px;
 }
+
+.main-footer-container {
+	margin-top : 40px;
+}
+
 /* 타이틀틀 */
 .noticelist-div-list{
   list-style: none;

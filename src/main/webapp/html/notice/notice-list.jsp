@@ -47,7 +47,7 @@
 		</ul>
 
 		<!-- 페이지네이션 -->
-		<div class="noticelist-div-paginationwrapper">
+		<!-- <div class="noticelist-div-paginationwrapper">
 			<ul id="NOTICELIST-UL-PAGINATION">
 				<li class="noticelist-li-paginationlist pre">&lt;</li>
 				<li class="noticelist-li-paginationlist currentpage">1</li>
@@ -57,7 +57,8 @@
 				<li class="noticelist-li-paginationlist">5</li>
 				<li class="noticelist-li-paginationlist next">&#62;</li>
 			</ul>
-		</div>
+		</div> -->
+		
 	</div>
 	<!-- 푸터 -->
 	<jsp:include page="/html/main/footer.jsp" />

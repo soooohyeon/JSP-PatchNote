@@ -61,7 +61,7 @@
         </div>
       </div>
       <!-- 댓글 입력 창 -->
-      <div class="boardlistdetail-div-commentinputwrapper">
+      <!-- <div class="boardlistdetail-div-commentinputwrapper">
         <div class="boardlistdetail-div-userNickname">
           <span>닉네임</span>
         </div>
@@ -76,15 +76,15 @@
           <span class="boardlistdetail-span-counter" id="WRITE-COMMENT-COUNTER">0/200</span>
         </div>
       </div>
-      <!-- 등록버튼 -->
+      등록버튼
       <div class="boardlistdetail-div-commentwrap">
         <button class="boardlistdetail-btn-commentsubmit" type="submit" form="BOARDLISTDETAIL-TEXTAREA-COMMENT"
           onclick="writeComment()">
           등록
         </button>
       </div>
-      <!-- 댓글내용 -->
-      <!-- <div class="boardlistdetail-div-commenttitle">
+      댓글내용
+      <div class="boardlistdetail-div-commenttitle">
       <span>댓글</span>
     </div>
     <div class="boardlistdetail-div-checkcomment">
@@ -98,7 +98,7 @@
       <div class="boardlistdetail-div-editdelete">
         <button>수정|삭제</button>
       </div>
-    </div> -->
+    </div>
       <div class="boardlistdetail-div-commentlistwrapper">
         <div class="boardlistdetail-div-commentlistheader">
           <span class="boardlistdetail-span-comment">댓글</span>
@@ -136,7 +136,7 @@
             </div>
           </div>
         </div>
-        <!-- 페이지네이션 -->
+        페이지네이션
         <div class="boardlistdetail-div-paginationwrapper">
           <ul id="BOARDLISTDETAIL-UL-PAGINATION">
             <li class="boardlistdetail-li-paginationlist pre">&lt;</li>
@@ -147,7 +147,7 @@
             <li class="boardlistdetail-li-paginationlist">5</li>
             <li class="boardlistdetail-li-paginationlist next">&#62;</li>
           </ul>
-        </div>
+        </div> -->
      </div>
     </main>
 	<!-- 푸터 -->
