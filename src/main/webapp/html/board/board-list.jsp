@@ -78,7 +78,7 @@
 	</div>
 
 	<!-- 페이지네이션 -->
-	<div class="boardlist-div-paginationwrapper">
+	<!-- <div class="boardlist-div-paginationwrapper">
 		<ul id="BOARDLIST-UL-PAGINATION">
 			<li class="boardlist-li-paginationlist pre">&lt;</li>
 			<li class="boardlist-li-paginationlist currentpage">1</li>
@@ -88,7 +88,7 @@
 			<li class="boardlist-li-paginationlist">5</li>
 			<li class="boardlist-li-paginationlist next">&#62;</li>
 		</ul>
-	</div>
+	</div> -->
 
 	<!-- footer -->
 	<jsp:include page="/html/main/footer.jsp" />

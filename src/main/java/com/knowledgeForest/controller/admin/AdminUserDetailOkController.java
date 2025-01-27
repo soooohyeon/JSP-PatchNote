@@ -37,7 +37,7 @@ public class AdminUserDetailOkController implements Execute {
 //		유저가 작성한 스터디 댓글
 		request.setAttribute("studyCommentCount", adminDAO.countStudyComment(userNum));
 //		유저가 작성한 스터디
-		request.setAttribute("boardyCount", adminDAO.countBoard(userNum));
+		request.setAttribute("boardCount", adminDAO.countBoard(userNum));
 //		유저가 작성한 스터디
 		request.setAttribute("boardCommentCount", adminDAO.countBoardComment(userNum));
 		

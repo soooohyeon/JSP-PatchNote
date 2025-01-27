@@ -51,9 +51,9 @@
           </div>
           <div class="noticedetail-div-contentslong">
             <c:out value="${noticedetail.noticeContents}" />
-            <div class="notice-div-imgwrapper">
+            <%-- <div class="notice-div-imgwrapper">
               <img class="notice-img" src="${pageContext.request.contextPath}/asset/img/main/banner01.png" alt="이미지" />
-            </div>
+            </div> --%>
           </div>
         </div>
 

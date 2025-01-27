@@ -222,7 +222,7 @@
 		</div> -->
 
 		<!-- 페이지네이션 -->
-		<div class="studylist-div-paginationwrapper">
+		<!-- <div class="studylist-div-paginationwrapper">
 			<ul id="STUDYLIST-UL-PAGINATION">
 				<li class="studylist-li-paginationlist pre">&lt;</li>
 				<li class="studylist-li-paginationlist currentpage">1</li>
@@ -232,7 +232,7 @@
 				<li class="studylist-li-paginationlist">5</li>
 				<li class="studylist-li-paginationlist next">&#62;</li>
 			</ul>
-		</div>
+		</div> -->
 	</main>
 
 	<jsp:include page="/html/main/footer.jsp" />

@@ -26,6 +26,11 @@ main {
 
 }
 
+
+.main-footer-container {
+	margin-top : 40px;
+}
+
 .studylist-detail-div-titlewrapper {
   display: flex;
   align-items: center;

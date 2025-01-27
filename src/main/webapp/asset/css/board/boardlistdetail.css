@@ -14,6 +14,11 @@ body { background-color: #f6f6f6; }
   margin-top: 50px;
   margin-bottom: 30px;
 }
+
+.main-footer-container {
+	margin-top: 40px;
+}
+
 /* 수정|삭제 버튼 */
 .boardlistdetail-detail-div-btnwrapper {
   display: flex;
@@ -79,7 +84,11 @@ body { background-color: #f6f6f6; }
   align-items: center;
 }
 
-.boardlistdetail-div-main > .boardlist-div-contents { padding: 50px 20px; }
+.boardlistdetail-div-main > .boardlist-div-contents {
+	padding: 50px 20px;
+    min-height: 200px;
+
+}
 
 .boardlistdetail-div-header {
   border: 1px;
