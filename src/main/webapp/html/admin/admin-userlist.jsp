@@ -35,8 +35,8 @@
 					<!-- 검색창 -->
 					<form action="${pageContext.request.contextPath}/admin/admin-userlist.ad" method="get">
 						<div class="admin-div-wrapper">
-							<input type="text" name="keyWord" class="admin-input-search"
-								placeholder="유저ID 또는 닉네임을 입력해주세요." value="<c:out value='${param.keyWord}'/>" />
+							<input type="text" name="keyword" class="admin-input-search"
+								placeholder="유저ID 또는 닉네임을 입력해주세요." value="<c:out value='${param.keyword}'/>" />
 								<img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
 								alt="search" class="admin-img-search" />
 						</div>
@@ -90,13 +90,28 @@
 					<!-- 페이지네이션 -->
 					<!-- <div class="admin-div-paginationwrapper">
 						<ul id="admin-UL-PAGINATION">
-							<li class="admin-li-paginationlist pre">&lt;</li>
-							<li class="admin-li-paginationlist currentpage">1</li>
-							<li class="admin-li-paginationlist">2</li>
-							<li class="admin-li-paginationlist">3</li>
-							<li class="admin-li-paginationlist">4</li>
-							<li class="admin-li-paginationlist">5</li>
-							<li class="admin-li-paginationlist next">&#62;</li>
+							<c:if test="${prev}">
+								<li class="admin-li-paginationlist pre" onclick="movePage(${startPage - 1}, '${param.keyword}')">&lt;</li>
+							</c:if>
+							
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${!(i == page)}">
+										<li class="admin-li-paginationlist" onclick="movePage(${i}, '${param.keyword}')">
+											<c:out value="${i}"/>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="admin-li-paginationlist currentpage" onclick="movePage(${i}, '${param.keyword}')">
+											<c:out value="${i}"/>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test="${next}">
+								<li class="admin-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
+							</c:if>
 						</ul>
 					</div> -->
 
