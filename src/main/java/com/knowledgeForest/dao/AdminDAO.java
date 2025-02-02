@@ -1,6 +1,7 @@
 package com.knowledgeForest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -41,14 +42,14 @@ public class AdminDAO {
 	}
 	
 //	모든 유저 목록 조회
-	public List<UserDTO> selectUserAll() {
-		return sqlSession.selectList("AdminMapper.selectUserAll");
+	public List<UserDTO> selectUserAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectUserAll", paramMap);
 	}
 	
-	
-//	모든 유저 목록 조회 - 검색
-	public List<UserDTO> selectUserSearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectUserSearch", keyword);
+//	총 유저 수
+	public int getUserTotal(String keyword) {
+		System.out.println("keyword : " + keyword);
+		return sqlSession.selectOne("AdminMapper.getUserTotal", keyword);
 	}
 	
 //	해당 유저 상세 조회
@@ -122,8 +123,13 @@ public class AdminDAO {
 	}
 	
 //	공지 등록
-	public void insertNotice (NoticeDTO noticeDTO) {
+	public int insertNotice (NoticeDTO noticeDTO) {
+//		공지 등록하는 쿼리 실행
 		sqlSession.insert("AdminMapper.insertNotice", noticeDTO);
+		
+		System.out.println("최근 등록 : " + sqlSession.selectOne("AdminMapper.getCurrentNoticeNum"));
+//		가장 최근에 생성된 공지 번호값 리턴 - 이미지 첨부를 위함
+		return sqlSession.selectOne("AdminMapper.getCurrentNoticeNum");
 	}
 	
 //	공지 수정
