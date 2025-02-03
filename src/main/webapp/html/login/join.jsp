@@ -15,18 +15,18 @@
 
 <body>
 
-		<!-- 헤더 - 메뉴바 -->
-		<jsp:include page="/html/main/header.jsp" />
-	
-	  <main>
+      <!-- 헤더 - 메뉴바 -->
+      <jsp:include page="/html/main/header.jsp" />
+   
+     <main>
     <div class="join-div-section-up">
       <div class="join-div-wrapper-h1-box">
         <h1 class="join-h1-title">회원가입</h1>
       </div>
       <div class="join-div-wrapper-p-box">
-        <p class="join-p-required1">*
+        <p class="join-p-required1">*  </p>
         <p class="join-p-required2"> 필수 입력사항</p>
-        </p>
+      
       </div>
     </div>
     <form action="${pageContext.request.contextPath}/login/joinOk.me"  method = "post">
@@ -36,63 +36,68 @@
             <p class="join-p-label">아이디
             </p>
           </div>
-          <input type="text" class="join-input" name="userId" id="JOIN-INPUT-ID" onkeyup="inputLenFunc3()">
-          <button class="join-btn-checkid" type="button" id="JOIN-BTN-IDCHECK">ID중복검사</button>
+          <input type="text" class="join-input" name="userId" id="JOIN-INPUT-ID">
+        
         </div>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-IDCHECK"></div>
+         <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-IDCHECK"></span>
+        
 
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label" >닉네임
             </p>
           </div>
-          <input type="text" class="join-input" name="userNick" id="JOIN-INPUT-NICKNAMECHECK" onkeyup="inputLenFunc2()">
-
-          <button class="join-btn-checkid" type="button" id="JOIN-BTN-NICKNAMECHECK">닉네임중복검사</button>
+          <input type="text" class="join-input" name="userNick" id="JOIN-INPUT-NICKNAME" > 
+          
         </div>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-NICKNAMECHECK"></div>
-
+         <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-NICKNAMECHECK"></span>
+         
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label" >비밀번호</p>
           </div>
-          <input type="password" class="join-input" id="INPUT-PASSWORD" name="userPw"  maxlength="15">
+          <input type="password" class="join-input" id="INPUT-PASSWORD" name="userPw"  maxlength="15">      
         </div>
+        <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-PASSWORD"></span>
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label">비밀번호 재확인</p>
           </div>
-          <input type="password" class="join-input" id="JOIN-REPASSWORD" name="userRepw" maxlength="15" onblur="validatePassword()">
+          <input type="password" class="join-input" id="JOIN-REPASSWORD" name="userRepw" maxlength="15" >
         </div>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PWALARM"></div>
+        <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-REPASSWORD"></span>
+        
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label">이름</p>
           </div>
-          <input type="text" class="join-input" id="JOIN-INPUt-ID" name="userName" onblur="nameCheck()" maxlength="6">
+          <input type="text" class="join-input" id="JOIN-INPUT-NAME" name="userName"  maxlength="6">
         </div>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-NAME"></div>
+        <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-NAME"></span>
+        
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
             <p class="join-p-label">생년월일</p>
           </div>
-        <input type="text" class="join-input" name="userBirth" id="JOIN-INPUT-BIRTH" 
-        onkeydown="inputLenFunc()"
-        onblur="birthCheck()">
+        <input type="text" class="join-input" name="userBirth" id="JOIN-INPUT-BIRTH">
         </div>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-BIRTH" ></div>
+        <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-BIRTH"></span>
+        
+        
        <div class="join-div-inputlayer">
         <div class="join-div-labelwrapper">
           <p class="join-p-label">핸드폰번호</p>
         </div>
           <input type="text" class="join-input" name="userPH" id="JOIN-INPUT-PHONNUMBER">
+          
           <button class="join-btn-checkid" type="button" id="JOIN-BTN-PHONNUMBER">인증번호 받기</button>
         </div>
+        <span id="JOIN-DIV-VERIFICATION-STATUS"></span>
         <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PHONENUMBER"></div>
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
           </div>
-          <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" onkeydown="inputLenFunc1()">
+          <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" >
           <button class="join-btn-checkid" type="button" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
   
         </div>
@@ -287,11 +292,11 @@
       - 가입정보 : 아이디, 비밀번호, 성명, 닉네임 휴대전화번호
     * 선택항목
       - 주소, 전화번호, 기관의 부서명(운영회원)
-	
+   
    [컴퓨터에 의해 자동으로 수집되는 정보]
    인터넷 서비스 이용과정에서 아래 개인정보 항목이 자동으로 생성되어 수집될 수 있습니다. 
     - IP주소, 서비스 이용기록, 방문기록 등
-	
+   
   나. 개인정보 수집방법
       홈페이지 회원가입을 통한 수집 
 
@@ -312,7 +317,7 @@
 
 3. 수집한 개인정보 제3자 제공
 패치노트 지식의 숲에서는 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
-		
+      
 4. 개인정보 처리업무 안내
 패치노트 지식의 숲에서는 개인정보의 취급위탁은 하지 않고 있으며, 원활한 서비스 제공을 위해 아래의 기관을 통한 실명인증 및 공공 I-PIN, GPKI 인증을 하고 있습니다. 
 
@@ -320,18 +325,18 @@
     - 행정자치부
       · 위탁업무 내용 : 공공 I-PIN, GPKI 인증
       · 개인정보 보유 및 이용 기간 : 행정자치부에서는 이미 보유하고 있는 개인정보이기 때문에 별도로 저장하지 않음
-								
+                        
         </textarea>
       </div>
 
       <button type="submit"  class="join-btn-check" id="JOIN-BTN-INSITE" onclick="moveSite()">가입하기</button>
-	
+   
     </div>     <!-- section-middle /div -->
   </form>
   </main>
-	
-	
-	
-	<jsp:include page="/html/main/footer.jsp"/>
+   
+   
+   
+   <jsp:include page="/html/main/footer.jsp"/>
 </body>
 </html>

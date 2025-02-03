@@ -38,8 +38,8 @@ function login(){
 				alert("로그인 실패했습니다.");
 				location.href = getContextPath() + "/login/login.me";
 			}
-		});*/
-	}
+		});
+	}*/
 	
 	
 }
