@@ -27,13 +27,15 @@ public class LoginDAO{
 		int userNumber = -1;
 		return user == null ? -1 : user.getUserNum();
 	}
-	
-	//첫번째 비밀번호 찾기 페이지
-	public void selectPw(UserDTO userDTO) {
-		sqlsession.selectOne("LoginMapper.selectPw");
-		
+	//ID 중복검사
+	public boolean checkId(String userId) {
+		return (Integer)sqlsession.selectOne("LoginMapper.checkId", userId) < 1;
 	}
 	
+	//닉네임 중복검사
+	public boolean checkNick(String userNick) {
+		return (Integer)sqlsession.selectOne("LoginMapper.checkNick", userNick) < 1;
+	}
 	
 	//두번째 비밀번호 찾기 페이지
 }

@@ -80,7 +80,27 @@ public class LoginFrontController extends HttpServlet {
 			System.out.println("회원가입");
 			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response);
 			break;
-
+			
+		case "/login/checkIdOk.me":
+			System.out.println("아이디 중복검사");
+			result = new CheckIdOkController().execute(request, response);
+			break;
+			
+		case "/login/checkNickOk.me":
+			System.out.println("닉네임 중복검사");
+			result = new CheckNickOkController().execute(request, response);
+			break;	
+			
+		case "/login/sendSMS.me" :
+			 System.out.println("핸드폰 인증 요청");
+			 result = new JoinSMSController().execute(request,response);
+			break;
+			
+		case "/login/verifyCode.me":
+			System.out.println("인증번호 확인 요청");
+			result = new VerifyCodeController().execute(request, response);
+			break;	
+			
 		case "/login/joinOk.me":
 			System.out.println("회원가입완료");
 			result = new JoinOkController().execute(request, response); // 404 에러 공존
