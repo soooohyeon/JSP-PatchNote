@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminImgMapper">
+
+	<!-- 공지 이미지 등록 -->
+	<insert id="insertNoticeImg" parameterType="AdminImgDTO">
+		INSERT INTO TBL_ADMIN_IMG
+		(ADMIN_IMG_NUM, NOTICE_NUM, ADMIN_IMG_NAME, ADMIN_IMG_UUID)
+		VALUES(SEQ_ADMIN_IMG.NEXTVAL, #{noticeNum}, #{adminImgName}, #{adminImgUuid})
+	</insert>
+	
+	
+</mapper>

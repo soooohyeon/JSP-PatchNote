@@ -13,3 +13,16 @@ searchInput.addEventListener("blur", () => {
   wrapper.classList.remove("focused");
 });
 // ------------------------------------
+
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, keyword) {
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	if (keyword == null) {
+		location.href = pathName + "?page=" + page;
+	} else {
+		location.href = pathName + "?keyword=" + keyword + "&&page=" + page;
+	}
+}
+
