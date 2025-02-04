@@ -31,9 +31,12 @@ public class AdminNoticeWriteOkController implements Execute {
 		
 //		----------------------------------------------------------------------------
 //		이미지 경로 설정
-//		실제 루트 경로를 문자열로 반환 / 해당 프로젝트 루트 경로에 adminUplode 폴더 추가
-//		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("/adminUplode");
-		final String UPLOAD_PATH = request.getServletContext().getRealPath("/adminUplode");
+//		final String UPLOAD_PATH = "D:\\web_0900_psh\\jsp_6\\workspace\\final_jsp\\src\\main\\webapp\\upload";
+		final String UPLOAD_PATH = "D:\\kdt_0900_psh\\jsp_6\\project\\back\\forest\\src\\main\\webapp\\uplode\\notice";
+
+//		배포시 지정할 경로
+//		.metadata/.plugins/.../wtpwebapps/ 내부 경로가 반환되는 이유는 Eclipse의 WTP (Web Tools Platform) 서버 설정 때문
+//		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("upload/notice/");
 //		최대 이미지 파일 크기 제한 5MB
 		final int FILE_SIZE = 1024 * 1024 * 5;
 		System.out.println(UPLOAD_PATH);
