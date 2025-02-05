@@ -1,6 +1,7 @@
 package com.knowledgeForest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,24 +17,23 @@ public class StudyDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-//	public void showList(StudyDTO studyDTO) {
-//		sqlSession.select(null, null);
-//	}
-	
-//	public List<StudyDTO> getStudy() {
-//		List<StudyDTO> list = sqlSession.selectList("StudyMapper.select");
-//		
-//		return list;
-//	}
 	
 //	스터디 목록 조회
+
 	public List<StudyUserDTO> selectStudyAll() {
 		return sqlSession.selectList("StudyMapper.selectStudyAll");
 	}
 	
+	
 //	스터디 목록 조회 - 검색
-	public List<StudyUserDTO> selectStudySearch(String keyword) {
-		return sqlSession.selectList("StudyMapper.selectStudySearch", keyword);
+	public List<StudyUserDTO> selectStudySearch(Map<String, Object> paramMap) {
+		return sqlSession.selectList("StudyMapper.selectStudySearch", paramMap);
+	}
+	
+//	총 스터디 게시글 수
+	public int getStudyTotal(String keyword) {
+		System.out.println("keyword : " + keyword);
+		return sqlSession.selectOne("StudyMapper.getStudyTotal", keyword);
 	}
 	
 	public void insertStudy(StudyDTO studyDTO) {

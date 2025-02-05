@@ -82,6 +82,18 @@ function likeStudy(imgElement) {
 
 }
 
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, keyword) {
+	console.log("페이지 이동 함수");
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	if (keyword == null) {
+		location.href = pathName + "?page=" + page;
+	} else {
+		location.href = pathName + "?keyword=" + keyword + "&&page=" + page;
+	}
+}
 
 /* 비로그인 상태일 때 로그인 페이지로 이동 */
 function goLogin() {
