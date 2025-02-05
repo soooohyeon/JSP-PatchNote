@@ -50,7 +50,6 @@ public class MyPageDAO {
 //		return likeList;
 //	}
 
-	
 	// 내가 작성한 스터디 목록 조회
 	public List<StudyUserDTO> getMyStudies(int userNum) {
 		return sqlsession.selectList("UserMapper.getMyStudies", userNum);
@@ -80,6 +79,21 @@ public class MyPageDAO {
 	public void deleteUser(int userNum) {
 		System.out.println("유저 탈퇴 : " + userNum);
 		sqlsession.delete("UserMapper.deleteUser", userNum);
+	}
+
+// 신청자 목록 조회
+	public List<StudyApplyUserDTO> getApplicants(int studyNum) {
+		return sqlsession.selectList("UserMapper.getApplicants", studyNum);
+	}
+
+	// 신청자 수락
+	public int acceptApplicant(int studyApplyNum) {
+		return sqlsession.update("UserMapper.acceptApplicant", studyApplyNum);
+	}
+
+// 신청자 거절
+	public void rejectApplicant(int studyApplyNum) {
+		sqlsession.update("UserMapper.rejectApplicant", studyApplyNum);
 	}
 
 }
