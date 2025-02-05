@@ -56,8 +56,6 @@ public class StudyFrontController extends HttpServlet {
 			request.getRequestDispatcher("/html/study/studylist-write.jsp").forward(request, response);
 			break;
 		case "/study/studyWriteOk.st":
-			System.out.println("studyWriteOk!");
-			System.out.println("33333");
 			result = new StudyWriteOkController().execute(request, response);
 			break;
 		case "/study/studyDetailOk.st":

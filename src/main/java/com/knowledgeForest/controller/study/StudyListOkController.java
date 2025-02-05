@@ -116,7 +116,7 @@ public class StudyListOkController implements Execute {
                 }
             }
         }
-        studyList.forEach(System.out::println);
+//        studyList.forEach(System.out::println);
 //        현재 시스템 DATE 전달
 		request.setAttribute("today", LocalDate.now());
 //        스터디 정보 전달
