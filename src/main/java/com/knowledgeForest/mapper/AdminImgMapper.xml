@@ -10,5 +10,12 @@
 		VALUES(SEQ_ADMIN_IMG.NEXTVAL, #{noticeNum}, #{adminImgName}, #{adminImgUuid})
 	</insert>
 	
+	<!-- 공지 이미지 조회 -->
+	<select id="selectNoticeImg" parameterType="int" resultType="AdminImgDTO">
+		SELECT ADMIN_IMG_NUM, NOTICE_NUM, ADMIN_IMG_NAME, ADMIN_IMG_UUID
+		FROM TBL_ADMIN_IMG
+		where NOTICE_NUM = #{noticedNumber}
+	</select>
+	
 	
 </mapper>

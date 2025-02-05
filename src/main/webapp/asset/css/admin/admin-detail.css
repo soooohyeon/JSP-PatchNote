@@ -87,7 +87,10 @@
 }
 /* 공지에 이미지가 있다면 해당 스타일 적용 */
 .adminNoticeDetial-div-img { width: 100%; }
-.adminNoticeDetial-div-img > img { max-width: 100%; }
+.adminNoticeDetial-div-img > img {
+	max-width: 100%;
+    margin-top: 30px;
+}
 
 /* 배너 - 이미지칸 스타일 별도 설정 */
 .adminBannerDetail-div-bannerimgwrap > .label {
