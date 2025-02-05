@@ -122,46 +122,13 @@
 
 			</div>
 
-			<!--  
-        <div class="studylist-div-groupWrapper">
-          <div class="studylist-div-group">
-            <div class="studylist-div-groupinner">
-              <div class="studylist-div-groupinfowrapper datecontent-wrap">
-                <div class="studylist-div-enddate">
-                  마감일 &nbsp;| &nbsp; 2025.01.05
-                </div>
-                <div class="studylist-div-groupstatus">모집 중</div>
-              </div>
-              <div class="studylist-div-grouptitle">
-                웹 보안의 기초부터 간단한 토이 프로젝트까지
-              </div>
-              <div class="studylist-div-groupinfowrapper">
-                <div class="studylist-div-groupcategory">보안</div>
-                <div class="studylist-div-groupmember">7/7</div>
-              </div>
-              <div class="studylist-div-groupmakerwrapper">
-                <div class="studylist-div-groupmaker">김철수</div>
-                <div class="studylist-div-likewrapper">     
-                  <img
-                    src="${pageContext.request.contextPath}/asset/img/study/like.png"
-                    alt="찜"
-                    class="studylist-img-like"
-                    onclick="likeStudy(this)"
-                  />
-                  <div class="studylist-div-likecount">7</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
 			<div class="studylist-div-btnwrapper">
 				<c:choose>
 					<c:when test="${not empty sessionScope.userNumber}">
-						<button class="studylist-btn-write" onclick="registerStudy()">
+						<button class="studylist-btn-write" onclick="registerStudy()" />
 					</c:when>
 					<c:otherwise>
-						<button class="studylist-btn-write" onclick="goLogin()">
+						<button class="studylist-btn-write" onclick="goLogin()" />
 					</c:otherwise>
 				</c:choose>
 					등록
@@ -170,17 +137,30 @@
 		</div>
 
 		<!-- 페이지네이션 -->
-		<!-- <div class="studylist-div-paginationwrapper">
+		<div class="studylist-div-paginationwrapper">
 			<ul id="STUDYLIST-UL-PAGINATION">
-				<li class="studylist-li-paginationlist pre">&lt;</li>
-				<li class="studylist-li-paginationlist currentpage">1</li>
-				<li class="studylist-li-paginationlist">2</li>
-				<li class="studylist-li-paginationlist">3</li>
-				<li class="studylist-li-paginationlist">4</li>
-				<li class="studylist-li-paginationlist">5</li>
-				<li class="studylist-li-paginationlist next">&#62;</li>
+				<c:if test="${prev}">
+					<li class="studylist-li-paginationlist pre" onclick="movePage(${startPage - 1}, '${param.keyword}')">&lt;</li>
+				</c:if>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<c:choose>
+						<c:when test="${!(i == page)}">
+							<li class="studylist-li-paginationlist" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="studylist-li-paginationlist currentpage" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${next}">
+					<li class="studylist-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
+				</c:if>
 			</ul>
-		</div> -->
+		</div>
 	</main>
 
 	<jsp:include page="/html/main/footer.jsp" />

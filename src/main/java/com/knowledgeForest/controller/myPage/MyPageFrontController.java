@@ -42,10 +42,13 @@ public class MyPageFrontController extends HttpServlet {
 
 		// 경로 분기처리
 		switch (target) {
-//		마이페이지 기본화면 - 개인정보 수정 화면 이동
+		
+		//마이페이지 기본화면 - 개인정보 수정 화면 이동
 		case "/mypage/mypage-accountedit.my":
 			result = new MyPageUserInfoController().execute(request, response);
 			break;
+			
+		//개인정보 수정 
 		case "/mypage/mypage-accounteditOk.my":
 			result = new MyPageUserInfoEditOkController().execute(request, response);
 			break;
@@ -82,9 +85,13 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPageStudyCancelOkController().execute(request, response);
 			break;
 
-
-		case "/mypage/mypage-jimlist.my":
-			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
+//		case "/mypage/mypage-jimlist.my":
+//			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
+//			break;
+			
+		//만든 스터디
+		case "/mypage/mypage-hostboard.my":
+			result = new MypageHostBoardController().execute(request, response);
 			break;
 
 		case "/mypage/mypage-writtenboard.my":
