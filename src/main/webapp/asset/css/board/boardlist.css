@@ -151,6 +151,7 @@ button {
   cursor: pointer;
 }
 /* ------------------------------------------------------ */
+.boardlist-ul-list { min-height: 300px; }
 
 /* --------------------페이지 네이션---------------------- */
   .boardlist-div-paginationwrapper{

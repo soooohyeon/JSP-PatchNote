@@ -1,3 +1,4 @@
+//검색
 const searchInput = document.querySelector(".boardlist-input-search");
 const wrapper = document.querySelector(".boardlist-div-wrapper");
 
@@ -34,3 +35,16 @@ function notLogin(){
 function goWrite(){
   window.location.href=getContextPath() + "/board/boardWrite.bo";
 };
+
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, keyword) {
+	console.log("페이지 이동");
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	if (keyword == null) {
+		location.href = pathName + "?page=" + page;
+	} else {
+		location.href = pathName + "?keyword=" + keyword + "&&page=" + page;
+	}
+}
