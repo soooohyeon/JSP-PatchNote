@@ -23,7 +23,6 @@ public class AdminFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("관리자 컨트롤러 들어옴");
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 		Result result = null;
 
@@ -93,7 +92,7 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminNoticeWriteOkController().execute(request, response);
 			break;
 			
-//    	공지 등록
+//    	공지 수정
 		case "/admin/admin-noticeupdate.ad":
 //			request.getRequestDispatcher("/html/admin/admin-noticewrite.jsp").forward(request, response);
 			result = new AdminNoticeUpdateController().execute(request, response);
@@ -118,8 +117,6 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/admin-boardDeleteOk.ad":
 			result = new AdminBoardDeleteOkController().execute(request, response);
 			break;
-
-			
 			
 		case "/admin/admin-studycommentlist.ad":
 			request.getRequestDispatcher("/html/admin/admin-studycommentlist.jsp").forward(request, response);

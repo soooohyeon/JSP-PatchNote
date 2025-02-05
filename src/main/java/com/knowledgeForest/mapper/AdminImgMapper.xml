@@ -17,5 +17,8 @@
 		where NOTICE_NUM = #{noticedNumber}
 	</select>
 	
-	
+	<delete id="deleteNoticeImg" parameterType="int">
+		DELETE FROM TBL_ADMIN_IMG
+		WHERE NOTICE_NUM = #{noticeNum}
+	</delete>
 </mapper>
