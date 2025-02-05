@@ -23,6 +23,12 @@
 		<typeAlias type="com.knowledgeForest.dto.StudyApplyUserDTO" alias="StudyApplyUserDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.BoardUserDTO" alias="BoardUserDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.StudyApplyDTO" alias="StudyApplyDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.AdminImgDTO" alias="AdminImgDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.NoticeImgDTO" alias="NoticeImgDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.BannerImgDTO" alias="BannerImgDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.UserImgDTO" alias="UserImgDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.BoardImgDTO" alias="BoardImgDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.StudyImgDTO" alias="StudyImgDTO" />		
 	</typeAliases>
 
 	<environments default="oracle">
@@ -46,7 +52,7 @@
 		<mapper resource="com/knowledgeForest/mapper/NoticeMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/StudyMapper.xml" />
 		<mapper resource="com/knowledgeForest/mapper/MainMapper.xml" />
-		
+		<mapper resource="com/knowledgeForest/mapper/AdminImgMapper.xml" />
 	</mappers>
 	
 </configuration>

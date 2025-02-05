@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
+import com.knowledgeForest.dto.NoticeImgDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
@@ -113,7 +114,8 @@ public class AdminDAO {
 	}
 	
 //	공지 상세 조회
-	public NoticeDTO selectOneNotice(int noticeNum) {
+	public NoticeImgDTO selectOneNotice(int noticeNum) {
+		System.out.println("DAO : " + noticeNum);
 		return sqlSession.selectOne("AdminMapper.selectOneNotice", noticeNum);
 	}
 	

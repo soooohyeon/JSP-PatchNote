@@ -182,10 +182,15 @@
     </select>
 	
 	<!-- 해당 공지 상세 조회 -->
-	<select id="selectOneNotice" resultType="NoticeDTO" parameterType="int">
-		SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS, NOTICE_UPLOAD_DATE, NOTICE_EDIT_DATE
-		FROM TBL_NOTICE
-		WHERE NOTICE_NUM = #{noticeNum}
+	<select id="selectOneNotice" resultType="NoticeImgDTO" parameterType="int">
+		SELECT
+		n.NOTICE_NUM,
+		n.NOTICE_TITLE,
+		n.NOTICE_CONTENTS,
+		n.NOTICE_UPLOAD_DATE,
+		n.NOTICE_EDIT_DATE
+		FROM TBL_NOTICE n
+		WHERE n.NOTICE_NUM = #{noticeNum}
 	</select>
 	
 	<!-- 해당 공지 데이터 삭제 -->
