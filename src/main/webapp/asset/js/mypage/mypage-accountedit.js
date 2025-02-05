@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	const saveButton = document.querySelector(".mypage-btn-edit");
 
 	saveButton.addEventListener("click", async () => {
-		const isNicknameValid = await checkNickname();
+		const isNicknameValid = checkNickname()
 		const isPasswordCheckValid = validatePasswordCheck();
 		/*const isPhoneValid = validatePhoneNumberCheck();*/
 

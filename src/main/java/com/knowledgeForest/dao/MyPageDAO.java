@@ -51,9 +51,12 @@ public class MyPageDAO {
 //	}
 
 	// 만든 스터디 조회
-	public int countStudy(int userNum) {
-		return sqlsession.selectOne("UserMapper.countStudy", userNum);
-	}
+		public List<StudyUserDTO> getHostStudyList(int userNum) {
+			List<StudyUserDTO> studyList = sqlsession.selectList("UserMapper.getHostStudyList", userNum);
+			System.out.println("userMapper.getStudyList: " + studyList);
+			return studyList;
+		}
+
 
 	// 신청한 스터디 조회
 	public List<StudyApplyDTO> getStudyList(int userNum) {
