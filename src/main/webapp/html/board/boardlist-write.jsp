@@ -39,7 +39,7 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="board-FORM-WRITE" action="boardWriteOk.bo" method="post">
+        <form id="board-FORM-WRITE" action="boardWriteOk.bo" method="post" enctype="multipart/form-data">
           <!-- 한 행 -->
           <div class="board-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
@@ -65,7 +65,7 @@
             <div class="board-div-filewrap">
               <div class="label">첨부파일</div>
               <label id="BOARD-INPUT-FILELABEL" for="BOARD-INPUT-FILE">
-                <input type="file" name="file" accept="image/*" id="BOARD-INPUT-FILE" />
+                <input type="file" name="boardImage" accept="image/*" id="BOARD-INPUT-FILE" />
                 <div class="board-div-filebtn">첨부</div>
               </label>
             </div>

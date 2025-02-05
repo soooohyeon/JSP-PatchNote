@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
-import com.knowledgeForest.dto.BoardUserDTO;
+import com.knowledgeForest.dto.BoardImgDTO;
 
 public class BoardEditController implements Execute {
 
@@ -21,7 +21,7 @@ public class BoardEditController implements Execute {
 		BoardDAO boardDAO = new BoardDAO();
 
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		BoardUserDTO boardDetail = boardDAO.selectBoard(boardNum);
+		BoardImgDTO boardDetail = boardDAO.selectBoard(boardNum);
 		
 		request.setAttribute("boardDetail", boardDetail);
 		result.setPath("/html/board/boardlist-edit.jsp");

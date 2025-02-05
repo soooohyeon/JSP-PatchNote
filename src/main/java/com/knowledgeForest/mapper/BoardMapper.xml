@@ -5,32 +5,34 @@
 <mapper namespace="BoardMapper">
 
     <select id="getBoardList" resultType="BoardUserDTO">
-        SELECT BOARD_NUM, TL.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, USER_NICK
-        FROM TBL_BOARD UL
-        LEFT JOIN TBL_USER TL
-        ON UL.USER_NUM = TL.USER_NUM
-		ORDER BY BOARD_NUM DESC
+        SELECT *
+		FROM (
+			SELECT rownum AS rnum, boardList.*
+			FROM (
+				SELECT
+				BOARD_NUM,
+				tu.USER_NUM,
+				BOARD_TITLE,
+				BOARD_CONTENTS,
+				BOARD_UPLOAD_DATE,
+				BOARD_EDIT_DATE,
+				tu.USER_NICK 
+				FROM TBL_BOARD tb
+				INNER JOIN TBL_USER tu 
+				ON tb.USER_NUM = tu.USER_NUM 
+				WHERE BOARD_TITLE LIKE '%' || #{keyword} || '%' 
+				ORDER BY BOARD_NUM DESC
+			) boardList
+			WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+		)
+		WHERE rnum >= #{startRow}
     </select>
 
-    <!-- 자유게시판 목록 - 검색 -->
-	<select id="selectBoardSearch" resultType="BoardUserDTO" parameterType="string">
-		SELECT BOARD_NUM, tu.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, tu.USER_NICK 
-		FROM TBL_BOARD tb
-		INNER JOIN TBL_USER tu 
-		ON tb.USER_NUM = tu.USER_NUM 
-		WHERE tb.BOARD_TITLE LIKE #{keyword} OR tu.USER_NICK LIKE #{keyword}
-		ORDER BY BOARD_NUM DESC
-	</select>
-    
     <!-- 게시글 총 개수 -->
-    <select id="gitTotal" resultType="int">
-    	<![CDATA[
+    <select id="getTotal" resultType="int">
     	SELECT COUNT(BOARD_NUM)
     	FROM TBL_BOARD
-    	]]>
     </select>
-    
-    
     
     <!-- 삭제 쿼리 -->
     <delete id="deleteBoard" parameterType="int">
@@ -39,7 +41,7 @@
     </delete>
     
  	<!-- 해당 게시글 조회 -->
- 	<select id="selectBoard" resultType="BoardUserDTO" parameterType="int">
+ 	<select id="selectBoard" resultType="BoardImgDTO" parameterType="int">
         SELECT BOARD_NUM, TL.USER_NUM, BOARD_TITLE, BOARD_CONTENTS, BOARD_UPLOAD_DATE, BOARD_EDIT_DATE, USER_NICK
         FROM TBL_BOARD TB
         LEFT JOIN TBL_USER TL
@@ -50,8 +52,20 @@
  	<!-- 글 작성 쿼리 -->
  	<insert id="insertBoard" parameterType="boardDTO">
  		INSERT INTO TBL_BOARD (BOARD_NUM, USER_NUM, BOARD_TITLE, BOARD_CONTENTS) 
- 		VALUES (seq_board.NEXTVAL, #{userNum}, #{boardTitle}, #{boardContents})
+ 		VALUES (seq_board.nextVal, #{userNum}, #{boardTitle}, #{boardContents})
  	</insert>
+ 	
+ 	<!-- 최근 작성한 게시글 번호 조회하는 쿼리 -->
+ 	<select id="getCurrentBoard" resultType="int">
+		SELECT seq_board.currval from dual
+ 	</select>
+ 	
+    <!-- 이미지 등록 쿼리 -->
+    <insert id="insertBoardImg" parameterType="UserImgDTO">
+    	INSERT INTO TBL_USER_IMG
+		(USER_IMG_NUM, BOARD_NUM, USER_IMG_NAME, USER_IMG_UUID)
+    	VALUES(SEQ_USER_IMG.NEXTVAL, #{boardNum}, #{userImgName}, #{userImgUuid})
+    </insert>
  	
     <!-- 글 수정 쿼리 -->
     <update id="editBoard" parameterType="BoardDTO">
@@ -61,5 +75,11 @@
     	where
     	BOARD_NUM = ${boardNum}
     </update>
+    <!--  이미지 조회 -->
+    <select id="selectBoardImg" parameterType="int" resultType="UserImgDTO">
+    	SELECT USER_IMG_NUM, BOARD_NUM, USER_IMG_NAME, USER_IMG_UUID
+    	FROM TBL_USER_IMG
+    	WHERE BOARD_NUM = #{boardNumber}
+    </select>
     
 </mapper>
