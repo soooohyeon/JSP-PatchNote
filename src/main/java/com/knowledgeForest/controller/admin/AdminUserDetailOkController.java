@@ -25,6 +25,17 @@ public class AdminUserDetailOkController implements Execute {
 		
 //		유저 상세 조회한 결과 담기
 		UserDTO user = adminDAO.selectUserOne(userNum);
+		
+//		해당 유저가 존재하지 않을 경우 목록으로 되돌아가기
+		if (user == null) {
+			System.out.println("존재하지 않는 게시글 임");
+			
+			result.setPath("/admin/admin-userlist.ad");	// 유저 목록 페이지로 리다이렉트
+			result.setRedirect(true);
+			
+			return result;
+		}
+		
 //		유저 생년월일 형식 날짜만 나오게 자르기
 		user.setUserBirth(user.getUserBirth().substring(0, 11));
 		

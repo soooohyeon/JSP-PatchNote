@@ -39,7 +39,6 @@ public class AdminNoticeWriteOkController implements Execute {
 //		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("upload/notice/");
 //		최대 이미지 파일 크기 제한 5MB
 		final int FILE_SIZE = 1024 * 1024 * 5;
-		System.out.println(UPLOAD_PATH);
 		
 //		해당 객체를 사용하기 위해 cos.jar 파일을 빌드패스 해주어야함
 //		MultipartRequest 객체 생성시 옵션 설정 필요 - req객체, 업로드 경로, 최대 크기, 인코딩 방식, 이름 정책(중복되는 파일명이 있을경우 이름을 바꾸는 규칙)
@@ -77,7 +76,6 @@ public class AdminNoticeWriteOkController implements Execute {
 			adminImgDTO.setAdminImgUuid(fileSystemName);
 			adminImgDTO.setAdminImgName(fileOrinalName);
 			adminImgDTO.setNoticeNum(noticeNum);
-			System.out.println(adminImgDTO);
 //			이미지 저장
 			amdinImgDAO.insertNoticeImg(adminImgDTO);
 		}

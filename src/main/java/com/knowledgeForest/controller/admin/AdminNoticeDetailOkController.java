@@ -39,7 +39,6 @@ public class AdminNoticeDetailOkController implements Execute {
 		}
 		
 		noticeImgDTO.setImages(adminImgDAO.selectNoticeImg(noticeNum));
-		System.out.println(noticeImgDTO);
 		
 //		화면으로 전달
 		request.setAttribute("notice", noticeImgDTO);

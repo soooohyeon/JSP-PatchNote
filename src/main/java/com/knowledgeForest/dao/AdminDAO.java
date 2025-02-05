@@ -49,7 +49,6 @@ public class AdminDAO {
 	
 //	총 유저 수
 	public int getUserTotal(String keyword) {
-		System.out.println("keyword : " + keyword);
 		return sqlSession.selectOne("AdminMapper.getUserTotal", keyword);
 	}
 	
@@ -89,13 +88,13 @@ public class AdminDAO {
 	}
 	
 //	스터디 목록 조회
-	public List<StudyUserDTO> selectStudyAll() {
-		return sqlSession.selectList("AdminMapper.selectStudyAll");
+	public List<StudyUserDTO> selectStudyAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectStudyAll", paramMap);
 	}
 	
-//	스터디 목록 조회 - 검색
-	public List<StudyUserDTO> selectStudySearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectStudySearch", keyword);
+//	총 스터디 글 수
+	public int getStudyTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getStudyTotal", keyword);
 	}
 	
 //	해당 스터디 삭제
@@ -104,18 +103,17 @@ public class AdminDAO {
 	}
 	
 //	공지 목록 조회
-	public List<NoticeDTO> selectNoticeAll() {
-		return sqlSession.selectList("AdminMapper.selectNoticeAll");
+	public List<NoticeDTO> selectNoticeAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectNoticeAll", paramMap);
 	}
 	
-//	공지 목록 조회 - 검색
-	public List<NoticeDTO> selectNoticeSearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectNoticeSearch", keyword);
+//	총 공지 글 수
+	public int getNoticeTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getNoticeTotal", keyword);
 	}
 	
 //	공지 상세 조회
 	public NoticeImgDTO selectOneNotice(int noticeNum) {
-		System.out.println("DAO : " + noticeNum);
 		return sqlSession.selectOne("AdminMapper.selectOneNotice", noticeNum);
 	}
 	
@@ -128,8 +126,6 @@ public class AdminDAO {
 	public int insertNotice (NoticeDTO noticeDTO) {
 //		공지 등록하는 쿼리 실행
 		sqlSession.insert("AdminMapper.insertNotice", noticeDTO);
-		
-		System.out.println("최근 등록 : " + sqlSession.selectOne("AdminMapper.getCurrentNoticeNum"));
 //		가장 최근에 생성된 공지 번호값 리턴 - 이미지 첨부를 위함
 		return sqlSession.selectOne("AdminMapper.getCurrentNoticeNum");
 	}
@@ -140,13 +136,13 @@ public class AdminDAO {
 	}
 	
 //	스터디 신청 목록 조회
-	public List<StudyApplyUserDTO> selectStudyApplyAll () {
-		return sqlSession.selectList("AdminMapper.selectStudyApplyAll");
+	public List<StudyApplyUserDTO> selectStudyApplyAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectStudyApplyAll", paramMap);
 	}
-
-//	스터디 신청 목록 조회 - 검색
-	public List<StudyApplyUserDTO> selectStudyApplySearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectStudyApplySearch", keyword);
+	
+//	총 스터디 신청 개수
+	public int getStudyApplyTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getStudyApplyTotal", keyword);
 	}
 	
 //	스터디 신청 취소
@@ -160,15 +156,14 @@ public class AdminDAO {
 	}
 	
 //	자유게시판 목록 조회
-	public List<BoardUserDTO> selectBoardAll () {
-		return sqlSession.selectList("AdminMapper.selectBoardAll");
+	public List<BoardUserDTO> selectBoardAll (Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectBoardAll", paramMap);
 	}
 
-//	자유게시판 목록 조회 - 검색
-	public List<BoardUserDTO> selectBoardSearch(String keyword) {
-		return sqlSession.selectList("AdminMapper.selectBoardSearch", keyword);
+//	총 자유게시판 게시글 수
+	public int getBoardTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getBoardTotal", keyword);
 	}
-	
 //	자유게시판 글 삭제
 	public void deleteBoard(int boardNum) {
 		sqlSession.selectList("AdminMapper.deleteBoard", boardNum);
