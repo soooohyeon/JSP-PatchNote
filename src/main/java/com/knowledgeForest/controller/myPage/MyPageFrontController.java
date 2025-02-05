@@ -89,11 +89,6 @@ public class MyPageFrontController extends HttpServlet {
 //			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
 //			break;
 			
-		//만든 스터디
-		case "/mypage/mypage-hostboard.my":
-			result = new MypageHostBoardController().execute(request, response);
-			break;
-
 		case "/mypage/mypage-writtenboard.my":
 			System.out.println("작성한 자유게시판");
 			result = new MyPageBoardListOkController().execute(request, response);

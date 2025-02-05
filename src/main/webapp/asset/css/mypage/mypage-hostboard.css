@@ -408,8 +408,12 @@ a{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   overflow: scroll;
-}
+  -ms-overflow-style: none;
 
+}
+.modal-content::-webkit-scrollbar{
+  display:none;
+}
 .hidden {
   display: none;
 }

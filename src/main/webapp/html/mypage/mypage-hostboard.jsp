@@ -98,10 +98,10 @@
 								</div>
 								<div class="mypage-div-groupinfowrapper">
 									<c:choose>
-										<c:when test="${study.studyCategory == 0}">
+										<c:when test="${myStudyList.studyCategory == 0}">
 											<div class="mypage-div-groupcategory">개발</div>
 										</c:when>
-										<c:when test="${study.studyCategory == 1}">
+										<c:when test="${myStudyList.studyCategory == 1}">
 											<div class="mypage-div-groupcategory">보안</div>
 										</c:when>
 
@@ -157,7 +157,7 @@
 						</div>
 						<img
 							src="${pageContext.request.contextPath}/asset/img/mypage/down.png"
-							alt="찜" class="mypage-img-nolike"
+							alt="드롭다운" class="mypage-img-nolike"
 							style="width: 30px; height: 30px;" onclick="toggleDropdown(this)" />
 						<!-- <button class="dropdown-btn" onclick="toggleDropdown(this)">⬇</button> -->
 					</div>
