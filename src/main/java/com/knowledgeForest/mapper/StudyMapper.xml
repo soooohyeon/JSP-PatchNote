@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StudyMapper">
-	<!-- 스터디 게시판 조회 : 제목으로 검색 -->
-<!-- 	<select id="select" resultType="StudyDTO">
-	<![CDATA[
-	SELECT 
-		S.STUDY_NUM,
-		S.STUDY_TITLE,
-		S.STUDY_DEADLINE,
-		S.STUDY_LIMIT,     
-		S.STUDY_CATEGORY,                                            
-		S.STUDY_UPLOAD_DATE,                                            
-		S.STUDY_EDIT_DATE,
-		(SELECT COUNT(USER_NUM) FROM TBL_LIKE tl WHERE S.STUDY_NUM = TL.STUDY_NUM AND TL.USER_NUM = 11)
-	FROM TBL_STUDY S
-		]]>
-	</select> -->
-	
-	    <!-- 스터디 목록 조회 -->
-     <select id="selectStudyAll" resultType="StudyUserDTO" parameterType="int">
-        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
-		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
-		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
-		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants,
-		(SELECT COUNT(user_num) FROM TBL_LIKE WHERE USER_NUM = #{userNum}) as likeCount
-		FROM TBL_STUDY ts
-		INNER JOIN TBL_USER tu
-		ON ts.USER_NUM = tu.USER_NUM
-		ORDER BY STUDY_NUM DESC
-    </select> 
-<!--     <select id="selectStudyAll" resultType="StudyApplyUserDTO" parameterType="int">
-        SELECT tsa.STUDY_APPLY_NUM, tsa.STUDY_NUM, tu.USER_NUM, tsa.STUDY_APPLY_STATUS, tu.USER_ID, tu.USER_NICK,
-			(SELECT COUNT(tsa2.STUDY_APPLY_NUM) FROM TBL_STUDY_APPLY tsa2 WHERE tsa.STUDY_NUM = tsa2.STUDY_NUM) AS participants,
-			(SELECT ts.STUDY_LIMIT FROM TBL_STUDY ts WHERE ts.STUDY_NUM = tsa.STUDY_NUM) AS limitParticipants,
-			(SELECT ts2.STUDY_DEADLINE FROM TBL_STUDY ts2 WHERE ts2.STUDY_NUM = tsa.STUDY_NUM) AS deadline
-		FROM TBL_STUDY_APPLY tsa
-		INNER JOIN TBL_USER tu
-		ON tsa.USER_NUM = tu.USER_NUM
-		ORDER BY STUDY_APPLY_NUM DESC
-    </select> -->
-	
-	    <!-- 스터디 목록 조회 - 검색 -->
-    <select id="selectStudySearch" resultType="StudyUserDTO" parameterType="string">
-        SELECT ts.STUDY_NUM, tu.USER_NUM, ts.STUDY_TITLE, ts.STUDY_DESCRIPT, ts.STUDY_LOCATION, ts.STUDY_START_DAY, ts.STUDY_END_DAY,
-		ts.STUDY_START_TIME, ts.STUDY_END_TIME, ts.STUDY_LIMIT, ts.STUDY_DEADLINE, ts.STUDY_SHOWPH,
-		ts.STUDY_CATEGORY, ts.STUDY_UPLOAD_DATE, ts.STUDY_EDIT_DATE, tu.USER_ID, tu.USER_NICK, tu.USER_PH,
-		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants
-		FROM TBL_STUDY ts
-		INNER JOIN TBL_USER tu
-		ON ts.USER_NUM = tu.USER_NUM
-		WHERE ts.STUDY_TITLE LIKE #{keyword}
-		ORDER BY STUDY_NUM DESC
+
+<!-- 게시판 조회 (검색포함) -->
+    <select id="selectStudySearch" resultType="StudyUserDTO">
+        SELECT *
+			FROM (
+				SELECT ROWNUM AS rnum, studyList.*
+			    FROM (
+			    	SELECT 
+				        ts.STUDY_NUM, 
+				        tu.USER_NUM, 
+				        ts.STUDY_TITLE, 
+				        ts.STUDY_DESCRIPT, 
+				        ts.STUDY_LOCATION, 
+				        ts.STUDY_START_DAY, 
+				        ts.STUDY_END_DAY,
+						ts.STUDY_START_TIME, 
+						ts.STUDY_END_TIME, 
+						ts.STUDY_LIMIT, 
+						ts.STUDY_DEADLINE, 
+						ts.STUDY_SHOWPH,
+						ts.STUDY_CATEGORY, 
+						ts.STUDY_UPLOAD_DATE, 
+						ts.STUDY_EDIT_DATE, 
+						tu.USER_ID, 
+						tu.USER_NICK, 
+						tu.USER_PH,
+						(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants
+					FROM TBL_STUDY ts
+					INNER JOIN TBL_USER tu
+					ON ts.USER_NUM = tu.USER_NUM
+					<if test = "keyword != null and keyword != ''">
+						WHERE ts.STUDY_TITLE LIKE '%' || #{keyword} || '%'
+					</if>
+					ORDER BY STUDY_NUM DESC
+			    ) studyList
+			    WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+		)
+		WHERE rnum >= #{startRow}
     </select>
-	
+    
+    <!-- 총 스터디 수 -->
+	<select id="getStudyTotal" resultType="int">
+        SELECT COUNT(STUDY_NUM) 
+        FROM TBL_STUDY
+		<if test = "keyword != null and keyword != ''">
+			WHERE STUDY_TITLE LIKE '%' || #{keyword} || '%'
+		</if>
+	</select>    
 	
 	<!-- 스터디 게시글 추가 -->
 	<insert id="insert" parameterType="StudyDTO">
