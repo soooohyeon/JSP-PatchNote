@@ -83,6 +83,42 @@
 		DELETE FROM TBL_STUDY_APPLY WHERE
 		STUDY_NUM = #{studyNum}
 	</delete>
+
+
+	
+    <!-- 신청자 목록 조회 -->
+    <select id="getApplicants" parameterType="int" resultType="StudyApplyUserDTO">
+        SELECT 
+            tsa.study_apply_num,
+            tsa.study_num,
+            tsa.user_num,
+            tu.user_nick,
+            tsa.user_determination,
+            tsa.study_apply_status,
+            tsa.study_apply_date
+        FROM 
+            tbl_study_apply tsa
+        JOIN 
+            tbl_user tu ON tsa.user_num = tu.user_num
+        WHERE 
+            tsa.study_num = #{studyNum} AND tsa.STUDY_APPLY_STATUS =0
+    </select>
+
+
+ <!-- 신청자 수락 -->
+	<update id="acceptApplicant" parameterType="int">
+        UPDATE tbl_study_apply
+        SET study_apply_status = 1
+        WHERE study_apply_num = #{studyApplyNum}
+    </update>
+
+    <!-- 신청자 거절 -->
+    <update id="rejectApplicant" parameterType="int">
+        UPDATE tbl_study_apply
+        SET study_apply_status = 2
+        WHERE study_apply_num = #{studyApplyNum}
+    </update>
+
 	
 
 </mapper>

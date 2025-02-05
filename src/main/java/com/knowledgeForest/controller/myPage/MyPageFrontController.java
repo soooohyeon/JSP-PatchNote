@@ -42,13 +42,13 @@ public class MyPageFrontController extends HttpServlet {
 
 		// 경로 분기처리
 		switch (target) {
-		
-		//마이페이지 기본화면 - 개인정보 수정 화면 이동
+
+		// 마이페이지 기본화면 - 개인정보 수정 화면 이동
 		case "/mypage/mypage-accountedit.my":
 			result = new MyPageUserInfoController().execute(request, response);
 			break;
-			
-		//개인정보 수정 
+
+		// 개인정보 수정
 		case "/mypage/mypage-accounteditOk.my":
 			result = new MyPageUserInfoEditOkController().execute(request, response);
 			break;
@@ -68,11 +68,24 @@ public class MyPageFrontController extends HttpServlet {
 			System.out.println("유저 탈퇴 처리");
 			result = new MyPageDeleteOkController().execute(request, response);
 			break;
-			
-			
+
 		case "/mypage/mypage-hostboard.my":
 			System.out.println("만든 스터디 목록");
 			result = new MyPageMyStudiesController().execute(request, response);
+			break;
+		case "/mypage/getApplicants.my":
+			System.out.println("신청자 목록 출력");
+			result = new MyPageGetApplicantsController().execute(request, response);
+			break;
+
+			case "/mypage/mypage-acceptApplicant.my":
+			System.out.println("스터디 신청 수락");
+			result = new MyPageStudyAcceptOkController().execute(request, response);
+			break;
+
+		case "/mypage/mypage-rejectApplicant.my":
+			System.out.println("스터디 신청 거절");
+			result = new MyPageStudyRejectOkController().execute(request, response);
 			break;
 
 		case "/mypage/mypage-applylist.my":
@@ -88,7 +101,7 @@ public class MyPageFrontController extends HttpServlet {
 //		case "/mypage/mypage-jimlist.my":
 //			request.getRequestDispatcher("/html/mypage/mypage-jimlist.jsp").forward(request, response);
 //			break;
-			
+
 		case "/mypage/mypage-writtenboard.my":
 			System.out.println("작성한 자유게시판");
 			result = new MyPageBoardListOkController().execute(request, response);
