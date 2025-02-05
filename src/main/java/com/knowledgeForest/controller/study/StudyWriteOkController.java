@@ -13,7 +13,6 @@ import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.StudyDAO;
 import com.knowledgeForest.dao.StudyImgDAO;
 import com.knowledgeForest.dto.StudyDTO;
-import com.knowledgeForest.dto.StudyImgDTO;
 import com.knowledgeForest.dto.UserImgDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -83,15 +82,11 @@ public class StudyWriteOkController implements Execute {
          userImgDTO.setStudyNum(studyNum);
          userImgDTO.setUserImgName(fileOriginalName);
          userImgDTO.setUserImgUuid(fileSystemName);
-//         studyImgDTO.setStudyImgNum();
          
          System.out.println("업로드된 파일 정보 :" + userImgDTO);
          studyImgDAO.insert(userImgDTO);
       }      
 
-      // ++++++++++++++++++++++
-//      result.setPath("/study/studyList.st");
-//      result.setRedirect(false);
       result.setPath(request.getContextPath() + "/study/studyList.st");
       result.setRedirect(true);
 
