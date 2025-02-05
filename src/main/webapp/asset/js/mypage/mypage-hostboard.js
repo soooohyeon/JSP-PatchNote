@@ -9,10 +9,7 @@ document.addEventListener("click", function (event) {
 function openModal(element) {
   const modal = document.getElementById("modal-list");
   const rect = element.getBoundingClientRect();
-  console.log(element)
-  console.log("23452345");
-  console.log(`${rect.left}px`);
-  console.log(`${rect.bottom + window.scrollY}px`);
+ 
   // 모달 위치를 클릭된 img 버튼 근처로 설정
   modal.style.left = `${rect.left}px`;
   modal.style.top = `${rect.bottom + window.scrollY}px`;

@@ -50,13 +50,11 @@ public class MyPageDAO {
 //		return likeList;
 //	}
 
-	// 만든 스터디 조회
-		public List<StudyUserDTO> getHostStudyList(int userNum) {
-			List<StudyUserDTO> studyList = sqlsession.selectList("UserMapper.getHostStudyList", userNum);
-			System.out.println("userMapper.getStudyList: " + studyList);
-			return studyList;
-		}
-
+	
+	// 내가 작성한 스터디 목록 조회
+	public List<StudyUserDTO> getMyStudies(int userNum) {
+		return sqlsession.selectList("UserMapper.getMyStudies", userNum);
+	}
 
 	// 신청한 스터디 조회
 	public List<StudyApplyDTO> getStudyList(int userNum) {

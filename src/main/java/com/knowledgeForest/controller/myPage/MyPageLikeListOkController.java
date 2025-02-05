@@ -25,7 +25,7 @@ public class MyPageLikeListOkController implements Execute {
 
 		List<StudyUserDTO> likeList = null;
 		
-//		likeList = mypageDAO.getLikeList(userNum); //찜 기능 삭제로 주석처리
+//		likeList = mypageDAO.getLikeList(userNum);
 		System.out.println("likeList : " + likeList);
 		request.setAttribute("liekList", likeList);
 		result.setPath(request.getContextPath()+"/mypage/mypage-jimlist.jsp");
