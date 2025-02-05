@@ -40,6 +40,29 @@
 		b.USER_NUM = #{userNum}
 	</select>
 
+<!-- 만든 스터디 목록 -->
+	<select id="getMyStudies" resultType="StudyUserDTO" parameterType="int">
+		 SELECT 
+            study_Num,
+            user_Num,
+            study_Title,
+            study_Descript,
+            study_Location,
+            study_Start_Day,
+            study_End_Day,
+            study_Start_Time,
+            study_End_Time,
+            study_Limit,
+            study_Deadline,
+            study_Upload_Date,
+            study_Edit_Date
+        FROM 
+            TBL_STUDY ts 
+        WHERE 
+            user_Num = #{userNum}
+	</select>
+	
+
 	<!-- 신청한 스터디게시판 글 -->
 	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="int">
 		SELECT * 

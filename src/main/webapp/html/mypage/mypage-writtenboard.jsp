@@ -12,9 +12,9 @@
 <title>작성한 자유게시글</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-writtenboard.css">
-	
+
 <script defer
-   src="${pageContext.request.contextPath}/asset/js/mypage/mypage-writtenboard.js"></script>
+	src="${pageContext.request.contextPath}/asset/js/mypage/mypage-writtenboard.js"></script>
 </head>
 <body>
 	<div class="main-container">
@@ -28,10 +28,10 @@
 							수정</a></li>
 					<%-- <li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
-							목록</a></li> 
+							목록</a></li> --%>
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
-							스터디</a></li>--%>
+							스터디</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-applylist.my">신청한
 							스터디</a></li>
@@ -78,15 +78,15 @@
 								<span class="board-date">작성일</span></li>
 
 							<c:forEach var="board" items="${boardList}">
-							
-							 <a href="${pageContext.request.contextPath}/board/boarddetail.bo?boardNum=${board.boardNum}">
-			                </a>
-								<li class="board-item" style="cursor: pointer;"	
-									onclick="goPage(${board.boardNum})">
-									<span class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
+
+								<a
+									href="${pageContext.request.contextPath}/board/boarddetail.bo?boardNum=${board.boardNum}">
+								</a>
+								<li class="board-item" style="cursor: pointer;"
+									onclick="goPage(${board.boardNum})"><span
+									class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
 									<span class="board-author">${board.boardAuthor}</span> <span
-									class="board-date">${board.boardUploadDate}</span>
-								</li>
+									class="board-date">${board.boardUploadDate}</span></li>
 							</c:forEach>
 
 						</ul>
