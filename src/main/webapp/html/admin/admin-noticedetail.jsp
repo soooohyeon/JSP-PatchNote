@@ -60,11 +60,11 @@
 								<div class="label">본문</div>
 								<div class="adminDetail-div-noticecontent">
 									<c:out value="${notice.noticeContents}" />
-									<%-- <div class="adminNoticeDetial-div-img">
-										<img
-											src="${pageContext.request.contextPath}/asset/img/main/books.png"
-											alt="예시 사진">
-									</div> --%>
+									<div class="adminNoticeDetial-div-img">
+										<img "${pageContext.request.contextPath}/asset/img/study/search-btn.png"
+										src="${pageContext.request.contextPath}/upload/notice/${notice.images.adminImgUuid}"
+										onerror = "this.style.display='none';">
+									</div>
 								</div>
 							</div>
 						</div>

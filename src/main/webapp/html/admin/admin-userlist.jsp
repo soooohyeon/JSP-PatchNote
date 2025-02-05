@@ -88,7 +88,7 @@
 					<!-- 유저 테이블 끝 -->
 
 					<!-- 페이지네이션 -->
-					<!-- <div class="admin-div-paginationwrapper">
+					<div class="admin-div-paginationwrapper">
 						<ul id="admin-UL-PAGINATION">
 							<c:if test="${prev}">
 								<li class="admin-li-paginationlist pre" onclick="movePage(${startPage - 1}, '${param.keyword}')">&lt;</li>
@@ -113,7 +113,7 @@
 								<li class="admin-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
 							</c:if>
 						</ul>
-					</div> -->
+					</div>
 
 				</div>
 			</main>
