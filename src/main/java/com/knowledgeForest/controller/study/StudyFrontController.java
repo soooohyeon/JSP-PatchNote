@@ -78,6 +78,10 @@ public class StudyFrontController extends HttpServlet {
 			System.out.println("studyApplyInsertOk!");
 			result = new StudyApplyInsertOkController().execute(request, response);
 			break;
+		case "/study/studyCommentListOk.st":
+			System.out.println("studyCommentListOk!");
+			result = new StudyCommentListOkController().execute(request, response);
+			break;
 		}
 		
 		if(result != null) {
