@@ -37,7 +37,7 @@ function openApplicantModal(studyNum) {
 			const applicantList = document.querySelector(".applicant-list");
 			applicantList.innerHTML = "";
 			console.log(data.applicants);
-			
+
 			data.applicants.forEach((applicant) => {
 				console.log(applicant);
 				const applicantItem = document.createElement("div");
@@ -54,7 +54,9 @@ function openApplicantModal(studyNum) {
         `;
 				applicantList.appendChild(applicantItem);
 			});
-			document.getElementById("REQUEST-LIST-MODAL").classList.remove("hidden");
+			const modal = document.getElementById("REQUEST-LIST-MODAL");
+			modal.dataset.studyNum = studyNum; // studyNum을 데이터 속성으로 설정
+			modal.classList.remove("hidden");
 		})
 		.catch((error) => console.error("Error:", error));
 }
@@ -78,7 +80,7 @@ function getContextPath() {
 
 // 신청자 수락
 function acceptApplicant(studyApplyNum) {
-  console.log( "studyApplyNum" + studyApplyNum);
+	console.log("studyApplyNum" + studyApplyNum);
 	const url = `${getContextPath()}/mypage/mypage-acceptApplicant.my`;
 	fetch(url, {
 		method: "POST",
@@ -91,6 +93,12 @@ function acceptApplicant(studyApplyNum) {
 		.then((data) => {
 			if (data.success) {
 				alert("신청을 수락했습니다.");
+				// 신청자 목록 갱신
+				const studyNum = document.getElementById("REQUEST-LIST-MODAL").dataset.studyNum;
+				console.log("수락 후 ===>", studyNum)
+				openApplicantModal(studyNum);
+				console.log("오픈 모달 함수 실행 후 ===>", studyNum)
+
 			} else {
 				alert("신청 수락에 실패했습니다.");
 			}
@@ -111,6 +119,11 @@ function rejectApplicant(studyApplyNum) {
 		.then((data) => {
 			if (data.success) {
 				alert("신청을 거절했습니다.");
+				// 신청자 목록 갱신
+				const studyNum = document.getElementById("REQUEST-LIST-MODAL").dataset.studyNum;
+				console.log("거절 후 ===>", studyNum)
+				openApplicantModal(studyNum);
+				console.log("오픈 모달 함수 실행 후 ===>", studyNum)
 			} else {
 				alert("신청 거절에 실패했습니다.");
 			}
