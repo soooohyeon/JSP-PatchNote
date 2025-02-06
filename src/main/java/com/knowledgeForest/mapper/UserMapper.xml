@@ -33,92 +33,121 @@
 	</delete>
 
 	<!-- 작성한 자유게시판 글 -->
-	<select id="getBoardList" resultType="BoardDTO"
+	<select id="getBoardList" resultType="BoardUserDTO"
 		parameterType="int">
-		SELECT b.BOARD_NUM, b.USER_NUM, b.BOARD_TITLE, b.BOARD_CONTENTS,  TO_CHAR(b.BOARD_UPLOAD_DATE, 'YYYY-MM-DD') AS BOARD_UPLOAD_DATE, b.BOARD_EDIT_DATE,u.USER_NAME	AS BOARD_AUTHOR
-		FROM TBL_BOARD b JOIN TBL_USER u ON b.USER_NUM = u.USER_NUM WHERE
-		b.USER_NUM = #{userNum}
+
+		SELECT *
+		FROM (
+		SELECT ROWNUM AS rnum, boardList.*
+		FROM (
+		SELECT
+		BOARD_NUM,
+		tu.USER_NUM,
+		BOARD_TITLE,
+		BOARD_CONTENTS,
+		BOARD_UPLOAD_DATE,
+		BOARD_EDIT_DATE,
+		tu.USER_NICK
+		FROM TBL_BOARD tb
+		INNER JOIN TBL_USER tu
+		ON tb.USER_NUM = tu.USER_NUM
+		WHERE tb.USER_NUM = #{userNum}
+		ORDER BY BOARD_NUM DESC
+		) boardList
+
+		WHERE ROWNUM <![CDATA[<=]]>
+		#{endRow}
+		)
+		WHERE rnum >= #{startRow}
+
 	</select>
 
-<!-- 만든 스터디 목록 -->
-	<select id="getMyStudies" resultType="StudyUserDTO" parameterType="int">
-		 SELECT 
-            study_Num,
-            user_Num,
-            study_Title,
-            study_Descript,
-            study_Location,
-            study_Start_Day,
-            study_End_Day,
-            study_Start_Time,
-            study_End_Time,
-            study_Limit,
-            study_Deadline,
-            study_Upload_Date,
-            study_Edit_Date
-        FROM 
-            TBL_STUDY ts 
-        WHERE 
-            user_Num = #{userNum}
+	<!-- 만든 스터디 목록 -->
+	<select id="getMyStudies" resultType="StudyUserDTO"
+		parameterType="int">
+		SELECT
+		study_Num,
+		user_Num,
+		study_Title,
+		study_Descript,
+		study_Location,
+		study_Start_Day,
+		study_End_Day,
+		study_Start_Time,
+		study_End_Time,
+		study_Limit,
+		study_Deadline,
+		study_Upload_Date,
+		study_Edit_Date
+		FROM
+		TBL_STUDY ts
+		WHERE
+		user_Num = #{userNum}
 	</select>
-	
+
 
 	<!-- 신청한 스터디게시판 글 -->
-	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="int">
-		SELECT * 
-		FROM TBL_STUDY_APPLY ta 
+	<select id="getStudyList" resultType="StudyApplyDTO"
+		parameterType="int">
+		SELECT *
+		FROM TBL_STUDY_APPLY ta
 		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM
-		JOIN TBL_USER u ON ta.USER_NUM = u.USER_NUM  
+		JOIN TBL_USER u ON
+		ta.USER_NUM = u.USER_NUM
 		WHERE ta.USER_NUM = #{userNum}
 	</select>
-	
-	
+
+
 	<!-- 찜한 목록 리스트 -->
-	<select id="getLikeList" resultType="StudyDTO" parameterType="int">
-		SELECT * FROM TBL_LIKE tl JOIN TBL_STUDY ts ON ts.STUDY_NUM = tl.STUDY_NUM WHERE tl.USER_NUM = #{studyNum}
+	<select id="getLikeList" resultType="StudyDTO"
+		parameterType="int">
+		SELECT * FROM TBL_LIKE tl JOIN TBL_STUDY ts ON
+		ts.STUDY_NUM = tl.STUDY_NUM WHERE tl.USER_NUM = #{studyNum}
 	</select>
-	
+
 	<!-- 신청 스터디 취소 -->
 	<delete id="deleteStudyApply" parameterType="int">
-		DELETE FROM TBL_STUDY_APPLY WHERE
+		DELETE FROM
+		TBL_STUDY_APPLY WHERE
 		STUDY_NUM = #{studyNum}
 	</delete>
 
 
-	
-    <!-- 신청자 목록 조회 -->
-    <select id="getApplicants" parameterType="int" resultType="StudyApplyUserDTO">
-        SELECT 
-            tsa.study_apply_num,
-            tsa.study_num,
-            tsa.user_num,
-            tu.user_nick,
-            tsa.user_determination,
-            tsa.study_apply_status,
-            tsa.study_apply_date
-        FROM 
-            tbl_study_apply tsa
-        JOIN 
-            tbl_user tu ON tsa.user_num = tu.user_num
-        WHERE 
-            tsa.study_num = #{studyNum} AND tsa.STUDY_APPLY_STATUS =0
-    </select>
+
+	<!-- 신청자 목록 조회 -->
+	<select id="getApplicants" parameterType="int"
+		resultType="StudyApplyUserDTO">
+		SELECT
+		tsa.study_apply_num,
+		tsa.study_num,
+		tsa.user_num,
+		tu.user_nick,
+		tsa.user_determination,
+		tsa.study_apply_status,
+		tsa.study_apply_date
+		FROM
+		tbl_study_apply tsa
+		JOIN
+		tbl_user tu ON tsa.user_num = tu.user_num
+		WHERE
+		tsa.study_num = #{studyNum} AND tsa.STUDY_APPLY_STATUS =0
+	</select>
 
 
- <!-- 신청자 수락 -->
+	<!-- 신청자 수락 -->
 	<update id="acceptApplicant" parameterType="int">
-        UPDATE tbl_study_apply
-        SET study_apply_status = 1
-        WHERE study_apply_num = #{studyApplyNum}
-    </update>
+		UPDATE tbl_study_apply
+		SET study_apply_status = 1
+		WHERE study_apply_num = #{studyApplyNum}
+	</update>
 
-    <!-- 신청자 거절 -->
-    <update id="rejectApplicant" parameterType="int">
-        UPDATE tbl_study_apply
-        SET study_apply_status = 2
-        WHERE study_apply_num = #{studyApplyNum}
-    </update>
+	<!-- 신청자 거절 -->
+	<update id="rejectApplicant" parameterType="int">
+		UPDATE tbl_study_apply
+		SET study_apply_status = 2
+		WHERE study_apply_num = #{studyApplyNum}
+	</update>
 
-	
+
 
 </mapper>

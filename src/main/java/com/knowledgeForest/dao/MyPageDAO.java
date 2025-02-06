@@ -1,11 +1,13 @@
 package com.knowledgeForest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardDTO;
+import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
 import com.knowledgeForest.dto.StudyDTO;
@@ -69,8 +71,9 @@ public class MyPageDAO {
 	}
 
 	// 게시글 목록 조회
-	public List<BoardDTO> getBoardList(int userNum) {
-		List<BoardDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", userNum);
+	public List<BoardUserDTO> getBoardList(Map<String, Object> paramMap) {
+		System.out.println("paramMap " + paramMap);
+		List<BoardUserDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", paramMap);
 		System.out.println("userMapper.getBoardList: " + boardList);
 		return boardList;
 	}
