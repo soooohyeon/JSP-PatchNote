@@ -1,11 +1,13 @@
 package com.knowledgeForest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BoardDTO;
+import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
 import com.knowledgeForest.dto.StudyDTO;
@@ -58,7 +60,7 @@ public class MyPageDAO {
 	// 신청한 스터디 조회
 	public List<StudyApplyDTO> getStudyList(int userNum) {
 		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
-		System.out.println("userMapper.getStudyList: " + studyList);
+		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}
 
@@ -69,10 +71,16 @@ public class MyPageDAO {
 	}
 
 	// 게시글 목록 조회
-	public List<BoardDTO> getBoardList(int userNum) {
-		List<BoardDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", userNum);
-		System.out.println("userMapper.getBoardList: " + boardList);
+	public List<BoardUserDTO> getBoardList(Map<String, Object> paramMap) {
+		System.out.println("paramMap " + paramMap);
+		List<BoardUserDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", paramMap);
+		System.out.println("UserMapper.getBoardList: " + boardList);
 		return boardList;
+	}
+
+	//	총 자유게시판 게시글 수
+	public int getBoardTotal(int userNum) {
+		return sqlsession.selectOne("UserMapper.getBoardTotal", userNum);
 	}
 
 	// 유저 탈퇴
