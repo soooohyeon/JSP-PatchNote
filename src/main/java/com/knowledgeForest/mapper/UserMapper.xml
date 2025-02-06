@@ -62,6 +62,14 @@
 
 	</select>
 
+	<!-- 게시글 총 개수 -->
+    <select id="getBoardTotal" parameterType="int" resultType="int">
+    	SELECT COUNT(BOARD_NUM)
+    	FROM TBL_BOARD
+		where USER_NUM = #{userNum}
+    </select>
+    
+
 	<!-- 만든 스터디 목록 -->
 	<select id="getMyStudies" resultType="StudyUserDTO"
 		parameterType="int">

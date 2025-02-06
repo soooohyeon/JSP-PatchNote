@@ -60,7 +60,7 @@ public class MyPageDAO {
 	// 신청한 스터디 조회
 	public List<StudyApplyDTO> getStudyList(int userNum) {
 		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
-		System.out.println("userMapper.getStudyList: " + studyList);
+		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}
 
@@ -74,8 +74,13 @@ public class MyPageDAO {
 	public List<BoardUserDTO> getBoardList(Map<String, Object> paramMap) {
 		System.out.println("paramMap " + paramMap);
 		List<BoardUserDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", paramMap);
-		System.out.println("userMapper.getBoardList: " + boardList);
+		System.out.println("UserMapper.getBoardList: " + boardList);
 		return boardList;
+	}
+
+	//	총 자유게시판 게시글 수
+	public int getBoardTotal(int userNum) {
+		return sqlsession.selectOne("UserMapper.getBoardTotal", userNum);
 	}
 
 	// 유저 탈퇴

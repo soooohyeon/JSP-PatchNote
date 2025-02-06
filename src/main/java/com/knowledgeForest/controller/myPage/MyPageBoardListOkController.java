@@ -36,7 +36,6 @@ public class MyPageBoardListOkController implements Execute {
 		int pageCount = 5; // 5 단위로 페이지 버튼 출력
 		int startRow = (page - 1) * rowCount + 1; // 1페이지라면 rownum 1부터, 2페이지라면 rownum 11부터
 		int endRow = startRow + rowCount - 1; // 1페이지라면 rownum 10까지, 2페이지라면 rownum 20까지
-		int total = 0; // 총 자유게시판 글 개수
 
 //				map에 계산한 결과 담기
 		Map<String, Object> paramMap = new HashMap<>();
@@ -46,6 +45,8 @@ public class MyPageBoardListOkController implements Execute {
 
 //				자유게시판 목록 조회
 		boardList = mypageDAO.getBoardList(paramMap);
+// 		 총 게시글 개수
+		int total = mypageDAO.getBoardTotal(userNum);
 
 //				페이징 정보 설정
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지 버튼
