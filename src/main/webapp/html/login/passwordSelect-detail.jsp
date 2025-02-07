@@ -27,13 +27,14 @@
 						maxlength="15" placeholder="새로운 비밀번호" name="pwd"
 						id="PASSWORDSELECT-INPUT-NEWPWD" />
 				</div>
+				<span id="JOIN-SPAN-PWD-STATUS"></span>
+				
 				<div class="passwordSelect-detail-div-wrapper-input-id">
 					<input type="password" class="passwordSelect-detail-input-newpwd"
-						placeholder="새로운 비밀번호 재입력" name="newPwd" maxlength="15"
-						onblur="validatePassword()" id="PASSWORDSELECT-INPUT-RENEWPWD" />
+						placeholder="새로운 비밀번호 재입력" name="newPwd" maxlength="15" id="PASSWORDSELECT-INPUT-RENEWPWD" />
 
 				</div>
-				<div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PWALARM"></div>
+				<span id="JOIN-SPAN-REPWD-STATUS"></span>
 				<button type="submit" class="passwordSelect-detail-btn-complete">완료</button>
 			</div>
 

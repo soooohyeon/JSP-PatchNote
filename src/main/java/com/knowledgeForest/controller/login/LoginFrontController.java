@@ -118,11 +118,6 @@ public class LoginFrontController extends HttpServlet {
 			result = new PasswordOkController().execute(request, response);
 			break;
 
-		case "/login/passwordDetail.me":
-			System.out.println("비밀번호 찾기 상세 프컨");
-			request.getRequestDispatcher("/html/login/passwordSelect-detail.jsp").forward(request, response);
-			break;
-
 		case "/login/passwrdDetailOk.me":
 			System.out.println("비밀번호 찾기 OK 상세 프컨");
 			result = new PasswordDetailOkController().execute(request, response);

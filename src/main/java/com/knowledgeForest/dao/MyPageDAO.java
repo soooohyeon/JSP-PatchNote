@@ -68,7 +68,10 @@ public class MyPageDAO {
 		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}
-
+	// 신청한 스터디 게시글 수
+	public int getStudyListTotal(int userNum) {
+		return sqlsession.selectOne("UserMapper.getStudyListTotal", userNum);
+	}
 	// 신청한 스터디 취소
 	public void deleteStudyApply(int studyNum) {
 		sqlsession.delete("UserMapper.deleteStudyApply", studyNum);
@@ -83,7 +86,7 @@ public class MyPageDAO {
 		return boardList;
 	}
 
-	// 총 자유게시판 게시글 수
+	// 자유게시판 게시글 수
 	public int getBoardTotal(int userNum) {
 		return sqlsession.selectOne("UserMapper.getBoardTotal", userNum);
 	}

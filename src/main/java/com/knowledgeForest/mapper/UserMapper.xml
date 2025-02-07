@@ -98,12 +98,15 @@
 		tu.USER_ID,
 		tu.USER_NICK,
 		tu.USER_PH,
-		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM)
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE
+		tsa.STUDY_NUM = ts.STUDY_NUM)
 		AS participants
 		FROM TBL_STUDY ts
-		INNER JOIN TBL_USER tu
+		INNER
+		JOIN TBL_USER tu
 		ON ts.USER_NUM = tu.USER_NUM
-		WHERE ts.user_num = tu.user_num
+		WHERE ts.user_num =
+		tu.user_num
 		ORDER BY STUDY_NUM DESC
 		) studyList
 		WHERE ROWNUM <![CDATA[<=]]>
@@ -114,26 +117,45 @@
 
 
 	<!-- 만든 스터디 총 개수 -->
-	<select id="getMyStudyTotal" parameterType="int" resultType="int">
+	<select id="getMyStudyTotal" parameterType="int"
+		resultType="int">
 		SELECT COUNT(STUDY_NUM)
 		FROM TBL_STUDY
-		where USER_NUM = #{userNum}
+		where USER_NUM =
+		#{userNum}
 	</select>
 
 
 
-	<!-- 신청한 스터디게시판 글 -->
-	<select id="getStudyList" resultType="StudyApplyDTO"
-		parameterType="int">
+	<!-- 신청한 스터디 게시판 글 -->
+	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="int">
 		SELECT *
+		FROM (
+		SELECT
+		ta.STUDY_APPLY_NUM, ta.STUDY_NUM, ta.USER_NUM, ta.study_apply_date, -- TBL_STUDY_APPLY 열들
+		st.STUDY_TITLE, st.STUDY_DESCRIPT, st.STUDY_LOCATION,
+		st.STUDY_START_DAY, st.STUDY_END_DAY, -- TBL_STUDY 열들
+		u.USER_ID, u.USER_NICK, u.USER_PH, -- TBL_USER 열들
+		ROWNUM AS rnum
 		FROM TBL_STUDY_APPLY ta
-		JOIN TBL_STUDY st ON
-		ta.STUDY_NUM = st.STUDY_NUM
-		JOIN TBL_USER u ON
-		ta.USER_NUM = u.USER_NUM
+		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM
+		JOIN TBL_USER u ON ta.USER_NUM = u.USER_NUM
 		WHERE ta.USER_NUM = #{userNum}
+		ORDER BY ta.STUDY_NUM DESC
+		)
+		WHERE rnum <![CDATA[>=]]>
+		#{startRow} AND rnum <![CDATA[<=]]>
+		#{endRow}
 	</select>
 
+	<!-- 신청한 스터디 게시판 글 총 개수 -->
+	<select id="getStudyListTotal" parameterType="int"
+		resultType="int">
+		SELECT COUNT(STUDY_APPLY_NUM)
+		FROM TBL_STUDY_APPLY
+		where
+		USER_NUM = #{userNum}
+	</select>
 
 	<!-- 찜한 목록 리스트 -->
 	<select id="getLikeList" resultType="StudyDTO"

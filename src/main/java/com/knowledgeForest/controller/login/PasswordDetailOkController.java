@@ -18,16 +18,20 @@ public class PasswordDetailOkController implements Execute{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-//		LoginDAO loginDAO = new LoginDAO();
-//		UserDTO userDTO = new UserDTO();
+		LoginDAO loginDAO = new LoginDAO();
+		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
 		
 		
 		//비밀번호를 업데이하는 구문을 작성해야함
 		
+		userDTO.setUserPw(request.getParameter("userPw"));
+	//	loginDAO.pwd(String userPw); //mapper 해당 이름 아이디
 		
+		
+		result.setPath(request.getContextPath()+"/login/login.me");
 		result.setRedirect(true);
-		result.setPath(request.getContextPath());
+		
 		return result;
 	}
 

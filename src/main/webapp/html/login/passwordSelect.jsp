@@ -16,34 +16,36 @@
 	<jsp:include page="/html/main/header.jsp" />
 	
 	 <main>
+	   <form action="${pageContext.request.contextPath}/login/passwordSelectOk.me">
       <div class="passwordSelect-div-wrapper-pwd-select">
         <div class="passwordSelect-div-h1-box">
           <h1 class="h1-title">비밀번호 찾기</h1>
         </div>
+      
         <div class="passwordSelect-div-wrapper-all-box">
           <div class="passwordSelect-div-wrapper-input-box">
-            <input type="text" class="passwordSelect-input" placeholder="아이디" name="userId" maxlength="10" id="PASSWORDSELECT-INPUT-ID" onkeyup="inputLenFunc2()" onblur="idCheck()">
+            <input type="text" class="passwordSelect-input" placeholder="아이디" name="userId" maxlength="10" id="PASSWORDSELECT-INPUT-ID">
           </div>
-
+			 <span class="join-span-wrapper-text-alarm" id="JOIN-SPAN-ID"></span>
           <div class="passwordSelect-div-wrapper-input-box">
             <input
               type="text"
               class="passwordSelect-input"
               placeholder="휴대폰 번호" name="userPH" id="PASSWORDSELECT-INPUT-PHONENUMBER"/>
-            <button type = "submit" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-SEND">발송</button>
+            <button type = "button" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-SEND">발송</button>
           </div>
 
           <div class="passwordSelect-div-wrapper-input-box">
             <input
               type="number"
               class="passwordSelect-input"
-              placeholder="인증번호" name="authenticationNumber" id="PASSWORDSELECT-AUTHENTICATIONNUMBER" onkeyup="inputLenFunc6()"
-            />
-      <form action="${pageContext.request.contextPath}/login/passwordSelectOk.me">
-
-            <button type="submit" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-CHECK">확인</button>
+              placeholder="인증번호" name="authenticationNumber" id="PASSWORDSELECT-AUTHENTICATIONNUMBER" />
+           <button type="button" class="passwordSelect-btn" id="PASSWORDSELECT-BTN-CHECK">확인</button>
+             
           </div>
+          <span id="JOIN-SPAN-VERIFICATION-STATUS"></span>
         </div>
+         <button type="submit" class="passwordSelect-btn1" id="PASSWORDSELECT-BTN-NEXT">이동</button>
       </div>
     </form>
     </main>
