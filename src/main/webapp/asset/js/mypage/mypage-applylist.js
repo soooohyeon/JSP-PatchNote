@@ -32,3 +32,10 @@ function cancelAction(studyNum) {
 function goPage(studyNum) {
 	location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=?studyNum=" + studyNum;
 }
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page) {
+  console.log("페이지 이동 요청됨, page:", page); // 디버깅용 콘솔 출력
+  // 올바른 컨트롤러 경로로 baseUrl을 지정
+  var baseUrl = getContextPath() + "/mypage/mypage-applylist.my";
+  location.href = baseUrl + "?page=" + page;
+}

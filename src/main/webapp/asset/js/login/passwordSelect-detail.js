@@ -1,35 +1,36 @@
-const btnComplete = document.querySelector(".passwordSelect-detail-btn-complete");
+document.addEventListener("DOMContentLoaded", function () {
+	const passwordInput = document.getElementById("PASSWORDSELECT-INPUT-NEWPWD");
+	const passwordConfirmInput = document.getElementById("PASSWORDSELECT-INPUT-RENEWPWD");
+	
+	
+	const checkPwMsg = document.getElementById("JOIN-SPAN-PWD-STATUS");
+	const checkPwConfirmMsg = document.getElementById("JOIN-SPAN-REPWD-STATUS");
+	
+	// 비밀번호 유효성 검사
+	const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 
-btnComplete.addEventListener("click", (e)=>{
-  if(true){
-    alert("정상적으로 비밀번호가 변경되었습니다.");
-    window.location.href="./login.html";
-  }else{
-    alert("비밀번호가 변경되지 않았습니다");
-    
-  }
-});
+	passwordInput.addEventListener("blur", function () {
+	    const password = passwordInput.value.trim();
+	    if (passwordRegex.test(password)) {
+	        checkPwMsg.textContent = "사용 가능한 비밀번호입니다.";
+	        checkPwMsg.style.color = "green";
+	    } else {
+	        checkPwMsg.textContent = "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상 입력해야 합니다.";
+	        checkPwMsg.style.color = "red";
+	    }
+	});
 
+	passwordConfirmInput.addEventListener("blur", function () {
+	    const password = passwordInput.value.trim();
+	    const confirmPassword = passwordConfirmInput.value.trim();
 
-// 비밀번호 일치여부 검사 
-function validatePassword() {
-	let password = document.getElementById("PASSWORDSELECT-INPUT-NEWPWD").value; //newpassword input태그 값
-  let confirmPassword = document.getElementById("PASSWORDSELECT-INPUT-RENEWPWD").value; //repassword input 태그 값
-	let result = document.getElementById('JOIN-DIV-PWALARM'); //div 태그 공간
-
-	//특수문자 및 영어 등등 가져와서 쓰는 정규식 (8자리부터 15자리 이하까지)
-	const exr = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,15}$/;
-
-	if (exr.test(password)) {
-		if (password === confirmPassword) {
-			result.innerHTML = '비밀번호가 일치합니다.';
-			result.style.color = 'green';
-		}else{
-			result.innerHTML = '비밀번호가 일치하지 않습니다.';
-			result.style.color = 'red';
-		}
-	}else{
-		result.innerHTML = '비밀번호는 최소 8자에서 15자까지, 영문자, 숫자 및 특수 문자를 포함해야 합니다.';
-		result.style.color = 'red';
-	}
-}
+	    if (password === confirmPassword && password !== "") {
+	        checkPwConfirmMsg.textContent = "비밀번호가 일치합니다.";
+	        checkPwConfirmMsg.style.color = "green";
+	    } else {
+	        checkPwConfirmMsg.textContent = "비밀번호가 일치하지 않습니다.";
+	        checkPwConfirmMsg.style.color = "red";
+	    }
+	});
+	
+	});

@@ -22,17 +22,22 @@
 		where user_Nick = #{userNick}
 	</select>
 	
-
-
 	<!-- 회원가입 쿼리 -->
 	<insert id="join" parameterType = "UserDTO">
 		INSERT INTO TBL_USER(USER_NUM, USER_ID, USER_NICK, USER_PW, USER_BIRTH, USER_PH, USER_NAME)
 		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
 	</insert>
 
-	<!--비밀번호찾기 쿼리  -->
-	
+	<!--비밀번호찾기에서 해당 id와 ph 일치 여부 확인 쿼리 / 리턴값을 int로 진행...?? -->
+	<select id="pwd" parameterType = "Map" resultType="userDTO">
+		SELECT COUNT(USER_NUM) FROM TBL_USER
+		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
+	</select>
 
-
-
+	<!--비밀번호 변경 쿼리  -->
+	<update id="pwdUpate" parameterType = "string">
+		UPDATE USER_PW FROM TBL_USER
+		
+	</update>
+ 
 </mapper>

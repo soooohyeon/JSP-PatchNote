@@ -57,20 +57,28 @@ public class MyPageDAO {
 		return sqlsession.selectList("UserMapper.getMyStudies", userNum);
 	}
 
+	// 작성한 스터디 총 갯수 출력
+	public int getMyStudyTotal(int userNum) {
+		return sqlsession.selectOne("UserMapper.getMyStudyTotal", userNum);
+	}
+
 	// 신청한 스터디 조회
 	public List<StudyApplyDTO> getStudyList(int userNum) {
 		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
 		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}
-
+	// 신청한 스터디 게시글 수
+	public int getStudyListTotal(int userNum) {
+		return sqlsession.selectOne("UserMapper.getStudyListTotal", userNum);
+	}
 	// 신청한 스터디 취소
 	public void deleteStudyApply(int studyNum) {
 		sqlsession.delete("UserMapper.deleteStudyApply", studyNum);
 		System.out.println("스터디 신청 취소됨");
 	}
 
-	// 게시글 목록 조회
+	// 자유게시판 게시글 목록 조회
 	public List<BoardUserDTO> getBoardList(Map<String, Object> paramMap) {
 		System.out.println("paramMap " + paramMap);
 		List<BoardUserDTO> boardList = sqlsession.selectList("UserMapper.getBoardList", paramMap);
@@ -78,7 +86,7 @@ public class MyPageDAO {
 		return boardList;
 	}
 
-	//	총 자유게시판 게시글 수
+	// 자유게시판 게시글 수
 	public int getBoardTotal(int userNum) {
 		return sqlsession.selectOne("UserMapper.getBoardTotal", userNum);
 	}
@@ -89,7 +97,7 @@ public class MyPageDAO {
 		sqlsession.delete("UserMapper.deleteUser", userNum);
 	}
 
-// 신청자 목록 조회
+	// 신청자 목록 조회
 	public List<StudyApplyUserDTO> getApplicants(int studyNum) {
 		return sqlsession.selectList("UserMapper.getApplicants", studyNum);
 	}
@@ -99,7 +107,7 @@ public class MyPageDAO {
 		return sqlsession.update("UserMapper.acceptApplicant", studyApplyNum);
 	}
 
-// 신청자 거절
+	// 신청자 거절
 	public void rejectApplicant(int studyApplyNum) {
 		sqlsession.update("UserMapper.rejectApplicant", studyApplyNum);
 	}

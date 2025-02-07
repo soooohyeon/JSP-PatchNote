@@ -93,7 +93,6 @@
           <button class="join-btn-checkid" type="button" id="JOIN-BTN-PHONNUMBER">인증번호 받기</button>
         </div>
         <span id="JOIN-DIV-VERIFICATION-STATUS"></span>
-        <div class="join-div-wrapper-text-alarm" id="JOIN-DIV-PHONENUMBER"></div>
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
           </div>

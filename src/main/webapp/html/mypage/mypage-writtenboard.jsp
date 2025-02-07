@@ -94,8 +94,7 @@
 				</div>
 
 				<!-- 페이지네이션 -->
-				<%-- 디버깅용으로 페이지네이션 변수 확인 --%>
-				
+
 				<div class="mypage-div-paginationwrapper">
 					<ul id="mypage-UL-PAGINATION">
 						<c:if test="${prev}">
@@ -112,7 +111,7 @@
 								</c:when>
 								<c:otherwise>
 									<li class="mypage-li-paginationlist currentpage"
-										onclick="movePage(${i})"><c:out value="${i}"/></li>
+										onclick="movePage(${i})"><c:out value="${i}" /></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -123,6 +122,7 @@
 						</c:if>
 					</ul>
 				</div>
+
 			</main>
 		</div>
 	</div>
