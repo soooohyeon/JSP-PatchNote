@@ -29,7 +29,7 @@
           <h1 class="admin-h1-detailtitle">배너 등록</h1>
           
           <!--  폼 시작 -->
-          <form action="" method="">
+          <form action="${pageContext.request.contextPath}/admin/admin-bannerwriteOk.ad" method="post" enctype="multipart/form-data">
             <!-- 배너 데이터 입력하는 부분 -->
             <div class="adminWrite-div-formwrapper">
 

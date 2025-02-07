@@ -40,6 +40,16 @@ public class AdminImgDAO {
 //		실제 폴더에서 이미지 삭제 메소드 실행
 		removeAdminImg(imgInfo);
 	}
+
+//	배너 이미지 등록
+	public void insertBannerImg(AdminImgDTO adminImgDTO) {
+		try {
+			sqlSession.insert("AdminImgMapper.insertBannerImg", adminImgDTO);
+		} catch (Exception e) {
+			System.out.println("파일 저장이 실패되었습니다. " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 	
 //	실제 폴더에서 이미지 삭제
 	public void removeAdminImg(HashMap<String, String> imgInfo) {

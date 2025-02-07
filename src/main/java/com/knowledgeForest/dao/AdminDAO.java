@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
+import com.knowledgeForest.dto.BannerDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.NoticeImgDTO;
@@ -164,8 +165,17 @@ public class AdminDAO {
 	public int getBoardTotal(String keyword) {
 		return sqlSession.selectOne("AdminMapper.getBoardTotal", keyword);
 	}
+	
 //	자유게시판 글 삭제
 	public void deleteBoard(int boardNum) {
 		sqlSession.selectList("AdminMapper.deleteBoard", boardNum);
+	}
+	
+//	배너 등록
+	public int insertBanner (BannerDTO bannerDTO) {
+//		배너 등록하는 쿼리 실행
+		sqlSession.insert("AdminMapper.insertBanner", bannerDTO);
+//		가장 최근에 생성된 배너 번호값 리턴 - 이미지 첨부를 위함
+		return sqlSession.selectOne("AdminMapper.getCurrentBannerNum");
 	}
 }

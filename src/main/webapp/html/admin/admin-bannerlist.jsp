@@ -100,7 +100,7 @@
               <li class="admin-li-paginationlist">5</li>
               <li class="admin-li-paginationlist next">&#62;</li>
             </ul>
-          </div> -->
+          </div>
 
         </div>
       </main>

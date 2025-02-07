@@ -17,8 +17,30 @@
 		where NOTICE_NUM = #{noticedNumber}
 	</select>
 	
+	<!-- 공지 삭제 -->
 	<delete id="deleteNoticeImg" parameterType="int">
 		DELETE FROM TBL_ADMIN_IMG
 		WHERE NOTICE_NUM = #{noticeNum}
 	</delete>
+
+	<!-- 배너 이미지 등록 -->
+	<insert id="insertBannerImg" parameterType="AdminImgDTO">
+		INSERT INTO TBL_ADMIN_IMG
+		(ADMIN_IMG_NUM, BANNER_NUM, ADMIN_IMG_NAME, ADMIN_IMG_UUID)
+		VALUES(SEQ_ADMIN_IMG.NEXTVAL, #{bannerNum}, #{adminImgName}, #{adminImgUuid})
+	</insert>
+	
+	<!-- 배너 이미지 조회 -->
+	<select id="selectBannerImg" parameterType="int" resultType="AdminImgDTO">
+		SELECT ADMIN_IMG_NUM, NOTICE_NUM, ADMIN_IMG_NAME, ADMIN_IMG_UUID
+		FROM TBL_ADMIN_IMG
+		where NOTICE_NUM = #{noticedNumber}
+	</select>
+	
+	<!-- 배너 삭제 -->
+	<delete id="deleteBannerImg" parameterType="int">
+		DELETE FROM TBL_ADMIN_IMG
+		WHERE NOTICE_NUM = #{noticeNum}
+	</delete>
+	
 </mapper>
