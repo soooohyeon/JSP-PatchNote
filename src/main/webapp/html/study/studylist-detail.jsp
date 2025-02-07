@@ -163,63 +163,42 @@
 			등록</button> -->
 
 		<!-- 댓글 목록 -->
-<!-- 		<div class="studylist-div-commentlistwrapper">
-			<div class="studylist-div-commentlistheader">
-				<span class="studylist-span-comment">댓글</span> <span
-					class="studylist-span-commentcounter">총 2개</span>
-			</div>
+		<div class="studylist-div-commentlistwrapper">
+			<form class="studylist-div-commentlistheader">
+				<input type="hidden" name="studyNum"
+						value="${study.getStudyNum()}">
+				<span class="studylist-span-comment">댓글</span> 
+				<span class="studylist-span-commentcounter">총 2개</span>
+				<div class="form-group">
+					<textarea name="content" id="content" placeholder="댓글 내용을 입력하세요."></textarea>
+				</div>
+				<button type="button" class="submit-btn">댓글 작성</button>
+			</form>
+			
 			<div class="studylist-div-commentlist">
-				<div class="studylist-div-commentlayer">
-					<span class="studylist-span-commentnickname">닉네임</span> <span
-						class="studylist-span-commentdate">2025.01.03</span>
-				</div>
-				<div class="studylist-div-commentlayer">
-					<span class="studylist-span-commentcontents"> 프로그래머스라는
-						홈페이지에서 코테도 할 수 있고, 여러 강의도 들을 수 있어요. </span>
-				</div>
-			</div>
-			<div class="studylist-div-commentlist">
-				<div class="studylist-div-commentlayer">
-					<span class="studylist-span-commentnickname">닉네임</span> <span
-						class="studylist-span-commentdate">2025.01.03</span>
-				</div>
-				<div class="studylist-div-commentlayer">
-					<span class="studylist-span-commentcontents"> 프로그래머스라는
-						홈페이지에서 코테도 할 수 있고, 여러 강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러
-						강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을 수 있어요.
-						프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을 수 있어요. </span>
-					<div class="studylist-detail-div-btnwrapper">
-						<span class="studylist-span-commenteditbtn"
-							onclick="updateComment()">수정</span> <span
-							class="studylist-span-divider">|</span> <span
-							class="studylist-span-commentdeletebtn" onclick="deleteComment()">삭제</span>
-					</div>
-				</div>
+				<ul id="studylist-div-commentlist">
+					<li>
+						<div class="comment-info">
+							<span class="writer"></span> <span class="date"></span>
+						</div>
+						<div class="comment-content-wrap">
+							<div class="comment-content">
+								<p></p>
+							</div>
+							<div class="comment-btn-group">
+								<button type=button class="comment-modify-ready">수정</button>
+								<button type=button class="comment-delete">삭제</button>
+							</div>
+							<div class="comment-btn-group none">
+								<button type=button class="comment-modify">수정 완료</button>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</div>
 
-			수정 버튼을 눌렀을때 디스플레이 되는 댓글 입력 창
-			<div class="studylist-div-commentlist">
-				<div class="studylist-div-commentlayer">
-					<span class="studylist-span-commentnickname">닉네임</span> <span
-						class="studylist-span-commentdate">2025.01.03</span>
-				</div>
-				<div class="studylist-div-commentlayer">
-					<form action="" id="STUDYLIST-FORM-EDITCOMMENT">
-						<textarea class="studylist-textarea-commentcontents"
-							placeholder="댓글을 남겨보세요." data-counter="EDIT-COMMENT-COUNTER"
-							oninput="updateCharacterCount(this, 200)"></textarea>
-						<div class="studylist-div-counterwrapper">
-							<span id="EDIT-COMMENT-COUNTER" class="studylist-span-counter">0/200</span>
-						</div>
-					</form>
-				</div>
-				<div class="studylist-div-commentlayer">
-					댓글 수정 버튼
-					<button class="studylist-btn-editcommentsubmit" type="submit"
-						form="STUDYLIST-FORM-EDITCOMMENT">등록</button>
-				</div>
-			</div>
-		</div> -->
+		
+		</div> 
 
 		<!-- 페이지네이션 -->
 		<!-- <div class="studylist-div-paginationwrapper">

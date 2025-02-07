@@ -87,6 +87,13 @@
 		)
 	</insert>
 	
+	<!-- 스터디 게시글에 이미지 추가 -->
+	<insert id="insertImg" parameterType="UserImgDTO">
+		INSERT INTO NOTE.TBL_USER_IMG
+		(USER_IMG_NUM, STUDY_NUM, USER_IMG_NAME, USER_IMG_UUID)
+		VALUES(SEQ_USER_IMG.NEXTVAL, #{studyNum}, #{userImgName}, #{userImgUuid})
+	</insert>
+	
 	<!-- 마지막 생성된 시퀀스 값을 가져오는 쿼리 -->
 	<select id="getCurrentStudyNumber" resultType="int">
 		SELECT

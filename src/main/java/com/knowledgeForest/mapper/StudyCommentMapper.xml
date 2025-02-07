@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studyComment">
+   <select id="selectAll" parameterType="int" resultType="StudyCommentListDTO">
+		select tsc.study_comment_num, tsc.study_num, tsc.user_num, tsc.study_comment, tsc.study_comment_upload_date, tsc.study_comment_edit_date
+		from tbl_study ts 
+		join tbl_study_comment tsc
+		on tsc.study_num = #{studyNum} and ts.user_num = tsc.user_num
+   </select>
+</mapper>

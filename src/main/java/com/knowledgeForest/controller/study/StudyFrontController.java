@@ -48,7 +48,7 @@ public class StudyFrontController extends HttpServlet {
 		
 		switch(target) {
 		case "/study/studyList.st":
-
+			System.out.println("ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ");
 //			request.getRequestDispatcher("/html/study/studylist.jsp").forward(request, response);
 			result = new StudyListOkController().execute(request, response);
 			break;
@@ -56,8 +56,6 @@ public class StudyFrontController extends HttpServlet {
 			request.getRequestDispatcher("/html/study/studylist-write.jsp").forward(request, response);
 			break;
 		case "/study/studyWriteOk.st":
-			System.out.println("studyWriteOk!");
-			System.out.println("33333");
 			result = new StudyWriteOkController().execute(request, response);
 			break;
 		case "/study/studyDetailOk.st":
@@ -79,6 +77,10 @@ public class StudyFrontController extends HttpServlet {
 		case "/study/studyApplyInsertOk.st":
 			System.out.println("studyApplyInsertOk!");
 			result = new StudyApplyInsertOkController().execute(request, response);
+			break;
+		case "/study/studyCommentListOk.st":
+			System.out.println("studyCommentListOk!");
+			result = new StudyCommentListOkController().execute(request, response);
 			break;
 		}
 		

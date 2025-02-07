@@ -48,7 +48,7 @@ function deleteStudy(studyNum) {
 			getContextPath() + "/study/studyDeleteOk.st?studyNum=" + studyNum,
 		type: "GET",
 		success: () => {
-			if(confirm("해당 스터디를 삭제하시겠습니까?")){
+			if (confirm("해당 스터디를 삭제하시겠습니까?")) {
 				alert("스터디 삭제가 완료되었습니다.");
 				location.href = getContextPath() + "/study/studyList.st";
 			}
@@ -62,16 +62,69 @@ function deleteStudy(studyNum) {
 };
 
 
+$(document).ready(function() {
 
+	console.log("화면 로드됨.");
+	//댓글 목록 로드 (fetch)
+	async function loadComments() {
+		try {
+			console.log("studyNum" + studyNum);
+			
+			// <========= 여기서 막힘
+			
+			const response = await fetch(getContextPath() +`/study/studyCommentListOk.st?studyNum=${studyNum}`);
+			if (!response.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
+			const comments = await response.json();
+			renderComments(comments);
+		} catch (error) {
+			console.error("댓글 목록 불러오기 실패:", error);
+			alert("댓글 목록을 불러오는데 실패했습니다.");
+		}
+	}
 
+	//댓글 렌더링
+	function renderComments(comments) {
+		const commentList = document.querySelector("#studylist-div-commentlist");
+		console.log("commentList" + commentList);
+		commentList.innerHTML = "";
 
+		if (comments.length === 0) {
+			commentList.innerHTML = "<li>댓글이 없습니다.</li>";
+			return;
+		}
 
+		console.log(comments);
+		comments.forEach(comment => {
+			console.log("comment" + comment);
+			const isMyComment = comment.memberNumber == memberNumber;
+			const div = document.createElement("div");
+			div.innerHTML =
+				`
+				<div class="studylist-div-commentlayer">
+									<span class="studylist-span-commentnickname">닉네임</span> <span
+										class="studylist-span-commentdate">${comment.studyCommentUploadDate}</span>
+								</div>
+								<div class="studylist-div-commentlayer">
+									<span class="studylist-span-commentcontents">${comment.studyComment}</span>
+										
+										${isMyComment ? `
+									<div class="studylist-detail-div-btnwrapper">
+										<span class="studylist-span-commenteditbtn"
+											onclick="updateComment()">수정</span> <span
+											class="studylist-span-divider">|</span> <span
+											class="studylist-span-commentdeletebtn" onclick="deleteComment()">삭제</span>
+											` : ""}
+				</div>
+			</div>
+			`
+			commentList.appendChild(div);
+		});
+	}
 
+	// 초기 댓글 로드
+	loadComments();
 
-
-
-
-
+});
 
 
 
@@ -147,14 +200,14 @@ function closeModal() {
 function writeCourage(studyNum) {
 	//각오를 입력했는지 여부를 판단
 	//event.preventDefault();
-	
+
 	console.log("함수실행!!!");
 
 	let userDetermination = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
 	let disclaimer = document.getElementById("STUDYLIST-CHECKBOX-AGREE").checked;
 
-	console.log("dfsfsdf : "  + userDetermination);
-	
+	console.log("dfsfsdf : " + userDetermination);
+
 	if (userDetermination === "") {
 		alert("각오를 입력해주세요.");
 		return;
@@ -165,13 +218,13 @@ function writeCourage(studyNum) {
 		alert("주의사항 체크 후 진행바랍니다.");
 		return;
 	}
-	
+
 	var formData = {
-	   name: $('input[name="name"]').val(),
-	   email: $('input[name="email"]').val()
-	 };
-	 
-	if(confirm("스터디를 신청하시겠습니까?")){
+		name: $('input[name="name"]').val(),
+		email: $('input[name="email"]').val()
+	};
+
+	if (confirm("스터디를 신청하시겠습니까?")) {
 		$.ajax({
 			url:
 				getContextPath() + "/study/studyApplyInsertOk.st?studyNum=" + studyNum,
@@ -181,10 +234,10 @@ function writeCourage(studyNum) {
 				userDetermination: userDetermination
 			},
 			success: () => {
-					alert("신청이 완료되었습니다.");
-					closeModal();
-					
-					location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
+				alert("신청이 완료되었습니다.");
+				closeModal();
+
+				location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
 			},
 			error: (xhr, status, error) => {
 				console.error("스터디 신청 실패:", error);
@@ -193,5 +246,5 @@ function writeCourage(studyNum) {
 			},
 		});
 	}
-	
+
 }
