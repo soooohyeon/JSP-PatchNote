@@ -34,17 +34,15 @@ public class AdminBannerDeleteOkController implements Execute {
 
 //		폴더에 저장된 이미지 시스템명 불러오기
 		bannerImgDTO.setImages(adminImgDAO.selectBannerImg(bannerNum));
-//		만약 저장된 이미지가 없다면
-		if (bannerImgDTO.getImages() != null) {
-			String imgName = bannerImgDTO.getImages().getAdminImgUuid();
+		String imgName = bannerImgDTO.getImages().getAdminImgUuid();
 		
-//			이미지가 저장된 경로와 삭제할 파일명 전달
-			HashMap<String, String> imgInfo = new HashMap<>();
-			imgInfo.put("UPLOAD_PATH", UPLOAD_PATH);
-			imgInfo.put("imgName", imgName);
-//			실제 폴더에 저장된 이미지를 삭제할 메소드 사용 - 저장경로 및 파일명 전달
-			adminImgDAO.removeAdminImg(imgInfo);
-		}
+//		이미지가 저장된 경로와 삭제할 파일명 전달
+		HashMap<String, String> imgInfo = new HashMap<>();
+		imgInfo.put("UPLOAD_PATH", UPLOAD_PATH);
+		imgInfo.put("imgName", imgName);
+		
+//		실제 폴더에 저장된 이미지를 삭제할 메소드 사용 - 저장경로 및 파일명 전달
+		adminImgDAO.removeAdminImg(imgInfo);
 		
 //		공지 데이터 삭제 메소드 실행 - noticeNum 전달
 		adminDAO.deleteBanner(bannerNum);

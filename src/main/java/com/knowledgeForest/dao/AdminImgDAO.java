@@ -49,9 +49,17 @@ public class AdminImgDAO {
 		}
 	}
 
-//	공지 이미지 조회
+//	배너 이미지 조회
 	public AdminImgDTO selectBannerImg(int bannerNum) {
 		return sqlSession.selectOne("AdminImgMapper.selectBannerImg", bannerNum);
+	}
+	
+//	공지 이미지 삭제
+	public void deleteBannerImg(HashMap<String, String> imgInfo) {
+		int bannerNum = Integer.parseInt(imgInfo.get("bannerNum"));
+		sqlSession.delete("AdminImgMapper.deleteBannerImg", bannerNum);
+//		실제 폴더에서 이미지 삭제 메소드 실행
+		removeAdminImg(imgInfo);
 	}
 	
 //	실제 폴더에서 이미지 삭제

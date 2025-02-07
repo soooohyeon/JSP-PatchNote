@@ -148,6 +148,16 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/admin-bannerDeleteOk.ad":
 			result = new AdminBannerDeleteOkController().execute(request, response);
 			break;
+			
+//		배너 글 수정
+		case "/admin/admin-bannerupdate.ad":
+			result = new AdminBannerUpdateController().execute(request, response);
+			break;
+			
+//		배너 글 수정 완료
+		case "/admin/admin-bannerupdateOk.ad":
+			result = new AdminBannerUpdateOkController().execute(request, response);
+			break;
 		}
 		
 		if (result != null) {

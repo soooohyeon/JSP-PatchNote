@@ -459,9 +459,9 @@
 	
 	<!-- 배너 수정 -->
 	<update id="updateBanner" parameterType="BannerDTO">
-		UPDATE TBL_NOTICE
-		SET NOTICE_TITLE=#{noticeTitle}, NOTICE_CONTENTS=#{noticeContents}, NOTICE_EDIT_DATE=SYSDATE 
-		WHERE NOTICE_NUM=#{noticeNum}
+		UPDATE TBL_BANNER
+		SET BANNER_NAME=#{bannerName}, BANNER_EDIT_DATE=SYSDATE 
+		WHERE BANNER_NUM=#{bannerNum}
 	</update>
 	
 </mapper>
