@@ -50,9 +50,11 @@
 		tu.USER_NICK
 		FROM TBL_BOARD tb
 		INNER JOIN TBL_USER tu
-		ON tb.USER_NUM = tu.USER_NUM
+		ON
+		tb.USER_NUM = tu.USER_NUM
 		WHERE tb.USER_NUM = #{userNum}
-		ORDER BY BOARD_NUM DESC
+		ORDER BY
+		BOARD_NUM DESC
 		) boardList
 
 		WHERE ROWNUM <![CDATA[<=]]>
@@ -63,35 +65,61 @@
 	</select>
 
 	<!-- 게시글 총 개수 -->
-    <select id="getBoardTotal" parameterType="int" resultType="int">
-    	SELECT COUNT(BOARD_NUM)
-    	FROM TBL_BOARD
+	<select id="getBoardTotal" parameterType="int" resultType="int">
+		SELECT COUNT(BOARD_NUM)
+		FROM TBL_BOARD
 		where USER_NUM = #{userNum}
-    </select>
-    
+	</select>
+
 
 	<!-- 만든 스터디 목록 -->
 	<select id="getMyStudies" resultType="StudyUserDTO"
 		parameterType="int">
+		SELECT *
+		FROM (
+		SELECT ROWNUM AS rnum, studyList.*
+		FROM (
 		SELECT
-		study_Num,
-		user_Num,
-		study_Title,
-		study_Descript,
-		study_Location,
-		study_Start_Day,
-		study_End_Day,
-		study_Start_Time,
-		study_End_Time,
-		study_Limit,
-		study_Deadline,
-		study_Upload_Date,
-		study_Edit_Date
-		FROM
-		TBL_STUDY ts
-		WHERE
-		user_Num = #{userNum}
+		ts.STUDY_NUM,
+		tu.USER_NUM,
+		ts.STUDY_TITLE,
+		ts.STUDY_DESCRIPT,
+		ts.STUDY_LOCATION,
+		ts.STUDY_START_DAY,
+		ts.STUDY_END_DAY,
+		ts.STUDY_START_TIME,
+		ts.STUDY_END_TIME,
+		ts.STUDY_LIMIT,
+		ts.STUDY_DEADLINE,
+		ts.STUDY_SHOWPH,
+		ts.STUDY_CATEGORY,
+		ts.STUDY_UPLOAD_DATE,
+		ts.STUDY_EDIT_DATE,
+		tu.USER_ID,
+		tu.USER_NICK,
+		tu.USER_PH,
+		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE tsa.STUDY_NUM = ts.STUDY_NUM)
+		AS participants
+		FROM TBL_STUDY ts
+		INNER JOIN TBL_USER tu
+		ON ts.USER_NUM = tu.USER_NUM
+		WHERE ts.user_num = tu.user_num
+		ORDER BY STUDY_NUM DESC
+		) studyList
+		WHERE ROWNUM <![CDATA[<=]]>
+		#{endRow}
+		)
+		WHERE rnum >= #{startRow}
 	</select>
+
+
+	<!-- 만든 스터디 총 개수 -->
+	<select id="getMyStudyTotal" parameterType="int" resultType="int">
+		SELECT COUNT(STUDY_NUM)
+		FROM TBL_STUDY
+		where USER_NUM = #{userNum}
+	</select>
+
 
 
 	<!-- 신청한 스터디게시판 글 -->
@@ -99,7 +127,8 @@
 		parameterType="int">
 		SELECT *
 		FROM TBL_STUDY_APPLY ta
-		JOIN TBL_STUDY st ON ta.STUDY_NUM = st.STUDY_NUM
+		JOIN TBL_STUDY st ON
+		ta.STUDY_NUM = st.STUDY_NUM
 		JOIN TBL_USER u ON
 		ta.USER_NUM = u.USER_NUM
 		WHERE ta.USER_NUM = #{userNum}
@@ -120,8 +149,6 @@
 		STUDY_NUM = #{studyNum}
 	</delete>
 
-
-
 	<!-- 신청자 목록 조회 -->
 	<select id="getApplicants" parameterType="int"
 		resultType="StudyApplyUserDTO">
@@ -136,24 +163,30 @@
 		FROM
 		tbl_study_apply tsa
 		JOIN
-		tbl_user tu ON tsa.user_num = tu.user_num
+		tbl_user tu ON
+		tsa.user_num = tu.user_num
 		WHERE
-		tsa.study_num = #{studyNum} AND tsa.STUDY_APPLY_STATUS =0
+		tsa.study_num = #{studyNum} AND
+		tsa.STUDY_APPLY_STATUS =0
 	</select>
 
 
 	<!-- 신청자 수락 -->
 	<update id="acceptApplicant" parameterType="int">
-		UPDATE tbl_study_apply
+		UPDATE
+		tbl_study_apply
 		SET study_apply_status = 1
-		WHERE study_apply_num = #{studyApplyNum}
+		WHERE study_apply_num =
+		#{studyApplyNum}
 	</update>
 
 	<!-- 신청자 거절 -->
 	<update id="rejectApplicant" parameterType="int">
-		UPDATE tbl_study_apply
+		UPDATE
+		tbl_study_apply
 		SET study_apply_status = 2
-		WHERE study_apply_num = #{studyApplyNum}
+		WHERE study_apply_num =
+		#{studyApplyNum}
 	</update>
 
 

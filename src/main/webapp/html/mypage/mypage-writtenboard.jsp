@@ -94,7 +94,6 @@
 				</div>
 
 				<!-- 페이지네이션 -->
-				<%-- 디버깅용으로 페이지네이션 변수 확인 --%>
 				
 				<div class="mypage-div-paginationwrapper">
 					<ul id="mypage-UL-PAGINATION">
