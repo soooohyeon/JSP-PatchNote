@@ -25,7 +25,8 @@
         <!-- 입력 폼을 감싸는 래퍼 -->
         <form id="STUDYLIST-FORM-WRITE"
         	action="${pageContext.request.contextPath}/study/studyWriteOk.st"
-			method="post">
+			method="post"
+			enctype="multipart/form-data">
           <!-- 한 행 -->
           <div class="studylist-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->
@@ -144,7 +145,7 @@
             <div class="studylist-div-filewrap">
               <div class="label">첨부파일</div>
               <label id="STUDYLIST-INPUT-FILELABEL" for="STUDYLIST-INPUT-FILE">
-                <input type="file" name="file" id="STUDYLIST-INPUT-FILE" accept="image/*"/>
+                <input type="file" name="studyImage" id="STUDYLIST-INPUT-FILE" accept="image/*"/>
                 <div class="studylist-div-filebtn">첨부</div>
               </label>
             </div>

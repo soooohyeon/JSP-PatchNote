@@ -48,7 +48,7 @@ capacityInput.addEventListener("input", (e) => {
   }
 });
 
-//파일 첨부시 파일명 표시
+/*//파일 첨부시 파일명 표시
 
 const fileInput = document.querySelector("input[name='file']");
 const fileLabel = document.querySelector("#STUDYLIST-INPUT-FILELABEL");
@@ -56,7 +56,7 @@ const fileLabel = document.querySelector("#STUDYLIST-INPUT-FILELABEL");
 fileInput.addEventListener("change", (e) => {
   const filename = e.target.files[0].name;
   fileLabel.textContent = filename;
-});
+});*/
 
 
 //뒤로 가기 버튼을 눌렀을 때 이전 페이지로 이동
