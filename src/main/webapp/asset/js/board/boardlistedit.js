@@ -23,6 +23,11 @@ function updateBoard(event) {
   }
 }
 
+  // 이미지명 화면에 뿌리기
+  imgNameArea.textContent = e.target.files[0].name;
+  reader.readAsDataURL(e.target.files[0]);
+
+
 const titleInput = document.querySelector("input[name='boardlistName']");
 const descriptionInput = document.querySelector(
   "textarea[name='boardDescription']"

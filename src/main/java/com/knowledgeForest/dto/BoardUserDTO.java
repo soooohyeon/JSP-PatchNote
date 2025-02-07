@@ -8,7 +8,7 @@ public class BoardUserDTO {
 	private String boardTitle;
 	private String boardContents;
 	private String boardUploadDate;
-	private String bordEditDate;
+	private String boardEditDate;
 	public int getBoardNum() {
 		return boardNum;
 	}
@@ -46,16 +46,16 @@ public class BoardUserDTO {
 		this.boardUploadDate = boardUploadDate;
 	}
 	public String getBordEditDate() {
-		return bordEditDate;
+		return boardEditDate;
 	}
 	public void setBordEditDate(String bordEditDate) {
-		this.bordEditDate = bordEditDate;
+		this.boardEditDate = bordEditDate;
 	}
 	@Override
 	public String toString() {
 		return "BoardUserDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", userNick=" + userNick
 				+ ", boardTitle=" + boardTitle + ", boardContents=" + boardContents + ", boardUploadDate="
-				+ boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
+				+ boardUploadDate + ", bordEditDate=" + boardEditDate + "]";
 	}
 	
 }

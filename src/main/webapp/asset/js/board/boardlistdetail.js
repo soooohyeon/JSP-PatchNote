@@ -91,7 +91,7 @@ function updateCharacterCount(textarea, maxCharacters) {
   }
 
 }
-// 스터디 신청시 모달 띄우기
+/*// 스터디 신청시 모달 띄우기
 function applyStudy() {
   document.getElementById("BOARDLISTDETAIL-MODAL-APPLY").style.display = "block";
 }
@@ -120,8 +120,9 @@ function writeCourage() {
   if (disclaimer === false) {
     alert("주의사항 체크 후 진행바랍니다.");
     return;
-  }
+  }*/
 
   /*alert("신청이 완료되었습니다.");*/
-}
+  
+  
 }
