@@ -53,7 +53,7 @@
                   </div>
                   <div class="adminWrite-div-content">
                     <div class="inputwrap">
-                      <textarea name="noticeCotent" id="noticeCotent" class="inputStyle" placeholder="공지 내용을 입력하세요."></textarea>
+                      <textarea name="noticeContents" id="noticeContents" class="inputStyle" placeholder="공지 내용을 입력하세요."></textarea>
                     </div>
                   </div>
                 </div>

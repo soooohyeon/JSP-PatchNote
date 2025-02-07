@@ -48,9 +48,6 @@ public class AdminImgDAO {
 		
 		File file = new File(imgSrc, imgName);
 		
-		System.out.println("이미지삭제 DAO imgSrc : " + imgSrc);
-		System.out.println("이미지삭제 DAO imgName : " + imgName);
-		
 		if (file.exists()) {
 			if (file.delete()) {
 				System.out.println("파일 삭제 성공");

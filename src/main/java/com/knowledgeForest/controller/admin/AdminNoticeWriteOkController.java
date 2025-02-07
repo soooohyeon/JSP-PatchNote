@@ -26,7 +26,7 @@ public class AdminNoticeWriteOkController implements Execute {
 		AdminDAO adminDAO = new AdminDAO();
 		NoticeDTO notice = new NoticeDTO();
 //		이미지 첨부에 필요한 객체
-		AdminImgDAO amdinImgDAO = new AdminImgDAO();
+		AdminImgDAO adminImgDAO = new AdminImgDAO();
 		AdminImgDTO adminImgDTO = new AdminImgDTO();
 		
 //		----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class AdminNoticeWriteOkController implements Execute {
 //		notice.setNoticeContents(request.getParameter("noticeCotent"));
 //		req가 저장한 데이터 인코딩타입이 multipart라면 기존 방식으로 데이터 가져올 수 없음
 		notice.setNoticeTitle(multipartRequest.getParameter("noticeTitle"));
-		notice.setNoticeContents(multipartRequest.getParameter("noticeCotent"));
+		notice.setNoticeContents(multipartRequest.getParameter("noticeContents"));
 		
 //		값 DAO 메소드로 전달하여 DB에 값 저장 후 반환된 가장 최근에 생성된 공지 번호 변수에 담기
 		int noticeNum = adminDAO.insertNotice(notice);
@@ -67,17 +67,17 @@ public class AdminNoticeWriteOkController implements Execute {
 //			이미지가 저장될 때의 이름
 			String fileSystemName = multipartRequest.getFilesystemName(name);
 //			이미지의 원본 이름
-			String fileOrinalName = multipartRequest.getOriginalFileName(name);
+			String fileOriginalName = multipartRequest.getOriginalFileName(name);
 			
 //			첨부된 이미지가 없을 때 처리 X
 			if (fileSystemName == null) {
 				continue;
 			}
 			adminImgDTO.setAdminImgUuid(fileSystemName);
-			adminImgDTO.setAdminImgName(fileOrinalName);
+			adminImgDTO.setAdminImgName(fileOriginalName);
 			adminImgDTO.setNoticeNum(noticeNum);
 //			이미지 저장
-			amdinImgDAO.insertNoticeImg(adminImgDTO);
+			adminImgDAO.insertNoticeImg(adminImgDTO);
 		}
 //		----------------------------------------------------------------------------
 		
