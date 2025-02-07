@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.StudyDAO;
+import com.knowledgeForest.dao.StudyImgDAO;
+import com.knowledgeForest.dto.StudyImgDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 
 public class StudyDetailOkController implements Execute {
@@ -19,27 +21,32 @@ public class StudyDetailOkController implements Execute {
     public Result execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         StudyDAO studyDAO = new StudyDAO();
+        StudyImgDAO studyImgDAO = new StudyImgDAO();
         Result result = new Result();
 
         // 파라미터에서 studyNum 추출
         int studyNum = Integer.parseInt(request.getParameter("studyNum"));
 
         // 스터디 상세 정보 조회
-        StudyUserDTO detailStudy = studyDAO.selectStudy(studyNum);
+//        StudyUserDTO detailStudy = studyDAO.selectStudy(studyNum);
+        
+        //게시글 및 이미지 조회
+        StudyImgDTO studyImgDTO = studyDAO.selectStudy(studyNum);
+        studyImgDTO.setImages(studyImgDAO.selectStudyImg(studyNum));
 
         // 날짜 필드 변환 및 설정
-        String deadline = convertDateFormat(detailStudy.getStudyDeadline());
-        String startDay = convertDateFormat(detailStudy.getStudyStartDay());
-        String endDay = convertDateFormat(detailStudy.getStudyEndDay());
-        String uploadDate = convertDateFormat(detailStudy.getStudyUploadDate());
+        String deadline = convertDateFormat(studyImgDTO.getStudyDeadline());
+        String startDay = convertDateFormat(studyImgDTO.getStudyStartDay());
+        String endDay = convertDateFormat(studyImgDTO.getStudyEndDay());
+        String uploadDate = convertDateFormat(studyImgDTO.getStudyUploadDate());
 
-        detailStudy.setStudyDeadline(deadline);
-        detailStudy.setStudyStartDay(startDay);
-        detailStudy.setStudyEndDay(endDay);
-        detailStudy.setStudyUploadDate(uploadDate);
+        studyImgDTO.setStudyDeadline(deadline);
+        studyImgDTO.setStudyStartDay(startDay);
+        studyImgDTO.setStudyEndDay(endDay);
+        studyImgDTO.setStudyUploadDate(uploadDate);
 
         // 변환된 스터디 상세 정보를 request에 설정
-        request.setAttribute("detailStudy", detailStudy);
+        request.setAttribute("detailStudy", studyImgDTO);
 
         // 결과 경로 설정
         result.setPath("/html/study/studylist-detail.jsp");

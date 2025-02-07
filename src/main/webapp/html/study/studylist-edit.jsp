@@ -24,8 +24,7 @@
       <div class="studylist-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
         <form id="STUDYLIST-FORM-WRITE"
-        	action="${pageContext.request.contextPath}/study/studyUpdateOk.st"
-			method="post">
+        	action="${pageContext.request.contextPath}/study/studyUpdateOk.st" method="post" enctype="multipart/form-data">
           <!-- 한 행 -->
           <input type="hidden" name="studyNum" value="${study.getStudyNum()}">
           <div class="studylist-div-wrapperlayer">
@@ -150,7 +149,7 @@
             <div class="studylist-div-filewrap">
               <div class="label">첨부파일</div>
               <label id="STUDYLIST-INPUT-FILELABEL" for="STUDYLIST-INPUT-FILE">
-                <input type="file" accept="image/*" id="STUDYLIST-INPUT-FILE" />
+                <input type="file" accept="image/*" id="STUDYLIST-INPUT-FILE" name="studyImage" />
                 <div class="studylist-div-filebtn">첨부</div>
               </label>
             </div>
