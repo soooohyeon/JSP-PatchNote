@@ -400,21 +400,19 @@
     <select id="selectBannerAll" resultType="BannerDTO">
 		SELECT *
 		FROM (
-			SELECT ROWNUM AS rnum, noticeList.*
+			SELECT ROWNUM AS rnum, bannerList.*
 			FROM (
 				SELECT
-					NOTICE_NUM,
-					NOTICE_TITLE,
-					NOTICE_CONTENTS,
-					NOTICE_UPLOAD_DATE,
-					NOTICE_EDIT_DATE
-				FROM TBL_NOTICE
+					BANNER_NUM,
+					BANNER_NAME,
+					BANNER_UPLOAD_DATE,
+					BANNER_EDIT_DATE
+				FROM TBL_BANNER
 				<if test = "keyword != null and keyword != ''">
-					WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%' 
-			            OR NOTICE_CONTENTS LIKE '%' || #{keyword} || '%'
+					WHERE BANNER_NAME LIKE '%' || #{keyword} || '%' 
 				</if>
-				ORDER BY NOTICE_NUM DESC
-			) noticeList
+				ORDER BY BANNER_NUM DESC
+			) bannerList
 			WHERE ROWNUM <![CDATA[<=]]> #{endRow}
 		)
 		WHERE rnum >= #{startRow}
@@ -422,30 +420,28 @@
     
     <!-- 총 배너 글 수 -->
 	<select id="getBannerTotal" resultType="int">
-        SELECT COUNT(NOTICE_NUM) 
-        FROM TBL_Notice
+        SELECT COUNT(BANNER_NUM) 
+        FROM TBL_BANNER
 		<if test = "keyword != null and keyword != ''">
-			WHERE NOTICE_TITLE LIKE '%' || #{keyword} || '%' 
-		        OR NOTICE_CONTENTS LIKE '%' || #{keyword} || '%'
+			WHERE BANNER_NAME LIKE '%' || #{keyword} || '%' 
 		</if>
 	</select>
 
 	<!-- 해당 배너 상세 조회 -->
 	<select id="selectOneBanner" resultType="BannerImgDTO" parameterType="int">
 		SELECT
-		n.NOTICE_NUM,
-		n.NOTICE_TITLE,
-		n.NOTICE_CONTENTS,
-		n.NOTICE_UPLOAD_DATE,
-		n.NOTICE_EDIT_DATE
-		FROM TBL_NOTICE n
-		WHERE n.NOTICE_NUM = #{noticeNum}
+			BANNER_NUM,
+			BANNER_NAME,
+			BANNER_UPLOAD_DATE,
+			BANNER_EDIT_DATE
+		FROM TBL_BANNER
+		WHERE BANNER_NUM = #{bannerNum}
 	</select>
 	
 	<!-- 해당 배너 데이터 삭제 -->
 	<delete id="deleteBanner" parameterType="int">
-		DELETE FROM TBL_NOTICE
-		WHERE NOTICE_NUM = #{noticeNum}
+		DELETE FROM TBL_BANNER
+		WHERE BANNER_NUM = #{bannerNum}
 	</delete>
 	
 	<!-- 배너 등록 -->

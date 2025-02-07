@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BannerDTO;
+import com.knowledgeForest.dto.BannerImgDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.NoticeImgDTO;
@@ -178,4 +179,30 @@ public class AdminDAO {
 //		가장 최근에 생성된 배너 번호값 리턴 - 이미지 첨부를 위함
 		return sqlSession.selectOne("AdminMapper.getCurrentBannerNum");
 	}
+	
+//	배너 목록 조회
+	public List<BannerDTO> selectBannerAll (Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectBannerAll", paramMap);
+	}
+
+//	총 배너 게시글 수
+	public int getBannerTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getBannerTotal", keyword);
+	}
+	
+//	배너 상세 조회
+	public BannerImgDTO selectOneBanner(int bannerNum) {
+		return sqlSession.selectOne("AdminMapper.selectOneBanner", bannerNum);
+	}
+	
+//	해당 배너 삭제
+	public void deleteBanner (int bannerNum) {
+		sqlSession.delete("AdminMapper.deleteBanner", bannerNum);
+	}
+	
+//	공지 수정
+	public void updateBanner (BannerDTO BannerDTO) {
+		sqlSession.insert("AdminMapper.updateBanner", BannerDTO);
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.knowledgeForest.controller.admin;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +48,37 @@ public class AdminBannerWriteOkController implements Execute {
 		
 		bannerDTO.setBannerName(multipartRequest.getParameter("bannerName"));
 		
-		return null;
+		int bannerNum = adminDAO.insertBanner(bannerDTO);
+		
+//		----------------------------------------------------------------------------
+//		getFileNames()는 input태그의 name 속성을 의미 / 반환타입이 Enumeration (Iterator 이전에 사용된 객체)\
+		Enumeration<String> fileName = multipartRequest.getFileNames();
+		
+//		Iterator의 hasNext()
+		while (fileName.hasMoreElements()) {
+//			Iterator의 hasNext() / name : 태그의 이름을 의미
+			String name = fileName.nextElement();
+//			이미지가 저장될 때의 이름
+			String fileSystemName = multipartRequest.getFilesystemName(name);
+//			이미지의 원본 이름
+			String fileOriginalName = multipartRequest.getOriginalFileName(name);
+			
+//			첨부된 이미지가 없을 때 처리 X
+			if (fileSystemName == null) {
+				continue;
+			}
+			adminImgDTO.setAdminImgUuid(fileSystemName);
+			adminImgDTO.setAdminImgName(fileOriginalName);
+			adminImgDTO.setBannerNum(bannerNum);
+//			이미지 저장
+			adminImgDAO.insertBannerImg(adminImgDTO);
+		}
+//		----------------------------------------------------------------------------
+		
+		result.setPath(request.getContextPath() + "/admin/admin-bannerlist.ad");
+		result.setRedirect(true);
+		
+		return result;
 	}
 	
 }

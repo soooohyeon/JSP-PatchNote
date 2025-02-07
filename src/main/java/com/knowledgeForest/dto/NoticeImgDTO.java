@@ -8,6 +8,7 @@ public class NoticeImgDTO {
 	private String noticeUploadDate;
 	private String noticeEditDate;
 	private AdminImgDTO images;	// 필드 추가, getter, setter 추가
+	
 	public int getNoticeNum() {
 		return noticeNum;
 	}

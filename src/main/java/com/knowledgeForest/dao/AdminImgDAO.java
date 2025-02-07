@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.AdminImgDTO;
-import com.knowledgeForest.dto.NoticeDTO;
-import com.knowledgeForest.dto.NoticeImgDTO;
 
 public class AdminImgDAO {
 	SqlSession sqlSession;
@@ -49,6 +47,11 @@ public class AdminImgDAO {
 			System.out.println("파일 저장이 실패되었습니다. " + e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+//	공지 이미지 조회
+	public AdminImgDTO selectBannerImg(int bannerNum) {
+		return sqlSession.selectOne("AdminImgMapper.selectBannerImg", bannerNum);
 	}
 	
 //	실제 폴더에서 이미지 삭제
