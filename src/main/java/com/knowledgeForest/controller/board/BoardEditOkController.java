@@ -11,6 +11,7 @@ import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.BoardDAO;
 import com.knowledgeForest.dto.BoardDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
+import com.knowledgeForest.dto.UserImgDTO;
 
 public class BoardEditOkController implements Execute{
 	
@@ -31,11 +32,17 @@ public class BoardEditOkController implements Execute{
 			System.out.println(boardDTO);
 			boardDAO.editBoard(boardDTO);
 			
+			//이미지 경로 
+			final String UPLOAD_PATH = "C:\\KDT\\web_0900_hjh\\중간 팀프로젝트\\back\\project\\src\\main\\webapp\\upload\\board";
+			final int FILE_SIZE = 1024 * 1024 * 5;
+			
+			//MultipartParser실행
+			MultipartParser parser = new MultipartParser(request, FILE-SIZE)
 //			boardDAO.deleteBoard(boardNum);
 			
 			//기존 파일 삭제
 			if(boardNum !=0) {
-				
+				UserImgDTO existinFiles = boardDAO.select(boardNum);
 			}
 			
 			
