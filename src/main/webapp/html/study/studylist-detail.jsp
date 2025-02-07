@@ -116,6 +116,8 @@
 						<div class="label">본문</div>
 						<div class="studylist-div-studycontents">
 							<c:out value="${detailStudy.studyDescript}" />
+							<img src="${pageContext.request.contextPath}/upload/study/${detailStudy.getImages().getUserImgUuid()}"
+            onerror="this.style.display='none';">
 						</div>
 					</div>
 				</div>

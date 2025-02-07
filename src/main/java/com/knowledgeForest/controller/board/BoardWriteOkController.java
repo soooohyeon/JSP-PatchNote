@@ -40,7 +40,6 @@ public class BoardWriteOkController implements Execute {
 		boardDTO.setBoardContents(multipartRequest.getParameter("boardContents"));
 
 		int boardNum = boardDAO.insertBoard(boardDTO);
-		System.out.println("boardNum : " + boardNum);
 
 		// 파일 업로드 처리
 		// Enumeration : java.util 패키지에 포함된 인터페이스 , Iterator 비슷한 역할함
@@ -50,7 +49,7 @@ public class BoardWriteOkController implements Execute {
 		while (fileNames.hasMoreElements()) {
 			String name = (String) fileNames.nextElement();
 			String fileSystemName = multipartRequest.getFilesystemName(name);
-			System.out.println("파일 이름 : " + fileSystemName);
+
 			String fileOriginalName = multipartRequest.getOriginalFileName(name);
 
 			if (fileSystemName == null) {
@@ -60,7 +59,6 @@ public class BoardWriteOkController implements Execute {
 			userImgDTO.setUserImgName(fileOriginalName);
 			userImgDTO.setBoardNum(boardNum);
 
-			System.out.println("업로드된 파일 정보 :" + userImgDTO);
 			boardDAO.insertBoardImg(userImgDTO);
 		}
 

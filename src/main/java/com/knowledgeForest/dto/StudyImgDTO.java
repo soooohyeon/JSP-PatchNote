@@ -1,22 +1,26 @@
 package com.knowledgeForest.dto;
 
 public class StudyImgDTO {
-    private int studyNum;
-    private int userNum;
-    private String userNick;
-    private String studyTitle;
-    private String studyDescript;
-    private String studyLocation;
-    private String studyStartDay;
-    private String studyEndDay;
-    private String studyStartTime;
-    private String studyEndTime;
-    private int studyLimit;
-    private String studyDeadline;
-    private int studyShowph;
-    private int studyCategory;
+	private int studyNum;          
+    private int userNum;           
+    private String studyTitle;     
+    private String studyDescript;  
+    private String studyLocation;  
+    private String studyStartDay;  
+    private String studyEndDay;    
+    private String studyStartTime; 
+    private String studyEndTime;   
+    private int studyLimit;        
+    private String studyDeadline;  
+    private int studyShowPh;    
+    private int studyCategory;  
     private String studyUploadDate;
-    private String studyEditDate;
+    private String studyEditDate;  
+    private String userId;         
+    private String userNick;       
+    private String userPh;      
+    private int participants;		// 확정인원  
+    private int likeCount;
     private UserImgDTO images;
     
 	public int getStudyNum() {
@@ -30,12 +34,6 @@ public class StudyImgDTO {
 	}
 	public void setUserNum(int userNum) {
 		this.userNum = userNum;
-	}
-	public String getUserNick() {
-		return userNick;
-	}
-	public void setUserNick(String userNick) {
-		this.userNick = userNick;
 	}
 	public String getStudyTitle() {
 		return studyTitle;
@@ -91,11 +89,11 @@ public class StudyImgDTO {
 	public void setStudyDeadline(String studyDeadline) {
 		this.studyDeadline = studyDeadline;
 	}
-	public int getStudyShowph() {
-		return studyShowph;
+	public int getStudyShowPh() {
+		return studyShowPh;
 	}
-	public void setStudyShowph(int studyShowph) {
-		this.studyShowph = studyShowph;
+	public void setStudyShowPh(int studyShowPh) {
+		this.studyShowPh = studyShowPh;
 	}
 	public int getStudyCategory() {
 		return studyCategory;
@@ -115,6 +113,36 @@ public class StudyImgDTO {
 	public void setStudyEditDate(String studyEditDate) {
 		this.studyEditDate = studyEditDate;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getUserNick() {
+		return userNick;
+	}
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+	public String getUserPh() {
+		return userPh;
+	}
+	public void setUserPh(String userPh) {
+		this.userPh = userPh;
+	}
+	public int getParticipants() {
+		return participants;
+	}
+	public void setParticipants(int participants) {
+		this.participants = participants;
+	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 	public UserImgDTO getImages() {
 		return images;
 	}
@@ -124,13 +152,14 @@ public class StudyImgDTO {
 	
 	@Override
 	public String toString() {
-		return "StudyImgDTO [studyNum=" + studyNum + ", userNum=" + userNum + ", userNick=" + userNick + ", studyTitle="
-				+ studyTitle + ", studyDescript=" + studyDescript + ", studyLocation=" + studyLocation
-				+ ", studyStartDay=" + studyStartDay + ", studyEndDay=" + studyEndDay + ", studyStartTime="
-				+ studyStartTime + ", studyEndTime=" + studyEndTime + ", studyLimit=" + studyLimit + ", studyDeadline="
-				+ studyDeadline + ", studyShowph=" + studyShowph + ", studyCategory=" + studyCategory
-				+ ", studyUploadDate=" + studyUploadDate + ", studyEditDate=" + studyEditDate + ", images=" + images
-				+ "]";
+		return "StudyImgDTO [studyNum=" + studyNum + ", userNum=" + userNum + ", studyTitle=" + studyTitle
+				+ ", studyDescript=" + studyDescript + ", studyLocation=" + studyLocation + ", studyStartDay="
+				+ studyStartDay + ", studyEndDay=" + studyEndDay + ", studyStartTime=" + studyStartTime
+				+ ", studyEndTime=" + studyEndTime + ", studyLimit=" + studyLimit + ", studyDeadline=" + studyDeadline
+				+ ", studyShowPh=" + studyShowPh + ", studyCategory=" + studyCategory + ", studyUploadDate="
+				+ studyUploadDate + ", studyEditDate=" + studyEditDate + ", userId=" + userId + ", userNick=" + userNick
+				+ ", userPh=" + userPh + ", participants=" + participants + ", likeCount=" + likeCount + ", images="
+				+ images + "]";
 	}
    
 }
