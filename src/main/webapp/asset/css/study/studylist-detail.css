@@ -164,7 +164,9 @@ main {
   box-sizing: border-box;
   border-collapse: separate;
 }
-
+.studylist-div-studycontents>img{
+	max-height : 200px;
+}
 textarea:focus {
   outline: none;
 

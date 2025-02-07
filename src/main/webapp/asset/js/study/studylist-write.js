@@ -120,8 +120,5 @@ function insertStudy(e) {
         alert("스터디가 등록되었습니다.");
         // 폼을 전송하고, 서버 처리가 끝난 뒤 페이지 이동
         form.submit(); // 폼 데이터를 서버로 전송
-        setTimeout(() => {
-            location.href = getContextPath() + "/study/studyWriteOk.st"; // 페이지 이동
-        }, 100); // 약간의 딜레이를 주어 submit 완료 후 동작
     }
 }
