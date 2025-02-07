@@ -21,7 +21,7 @@ public class BoardDTO {
 	private String boardContents;
 	private String boardAuthor;
 	private String boardUploadDate;
-	private String bordEditDate;
+	private String boardEditDate;
 
 	public int getBoardNum() {
 		return boardNum;
@@ -72,11 +72,11 @@ public class BoardDTO {
 	}
 
 	public String getBordEditDate() {
-		return bordEditDate;
+		return boardEditDate;
 	}
 
 	public void setBordEditDate(String bordEditDate) {
-		this.bordEditDate = bordEditDate;
+		this.boardEditDate = bordEditDate;
 	}
 
 	public void setTitle(String title) {
@@ -93,7 +93,7 @@ public class BoardDTO {
 	public String toString() {
 		return "BoardDTO [boardNum=" + boardNum + ", userNum=" + userNum + ", boardTitle=" + boardTitle
 				+ ", boardContents=" + boardContents + ", boardAuthor=" + boardAuthor + ", boardUploadDate="
-				+ boardUploadDate + ", bordEditDate=" + bordEditDate + "]";
+				+ boardUploadDate + ", bordEditDate=" + boardEditDate + "]";
 	}
 
 

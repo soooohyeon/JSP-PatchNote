@@ -40,7 +40,7 @@
       <!-- 전체 내용을 감싸는 래퍼-->
       <div class="board-div-contentsWrapper">
         <!-- 입력 폼을 감싸는 래퍼 -->
-        <form id="board-FORM-WRITE" action="boardEditOk.bo" method="post">
+        <form id="board-FORM-WRITE" action="boardEditOk.bo" method="post" enctype="multipart/form-data">
           <!-- 한 행 -->
           <div class="board-div-wrapperlayer">
             <!-- label과 input을 묶은 div -->

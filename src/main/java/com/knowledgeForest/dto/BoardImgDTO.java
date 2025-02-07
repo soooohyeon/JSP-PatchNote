@@ -8,7 +8,7 @@ public class BoardImgDTO {
 	private String boardContents;
 	private String boardUploadDate;
 	private String bordEditDate;
-	public UserImgDTO images;
+	public UserImgDTO images;//초기화
 	
 	public int getBoardNum() {
 		return boardNum;

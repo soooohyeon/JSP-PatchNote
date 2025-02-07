@@ -75,6 +75,11 @@
     	where
     	BOARD_NUM = ${boardNum}
     </update>
+    <!-- 이미지 삭제 쿼리 -->
+    <delete id="deleteboardImg" parameterType="int">
+    	delete from TBL_USER_IMG
+    	where BOARD_NUM = #{boardNum}
+    </delete>
     <!--  이미지 조회 -->
     <select id="selectBoardImg" parameterType="int" resultType="UserImgDTO">
     	SELECT USER_IMG_NUM, BOARD_NUM, USER_IMG_NAME, USER_IMG_UUID

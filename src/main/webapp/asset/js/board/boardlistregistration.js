@@ -1,11 +1,13 @@
-//파일 첨부시 파일명 표시
-const fileInput = document.querySelector("input[name='file']");
+/*//파일 첨부시 파일명 표시
+const fileInput = document.querySelector("input[name='boardImage']");
 const fileLabel = document.querySelector("#BOARD-INPUT-FILELABEL");
 
 fileInput.addEventListener("change", (e) => {
   const filename = e.target.files[0].name;
   fileLabel.textContent = filename;
-});
+ 
+  console.log("fileName" + filename);
+});*/
 
 //뒤로 가기 버튼을 눌렀을 때 이전 페이지로 이동
 function goBack() {

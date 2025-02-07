@@ -1,5 +1,7 @@
 package com.knowledgeForest.dao;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +47,7 @@ public class BoardDAO {
 	//이미지 등록
 		public void insertBoardImg(UserImgDTO userImgDTO) {
 			try {
+				System.out.println("userimgdto" + userImgDTO);
 				sqlsession.insert("BoardMapper.insertBoardImg", userImgDTO);
 			} catch (Exception e) {
 				System.out.println("파일 저장 실패" + e.getMessage());
@@ -63,5 +66,35 @@ public class BoardDAO {
 	// 이미지 조회
 	public UserImgDTO selectBoardImg(int boardNumber) {
 		return sqlsession.selectOne("BoardMapper.selectBoardImg", boardNumber);
+	}
+	
+	//이미지 삭제
+	public void deleteboardImg(HashMap<String, String> imgInfo) {
+		System.out.println("==================== 이미지 테이블 삭제 메소드 ===================");
+		int boardNum = Integer.parseInt(imgInfo.get("boardNum"));
+		sqlsession.delete("BoardMapper.deleteboardImg", boardNum);
+		removeBoardImg(imgInfo);
+	}
+	
+	//폴더 이미지 삭제
+	public void removeBoardImg(HashMap<String, String> imgInfo) {
+		System.out.println("==================== 이미지 삭제 메소드 ===================");
+		String imgSrc = imgInfo.get("UPLOAD_PATH");
+		String imgName = imgInfo.get("imgName");
+		
+		File file = new File(imgSrc, imgName);
+		
+		System.out.println("이미지삭제 DAO imgSrc : " + imgSrc);
+		System.out.println("이미지삭제 DAO imgName : " + imgName);
+		
+		if(file.exists()) {
+			if(file.delete()) {
+				System.out.println("파일 삭제 성공");
+			}else {
+				System.out.println("파일 삭제 실패");
+			}
+		}else {
+			System.out.println("이미지 없음");
+		}
 	}
 }

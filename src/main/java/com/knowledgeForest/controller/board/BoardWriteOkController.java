@@ -28,7 +28,6 @@ public class BoardWriteOkController implements Execute {
 		HttpSession session = request.getSession(false); // 현재 세션 가져오기
 
 		int userNum = (int) session.getAttribute("userNumber");
-
 		final String UPLOAD_PATH = "C:\\KDT\\web_0900_hjh\\중간 팀프로젝트\\back\\project\\src\\main\\webapp\\upload\\board";
 		final int FILE_SIZE = 1024 * 1024 * 5; // 5mb;
 		System.out.println("파일 업로드 경로 : " + UPLOAD_PATH);
@@ -47,6 +46,7 @@ public class BoardWriteOkController implements Execute {
 		// Enumeration : java.util 패키지에 포함된 인터페이스 , Iterator 비슷한 역할함
 
 		Enumeration<String> fileNames = multipartRequest.getFileNames();
+		System.out.println("fileNames : " + fileNames);
 		while (fileNames.hasMoreElements()) {
 			String name = (String) fileNames.nextElement();
 			String fileSystemName = multipartRequest.getFilesystemName(name);
