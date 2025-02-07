@@ -1,11 +1,11 @@
 package com.knowledgeForest.controller.myPage;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.google.gson.Gson;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
@@ -13,34 +13,38 @@ import com.knowledgeForest.dao.MyPageDAO;
 
 public class MyPageStudyAcceptOkController implements Execute {
 
-	@Override
-	public Result execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		MyPageDAO myPageDAO = new MyPageDAO();
+    // JSON 파싱용 내부 클래스
+    private class AcceptRequest {
+        private int studyApplyNum;
 
-		System.out.println("??????");
-		int studyApplyNum = Integer.parseInt(request.getParameter("studyApplyNum"));
-		System.out.println("studyNum" + studyApplyNum);
+        public int getStudyApplyNum() {
+            return studyApplyNum;
+        }
 
-		int isAccepted = myPageDAO.acceptApplicant(studyApplyNum);
-		
-		System.out.println(isAccepted);
+        public void setStudyApplyNum(int studyApplyNum) {
+            this.studyApplyNum = studyApplyNum;
+        }
+    }
 
-		// JSON 형식 응답 설정
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
+    @Override
+    public Result execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		// Gson을 사용하여 객체를 JSON으로 변환
-		Gson gson = new Gson();
-		String jsonResponse = gson.toJson(isAccepted);
+        // 요청 body에서 JSON 문자열을 읽어 객체로 변환
+        BufferedReader reader = request.getReader();
+        AcceptRequest acceptRequest = new Gson().fromJson(reader, AcceptRequest.class);
+        int studyApplyNum = acceptRequest.getStudyApplyNum();
+        System.out.println("studyApplyNum: " + studyApplyNum);
 
-		// JSON 응답 작성
-		try (PrintWriter out = response.getWriter()) {
-			out.print("{\"applicants\": " + jsonResponse + "}");
-			out.flush();
-		}
+        MyPageDAO myPageDAO = new MyPageDAO();
+        myPageDAO.acceptApplicant(studyApplyNum);
 
-		
-		return null;
-	}
+        // JSON 응답 전송
+        response.setContentType("application/json; charset=UTF-8");
+        try(PrintWriter out = response.getWriter()){
+            out.print("{\"success\": true}");
+            out.flush();
+        }
+        return null;
+    }
 }

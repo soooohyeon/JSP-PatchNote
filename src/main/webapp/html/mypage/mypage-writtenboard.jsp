@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>작성한 자유게시글</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-writtenboard.css">
+	href="${pageContext.request.contextPath}/asset/css/mypage/mypage-writtenboard.css" />
 
 <script defer
 	src="${pageContext.request.contextPath}/asset/js/mypage/mypage-writtenboard.js"></script>
@@ -26,9 +24,14 @@
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-accountedit.my">개인정보
 							수정</a></li>
-					<%-- <li><a
-						href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my">찜한
-							목록</a></li> --%>
+					<%--
+            <li>
+              <a
+                href="${pageContext.request.contextPath}/mypage/mypage-jimlist.my"
+                >찜한 목록</a
+              >
+            </li>
+            --%>
 					<li><a
 						href="${pageContext.request.contextPath}/mypage/mypage-hostboard.my">만든
 							스터디</a></li>
@@ -70,7 +73,6 @@
 				<!-- 게시판 컨텐츠 정렬을 위한 div -->
 				<div class="mypage-div-contentscontainer">
 					<!-- 자유게시판 -->
-					<div class="mypage-div-freeboard"></div>
 					<div class="board-div-list">
 						<ul class="board-list">
 							<li class="board-header"><span class="board-number">번호</span>
@@ -78,34 +80,49 @@
 								<span class="board-date">작성일</span></li>
 
 							<c:forEach var="board" items="${boardList}">
-
 								<a
 									href="${pageContext.request.contextPath}/board/boarddetail.bo?boardNum=${board.boardNum}">
 								</a>
-								<li class="board-item" style="cursor: pointer;"
+								<li class="board-item" style="cursor: pointer"
 									onclick="goPage(${board.boardNum})"><span
 									class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
-									<span class="board-author">${board.boardAuthor}</span> <span
+									<span class="board-author">${board.userNick}</span> <span
 									class="board-date">${board.boardUploadDate}</span></li>
 							</c:forEach>
-
 						</ul>
 					</div>
 				</div>
 
 				<!-- 페이지네이션 -->
-				<!-- <div class="mypage-div-paginationwrapper">
+				<%-- 디버깅용으로 페이지네이션 변수 확인 --%>
+				
+				<div class="mypage-div-paginationwrapper">
 					<ul id="mypage-UL-PAGINATION">
-						<li class="mypage-li-paginationlist pre">&lt;</li>
-						<li class="mypage-li-paginationlist currentpage">1</li>
-						<li class="mypage-li-paginationlist">2</li>
-						<li class="mypage-li-paginationlist">3</li>
-						<li class="mypage-li-paginationlist">4</li>
-						<li class="mypage-li-paginationlist">5</li>
-						<li class="mypage-li-paginationlist next">&#62;</li>
-					</ul>
-				</div> -->
+						<c:if test="${prev}">
+							<li class="mypage-li-paginationlist pre"
+								onclick="movePage(${startPage - 1})">&lt;</li>
+						</c:if>
 
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+							<c:choose>
+								<c:when test="${!(i == page)}">
+									<li class="mypage-li-paginationlist" onclick="movePage(${i})">
+										<c:out value="${i}" />
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="mypage-li-paginationlist currentpage"
+										onclick="movePage(${i})"><c:out value="${i}"/></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<c:if test="${next}">
+							<li class="mypage-li-paginationlist next"
+								onclick="movePage(${endPage + 1})">&#62;</li>
+						</c:if>
+					</ul>
+				</div>
 			</main>
 		</div>
 	</div>
