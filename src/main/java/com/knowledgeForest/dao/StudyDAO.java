@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
 import com.knowledgeForest.dto.StudyDTO;
+import com.knowledgeForest.dto.StudyImgDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 
 public class StudyDAO {
@@ -58,7 +59,7 @@ public class StudyDAO {
    }
    
    //해당 게시글 상세 조회
-   public StudyUserDTO selectStudy(int studyNum) {
+   public StudyImgDTO selectStudy(int studyNum) {
       return sqlSession.selectOne("StudyMapper.selectDetail", studyNum);
    }
    
