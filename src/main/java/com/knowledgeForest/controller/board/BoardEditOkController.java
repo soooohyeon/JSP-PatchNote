@@ -31,6 +31,15 @@ public class BoardEditOkController implements Execute{
 			System.out.println(boardDTO);
 			boardDAO.editBoard(boardDTO);
 			
+//			boardDAO.deleteBoard(boardNum);
+			
+			//기존 파일 삭제
+			if(boardNum !=0) {
+				
+			}
+			
+			
+			
 			result.setPath(request.getContextPath() + "/board/boardlist.bo");
 			result.setRedirect(true);
 			return result;
