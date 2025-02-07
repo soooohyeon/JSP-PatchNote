@@ -8,7 +8,7 @@ function changeImgName(e) {
 // 공지 등록 / 수정 시 - 제목이나 내용 없이 저장 버튼 클릭시 알람창 띄우기
 function clickSaveBtn(e) {
   let noticeTitle = document.querySelector('#noticeTitle').value;
-  let noticeCotent = document.querySelector('#noticeCotent').value;
+  let noticeCotent = document.querySelector('#noticeContents').value;
   if (!noticeTitle ) {  // 제목 미입력시
     alert('제목을 입력해주세요.');
   } else if (!noticeCotent) {  // 공지 내용 미첨부시

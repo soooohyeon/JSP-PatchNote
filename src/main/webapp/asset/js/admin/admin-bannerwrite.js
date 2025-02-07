@@ -1,5 +1,6 @@
 
 // 배너 이미지 등록시 미리보기 사진 띄우기
+// 해당 이미지에 대한 css는 미리 주어야함
 const imgNameArea = document.querySelector('#BANNERIMAGE-NAME');
 function setThumbnail(e) {
   var reader = new FileReader();

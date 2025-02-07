@@ -31,7 +31,7 @@
           <h1 class="admin-h1-detailtitle">공지 수정</h1>
           
           <!--  폼 시작 -->
-          <form action="admin-noticeupdateOk.ad" method="post">
+          <form action="admin-noticeupdateOk.ad" method="post" enctype="multipart/form-data">
             <!-- 공지 데이터 입력하는 부분 -->
             <div class="adminWrite-div-formwrapper">
 				
@@ -59,7 +59,7 @@
                   </div>
                   <div class="adminWrite-div-content">
                     <div class="inputwrap">
-                      <textarea name="noticeCotent" id="noticeCotent" class="inputStyle" placeholder="공지 내용을 입력하세요."><c:out value="${notice.noticeContents}" /></textarea>
+                      <textarea name="noticeContents" id="noticeContents" class="inputStyle" placeholder="공지 내용을 입력하세요."><c:out value="${notice.noticeContents}" /></textarea>
                     </div>
                   </div>
                 </div>
