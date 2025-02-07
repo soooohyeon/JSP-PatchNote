@@ -27,13 +27,10 @@ public class BoardDetailOkController implements Execute {
 		BoardImgDTO boardImgDTO = boardDAO.selectBoard(boardNum);
 //		해당 게시판 이미지 정보 저장
 		boardImgDTO.setImages(boardDAO.selectBoardImg(boardNum));
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println(boardImgDTO);
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 //		jsp 파일로 전달
 		request.setAttribute("boardDetail", boardImgDTO);
-		
+
 		result.setPath("/html/board/boardlist-detail.jsp");
 		result.setRedirect(false);
 

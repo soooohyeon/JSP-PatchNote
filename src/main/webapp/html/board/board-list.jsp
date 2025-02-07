@@ -81,7 +81,7 @@
 	 <div class="boardlist-div-paginationwrapper">
 		<ul id="BOARDLIST-UL-PAGINATION">
 			<c:if test="${prev}">
-				<li class="boardlist-li-paginationlist pre" onclick="movePage(${startPage -1}, '${param.keyword}')">$lt;</li>
+				<li class="boardlist-li-paginationlist pre" onclick="movePage(${startPage -1}, '${param.keyword}')">&lt;</li>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
