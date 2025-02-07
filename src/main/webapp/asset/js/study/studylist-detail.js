@@ -171,8 +171,6 @@ function updateCharacterCount(textarea, maxCharacters) {
 
 	// 현재 입력된 글자 수 계산
 	const currentLength = textarea.value.trim().length;
-
-	// 카운터 업데이트
 	counter.textContent = `${currentLength}/${maxCharacters}`;
 
 	// 200자 초과시 글자 입력 불가

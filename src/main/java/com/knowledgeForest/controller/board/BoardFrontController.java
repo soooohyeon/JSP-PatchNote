@@ -27,7 +27,7 @@ public class BoardFrontController extends HttpServlet {
 	   }
 	   
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      System.out.println("자유게시판 컨트롤러 들어옴");
+
 	      String target = request.getRequestURI().substring(request.getContextPath().length());
 	      Result result = null;
 
