@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.AdminImgDTO;
-import com.knowledgeForest.dto.NoticeDTO;
-import com.knowledgeForest.dto.NoticeImgDTO;
 
 public class AdminImgDAO {
 	SqlSession sqlSession;
@@ -37,6 +35,29 @@ public class AdminImgDAO {
 	public void deleteNoticeImg(HashMap<String, String> imgInfo) {
 		int noticeNum = Integer.parseInt(imgInfo.get("noticeNum"));
 		sqlSession.delete("AdminImgMapper.deleteNoticeImg", noticeNum);
+//		실제 폴더에서 이미지 삭제 메소드 실행
+		removeAdminImg(imgInfo);
+	}
+
+//	배너 이미지 등록
+	public void insertBannerImg(AdminImgDTO adminImgDTO) {
+		try {
+			sqlSession.insert("AdminImgMapper.insertBannerImg", adminImgDTO);
+		} catch (Exception e) {
+			System.out.println("파일 저장이 실패되었습니다. " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+//	배너 이미지 조회
+	public AdminImgDTO selectBannerImg(int bannerNum) {
+		return sqlSession.selectOne("AdminImgMapper.selectBannerImg", bannerNum);
+	}
+	
+//	공지 이미지 삭제
+	public void deleteBannerImg(HashMap<String, String> imgInfo) {
+		int bannerNum = Integer.parseInt(imgInfo.get("bannerNum"));
+		sqlSession.delete("AdminImgMapper.deleteBannerImg", bannerNum);
 //		실제 폴더에서 이미지 삭제 메소드 실행
 		removeAdminImg(imgInfo);
 	}

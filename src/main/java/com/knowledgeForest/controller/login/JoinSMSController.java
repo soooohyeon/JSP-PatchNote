@@ -21,6 +21,7 @@ public class JoinSMSController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("========= JoinSMSController =========");
 
 		BufferedReader reader = request.getReader();
 		String line = reader.readLine();
@@ -31,15 +32,13 @@ public class JoinSMSController implements Execute {
 		SmsService smsService = new SmsService();
 
 		try {
-		
+//		    SMS 전송, 인증코드 생성
 			String verificationCode = smsService.sendVerificationSms(phoneNumber);
-
 		
 			HttpSession session = request.getSession();
 			session.setAttribute("verificationCode", verificationCode);
 
 		} catch (CoolsmsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

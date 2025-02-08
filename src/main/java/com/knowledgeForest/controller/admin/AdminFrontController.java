@@ -94,11 +94,10 @@ public class AdminFrontController extends HttpServlet {
 			
 //    	공지 수정
 		case "/admin/admin-noticeupdate.ad":
-//			request.getRequestDispatcher("/html/admin/admin-noticewrite.jsp").forward(request, response);
 			result = new AdminNoticeUpdateController().execute(request, response);
 			break;
 			
-//    	공지 등록 완료
+//    	공지 수정 완료
 		case "/admin/admin-noticeupdateOk.ad":
 			result = new AdminNoticeUpdateOkController().execute(request, response);
 			break;
@@ -124,11 +123,43 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/admin-boardcommentlist.ad":
 			request.getRequestDispatcher("/html/admin/admin-boardcommentlist.jsp").forward(request, response);
 			break;
+			
+//		배너 목록 조회
 		case "/admin/admin-bannerlist.ad":
-			request.getRequestDispatcher("/html/admin/admin-bannerlist.jsp").forward(request, response);
+			result = new AdminBannerListOkController().execute(request, response);
+			break;
+			
+//		배너 등록
+		case "/admin/admin-bannerwrite.ad":
+			request.getRequestDispatcher("/html/admin/admin-bannerwrite.jsp").forward(request, response);
+			break;
+			
+//		배너 등록 완료
+		case "/admin/admin-bannerwriteOk.ad":
+			result = new AdminBannerWriteOkController().execute(request, response);
+			break;
+			
+//		배너 상세 정보 조회
+		case "/admin/admin-bannerdetail.ad":
+			result = new AdminBannerDetailOkController().execute(request, response);
+			break;
+			
+//		배너 글 삭제
+		case "/admin/admin-bannerDeleteOk.ad":
+			result = new AdminBannerDeleteOkController().execute(request, response);
+			break;
+			
+//		배너 글 수정
+		case "/admin/admin-bannerupdate.ad":
+			result = new AdminBannerUpdateController().execute(request, response);
+			break;
+			
+//		배너 글 수정 완료
+		case "/admin/admin-bannerupdateOk.ad":
+			result = new AdminBannerUpdateOkController().execute(request, response);
 			break;
 		}
-
+		
 		if (result != null) {
 			if (result.isRedirect()) {
 				response.sendRedirect(result.getPath());
@@ -136,6 +167,5 @@ public class AdminFrontController extends HttpServlet {
 				request.getRequestDispatcher(result.getPath()).forward(request, response);
 			}
 		}
-
 	}
 }
