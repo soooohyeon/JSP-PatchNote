@@ -26,9 +26,7 @@ public class PasswordOkController implements Execute{
 		UserDTO userDTO = new UserDTO();
 		Result result = new Result();
 		
-		
 		// key, value 한쌍으로 저장됨
-		 
 		HashMap<String, String> user = new HashMap<String, String>();
 		
 		String userId = request.getParameter("userId");

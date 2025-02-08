@@ -15,8 +15,9 @@ public class SmsService {
 	private static final String FROM_NUMBER = "";
 	
 	public String sendVerificationSms(String to) throws CoolsmsException{
-		Message coolsms = new Message(API_KEY, API_SECRET);
-String verificationCode =  generateVerificationCode();
+		System.out.println("========= SmsService =========");
+//		Message coolsms = new Message(API_KEY, API_SECRET);
+		String verificationCode =  generateVerificationCode();
 		
 		HashMap<String, String> params = new HashMap<>();
 		params.put("to", to);
@@ -24,14 +25,14 @@ String verificationCode =  generateVerificationCode();
 		params.put("type","SMS");
 		params.put("text", "인증번호는 [" + verificationCode + "] 입니다.");
 		
-		JSONObject obj = (JSONObject)coolsms.send(params);
+//		JSONObject obj = (JSONObject)coolsms.send(params);
 		System.out.println("+++++문자발송 완료 +++++");
-		System.out.println(obj.toString());
+		System.out.println("생성된 인증번호 : " + verificationCode);
+//		System.out.println(obj.toString());
 		return verificationCode;
 	}
 	
-	//랜덤 인증 메소드 만듦
-	
+//	인증번호 6자리 생성하는 메소드
 	private String generateVerificationCode() {
 		Random random = new Random();
 		StringBuilder code = new StringBuilder();
@@ -40,8 +41,6 @@ String verificationCode =  generateVerificationCode();
 			
 		}
 		return code.toString();
-		
-	
 	}
 	
 	

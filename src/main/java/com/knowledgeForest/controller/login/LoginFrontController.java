@@ -50,8 +50,7 @@ public class LoginFrontController extends HttpServlet {
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 
 		Result result = null;
-		System.out.println("분기처리 전"); // 찍히는건 확인
-		System.out.println(target); // 찍히는건 확인
+//		System.out.println(target); // 이동되는 경로 확인
 //      경로 분기처리
 		switch (target) {
 
@@ -65,7 +64,6 @@ public class LoginFrontController extends HttpServlet {
 			break;
 
 		// 로그아웃 처리 추가
-
 		case "/login/logout.me":
 			System.out.println("로그아웃 처리 시작");
 			HttpSession session = request.getSession(false); // 현재 세션 가져오기

@@ -79,7 +79,7 @@
           <div class="join-div-labelwrapper">
             <p class="join-p-label">생년월일</p>
           </div>
-        <input type="text" class="join-input" name="userBirth" id="JOIN-INPUT-BIRTH">
+        <input type="text" class="join-input" name="userBirth" id="JOIN-INPUT-BIRTH" placeholder="ex) 20000101" maxlength="8">
         </div>
         <span class="join-div-wrapper-text-alarm" id="JOIN-DIV-BIRTH"></span>
         
@@ -96,7 +96,7 @@
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
           </div>
-          <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" >
+          <input type="number" class="join-input" name="authenticationNumber" id="JOIN-INPUT-AUTHENTICATIONNUMBER" onkeydown="checkMaxLength(this)">
           <button class="join-btn-checkid" type="button" id="JOIN-BTN-AUTHENTICATIONNUMBER">인증번호 확인</button>
   
         </div>
@@ -113,17 +113,16 @@
       <p class="join-p-labeltitle">개인정보 수집 및 처리 방침에 관한 동의사항</p>
       <div class="join-div-labelwrapper">
 
-        <input type="checkbox" class="join-input-checkbox-big" name="join-input-checkbox-big">
-        <label for="join-input-checkbox"></label>
+        <input type="checkbox" id="join-input-allcheck" class="join-input-checkbox-big" name="join-input-checkbox-big">
+        <label for="join-input-allcheck"><p class="join-p-labelall">전체동의</p></label>
         <!-- <img src="./../../asset/img/login/checkboxOut.png" alt="이미지 깨짐" class="img-checkbox"> -->
-        <p class="join-p-labelall">전체동의</p>
+        
       </div>
       <div class="join-div-labelwrapper">
 
-        <input type="checkbox" class="join-input-checkbox-small" name="join-input-checkbox-small">
-        <label for="join-input-checkbox-small"></label>
+        <input type="checkbox" id="join-input-usecheck" class="join-input-checkbox-small" name="join-input-checkbox-small">
+        <label for="join-input-usecheck"><p class="join-p-labelagree">이용약관 동의</p></label>
         <!-- <img src="./../../asset/img/login/checkboxOut.png" alt="이미지 깨짐" class="img-checkboxsmall"> -->
-        <p class="join-p-labelagree">이용약관 동의</p>
       </div>
       <div class="join-div-wrapperprivacy">
         <textarea rows="17" cols="109" class="join-p-wrapperprivacy">제 1 장 총칙
@@ -275,10 +274,10 @@
 
       <div class="join-div-labelwrapper">
 
-        <input type="checkbox" class="join-input-checkbox-small" name="join-input-checkbox-small">
-        <label for="join-input-checkbox-small" ></label>
+        <input type="checkbox" id="join-input-personalcheck" class="join-input-checkbox-small" name="join-input-checkbox-small">
+        <label for="join-input-personalcheck"><p class="join-p-labelagree">개인 정보 수집 동의</p></label>
         <!-- <img src="./../../asset/img/login/checkboxOut.png" alt="이미지 깨짐" class="img-checkboxsmall"> -->
-        <p class="join-p-labelagree">이용약관 동의</p>
+        
       </div>
       <div class="join-div-wrapperprivacy">
         <textarea rows="17" cols="109" class="join-p-wrapperprivacy">
@@ -328,7 +327,7 @@
         </textarea>
       </div>
 
-      <button type="submit"  class="join-btn-check" id="JOIN-BTN-INSITE" onclick="moveSite()">가입하기</button>
+      <button type="button" class="join-btn-check" id="JOIN-BTN-INSITE">가입하기</button>
    
     </div>     <!-- section-middle /div -->
   </form>
