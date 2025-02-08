@@ -28,16 +28,18 @@
 		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
 	</insert>
 
-	<!--비밀번호찾기에서 해당 id와 ph 일치 여부 확인 쿼리 / 리턴값을 int로 진행...?? -->
-	<select id="pwd" parameterType = "Map" resultType="userDTO">
-		SELECT COUNT(USER_NUM) FROM TBL_USER
-		WHERE USER_ID = #{userId} AND USER_PH = #{userPH}
+	<!-- 비밀번호찾기에서 해당 id와 ph 일치 여부 확인 쿼리 -->
+	<select id="checkUser" resultType="UserDTO">
+		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+		FROM TBL_USER
+		WHERE USER_ID = #{userId} AND USER_PH = #{userPh}
 	</select>
 
 	<!--비밀번호 변경 쿼리  -->
-	<update id="pwdUpate" parameterType = "string">
-		UPDATE USER_PW FROM TBL_USER
-		
+	<update id="updatePw">
+		UPDATE TBL_USER
+		SET USER_PW = #{userPw}
+		WHERE USER_NUM = #{userNum}
 	</update>
  
 </mapper>

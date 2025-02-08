@@ -75,7 +75,6 @@ public class LoginFrontController extends HttpServlet {
 			break;
 
 		case "/login/join.me":
-			System.out.println("회원가입");
 			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response);
 			break;
 			
@@ -102,31 +101,33 @@ public class LoginFrontController extends HttpServlet {
 		case "/login/joinOk.me":
 			System.out.println("회원가입완료");
 			result = new JoinOkController().execute(request, response); // 404 에러 공존
-//         request.getRequestDispatcher("/html/login/join.jsp").forward(request, response); //JoinOkController로 안넘어가짐
 			break;
 
-		// 해야할것
+//		비밀번호 찾기
 		case "/login/passwordSelect.me":
-			System.out.println("비밀번호찾기 페이지 프컨");
 			request.getRequestDispatcher("/html/login/passwordSelect.jsp").forward(request, response);
 			break;
-
-		case "/login/passwordSelectOk.me":
-			System.out.println("비밀번호찾기 OK 페이지 프컨");
-			result = new PasswordOkController().execute(request, response);
+			
+//		아이디와 휴대폰 번호로 유저 조회
+		case "/login/checkUserOk.me":
+			result = new CheckUserOkController().execute(request, response);
 			break;
 
-		case "/login/passwrdDetailOk.me":
-			System.out.println("비밀번호 찾기 OK 상세 프컨");
-			result = new PasswordDetailOkController().execute(request, response);
+//		비밀번호 찾기 후 비밀번호 수정페이지로 이동
+		case "/login/passwrdUpdate.me":
+			request.getRequestDispatcher("/html/login/passwordSelect-detail.jsp").forward(request, response);
 			break;
+			
+//		비밀번호 찾기 후 비밀번호 수정 완료
+		case "/login/passwordUpdateOk.me":
+			result = new PasswrdUpdateOkController().execute(request, response);
+			break;
+			
 		}
 
 		if (result != null) {
-			System.out.println("로그인좀");
 			if (result.isRedirect()) {
 				response.sendRedirect(result.getPath());
-
 			} else {
 				request.getRequestDispatcher(result.getPath()).forward(request, response);
 

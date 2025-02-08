@@ -3,7 +3,6 @@ package com.knowledgeForest.controller.login;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,7 +28,9 @@ public class LoginOkController implements Execute {
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 		HttpSession session = request.getSession(); //session에 저장
-		
+		System.out.println("---로그인 OK 세션넘버 : " + session.getAttribute("userNumber"));
+		session.removeAttribute("userNum"); // 필요없는 세션 삭제 (비밀번호 찾기에서 사용)
+
 		userDTO.setUserId(userId);
 		userDTO.setUserPw(userPw);
 		
