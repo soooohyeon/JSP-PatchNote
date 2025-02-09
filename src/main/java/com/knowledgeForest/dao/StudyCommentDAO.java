@@ -18,4 +18,22 @@ public class StudyCommentDAO {
 	public List<StudyCommentDTO> selectAll(int studyNum){
 		return sqlSession.selectList("studyComment.selectAll", studyNum);
 	}
+	
+	//스터디 댓글 등록
+	public void insert(StudyCommentDTO studyCommentDTO) {
+		System.out.println("댓글DAO - studyCommentDTO : " + studyCommentDTO);
+		
+		try {
+			sqlSession.insert("studyComment.insert", studyCommentDTO);
+		} catch (Exception e) {
+			System.out.println("댓글 저장이 실패되었습니다. " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	//스터디 댓글 개수 조회
+	public int selectCommentCount(int studyNum) {
+		return sqlSession.selectOne("studyComment.commnetCount", studyNum);
+	}
+	
 }
