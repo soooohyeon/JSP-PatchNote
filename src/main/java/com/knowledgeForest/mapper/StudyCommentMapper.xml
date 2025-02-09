@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="studyComment">
-   <select id="selectAll" parameterType="int" resultType="StudyCommentListDTO">
-		select tsc.study_comment_num, tsc.study_num, tsc.user_num, tsc.study_comment, tsc.study_comment_upload_date, tsc.study_comment_edit_date
-		from tbl_study ts 
-		join tbl_study_comment tsc
-		on tsc.study_num = #{studyNum} and ts.user_num = tsc.user_num
+   <select id="selectAll" parameterType="int" resultType="studyCommentDTO">
+   		select tsc.study_comment_num, tsc.study_num, tsc.user_num, tsc.study_comment, tsc.study_comment_upload_date, tsc.study_comment_edit_date
+		, (select tu.user_nick from tbl_user tu where tu.user_num = tsc.user_num) as user_nick
+		From tbl_study_comment tsc
+		WHERE tsc.study_num = #{studyNum}
    </select>
+   
+    <insert id="insert" parameterType="studyCommentDTO">
+    	insert into tbl_study_comment (study_comment_num, study_num, user_num, study_comment)
+		values(seq_study_comment.nextVal, #{studyNum}, #{userNum}, #{studyComment})
+	</insert>
+	
+	<select id="commnetCount" resultType="int">
+		select count(*) from tbl_study_comment where study_num = #{study_num}
+	</select>
 </mapper>
