@@ -34,8 +34,22 @@ function getContextPath() {
 	return contextPath;
 }
 
+// 수정 버튼 클릭시
+function clickUpdateBtn(event, noticeNum) {
+	event.preventDefault();
+	// 확인, 취소 버튼 선택
+	const isEdit = confirm('수정하시게 되면 이미지가 사라집니다.\n수정하시겠습니까?');
+
+	// 확인 버튼 클릭시
+	if (isEdit) {
+		location.href = getContextPath() + "/admin/admin-noticeupdate.ad?noticeNum=" + noticeNum;
+	}
+}
+
+
 // 삭제 버튼 클릭시
-function clickDeleteBtn(noticeNum) {
+function clickDeleteBtn(event, noticeNum) {
+	event.preventDefault();
 	// 확인, 취소 버튼 선택
 	const isdelete = confirm('정말 삭제하시겠습니까?');
 
@@ -45,12 +59,12 @@ function clickDeleteBtn(noticeNum) {
 			/* 공지 삭제 컨트롤러로 이동, 공지 넘버 쿼리스트링으로 전달 */
 			url: getContextPath() + "/admin/admin-noticeDeleteOk.ad?noticeNum=" + noticeNum,
 			type: "GET",
-			/* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 */
+			/* 공지 삭제 성공 시 알람창 뜨면서 공지 목록 페이지로 이동 */
 			success: () => {
 				alert('삭제가 완료되었습니다.');
 				location.href = getContextPath() + "/admin/admin-noticelist.ad";
 			},
-			/* 탈퇴 불가시 알람창 */
+			/* 삭제 불가시 알람창 */
 			error: (xhr, status, error) => {
 				console.error("공지 삭제 실패:", error);
 				alert("공지 삭제 실패했습니다.");

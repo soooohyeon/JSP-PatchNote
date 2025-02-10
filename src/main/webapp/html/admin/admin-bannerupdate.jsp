@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +30,13 @@
           <h1 class="admin-h1-detailtitle">배너 수정</h1>
           
           <!--  폼 시작 -->
-          <form action="" method="">
+          <form action="admin-bannerupdateOk.ad" method="post" enctype="multipart/form-data">
             <!-- 배너 데이터 입력하는 부분 -->
             <div class="adminWrite-div-formwrapper">
-
+            
+				<!-- 배너 번호를 받기 위해 사용 -->
+				<input type="hidden" name="bannerNum" value="${banner.bannerNum}">
+				
               <!-- 배너 제목 -->
               <div class="adminWrite-div-datawrap">
                 <div class="adminWrite-div-title">
@@ -40,7 +44,8 @@
                 </div>
                 <div class="adminWrite-div-content">
                   <div class="inputwrap">
-                    <input type="text" name="bannerName" id="bannerName" class="inputStyle" placeholder="배너 제목을 입력하세요.">
+                    <input type="text" name="bannerName" id="bannerName" class="inputStyle"
+					 placeholder="배너 제목을 입력하세요." value="${banner.bannerName}">
                   </div>
                 </div>
               </div>
@@ -51,12 +56,12 @@
                 </div>
                 <div class="adminWrite-div-content">
                   <div class="inputwrap bannerimgwrap">
-                    <img src="${pageContext.request.contextPath}/asset/img/main/banner01.png" alt="임시 배너">
+                    <div class="bannerimgnone">배너 이미지를 등록해주세요.</div>
                   </div>
                 </div>
               </div>
               <div class="inputwrap bannerimgbtnwrap">
-                <span id="BANNERIMAGE-NAME">banner01.png</span>
+                <span id="BANNERIMAGE-NAME"><!-- 등록될 이미지명이 출력될 공간 --></span>
                 <label for="bannerImg" class="admin-btn">파일 첨부</label>
                 <input type="file" name="bannerImage" id="bannerImg" accept="image/*" onchange="setThumbnail(event); ">
               </div>

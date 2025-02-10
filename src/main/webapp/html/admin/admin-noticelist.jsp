@@ -74,8 +74,8 @@
 											src="${pageContext.request.contextPath}/asset/img/admin/menu-btn.png"
 											class="adminNotice-img-menubtn" alt="메뉴 버튼">
 											<div class="adminNotice-div-buttonswrap">
-												<a href="${pageContext.request.contextPath}/admin/admin-noticeupdate.ad?noticeNum=${notice.noticeNum}" class="adminNotice-a-button">수정</a>
-												<a href="" onclick="clickDeleteBtn(${notice.noticeNum})" class="adminNotice-a-button">삭제</a>
+												<a href="" onclick="clickUpdateBtn(event, ${notice.noticeNum})" class="adminNotice-a-button">수정</a>
+												<a href="" onclick="clickDeleteBtn(event, ${notice.noticeNum})" class="adminNotice-a-button">삭제</a>
 											</div>
 										</li>
 									</ul>

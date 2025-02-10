@@ -22,13 +22,14 @@
 
 	<!-- 상단 메뉴바 -->
 	<jsp:include page="/html/main/header.jsp" />
-	
+
 	<main>
 		<!-- 페이지 타이틀 -->
 		<div class="studylist-detail-div-titlewrapper">
 			<img
 				src="${pageContext.request.contextPath}/asset/img/study/back.png"
-				alt="뒤로가기" class="studylist-detail-img-back" onclick="goBack()" />
+				alt="뒤로가기" class="studylist-detail-img-back" id="STUDY-LIST-BTN"
+				data-studyNum="${detailStudy.studyNum}" onclick="goBack()" />
 			<h1 class="studylist-h1-title">
 				<c:out value="${detailStudy.studyTitle}" />
 			</h1>
@@ -67,7 +68,8 @@
 					<div class="studylist-div-infowrapper">
 						<div class="label">정원 수</div>
 						<div class="studylist-div-groupinfo">
-							<c:out value="${detailStudy.participants}" /> /
+							<c:out value="${detailStudy.participants}" />
+							/
 							<c:out value="${detailStudy.studyLimit}" />
 							명
 						</div>
@@ -116,6 +118,9 @@
 						<div class="label">본문</div>
 						<div class="studylist-div-studycontents">
 							<c:out value="${detailStudy.studyDescript}" />
+							<img
+								src="${pageContext.request.contextPath}/upload/study/${detailStudy.getImages().getUserImgUuid()}"
+								onerror="this.style.display='none';">
 						</div>
 					</div>
 				</div>
@@ -124,8 +129,7 @@
 		<!-- 등록 버튼 -->
 
 		<button class="studylist-btn-submit" type="submit"
-			form="STUDYLIST-FORM-WRITE" onclick="applyStudy()">
-			스터디 신청</button>
+			form="STUDYLIST-FORM-WRITE" onclick="applyStudy()">스터디 신청</button>
 		<!-- 스터디 신청 후 보이는 버튼 -->
 
 		<!-- 
@@ -141,7 +145,7 @@
       -->
 
 		<!-- 댓글 입력 창 -->
-<!-- 		<div class="studylist-div-commentinputwrapper">
+		<div class="studylist-div-commentinputwrapper">
 			<div class="studylist-div-userNickname">
 				<span>[로그인한 계정닉네임]</span>
 			</div>
@@ -159,22 +163,16 @@
 		</div>
 
 		<button class="studylist-btn-commentsubmit" type="submit"
-			form="STUDYLIST-TEXTAREA-COMMENT" onclick="writeComment()">
-			등록</button> -->
+			form="STUDYLIST-TEXTAREA-COMMENT">등록</button>
 
 		<!-- 댓글 목록 -->
 		<div class="studylist-div-commentlistwrapper">
 			<form class="studylist-div-commentlistheader">
-				<input type="hidden" name="studyNum"
-						value="${study.getStudyNum()}">
-				<span class="studylist-span-comment">댓글</span> 
-				<span class="studylist-span-commentcounter">총 2개</span>
-				<div class="form-group">
-					<textarea name="content" id="content" placeholder="댓글 내용을 입력하세요."></textarea>
-				</div>
-				<button type="button" class="submit-btn">댓글 작성</button>
+				<input type="hidden" name="studyNum" value="${study.getStudyNum()}">
+				<span class="studylist-span-comment">댓글</span> <span
+					class="studylist-span-commentcounter"></span>
 			</form>
-			
+
 			<div class="studylist-div-commentlist">
 				<ul id="studylist-div-commentlist">
 					<li>
@@ -185,10 +183,24 @@
 							<div class="comment-content">
 								<p></p>
 							</div>
-							<div class="comment-btn-group">
+							<c:choose>
+
+								<c:when test="${empty sessionScope.userNumber}">
+									<div class="comment-btn-group">
+										<button type="button" class="comment-modify-ready">수정</button>
+										<button type="button" class="comment-delete">삭제</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div>${sessionScope.userNumber}</div>
+								</c:otherwise>
+
+							</c:choose>
+
+							<!-- <div class="comment-btn-group">
 								<button type=button class="comment-modify-ready">수정</button>
 								<button type=button class="comment-delete">삭제</button>
-							</div>
+							</div> -->
 							<div class="comment-btn-group none">
 								<button type=button class="comment-modify">수정 완료</button>
 							</div>
@@ -197,8 +209,8 @@
 				</ul>
 			</div>
 
-		
-		</div> 
+
+		</div>
 
 		<!-- 페이지네이션 -->
 		<!-- <div class="studylist-div-paginationwrapper">
@@ -215,7 +227,7 @@
 	</main>
 
 	<jsp:include page="/html/main/footer.jsp" />
-	
+
 </body>
 
 <div id="STUDYLIST-MODAL-APPLY">
@@ -225,7 +237,8 @@
 		</div>
 
 		<div class="studylist-div-couragewrapper">
-			<form action="studyApplyInsertOk.st" method="post" id="STUDYLIST-FORM-WRITECOURAGE">
+			<form action="studyApplyInsertOk.st" method="post"
+				id="STUDYLIST-FORM-WRITECOURAGE">
 				<textarea name="userDetermination" id="STUDYLIST-TEXTAREA-COURAGE"
 					data-counter="COURAGE-COUNTER" placeholder="각오 한마디를 남기세요"
 					oninput="updateCharacterCount(this, 200)"></textarea>
@@ -248,8 +261,8 @@
 			</div>
 			<div class="studylist-div-btnwrapper">
 				<button class="studylist-btn-couragewrite" type="button"
-					form="STUDYLIST-FORM-WRITECOURAGE" onclick="writeCourage(${detailStudy.studyNum})">
-					등록</button>
+					form="STUDYLIST-FORM-WRITECOURAGE"
+					onclick="writeCourage(${detailStudy.studyNum})">등록</button>
 				<button class="studylist-btn-couragecancel"
 					form="STUDYLIST-FORM-WRITECOURAGE" onclick="closeModal()">
 					취소</button>

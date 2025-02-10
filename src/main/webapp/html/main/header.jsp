@@ -51,5 +51,4 @@
 </nav>
 <script>
 	let userNum = "${sessionScope.userNum}";
-	console.log("ggggggggggggggggggggggg" + userNum);
 </script>

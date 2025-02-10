@@ -1,3 +1,4 @@
+
 /* 루트 경로 담은 함수 */
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
@@ -61,18 +62,73 @@ function deleteStudy(studyNum) {
 	});
 };
 
+// 댓글 작성 (fetch)
 
 $(document).ready(function() {
+	// studyNum 저장
+	const listBtn = $("#STUDY-LIST-BTN");
+	const studyNum = listBtn.attr("data-studyNum"); // HTML의 data-studyNum 값 (상단에 목록가기 버튼에 작성)
 
-	console.log("화면 로드됨.");
+	// 해당 게시글의 댓글 개수 조회
+	const commentCountArea = document.getElementsByClassName("studylist-span-commentcounter");
+	let commentCount = 0;
+	commentCountArea.innerText = "총 " + commentCount + "개";
+
+
+	// 댓글 작성시
+	document.querySelector(".studylist-btn-commentsubmit")?.addEventListener("click", async function() {
+		const content = document.querySelector("#STUDYLIST-TEXTAREA-COMMENT").value.trim();
+
+		if (!content) {
+			alert("댓글 내용을 입력해주세요.");
+			return;
+		}
+		try {
+			const response = await fetch(getContextPath() + "/study/studyCommentWriteOk.st", {
+				method: "POST",
+				headers: { "Content-Type": "application/json; charset=utf-8" },
+				body: JSON.stringify({ studyNum, replyComment: content })
+			});
+
+			const result = await response.json();
+			if (result.status === "success") {
+				alert("댓글이 작성되었습니다.");
+				document.querySelector("#WRITE-COMMENT-COUNTER").value = "";
+				loadComments();
+				loadCommentCount();
+			} else {
+				alert("댓글 작성에 실패했습니다.");
+			}
+		} catch (error) {
+			console.error("댓글 작성 실패:", error);
+			alert("댓글 작성 중 오류가 발생했습니다.");
+		}
+	});
+	//댓글 갯수 로드 (fetch)
+	async function loadCommentCount() {
+		try {
+
+			const response = await fetch(getContextPath() + `/study/studyCommentCount.st?studyNum=${studyNum}`);
+			console.log("response >>" + response);
+			const commentCount = await response.text(); // 숫자로 직접 받기
+			console.log("commentCount >>", commentCount);
+			document.querySelector(".studylist-span-commentcounter").innerText = `총 ${commentCount}개`;
+
+			if (!response.ok) throw new Error("댓글 갯수를 불러오는 데 실패했습니다.");
+
+
+		} catch (error) {
+			console.error("댓글 갯수 불러오기 실패:", error);
+			alert("댓글 갯수를 불러오는데 실패했습니다.");
+		}
+	}
+
 	//댓글 목록 로드 (fetch)
 	async function loadComments() {
 		try {
-			console.log("studyNum" + studyNum);
-			
 			// <========= 여기서 막힘
-			
-			const response = await fetch(getContextPath() +`/study/studyCommentListOk.st?studyNum=${studyNum}`);
+
+			const response = await fetch(getContextPath() + `/study/studyCommentListOk.st?studyNum=${studyNum}`);
 			if (!response.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
 			const comments = await response.json();
 			renderComments(comments);
@@ -81,6 +137,7 @@ $(document).ready(function() {
 			alert("댓글 목록을 불러오는데 실패했습니다.");
 		}
 	}
+
 
 	//댓글 렌더링
 	function renderComments(comments) {
@@ -95,13 +152,16 @@ $(document).ready(function() {
 
 		console.log(comments);
 		comments.forEach(comment => {
-			console.log("comment" + comment);
-			const isMyComment = comment.memberNumber == memberNumber;
+			const isMyComment = comment.userNum == userNumFromSession;
+			
+			console.log("comment.userNum" + comment.userNum);
+			console.log("userNumFromSession" + userNumFromSession);
+			console.log("isnmyComment" + isMyComment);
 			const div = document.createElement("div");
 			div.innerHTML =
 				`
 				<div class="studylist-div-commentlayer">
-									<span class="studylist-span-commentnickname">닉네임</span> <span
+									<span class="studylist-span-commentnickname">${comment.userNick}</span> <span
 										class="studylist-span-commentdate">${comment.studyCommentUploadDate}</span>
 								</div>
 								<div class="studylist-div-commentlayer">
@@ -116,12 +176,15 @@ $(document).ready(function() {
 											` : ""}
 				</div>
 			</div>
+			let userNumFromSession = ${sessionScope.userNum};
+
 			`
 			commentList.appendChild(div);
 		});
 	}
 
 	// 초기 댓글 로드
+	loadCommentCount();
 	loadComments();
 
 });
@@ -130,14 +193,16 @@ $(document).ready(function() {
 
 
 // 댓글 등록
-function writeComment() {
+/*function writeComment() {
 	let comment = document.getElementById("STUDYLIST-TEXTAREA-COMMENT").value;
 	if (comment == "") {
 		alert("댓글을 입력해주세요");
 	} else {
 		alert("댓글을 등록하였습니다.");
 	}
-}
+}*/
+
+
 // 댓글 수정 함수
 function updateComment() {
 	if (confirm("댓글을 수정하시겠습니까?")) {
