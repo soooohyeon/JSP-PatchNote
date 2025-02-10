@@ -39,15 +39,8 @@ function deleteBoard(boardNum) {
 		}
 	});
 }
-// 댓글 등록
-function writeComment() {
-  let comment = document.getElementById("BOARDLISTDETAIL-TEXTAREA-COMMENT").value;
-  if (comment == "") {
-    alert("댓글을 입력해주세요");
-  } else {
-    alert("댓글을 등록하였습니다.");
-  }
-}
+
+
 // 댓글 수정 함수
 function updateComment() {
   if (confirm("댓글을 수정하시겠습니까?")) {
@@ -91,38 +84,7 @@ function updateCharacterCount(textarea, maxCharacters) {
   }
 
 }
-/*// 스터디 신청시 모달 띄우기
-function applyStudy() {
-  document.getElementById("BOARDLISTDETAIL-MODAL-APPLY").style.display = "block";
-}
-//스터디 취소 버튼 클릭시 띄워지는 alert
-function cancelStudy() {
-  if (confirm("해당 스터디를 취소하겠습니까?")) {
-    alert("해당 스터디가 취소 되었습니다.");
-  }
-}
-//modal 닫기
-function closeModal() {
-  document.getElementById("BOARDLISTDETAIL-MODAL-APPLY").style.display = "none";
-}
-//각오 등록
-function writeCourage() {
-  //각오를 입력했는지 여부를 판단
-  let courage = document.getElementById("BOARDLISTDETAIL-TEXTAREA-COURAGE").value;
-  let disclaimer = document.getElementById("BOARDLISTDETAIL-CHECKBOX-AGREE").checked;
 
-  if (courage === "") {
-    alert("각오를 입력해주세요.");
-    return;
-  }
-  //면책 사항 동의 여부를 판단
-  console.log(disclaimer);
-  if (disclaimer === false) {
-    alert("주의사항 체크 후 진행바랍니다.");
-    return;
-  }*/
-
-  /*alert("신청이 완료되었습니다.");*/
   
   
 }

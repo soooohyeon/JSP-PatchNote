@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.NoticeDTO;
+import com.knowledgeForest.dto.NoticeImgDTO;
 import com.knowledgeForest.dto.UserDTO;
 
 public class NoticeDAO {
@@ -23,7 +24,7 @@ public class NoticeDAO {
 	}
 
 //		해당 게시글 상세 조회
-	public NoticeDTO selectNotice(int noticeNum) {
+	public NoticeImgDTO selectNotice(int noticeNum) {
 		return sqlSession.selectOne("NoticeMapper.selectNotice", noticeNum);
 	}
 	

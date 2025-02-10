@@ -32,7 +32,7 @@ public class AdminNoticeWriteOkController implements Execute {
 //		----------------------------------------------------------------------------
 //		이미지 경로 설정
 //		final String UPLOAD_PATH = "D:\\web_0900_psh\\jsp_6\\workspace\\final_jsp\\src\\main\\webapp\\upload";
-		final String UPLOAD_PATH = "D:\\kdt_0900_psh\\jsp_6\\project\\back\\forest\\src\\main\\webapp\\upload\\notice";
+		final String UPLOAD_PATH = "C:\\KDT\\web_0900_hjh\\중간 팀프로젝트\\back\\project\\src\\main\\webapp\\upload\\notice";
 
 //		배포시 지정할 경로
 //		.metadata/.plugins/.../wtpwebapps/ 내부 경로가 반환되는 이유는 Eclipse의 WTP (Web Tools Platform) 서버 설정 때문

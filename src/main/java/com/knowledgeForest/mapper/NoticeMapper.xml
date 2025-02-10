@@ -33,10 +33,11 @@
 	</update>
 	
 	<!-- 해당 게시글 정보 조회 -->
-    <select id="selectNotice" resultType="NoticeDTO" parameterType="int">
+    <select id="selectNotice" resultType="NoticeImgDTO" parameterType="int">
     	SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENTS, NOTICE_UPLOAD_DATE, NOTICE_EDIT_DATE
 		FROM TBL_NOTICE
 		WHERE NOTICE_NUM = #{noticeNum}
     </select>
+    
     
 </mapper>

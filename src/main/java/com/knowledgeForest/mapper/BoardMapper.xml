@@ -86,5 +86,29 @@
     	FROM TBL_USER_IMG
     	WHERE BOARD_NUM = #{boardNumber}
     </select>
-    
+    <!-- 댓글 -->
+ 
+   	<!-- 댓글 조회 -->
+	<select id="selectAllReply" parameterType="int" resultType="BoardReplyDTO">
+		SELECT FB_COMMENT_NUM, FB_COMMENT_CONTENT, FB_COMMENT_UPLOAD_DATE, BOARD_NUM, tu.USER_NUM, tu.USER_NICK
+		FROM TBL_USER tu join TBL_FB_COMMENT tbc
+		on tu.USER_NUM = tbc.USER_NUM
+		WHERE BOARD_NUM = #{boardNum}
+	</select>
+	<!-- 댓글 등록 -->
+	<insert id="insertReply" parameterType="BoardReplyDTO">
+		insert into tbl_FB_COMMENT(FB_COMMENT_NUM, FB_COMMENT_CONTENT, BOARD_NUM, USER_NUM)
+		values(seq_FB_COMMENT.nextVal, #{fbCommentContent}, #{boardNum}, #{userNum})
+	</insert>
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		delete from TBL_FB_COMMENT
+		where FB_COMMENT_NUM = #{fbCommentNum}
+	</delete>
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="BoardReplyDTO">
+		update TBL_FB_COMMENT
+		set FB_COMMENT_CONTENT = #{fbCommentContent}
+		where FB_COMMENT_NUM = #{fbCommentNum}
+	</update>
 </mapper>
