@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/board/boardlistdetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
-  <script defer src="${pageContext.request.contextPath}/asset/js/board/boardlistdetail.js"></script>
 	<!-- jquery 사용시 필요함 -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script defer src="${pageContext.request.contextPath}/asset/js/board/boardlistdetail.js"></script>
+  <script defer src="${pageContext.request.contextPath}/asset/js/board/boardComment.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 	<jsp:include page="/html/main/header.jsp" />
 
   <div class="boardlistdetail-div-title">
-    <h2>자유게시판</h2>
+    <h2 data-boardNum="${boardDetail.boardNum}">자유게시판</h2>
   </div>
   <!-- 수정 / 삭제 버튼 -->
   <c:if test="${sessionScope.userNumber == boardDetail.userNum}">
@@ -62,82 +63,68 @@
         </div>
       </div>
       <!-- 댓글 입력 창 -->
-      <!-- <div class="boardlistdetail-div-commentinputwrapper">
-        <div class="boardlistdetail-div-userNickname">
-          <span>닉네임</span>
-        </div>
-        <div class="boardlistdetail-div-commentwrapper">
-          <form action="">
-            <textarea name="studyContents" id="BOARDLISTDETAIL-TEXTAREA-COMMENT" placeholder="댓글을 남겨 보세요"
-              data-counter="WRITE-COMMENT-COUNTER" oninput="updateCharacterCount(this, 200)"></textarea>
-          </form>
-        </div>
-
-        <div class="boardlistdetail-div-counterwrapper">
-          <span class="boardlistdetail-span-counter" id="WRITE-COMMENT-COUNTER">0/200</span>
-        </div>
-      </div>
-      등록버튼
-      <div class="boardlistdetail-div-commentwrap">
-        <button class="boardlistdetail-btn-commentsubmit" type="submit" form="BOARDLISTDETAIL-TEXTAREA-COMMENT"
-          onclick="writeComment()">
-          등록
-        </button>
-      </div>
-      댓글내용
-      <div class="boardlistdetail-div-commenttitle">
-      <span>댓글</span>
-    </div>
-    <div class="boardlistdetail-div-checkcomment">
-      <div class="boardlistdtail-div-commentlayer">
-        <span>닉네임</span>
-        <span>2025.01.01</span>
-      </div>
-      <div class="boardlistdetail-div-commentcontents">
-        <span>댓글내용</span>
-      </div>
-      <div class="boardlistdetail-div-editdelete">
-        <button>수정|삭제</button>
-      </div>
+      <form action="${pageContext.request.contextPath}/board/boardReplyWriteOk.bo" method="post">
+	      <div class="boardlistdetail-div-commentinputwrapper">
+	        <div class="boardlistdetail-div-userNickname">
+	          <span><c:out value="${boardDetail.userNick}" /></span>
+	        </div>
+	        <div class="boardlistdetail-div-commentwrapper">
+	            <textarea name="studyContents" id="BOARDLISTDETAIL-TEXTAREA-COMMENT" placeholder="댓글을 남겨 보세요"
+	              data-counter="WRITE-COMMENT-COUNTER" oninput="updateCharacterCount(this, 200)"></textarea>
+	        </div>
+	
+	        <div class="boardlistdetail-div-counterwrapper">
+	          <span class="boardlistdetail-span-counter" id="WRITE-COMMENT-COUNTER">0/200</span>
+	        </div>
+	      </div>
+	      <div class="boardlistdetail-div-commentwrap">
+	        <button class="boardlistdetail-btn-commentsubmit" type="submit" form="BOARDLISTDETAIL-TEXTAREA-COMMENT">
+	          등록
+	        </button>
+	      </div>
+      </form>
+      
     </div>
       <div class="boardlistdetail-div-commentlistwrapper">
         <div class="boardlistdetail-div-commentlistheader">
           <span class="boardlistdetail-span-comment">댓글</span>
           <span class="boardlistdetail-span-commentcounter">총 2개</span>
         </div>
-        <div class="boardlistdetail-div-commentlist">
-          <div class="boardlistdetail-div-commentlayer">
-            <span class="boardlistdetail-span-commentnickname">닉네임</span>
-            <span class="boardlistdetail-span-commentdate">2025.01.03</span>
-          </div>
-          <div class="boardlistdetail-div-commentlayer">
-            <span class="boardlistdetail-span-commentcontents">
-              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
-              수 있어요.
-            </span>
-          </div>
+        <div id="BOARD-COMMENT-AREA">
+	        <div class="boardlistdetail-div-commentlist">
+	          <div class="boardlistdetail-div-commentlayer">
+	            <span class="boardlistdetail-span-commentnickname">닉네임</span>
+	            <span class="boardlistdetail-span-commentdate">2025.01.03</span>
+	          </div>
+	          <div class="boardlistdetail-div-commentlayer">
+	            <span class="boardlistdetail-span-commentcontents">
+	              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
+	              수 있어요.
+	            </span>
+	          </div>
+	        </div>
+	        <div class="boardlistdetail-div-commentlist">
+	          <div class="boardlistdetail-div-commentlayer">
+	            <span class="boardlistdetail-span-commentnickname">닉네임</span>
+	            <span class="boardlistdetail-span-commentdate">2025.01.03</span>
+	          </div>
+	          <div class="boardlistdetail-div-commentlayer">
+	            <span class="boardlistdetail-span-commentcontents">
+	              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
+	              수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러
+	              강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수
+	              있고, 여러 강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서
+	              코테도 할 수 있고, 여러 강의도 들을 수 있어요.
+	            </span>
+	            <div class="boardlistdetail-detail-div-btnwrapper">
+	              <span class="boardlistdetail-span-commenteditbtn" onclick="updateComment()">수정</span>
+	              <span class="boardlistdetail-span-divider">|</span>
+	              <span class="boardlistdetail-span-commentdeletebtn" onclick="deleteComment()">삭제</span>
+	            </div>
+	          </div>
+			</div>
         </div>
-        <div class="boardlistdetail-div-commentlist">
-          <div class="boardlistdetail-div-commentlayer">
-            <span class="boardlistdetail-span-commentnickname">닉네임</span>
-            <span class="boardlistdetail-span-commentdate">2025.01.03</span>
-          </div>
-          <div class="boardlistdetail-div-commentlayer">
-            <span class="boardlistdetail-span-commentcontents">
-              프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러 강의도 들을
-              수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수 있고, 여러
-              강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서 코테도 할 수
-              있고, 여러 강의도 들을 수 있어요. 프로그래머스라는 홈페이지에서
-              코테도 할 수 있고, 여러 강의도 들을 수 있어요.
-            </span>
-            <div class="boardlistdetail-detail-div-btnwrapper">
-              <span class="boardlistdetail-span-commenteditbtn" onclick="updateComment()">수정</span>
-              <span class="boardlistdetail-span-divider">|</span>
-              <span class="boardlistdetail-span-commentdeletebtn" onclick="deleteComment()">삭제</span>
-            </div>
-          </div>
-        </div>
-        페이지네이션
+        <!-- 페이지네이션 -->
         <div class="boardlistdetail-div-paginationwrapper">
           <ul id="BOARDLISTDETAIL-UL-PAGINATION">
             <li class="boardlistdetail-li-paginationlist pre">&lt;</li>
@@ -148,7 +135,7 @@
             <li class="boardlistdetail-li-paginationlist">5</li>
             <li class="boardlistdetail-li-paginationlist next">&#62;</li>
           </ul>
-        </div> -->
+        </div>
      </div>
     </main>
 	<!-- 푸터 -->

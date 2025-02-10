@@ -61,6 +61,15 @@ public class BoardFrontController extends HttpServlet {
 		case "/board/boardEditOk.bo" :
 			result = new BoardEditOkController().execute(request, response);
 			break;
+	    case "/board/boardReplyWriteOk.bo":
+	    	System.out.println("댓글 작성 컨트롤러 진입");
+	    	result = new BoardReplyWriteOkController().execute(request, response);
+	    	break;
+	    	
+	    case "/board/boardReplyListOk.bo":
+	    	System.out.println("댓글 목록 컨트롤러 진입");
+	    	result = new BoardReplyListOkController().execute(request, response);
+	    	break;
 	}
 
 	      if (result != null) {
