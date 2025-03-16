@@ -15,8 +15,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/asset/css/main/footer.css" />
 <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script defer
-	src="${pageContext.request.contextPath}/asset/js/study/studylist-detail.js"></script>
+<script defer src="${pageContext.request.contextPath}/asset/js/study/studylist-detail.js"></script>
 </head>
 <body>
 
@@ -29,7 +28,8 @@
 			<img
 				src="${pageContext.request.contextPath}/asset/img/study/back.png"
 				alt="뒤로가기" class="studylist-detail-img-back" id="STUDY-LIST-BTN"
-				data-studyNum="${detailStudy.studyNum}" onclick="goBack()" />
+				data-studyNum="${detailStudy.studyNum}"
+				data-userNum="${sessionScope.userNumber}" onclick="goBack()" />
 			<h1 class="studylist-h1-title">
 				<c:out value="${detailStudy.studyTitle}" />
 			</h1>
@@ -146,9 +146,9 @@
 
 		<!-- 댓글 입력 창 -->
 		<div class="studylist-div-commentinputwrapper">
-			<div class="studylist-div-userNickname">
+<!-- 			<div class="studylist-div-userNickname">
 				<span>[로그인한 계정닉네임]</span>
-			</div>
+			</div> -->
 			<div class="studylist-div-commentwrapper">
 				<form action="">
 					<textarea name="studyContents" id="STUDYLIST-TEXTAREA-COMMENT"
@@ -181,26 +181,21 @@
 						</div>
 						<div class="comment-content-wrap">
 							<div class="comment-content">
-								<p></p>
 							</div>
 							<c:choose>
 
 								<c:when test="${empty sessionScope.userNumber}">
 									<div class="comment-btn-group">
-										<button type="button" class="comment-modify-ready">수정</button>
-										<button type="button" class="comment-delete">삭제</button>
+										<button type="button" class="comment-modify-ready" data-number="${comment.commentNum}">수정</button>
+										<button type="button" class="studylist-span-commentdeletebtn">삭제</button>
 									</div>
 								</c:when>
 								<c:otherwise>
-									<div>${sessionScope.userNumber}</div>
+									<div></div>
 								</c:otherwise>
 
 							</c:choose>
 
-							<!-- <div class="comment-btn-group">
-								<button type=button class="comment-modify-ready">수정</button>
-								<button type=button class="comment-delete">삭제</button>
-							</div> -->
 							<div class="comment-btn-group none">
 								<button type=button class="comment-modify">수정 완료</button>
 							</div>
@@ -224,6 +219,34 @@
 				<li class="studylist-li-paginationlist next">&#62;</li>
 			</ul>
 		</div> -->
+		
+				<!-- 페이지네이션 -->
+		<div class="studylist-div-paginationwrapper">
+			<ul id="STUDYLIST-UL-PAGINATION">
+				<c:if test="${prev}">
+					<li class="studylist-li-paginationlist pre" onclick="movePage(${startPage - 1}, '${param.keyword}')">&lt;</li>
+				</c:if>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<c:choose>
+						<c:when test="${!(i == page)}">
+							<li class="studylist-li-paginationlist" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="studylist-li-paginationlist currentpage" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${next}">
+					<li class="studylist-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
+				</c:if>
+			</ul>
+		</div>
+		
+		
 	</main>
 
 	<jsp:include page="/html/main/footer.jsp" />
@@ -270,6 +293,5 @@
 		</div>
 	</div>
 </div>
-
 
 </html>

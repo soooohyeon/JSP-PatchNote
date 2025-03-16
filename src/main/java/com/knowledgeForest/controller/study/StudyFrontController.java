@@ -90,6 +90,14 @@ public class StudyFrontController extends HttpServlet {
 			System.out.println("studyCommentCount!");
 			result = new StudyCommentCountController().execute(request, response);
 			break;
+		case "/study/studyCommentUpdateOk.st":
+			System.out.println("studyCommentUpdateOk!");
+			result = new StudyCommentUpdateOkController().execute(request, response);
+			break;
+		case "/study/studyCommentDeleteOk.st":
+			System.out.println("studyCommentDeleteOk!");
+			result = new StudyCommentDeleteOkController().execute(request, response);
+			break;
 		}
 		
 		if(result != null) {
