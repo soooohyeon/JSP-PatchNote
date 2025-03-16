@@ -1,3 +1,4 @@
+/*let userNumFromSession = "${sessionScope.userNum}";*/
 
 /* 루트 경로 담은 함수 */
 function getContextPath() {
@@ -25,17 +26,17 @@ function updateStudy(studyNum) {
 //글 삭제를 눌렀을 때 띄워지는 alert
 /*function deleteStudy() {
 
-	console.log("delete Study 함수 실행");
-	if (confirm("해당 스터디 글을 삭제하시겠습니까?")) {
-		//삭제 후 스터디 목록 화면으로 이동
+   console.log("delete Study 함수 실행");
+   if (confirm("해당 스터디 글을 삭제하시겠습니까?")) {
+	  //삭제 후 스터디 목록 화면으로 이동
 
-		console.log("예 버튼 클릭");
-		
-			window.location.href = getContextPath() + "/study/studyDeleteOk.st?studyNum=" + studyNum;
-		alert("해당 스터디 글이 삭제되었습니다.");
-	} else {
-		alert("취소되었습니다.");
-	}
+	  console.log("예 버튼 클릭");
+	  
+		 window.location.href = getContextPath() + "/study/studyDeleteOk.st?studyNum=" + studyNum;
+	  alert("해당 스터디 글이 삭제되었습니다.");
+   } else {
+	  alert("취소되었습니다.");
+   }
 }
 
 */
@@ -68,6 +69,7 @@ $(document).ready(function() {
 	// studyNum 저장
 	const listBtn = $("#STUDY-LIST-BTN");
 	const studyNum = listBtn.attr("data-studyNum"); // HTML의 data-studyNum 값 (상단에 목록가기 버튼에 작성)
+	const userNum = listBtn.attr("data-userNum"); // HTML의 data-userNum 값 (상단에 목록가기 버튼에 작성)
 
 	// 해당 게시글의 댓글 개수 조회
 	const commentCountArea = document.getElementsByClassName("studylist-span-commentcounter");
@@ -78,6 +80,7 @@ $(document).ready(function() {
 	// 댓글 작성시
 	document.querySelector(".studylist-btn-commentsubmit")?.addEventListener("click", async function() {
 		const content = document.querySelector("#STUDYLIST-TEXTAREA-COMMENT").value.trim();
+		const contentElement = document.querySelector("#STUDYLIST-TEXTAREA-COMMENT");
 
 		if (!content) {
 			alert("댓글 내용을 입력해주세요.");
@@ -93,7 +96,7 @@ $(document).ready(function() {
 			const result = await response.json();
 			if (result.status === "success") {
 				alert("댓글이 작성되었습니다.");
-				document.querySelector("#WRITE-COMMENT-COUNTER").value = "";
+				contentElement.value = "";
 				loadComments();
 				loadCommentCount();
 			} else {
@@ -104,19 +107,15 @@ $(document).ready(function() {
 			alert("댓글 작성 중 오류가 발생했습니다.");
 		}
 	});
+	
 	//댓글 갯수 로드 (fetch)
 	async function loadCommentCount() {
 		try {
 
 			const response = await fetch(getContextPath() + `/study/studyCommentCount.st?studyNum=${studyNum}`);
-			console.log("response >>" + response);
 			const commentCount = await response.text(); // 숫자로 직접 받기
-			console.log("commentCount >>", commentCount);
 			document.querySelector(".studylist-span-commentcounter").innerText = `총 ${commentCount}개`;
-
 			if (!response.ok) throw new Error("댓글 갯수를 불러오는 데 실패했습니다.");
-
-
 		} catch (error) {
 			console.error("댓글 갯수 불러오기 실패:", error);
 			alert("댓글 갯수를 불러오는데 실패했습니다.");
@@ -126,8 +125,6 @@ $(document).ready(function() {
 	//댓글 목록 로드 (fetch)
 	async function loadComments() {
 		try {
-			// <========= 여기서 막힘
-
 			const response = await fetch(getContextPath() + `/study/studyCommentListOk.st?studyNum=${studyNum}`);
 			if (!response.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
 			const comments = await response.json();
@@ -137,7 +134,6 @@ $(document).ready(function() {
 			alert("댓글 목록을 불러오는데 실패했습니다.");
 		}
 	}
-
 
 	//댓글 렌더링
 	function renderComments(comments) {
@@ -152,33 +148,37 @@ $(document).ready(function() {
 
 		console.log(comments);
 		comments.forEach(comment => {
-			const isMyComment = comment.userNum == userNumFromSession;
-			
-			console.log("comment.userNum" + comment.userNum);
-			console.log("userNumFromSession" + userNumFromSession);
-			console.log("isnmyComment" + isMyComment);
+			/* userNum은 studylist-detail.jsp 하단에 script 태그로 저장해둔 값을 받아옴 */
+			const isMyComment = comment.userNum == userNum;
+
+			console.log("comment.userNum : " + comment.userNum);
+			console.log("userNum : " + userNum);
+			console.log("isnmyComment : " + isMyComment);
 			const div = document.createElement("div");
 			div.innerHTML =
 				`
-				<div class="studylist-div-commentlayer">
-									<span class="studylist-span-commentnickname">${comment.userNick}</span> <span
-										class="studylist-span-commentdate">${comment.studyCommentUploadDate}</span>
-								</div>
-								<div class="studylist-div-commentlayer">
-									<span class="studylist-span-commentcontents">${comment.studyComment}</span>
-										
-										${isMyComment ? `
-									<div class="studylist-detail-div-btnwrapper">
-										<span class="studylist-span-commenteditbtn"
-											onclick="updateComment()">수정</span> <span
-											class="studylist-span-divider">|</span> <span
-											class="studylist-span-commentdeletebtn" onclick="deleteComment()">삭제</span>
-											` : ""}
-				</div>
-			</div>
-			let userNumFromSession = ${sessionScope.userNum};
-
-			`
+				<ul id="studylist-div-commentlist">
+									<li>
+            <div class="studylist-div-commentlayer">
+                           <span class="studylist-span-commentnickname">${comment.userNick}</span> <span
+                              class="studylist-span-commentdate">${comment.studyCommentUploadDate}</span>
+                        </div>
+                        <div class="studylist-div-commentlayer">
+                           <span class="studylist-span-commentcontent">${comment.studyComment}</span>
+						   
+                              ${isMyComment ? `
+                           <div class="studylist-detail-div-btnwrapper">
+                              <span class="studylist-span-commenteditbtn"
+                                 data-number="${comment.studyCommentNum}">수정</span> <span
+                                 class="studylist-span-divider">|</span> <span
+                                 class="studylist-span-commentdeletebtn" data-number="${comment.studyCommentNum}">삭제</span>
+                                 ` : ""}
+            </div>
+         </div>
+		 </li>
+		 						   </ul>
+		                               
+         `
 			commentList.appendChild(div);
 		});
 	}
@@ -194,31 +194,197 @@ $(document).ready(function() {
 
 // 댓글 등록
 /*function writeComment() {
-	let comment = document.getElementById("STUDYLIST-TEXTAREA-COMMENT").value;
-	if (comment == "") {
-		alert("댓글을 입력해주세요");
-	} else {
-		alert("댓글을 등록하였습니다.");
-	}
+   let comment = document.getElementById("STUDYLIST-TEXTAREA-COMMENT").value;
+   if (comment == "") {
+	  alert("댓글을 입력해주세요");
+   } else {
+	  alert("댓글을 등록하였습니다.");
+   }
 }*/
 
 
-// 댓글 수정 함수
-function updateComment() {
-	if (confirm("댓글을 수정하시겠습니까?")) {
-		// 수정 기능 구현 필요
+document.addEventListener("click", function(event) {
+	if (event.target.matches(".studylist-span-commenteditbtn")) {
+		console.log("수정 버튼 클릭됨!");
+
+		const li = event.target.closest("li"); // 클릭한 댓글의 <li> 찾기
+		const replyNum = event.target.dataset.number; // 댓글 ID 가져오기
+		console.log("li 요소:", li);
+		console.log("댓글 ID:", replyNum);
+
+		updateComment(li, replyNum);
 	}
+});
+
+
+/*document.addEventListener("click", function(event) {
+	if (event.target.matches(".studylist-span-commenteditbtn2")) {
+			console.log("수정 완료 버튼 클릭됨!");
+
+			const li = event.target.closest("li"); // 클릭한 댓글의 <li> 찾기
+			console.log("li 요소:", li);
+			const replyNum = event.target.dataset.number; // 댓글 ID 가져오기
+			console.log("댓글 ID:", replyNum);
+
+		}
+})*/
+
+// 댓글 수정완료 버튼 클릭 시
+document.addEventListener("click", function(event) {
+	if (event.target.matches(".studylist-span-commenteditbtn2")) {
+		console.log("수정 완료 버튼 클릭됨!");
+
+		const li = event.target.closest("li"); // 클릭한 댓글의 <li> 찾기
+		const replyNum = event.target.dataset.number; // 댓글 ID 가져오기
+
+		// 수정된 내용 가져오기
+		const textarea = li.querySelector(".comment-contents");
+		const updatedContent = textarea.value.trim();
+
+		if (!updatedContent) {
+			alert("댓글 내용을 입력해주세요.");
+			return;
+		}
+		console.log("댓글 내용 나와라 : ", updatedContent);
+
+		// AJAX 요청으로 서버에 업데이트 요청 (예제 코드)
+		fetch(getContextPath() + "/study/studyCommentUpdateOk.st", {
+			method: "POST",
+			headers: { "Content-Type": "application/json; charset=utf-8" },
+			body: JSON.stringify({ commentNum: replyNum, commentContent: updatedContent })
+		})
+		.then(response => response.json())
+		.then(result => {
+			if (result.status === "success") {
+				alert("댓글이 수정되었습니다.");
+
+				// 댓글 내용 업데이트
+				const contentDiv = li.querySelector(".studylist-span-commentcontent");
+				contentDiv.innerText = updatedContent;
+
+				// 버튼을 다시 "수정 | 삭제" 상태로 변경
+				const btnGroup = li.querySelector(".studylist-detail-div-btnwrapper");
+				btnGroup.innerHTML = `
+					<span class="studylist-span-commenteditbtn" data-number="${replyNum}">수정</span> 
+					<span class="studylist-span-divider">|</span> 
+					<span class="studylist-span-commentdeletebtn" data-number="${replyNum}">삭제</span>
+				`;
+			} else {
+				alert("댓글 수정에 실패했습니다.");
+			}
+		})
+		.catch(error => {
+			console.error("댓글 수정 실패:", error);
+			alert("댓글 수정 중 오류가 발생했습니다.");
+		});
+	}
+});
+
+
+
+function updateComment(li, replyNum) {
+	console.log("🔵 댓글 수정 시작!");
+
+	const contentDiv = li.querySelector(".studylist-span-commentcontent"); // 기존 댓글 내용 찾기
+	console.log("🟢 contentDiv 요소:", contentDiv);
+
+	if (!contentDiv) {
+		console.error("❌ 댓글 내용을 찾을 수 없습니다.");
+		return;
+	}
+
+	const originalContent = contentDiv.textContent.trim();
+	contentDiv.innerHTML = `<textarea class="comment-contents">${originalContent}</textarea>`;
+
+	// "수정 완료" 버튼 추가
+	const btnGroup = li.querySelector(".studylist-detail-div-btnwrapper");
+	console.log("🟢 버튼 그룹:", btnGroup);
+
+	if (!btnGroup) {
+		console.error("❌ 버튼 그룹을 찾을 수 없습니다.");
+		return;
+	}
+
+	btnGroup.innerHTML = `
+        <span class="studylist-span-commenteditbtn2" data-number="${replyNum}">수정 완료</span>
+		<span class="studylist-span-divider">|</span>
+        <span class="studylist-span-commentcancelbtn2" data-number="${replyNum}">취소</span>
+    `;
 }
 
-//댓글 삭제를 눌렀을 때 띄워지는 alert
-function deleteComment() {
-	if (confirm("해당 댓글을 삭제하시겠습니까?")) {
-		//삭제 후 스터디 목록 화면으로 이동
-		alert("해당 댓글이 삭제되었습니다.");
-	} else {
-		alert("취소되었습니다.");
-	}
-}
+
+//댓글 수정 상태일때 취소를 누를 떄의 이벤트
+document.addEventListener("click", function(event) {
+    // "수정 완료" 버튼 클릭 시
+    if (event.target.matches(".studylist-span-commentcancelbtn2")) {
+        const li = event.target.closest("li"); // 해당 댓글의 <li> 찾기
+        const replyNum = event.target.dataset.number; // 댓글 ID 가져오기
+
+        if (!li || !replyNum) {
+            console.error("❌ 댓글 요소 또는 ID를 찾을 수 없습니다.");
+            return;
+        }
+
+        const contentDiv = li.querySelector(".studylist-span-commentcontent"); // 댓글 내용 요소 찾기
+        const textarea = li.querySelector(".comment-contents"); // textarea 찾기
+
+        if (!contentDiv || !textarea) {
+            console.error("❌ 댓글 내용을 찾을 수 없습니다.");
+            return;
+        }
+
+        const updatedContent = textarea.value.trim(); // 수정된 내용 가져오기
+        contentDiv.innerHTML = updatedContent; // 댓글 내용 업데이트
+
+        // 버튼 그룹 원래대로 복원
+        const btnGroup = li.querySelector(".studylist-detail-div-btnwrapper");
+        if (!btnGroup) {
+            console.error("❌ 버튼 그룹을 찾을 수 없습니다.");
+            return;
+        }
+
+        btnGroup.innerHTML = `
+            <span class="studylist-span-commenteditbtn" data-number="${replyNum}">수정</span>
+            <span class="studylist-span-divider">|</span>
+			<span class="studylist-span-commentdeletebtn" data-number="${replyNum}">삭제</span>
+        `;
+    }
+});
+
+
+
+//댓글 삭제
+document.addEventListener("click", function(event) {
+    if (event.target.matches(".studylist-span-commentdeletebtn")) {
+        const li = event.target.closest("li"); // 클릭한 댓글의 <li> 찾기
+        const studyCommentNum = event.target.dataset.number; // 댓글 ID 가져오기
+
+        if (!studyCommentNum) {
+            console.error("❌ 댓글 ID를 찾을 수 없습니다.");
+            return;
+        }
+
+        if (confirm("해당 댓글을 삭제하시겠습니까?")) {
+            fetch(getContextPath() + `/study/studyCommentDeleteOk.st?studyCommentNum=${studyCommentNum}`, {
+                method: "GET"
+            })
+            .then(response => {                
+				if (!response.ok) {
+                    throw new Error("서버 응답 실패");
+                }
+                return response.text(); // 성공 시 응답 받기
+            })
+            .then(() => {
+                alert("댓글이 삭제되었습니다.");
+                li.remove(); // UI에서 댓글 삭제
+            })
+            .catch(error => {
+                console.error("❌ 댓글 삭제 실패:", error);
+                alert("댓글 삭제 중 오류가 발생했습니다.");
+            });
+        }
+    }
+});
 
 /**
  * 글자 수를 실시간 업데이트하는 함수
@@ -264,8 +430,6 @@ function writeCourage(studyNum) {
 	//각오를 입력했는지 여부를 판단
 	//event.preventDefault();
 
-	console.log("함수실행!!!");
-
 	let userDetermination = document.getElementById("STUDYLIST-TEXTAREA-COURAGE").value;
 	let disclaimer = document.getElementById("STUDYLIST-CHECKBOX-AGREE").checked;
 
@@ -275,8 +439,7 @@ function writeCourage(studyNum) {
 		alert("각오를 입력해주세요.");
 		return;
 	}
-	//면책 사항 동의 여부를 판단
-	console.log(disclaimer);
+
 	if (disclaimer === false) {
 		alert("주의사항 체크 후 진행바랍니다.");
 		return;
@@ -305,9 +468,21 @@ function writeCourage(studyNum) {
 			error: (xhr, status, error) => {
 				console.error("스터디 신청 실패:", error);
 				alert("스터디 신청에 실패했습니다.");
-				console.log(studyNum);
 			},
 		});
 	}
 
+}
+
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, keyword) {
+	console.log("페이지 이동 함수");
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	if (keyword == null) {
+		location.href = pathName + "?page=" + page;
+	} else {
+		location.href = pathName + "?keyword=" + keyword + "&&page=" + page;
+	}
 }

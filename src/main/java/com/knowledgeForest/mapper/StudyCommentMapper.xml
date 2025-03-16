@@ -17,4 +17,17 @@
 	<select id="commnetCount" resultType="int">
 		select count(*) from tbl_study_comment where study_num = #{study_num}
 	</select>
+	
+	<update id="update" parameterType="StudyCommentDTO">
+		UPDATE TBL_STUDY_COMMENT 
+		SET 
+		STUDY_COMMENT = #{studyComment},
+		STUDY_COMMENT_EDIT_DATE = SYSDATE 
+		WHERE STUDY_COMMENT_NUM = #{studyCommentNum}
+	</update>
+	
+	<delete id="deleteStudyComment" parameterType="int">
+		DELETE FROM TBL_STUDY_COMMENT tsc 
+		WHERE STUDY_COMMENT_NUM = #{studyCommentNum}
+	</delete>
 </mapper>
