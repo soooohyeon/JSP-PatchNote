@@ -53,8 +53,8 @@ public class MyPageDAO {
 //	}
 
 	// 내가 작성한 스터디 목록 조회
-	public List<StudyUserDTO> getMyStudies(int userNum) {
-		return sqlsession.selectList("UserMapper.getMyStudies", userNum);
+	public List<StudyUserDTO> getMyStudies(Map<String, Object> paramMap) {
+		return sqlsession.selectList("UserMapper.getMyStudies", paramMap);
 	}
 
 	// 작성한 스터디 총 갯수 출력
