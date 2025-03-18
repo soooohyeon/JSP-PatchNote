@@ -29,7 +29,6 @@ public class MyPageMyStudiesController implements Execute {
 
         int userNum = (int) session.getAttribute("userNumber");
         
-        List<StudyUserDTO> myStudyList = myPageDAO.getMyStudies(userNum);
 		int total = myPageDAO.getMyStudyTotal(userNum);
 
         String tempPage = request.getParameter("page");
@@ -46,6 +45,8 @@ public class MyPageMyStudiesController implements Execute {
 		paramMap.put("startRow", startRow);
 		paramMap.put("endRow", endRow);
 		paramMap.put("userNum", userNum);
+		
+        List<StudyUserDTO> myStudyList = myPageDAO.getMyStudies(paramMap);
 		
 		// 페이징 정보 설정
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지 버튼
