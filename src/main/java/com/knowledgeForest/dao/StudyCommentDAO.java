@@ -1,6 +1,7 @@
 package com.knowledgeForest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,9 +15,10 @@ public class StudyCommentDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
+	
 	//스터디 댓글 목록
-	public List<StudyCommentDTO> selectAll(int studyNum){
-		return sqlSession.selectList("studyComment.selectAll", studyNum);
+	public List<StudyCommentDTO> selectAll(Map paramMap){
+		return sqlSession.selectList("studyComment.selectAll", paramMap);
 	}
 	
 	//스터디 댓글 등록
@@ -31,9 +33,13 @@ public class StudyCommentDAO {
 		}
 	}
 	
-	//스터디 댓글 개수 조회
+	// 하나의 스터디 게시글의 댓글 개수 조회
 	public int selectCommentCount(int studyNum) {
-		return sqlSession.selectOne("studyComment.commnetCount", studyNum);
+		int result = sqlSession.selectOne("studyComment.commnetCount", studyNum);
+		System.out.println("댓글 개수 조회 DAO");
+		System.out.println("result : " + result);
+		return result;
+//		return sqlSession.selectOne("studyComment.commnetCount", studyNum);
 	}
 	
 	//스터디 댓글 수정

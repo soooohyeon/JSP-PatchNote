@@ -73,8 +73,7 @@
 
 
 	<!-- 만든 스터디 목록 -->
-	<select id="getMyStudies" resultType="StudyUserDTO"
-		parameterType="int">
+	<select id="getMyStudies" resultType="StudyUserDTO">
 		SELECT *
 		FROM (
 		SELECT ROWNUM AS rnum, studyList.*

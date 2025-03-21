@@ -48,6 +48,21 @@ capacityInput.addEventListener("input", (e) => {
   }
 });
 
+//카테고리 선택
+function selectCategory(element) {
+  // 모든 카테고리 선택 초기화
+  document.querySelectorAll(".studylist-div-categoryselector").forEach(el => {
+    el.classList.remove("categoryselected");
+  });
+
+  // 선택한 카테고리에 `categoryselected` 클래스 추가
+  element.classList.add("categoryselected");
+
+  // 선택된 카테고리 값을 숨겨진 input에 저장
+  document.getElementById("studyCategory").value = element.dataset.value;
+}
+
+
 /*//파일 첨부시 파일명 표시
 
 const fileInput = document.querySelector("input[name='file']");

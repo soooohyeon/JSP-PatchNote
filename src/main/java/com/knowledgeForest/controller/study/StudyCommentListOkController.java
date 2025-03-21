@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
@@ -22,12 +23,19 @@ public class StudyCommentListOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-//		검색어 저장
-		String keyword = "";
-		keyword = request.getParameter("keyword");
-		System.out.println("***************** 목록 컨트롤러 실행");
 
+		StudyCommentDAO studyCommentDAO = new StudyCommentDAO();
+		Gson gson = new Gson();
+		// 댓글 목록 담을 객체
+		JsonArray comments = new JsonArray();
+		// 페이징 정보를 담을 객체
+        JsonObject pageInfo = new JsonObject();
+		// 최종 JSON 객체 (댓글 목록 + 페이징 정보)
+		JsonObject result = new JsonObject();
+
+		int studyNum = Integer.valueOf(request.getParameter("studyNum"));
+		System.out.println("스터디 번호 : " + studyNum);
+		
 		// 페이지네이션
 //		페이지 번호 파라미터로 받기
 		String tempPage = request.getParameter("page");
@@ -44,12 +52,10 @@ public class StudyCommentListOkController implements Execute {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("startRow", startRow);
 		paramMap.put("endRow", endRow);
+		paramMap.put("studyNum", studyNum);
 		
-		StudyCommentDAO studyCommentDAO = new StudyCommentDAO();
-		
-//		총 유저의 수
-		total = studyCommentDAO.getStudyCommentTotal();
-//		total = studyDAO.getStudyTotal(keyword);
+//		해당 게시글에 대한 댓글 개수
+		total = studyCommentDAO.selectCommentCount(studyNum);
 
 //		페이징 정보 설정
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지 버튼
@@ -60,30 +66,27 @@ public class StudyCommentListOkController implements Execute {
 //		페이지 양옆 <>을 위한 설정
 		boolean prev = startPage > 1;
 		boolean next = endPage < realEndPage;
-
-//		페이지 설정
-		request.setAttribute("page", page);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("prev", prev);
-		request.setAttribute("next", next);
 		
-		
-		
-		int studyNum = Integer.valueOf(request.getParameter("studyNum"));
-		Gson gson = new Gson();
-		JsonArray comments = new JsonArray();
-		
-		System.out.println(studyNum);
-		paramMap.put("studyNum", studyNum);
-		
+		// 댓글 리스트 JSON 형식으로 변환
 		studyCommentDAO.selectAll(paramMap).stream().map(gson::toJson).map(JsonParser::parseString).forEach(comments::add);
+		// JSON 형식으로 변환 결과 객체에 저장
+		result.add("comments", comments);
 		
-		System.out.println(comments.toString());
-		
+//		페이지 설정
+		pageInfo.addProperty("page", page);
+		pageInfo.addProperty("startPage", startPage);
+		pageInfo.addProperty("endPage", endPage);
+		pageInfo.addProperty("prev", prev);
+		pageInfo.addProperty("next", next);
+//		해당 게시글에대한 댓글 개수 JSON 형식으로 변환해서 같이 전달
+        pageInfo.addProperty("total", total);
+
+		// 결과 객체에 저장
+        result.add("pageInfo", pageInfo);
+        
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(comments.toString());
+		out.print(result.toString());
 		out.close();
 		
 		return null;
