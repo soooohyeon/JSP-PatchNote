@@ -63,8 +63,8 @@ public class MyPageDAO {
 	}
 
 	// 신청한 스터디 조회
-	public List<StudyApplyDTO> getStudyList(int userNum) {
-		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
+	public List<StudyApplyDTO> getStudyList(Map<String, Object> paramMap) {
+		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", paramMap);
 		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}
