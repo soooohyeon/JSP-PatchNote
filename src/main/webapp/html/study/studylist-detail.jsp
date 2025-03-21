@@ -287,7 +287,7 @@
 					form="STUDYLIST-FORM-WRITECOURAGE"
 					onclick="writeCourage(${detailStudy.studyNum})">등록</button>
 				<button class="studylist-btn-couragecancel"
-					form="STUDYLIST-FORM-WRITECOURAGE" onclick="closeModal()">
+					onclick="closeModal()">
 					취소</button>
 			</div>
 		</div>
