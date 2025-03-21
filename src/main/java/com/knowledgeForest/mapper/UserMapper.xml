@@ -106,7 +106,7 @@
 		JOIN TBL_USER tu
 		ON ts.USER_NUM = tu.USER_NUM
 		WHERE ts.user_num =
-		tu.user_num
+		#{userNum}
 		ORDER BY STUDY_NUM DESC
 		) studyList
 		WHERE ROWNUM <![CDATA[<=]]>
@@ -128,7 +128,7 @@
 
 
 	<!-- 신청한 스터디 게시판 글 -->
-	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="int">
+	<select id="getStudyList" resultType="StudyApplyDTO" parameterType="StudyUserDTO">
 		SELECT *
 		FROM (
 		SELECT

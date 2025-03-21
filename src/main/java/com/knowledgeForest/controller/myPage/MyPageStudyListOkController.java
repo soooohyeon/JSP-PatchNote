@@ -30,8 +30,7 @@ public class MyPageStudyListOkController implements Execute {
 		
 		int userNum = (int) session.getAttribute("userNumber");
 
-		List<StudyApplyDTO> studyList = mypageDAO.getStudyList(userNum);
-		System.out.println("studyList : " + studyList);
+		
 
 		int total = mypageDAO.getMyStudyTotal(userNum);
 
@@ -49,6 +48,9 @@ public class MyPageStudyListOkController implements Execute {
 		paramMap.put("startRow", startRow);
 		paramMap.put("endRow", endRow);
 		paramMap.put("userNum", userNum);
+		
+		List<StudyApplyDTO> studyList = mypageDAO.getStudyList(paramMap);
+		System.out.println("studyList : " + studyList);
 		
 		// 페이징 정보 설정
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지 버튼
