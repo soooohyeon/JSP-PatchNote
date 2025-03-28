@@ -6,11 +6,15 @@ function getContextPath() {
 	return contextPath;
 }
 
-// 삭제버튼 클릭 시
+// 삭제버튼 클릭 시 - 신청자가 있을 경우
+function dontDeleteBtn() {
+	alert('해당 스터디는 신청자가 있어 삭제할 수 없습니다.');
+}
+
+// 삭제버튼 클릭 시 - 스터디 신청자가 없을 경우
 function clickDeleteBtn(studyNum) {
   // 확인, 취소 버튼 선택
   const isdelete = confirm('정말 삭제하시겠습니까?');
-
 
   // 확인 버튼 클릭시
   if (isdelete) {
