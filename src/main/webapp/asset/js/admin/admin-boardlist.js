@@ -14,7 +14,7 @@ function clickDeleteBtn(boardNum) {
 	// 확인 버튼 클릭시
 	if (isdelete) {
 		$.ajax({
-			/* 자유게시판 글 삭제 컨트롤러로 이동, 공지 넘버 쿼리스트링으로 전달 */
+			/* 자유게시판 글 삭제 컨트롤러로 이동, 글 넘버 쿼리스트링으로 전달 */
 			url: getContextPath() + "/admin/admin-boardDeleteOk.ad?boardNum=" + boardNum,
 			type: "GET",
 			/* 자유게시판 글 삭제 성공 시 알람창 뜨면서 목록 페이지로 이동 */

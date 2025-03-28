@@ -61,7 +61,7 @@
               <div class="admin-div-tablename">활동내역</div>
 
               <!-- 스터디 글, 신청, 댓글 개수 - 제목 -->
-              <ul class="adminUserDetail-div-titlewrap">
+              <%-- <ul class="adminUserDetail-div-titlewrap">
                 <li class="adminUserDetail-li-study">생성한 스터디</li>
                 <li class="adminUserDetail-li-studyapply">신청한 스터디</li>
                 <li class="adminUserDetail-li-studycomment">작성한 자유게시판 글</li>
@@ -77,9 +77,9 @@
                 <li class="adminUserDetail-li-studycomment">
                   <span class="countText">${boardCount}</span>개
                 </li>
-              </ul>
+              </ul> --%>
 
-              <%-- <ul class="adminUserDetail-div-titlewrap">
+              <ul class="adminUserDetail-div-titlewrap">
                 <li class="adminUserDetail-li-study">생성한 스터디</li>
                 <li class="adminUserDetail-li-studyapply">신청한 스터디</li>
                 <li class="adminUserDetail-li-studycomment">작성한 스터디 댓글</li>
@@ -105,12 +105,12 @@
               <!-- 자유게시판 글, 댓글 - 데이터 -->
               <ul class="admin-ul-datawrap">
                 <li class="adminUserDetail-li-board">
-                  <span class="countText">${boardyCount}</span>개
+                  <span class="countText">${boardCount}</span>개
                 </li>
                 <li class="adminUserDetail-li-boardapply">
                   <span class="countText">${boardCommentCount}</span>개
                 </li>
-              </ul> --%>
+              </ul>
 
             </div>
 

@@ -29,7 +29,8 @@
 		<typeAlias type="com.knowledgeForest.dto.UserImgDTO" alias="UserImgDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.BoardImgDTO" alias="BoardImgDTO" />		
 		<typeAlias type="com.knowledgeForest.dto.StudyImgDTO" alias="StudyImgDTO" />	
-		<typeAlias type="com.knowledgeForest.dto.BoardReplyDTO" alias="BoardReplyDTO" />		
+		<typeAlias type="com.knowledgeForest.dto.BoardReplyDTO" alias="BoardReplyDTO" />
+		<typeAlias type="com.knowledgeForest.dto.BoardReplyListDTO" alias="BoardReplyListDTO" />
 		<typeAlias type="com.knowledgeForest.dto.StudyCommentDTO" alias="StudyCommentDTO" />	
 	</typeAliases>
 

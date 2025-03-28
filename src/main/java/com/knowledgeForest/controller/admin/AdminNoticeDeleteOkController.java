@@ -25,9 +25,9 @@ public class AdminNoticeDeleteOkController implements Execute {
 
 //		noticeNum 변수에 저장
 		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
-		
+
 //		이미지 경로 설정
-		final String UPLOAD_PATH = "D:\\kdt_0900_psh\\jsp_6\\project\\back\\forest\\src\\main\\webapp\\upload\\notice";
+		final String UPLOAD_PATH = "D:\\kdt_0900_psh\\web\\jsp_6\\project\\back\\forest\\src\\main\\webapp\\upload\\notice";
 //		배포시 지정할 경로
 //		.metadata/.plugins/.../wtpwebapps/ 내부 경로가 반환되는 이유는 Eclipse의 WTP (Web Tools Platform) 서버 설정 때문
 //		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("upload/notice/");
@@ -40,10 +40,11 @@ public class AdminNoticeDeleteOkController implements Execute {
 		
 //			이미지가 저장된 경로와 삭제할 파일명 전달
 			HashMap<String, String> imgInfo = new HashMap<>();
+			imgInfo.put("noticeNum", String.valueOf(noticeNum));
 			imgInfo.put("UPLOAD_PATH", UPLOAD_PATH);
 			imgInfo.put("imgName", imgName);
 //			실제 폴더에 저장된 이미지를 삭제할 메소드 사용 - 저장경로 및 파일명 전달
-			adminImgDAO.removeAdminImg(imgInfo);
+			adminImgDAO.deleteNoticeImg(imgInfo);
 		}
 		
 //		공지 데이터 삭제 메소드 실행 - noticeNum 전달
