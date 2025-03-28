@@ -9,10 +9,12 @@ import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BannerDTO;
 import com.knowledgeForest.dto.BannerImgDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
+import com.knowledgeForest.dto.FbCommemtUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.NoticeImgDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
 import com.knowledgeForest.dto.StudyApplyUserDTO;
+import com.knowledgeForest.dto.StudyCommentDTO;
 import com.knowledgeForest.dto.StudyUserDTO;
 import com.knowledgeForest.dto.UserDTO;
 
@@ -43,6 +45,8 @@ public class AdminDAO {
 	public List<NoticeDTO> selectNoticeFive() {
 		return sqlSession.selectList("AdminMapper.selectNoticeFive");
 	}
+	
+//	=========================================================
 	
 //	모든 유저 목록 조회
 	public List<UserDTO> selectUserAll(Map<String, Object> paramMap) {
@@ -89,6 +93,8 @@ public class AdminDAO {
 		sqlSession.delete("AdminMapper.deleteUser", userNum);
 	}
 	
+//	=========================================================
+	
 //	스터디 목록 조회
 	public List<StudyUserDTO> selectStudyAll(Map<String, Object> paramMap) {
 		return sqlSession.selectList("AdminMapper.selectStudyAll", paramMap);
@@ -103,6 +109,81 @@ public class AdminDAO {
 	public void deleteStudy (int studyNum) {
 		sqlSession.delete("AdminMapper.deleteStudy", studyNum);
 	}
+	
+//	=========================================================
+	
+//	스터디 댓글 목록 조회
+	public List<StudyCommentDTO> selectStudyReplyAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectStudyReplyAll", paramMap);
+	}
+	
+//	총 스터디 댓글 수
+	public int getStudyReplyTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getStudyReplyTotal", keyword);
+	}
+
+//	스터디 댓글 삭제
+	public void deleteStudyReply(int studyReplyNum) {
+		sqlSession.delete("AdminMapper.deleteStudyReply", studyReplyNum);
+	}
+	
+//	=========================================================
+	
+//	스터디 신청 목록 조회
+	public List<StudyApplyUserDTO> selectStudyApplyAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectStudyApplyAll", paramMap);
+	}
+	
+//	총 스터디 신청 개수
+	public int getStudyApplyTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getStudyApplyTotal", keyword);
+	}
+	
+//	스터디 신청 취소
+	public void deleteStudyApply(int likeNum) {
+		sqlSession.delete("AdminMapper.deleteStudyApply", likeNum);
+	}
+	
+//	스터디 신청 상세 조회
+	public StudyApplyDTO selectStudyApplyOne(int studyApplyNum) {
+		return sqlSession.selectOne("AdminMapper.selectStudyApplyOne", studyApplyNum);
+	}
+	
+//	=========================================================
+	
+//	자유게시판 목록 조회
+	public List<BoardUserDTO> selectBoardAll (Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectBoardAll", paramMap);
+	}
+
+//	총 자유게시판 게시글 수
+	public int getBoardTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getBoardTotal", keyword);
+	}
+	
+//	자유게시판 글 삭제
+	public void deleteBoard(int boardNum) {
+		sqlSession.selectList("AdminMapper.deleteBoard", boardNum);
+	}
+	
+//	=========================================================
+	
+//	자유게시판 댓글 목록 조회
+	public List<FbCommemtUserDTO> selectBoardReplyAll(Map<String, Object> paramMap) {
+		return sqlSession.selectList("AdminMapper.selectBoardReplyAll", paramMap);
+	}
+	
+//	총 자유게시판 댓글 수
+	public int getBoardReplyTotal(String keyword) {
+		return sqlSession.selectOne("AdminMapper.getBoardReplyTotal", keyword);
+	}
+
+//	자유게시판 댓글 삭제
+	public void deleteBoardReply(int boardReplyNum) {
+		sqlSession.delete("AdminMapper.deleteBoardReply", boardReplyNum);
+	}
+	
+//	=========================================================
 	
 //	공지 목록 조회
 	public List<NoticeDTO> selectNoticeAll(Map<String, Object> paramMap) {
@@ -137,48 +218,7 @@ public class AdminDAO {
 		sqlSession.insert("AdminMapper.updateNotice", noticeDTO);
 	}
 	
-//	스터디 신청 목록 조회
-	public List<StudyApplyUserDTO> selectStudyApplyAll(Map<String, Object> paramMap) {
-		return sqlSession.selectList("AdminMapper.selectStudyApplyAll", paramMap);
-	}
-	
-//	총 스터디 신청 개수
-	public int getStudyApplyTotal(String keyword) {
-		return sqlSession.selectOne("AdminMapper.getStudyApplyTotal", keyword);
-	}
-	
-//	스터디 신청 취소
-	public void deleteStudyApply(int likeNum) {
-		sqlSession.delete("AdminMapper.deleteStudyApply", likeNum);
-	}
-	
-//	스터디 신청 상세 조회
-	public StudyApplyDTO selectStudyApplyOne(int studyApplyNum) {
-		return sqlSession.selectOne("AdminMapper.selectStudyApplyOne", studyApplyNum);
-	}
-	
-//	자유게시판 목록 조회
-	public List<BoardUserDTO> selectBoardAll (Map<String, Object> paramMap) {
-		return sqlSession.selectList("AdminMapper.selectBoardAll", paramMap);
-	}
-
-//	총 자유게시판 게시글 수
-	public int getBoardTotal(String keyword) {
-		return sqlSession.selectOne("AdminMapper.getBoardTotal", keyword);
-	}
-	
-//	자유게시판 글 삭제
-	public void deleteBoard(int boardNum) {
-		sqlSession.selectList("AdminMapper.deleteBoard", boardNum);
-	}
-	
-//	배너 등록
-	public int insertBanner (BannerDTO bannerDTO) {
-//		배너 등록하는 쿼리 실행
-		sqlSession.insert("AdminMapper.insertBanner", bannerDTO);
-//		가장 최근에 생성된 배너 번호값 리턴 - 이미지 첨부를 위함
-		return sqlSession.selectOne("AdminMapper.getCurrentBannerNum");
-	}
+//	=========================================================
 	
 //	배너 목록 조회
 	public List<BannerDTO> selectBannerAll (Map<String, Object> paramMap) {
@@ -188,6 +228,14 @@ public class AdminDAO {
 //	총 배너 게시글 수
 	public int getBannerTotal(String keyword) {
 		return sqlSession.selectOne("AdminMapper.getBannerTotal", keyword);
+	}
+	
+//	배너 등록
+	public int insertBanner (BannerDTO bannerDTO) {
+//		배너 등록하는 쿼리 실행
+		sqlSession.insert("AdminMapper.insertBanner", bannerDTO);
+//		가장 최근에 생성된 배너 번호값 리턴 - 이미지 첨부를 위함
+		return sqlSession.selectOne("AdminMapper.getCurrentBannerNum");
 	}
 	
 //	배너 상세 조회
@@ -200,7 +248,7 @@ public class AdminDAO {
 		sqlSession.delete("AdminMapper.deleteBanner", bannerNum);
 	}
 	
-//	공지 수정
+//	배너 수정
 	public void updateBanner (BannerDTO BannerDTO) {
 		sqlSession.insert("AdminMapper.updateBanner", BannerDTO);
 	}
