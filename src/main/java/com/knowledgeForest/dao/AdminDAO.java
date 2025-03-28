@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.knowledgeForest.config.MyBatisConfig;
 import com.knowledgeForest.dto.BannerDTO;
 import com.knowledgeForest.dto.BannerImgDTO;
+import com.knowledgeForest.dto.BoardReplyListDTO;
 import com.knowledgeForest.dto.BoardUserDTO;
-import com.knowledgeForest.dto.FbCommemtUserDTO;
 import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.NoticeImgDTO;
 import com.knowledgeForest.dto.StudyApplyDTO;
@@ -169,7 +169,7 @@ public class AdminDAO {
 //	=========================================================
 	
 //	자유게시판 댓글 목록 조회
-	public List<FbCommemtUserDTO> selectBoardReplyAll(Map<String, Object> paramMap) {
+	public List<BoardReplyListDTO> selectBoardReplyAll(Map<String, Object> paramMap) {
 		return sqlSession.selectList("AdminMapper.selectBoardReplyAll", paramMap);
 	}
 	

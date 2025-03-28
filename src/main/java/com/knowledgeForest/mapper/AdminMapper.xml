@@ -361,7 +361,7 @@
 	<!-- ==================================================================== -->
 	
 	<!-- 자유게시판 댓글 목록 조회 -->
-	<select id="selectBoardReplyAll" resultType="FbCommemtUserDTO">
+	<select id="selectBoardReplyAll" resultType="BoardReplyListDTO">
 		SELECT *
 		FROM (
 			SELECT ROWNUM AS rnum, boarReplyList.*

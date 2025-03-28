@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.AdminDAO;
-import com.knowledgeForest.dto.FbCommemtUserDTO;
+import com.knowledgeForest.dto.BoardReplyDTO;
+import com.knowledgeForest.dto.BoardReplyListDTO;
 
 public class AdminBoardReplyListOkController implements Execute {
 
@@ -23,7 +24,7 @@ public class AdminBoardReplyListOkController implements Execute {
 		AdminDAO adminDAO = new AdminDAO();
 
 //		검색 결과 데이터를 담을 리스트 선언
-		List<FbCommemtUserDTO> boardReplyList = null;
+		List<BoardReplyListDTO> boardReplyList = null;
 //		검색어 파라미터로 받기
 		String keyword = request.getParameter("keyword");
 		
@@ -68,6 +69,7 @@ public class AdminBoardReplyListOkController implements Execute {
 	    
 //	    목록 설정
 		request.setAttribute("boardReplyList", boardReplyList);
+		System.out.println(boardReplyList);
 		result.setPath("/html/admin/admin-boardcommentlist.jsp");
 		result.setRedirect(false);
 
