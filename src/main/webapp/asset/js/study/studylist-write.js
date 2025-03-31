@@ -1,10 +1,17 @@
 // 카테고리 선택시 selected 클래스 추가
-const categoryWrapper = document.querySelector(
-  ".studylist-div-categoryselectwrapper"
-); // 상위 컨테이너 선택
+const categoryWrapper = document.querySelector(".studylist-div-categoryselectwrapper"); // 상위 컨테이너 선택
+const categoryInput = document.querySelector("#studyCategory"); // 카테고리 값을 넘길 Input 태그
+const showPhWrapper = document.querySelector(".studylist-div-phoneselectwrapper");
+const showPhInput = document.querySelector("#showPhone");
+
 const categoryList = document.querySelectorAll(
   ".studylist-div-categoryselector"
 ); // 모든 카테고리 요소 선택
+
+const showPhList = document.querySelectorAll(
+	".studylist-div-shownumberselector"
+);
+
 categoryList.forEach((item) => {
   item.addEventListener("click", () => {
     // 현재 선택된 항목에서 selected 제거
@@ -13,9 +20,24 @@ categoryList.forEach((item) => {
       .classList.remove("categoryselected");
     // 클릭된 항목에 selected 추가
     item.classList.add("categoryselected");
+	categoryInput.value = categoryWrapper.querySelector(".categoryselected").dataset.value;
     //선택된 카테고리의 값 저장
   });
 });
+
+showPhList.forEach((item) => {
+  item.addEventListener("click", () => {
+    // 현재 선택된 항목에서 selected 제거
+    showPhWrapper
+      .querySelector(".phoneselected")
+      .classList.remove("phoneselected");
+    // 클릭된 항목에 selected 추가
+    item.classList.add("phoneselected");
+	showPhInput.value = showPhWrapper.querySelector(".phoneselected").dataset.value;
+    //선택된 카테고리의 값 저장
+  });
+});
+
 
 //전화번호 탭 선택시 selected 클래스 추가
 const phoneWrapper = document.querySelector(
@@ -47,21 +69,6 @@ capacityInput.addEventListener("input", (e) => {
     e.target.value = 20;
   }
 });
-
-//카테고리 선택
-function selectCategory(element) {
-  // 모든 카테고리 선택 초기화
-  document.querySelectorAll(".studylist-div-categoryselector").forEach(el => {
-    el.classList.remove("categoryselected");
-  });
-
-  // 선택한 카테고리에 `categoryselected` 클래스 추가
-  element.classList.add("categoryselected");
-
-  // 선택된 카테고리 값을 숨겨진 input에 저장
-  document.getElementById("studyCategory").value = element.dataset.value;
-}
-
 
 /*//파일 첨부시 파일명 표시
 

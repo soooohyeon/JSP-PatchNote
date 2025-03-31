@@ -42,7 +42,7 @@ public class StudyCommentListOkController implements Execute {
 //		넘겨받은 파라미터가 없다면 기본값 1 설정
 		int page = (tempPage == null) ? 1 : Integer.valueOf(tempPage);
 
-		int rowCount = 10; // 한 페이지당 출력될 데이터 수
+		int rowCount = 5; // 한 페이지당 출력될 데이터 수
 		int pageCount = 5; // 5 단위로 페이지 버튼 출력
 		int startRow = (page - 1) * rowCount + 1; // 1페이지라면 rownum 1부터, 2페이지라면 rownum 11부터
 		int endRow = startRow + rowCount - 1; // 1페이지라면 rownum 10까지, 2페이지라면 rownum 20까지

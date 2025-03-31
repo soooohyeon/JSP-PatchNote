@@ -51,10 +51,10 @@ public class StudyWriteOkController implements Execute {
       studyDTO.setStudyEndDay(multipartRequest.getParameter("studyEndDay"));
       studyDTO.setStudyStartTime(multipartRequest.getParameter("studyStartTime"));
       studyDTO.setStudyEndTime(multipartRequest.getParameter("studyEndTime"));
-//      studyDTO.setStudyLimit(Integer.parseInt(request.getParameter("studyLimit")));
+      studyDTO.setStudyLimit(Integer.parseInt(multipartRequest.getParameter("studyLimit")));
       studyDTO.setStudyDeadline(multipartRequest.getParameter("studyDeadline"));
-//      studyDTO.setStudyShowph(Integer.parseInt(request.getParameter("studyShowph")));
-//      studyDTO.setStudyCategory(Integer.parseInt(request.getParameter("studyCategory")));
+      studyDTO.setStudyShowph(Integer.parseInt(multipartRequest.getParameter("studyShowph")));
+      studyDTO.setStudyCategory(Integer.parseInt(multipartRequest.getParameter("studyCat")));
       studyDTO.setStudyUploadDate(multipartRequest.getParameter("studyUploadDate"));
       studyDTO.setStudyEditDate(multipartRequest.getParameter("studyEditDate"));
       

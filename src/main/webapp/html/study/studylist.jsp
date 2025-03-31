@@ -103,9 +103,9 @@
 							</div>
 							<div class="studylist-div-groupmakerwrapper">
 								<div class="studylist-div-groupmaker">
-									<c:out value="${study.userNick}" />
+									작성자 | <c:out value="${study.userNick}" />
 								</div>
-								<div class="studylist-div-likewrapper">
+<%-- 								<div class="studylist-div-likewrapper">
 
 									<img
 										src="${pageContext.request.contextPath}/asset/img/study/like.png"
@@ -113,7 +113,7 @@
 									<div class="studylist-div-likecount">
 										<c:out value="${study.likeCount}" />
 									</div>
-								</div>
+								</div> --%>
 							</div>
 						</div>
 					</div>
