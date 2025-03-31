@@ -128,8 +128,10 @@
 		</div>
 		<!-- 등록 버튼 -->
 
-		<button class="studylist-btn-submit" type="submit"
-			form="STUDYLIST-FORM-WRITE" onclick="applyStudy()">스터디 신청</button>
+		<c:if test="${sessionScope.userNumber == detailStudy.userNum}">
+			<button class="studylist-btn-submit" type="submit"
+				form="STUDYLIST-FORM-WRITE" onclick="applyStudy()">스터디 신청</button>
+		</c:if>
 		<!-- 스터디 신청 후 보이는 버튼 -->
 
 		<!-- 
