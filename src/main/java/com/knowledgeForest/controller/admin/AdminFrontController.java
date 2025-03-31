@@ -56,6 +56,16 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/studyDeleteOk.ad":
 			result = new AdminStudyDeleteOkController().execute(request, response);
 			break;
+			
+//		스터디 댓글 목록 조회
+		case "/admin/admin-studycommentlist.ad":
+			result = new AdminStudyReplyListOkController().execute(request, response);
+			break;
+			
+//		스터디 댓글 목록 조회
+		case "/admin/admin-studycommentDeleteOk.ad":
+			result = new AdminStudyReplyDeleteOkController().execute(request, response);
+			break;
 
 //		스터디 신청 관리
 		case "/admin/admin-studyapplylist.ad":
@@ -117,11 +127,14 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminBoardDeleteOkController().execute(request, response);
 			break;
 			
-		case "/admin/admin-studycommentlist.ad":
-			request.getRequestDispatcher("/html/admin/admin-studycommentlist.jsp").forward(request, response);
-			break;
+//		자유게시판 댓글 목록 조회
 		case "/admin/admin-boardcommentlist.ad":
-			request.getRequestDispatcher("/html/admin/admin-boardcommentlist.jsp").forward(request, response);
+			result = new AdminBoardReplyListOkController().execute(request, response);
+			break;
+			
+//		자유게시판 댓글 삭제
+		case "/admin/admin-boardcommentDeleteOk.ad":
+			result = new AdminBoardReplyDeleteOkController().execute(request, response);
 			break;
 			
 //		배너 목록 조회

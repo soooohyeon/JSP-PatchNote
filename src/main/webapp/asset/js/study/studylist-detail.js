@@ -8,6 +8,15 @@ function getContextPath() {
 	return contextPath;
 }
 
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, studyNum) {
+	console.log("페이지 이동2222");
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	location.href = pathName + "?studyNum=" + studyNum + "&&page=" + page;
+}
+
 //뒤로 가기 버튼을 눌렀을 때 이전 페이지로 이동
 function goBack() {
 	window.history.back();
@@ -98,7 +107,6 @@ $(document).ready(function() {
 				alert("댓글이 작성되었습니다.");
 				contentElement.value = "";
 				loadComments();
-				loadCommentCount();
 			} else {
 				alert("댓글 작성에 실패했습니다.");
 			}
@@ -107,8 +115,31 @@ $(document).ready(function() {
 			alert("댓글 작성 중 오류가 발생했습니다.");
 		}
 	});
-	
-	//댓글 갯수 로드 (fetch)
+
+	//댓글 목록 로드 (fetch)
+	async function loadComments() {
+		try {
+			const urlParams = new URLSearchParams(window.location.search);
+			const page = urlParams.get("page");
+			let response = null;
+
+			if (page == null) {
+				response = await fetch(getContextPath() + `/study/studyCommentListOk.st?studyNum=${studyNum}`);
+			} else {
+				response = await fetch(getContextPath() + `/study/studyCommentListOk.st?studyNum=${studyNum}&&page=` + page);
+			}
+			const data = await response.json();
+
+			renderComments(data.comments, data.pageInfo.total);
+			loadPage(data.pageInfo, `${studyNum}`);
+			
+		} catch (error) {
+			console.error("댓글 목록 불러오기 실패:", error);
+			alert("댓글 목록을 불러오는데 실패했습니다.");
+		}
+	}
+
+/*	//댓글 갯수 로드 (fetch)
 	async function loadCommentCount() {
 		try {
 
@@ -120,27 +151,18 @@ $(document).ready(function() {
 			console.error("댓글 갯수 불러오기 실패:", error);
 			alert("댓글 갯수를 불러오는데 실패했습니다.");
 		}
-	}
-
-	//댓글 목록 로드 (fetch)
-	async function loadComments() {
-		try {
-			const response = await fetch(getContextPath() + `/study/studyCommentListOk.st?studyNum=${studyNum}`);
-			if (!response.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
-			const comments = await response.json();
-			renderComments(comments);
-		} catch (error) {
-			console.error("댓글 목록 불러오기 실패:", error);
-			alert("댓글 목록을 불러오는데 실패했습니다.");
-		}
-	}
+	}*/
 
 	//댓글 렌더링
-	function renderComments(comments) {
+	function renderComments(comments, total) {
 		const commentList = document.querySelector("#studylist-div-commentlist");
-		console.log("commentList" + commentList);
 		commentList.innerHTML = "";
 
+		// 댓글 개수 출력
+		total = "총 " + total + "개";
+		console.log(total);
+		document.querySelector(".studylist-span-commentcounter").innerText = total;
+		
 		if (comments.length === 0) {
 			commentList.innerHTML = "<li>댓글이 없습니다.</li>";
 			return;
@@ -151,9 +173,6 @@ $(document).ready(function() {
 			/* userNum은 studylist-detail.jsp 하단에 script 태그로 저장해둔 값을 받아옴 */
 			const isMyComment = comment.userNum == userNum;
 
-			console.log("comment.userNum : " + comment.userNum);
-			console.log("userNum : " + userNum);
-			console.log("isnmyComment : " + isMyComment);
 			const div = document.createElement("div");
 			div.innerHTML =
 				`
@@ -176,21 +195,54 @@ $(document).ready(function() {
             </div>
          </div>
 		 </li>
-		 						   </ul>
-		                               
-         `
+		 						   </ul>`
 			commentList.appendChild(div);
 		});
 	}
 
 	// 초기 댓글 로드
-	loadCommentCount();
 	loadComments();
 
 });
 
 
+// 페이지네이션 출력 함수
+function loadPage(pageInfo, boardNum) {
+	const pagination = document.querySelector("#STUDYLIST-UL-PAGINATION");
+	pagination.innerHTML = ""
+	
+	// 이전 버튼 (prev)
+	if (pageInfo.prev) {
+	    const prevLi = document.createElement("li");
+	    prevLi.className = "studylist-li-paginationlist pre";
+	    prevLi.innerHTML = "&lt;";
+	    prevLi.onclick = () => movePage(pageInfo.startPage - 1, boardNum);
+	    pagination.appendChild(prevLi);
+	}
 
+	// 페이지 번호 리스트
+	for (let i = pageInfo.startPage; i <= pageInfo.endPage; i++) {
+	    const pageLi = document.createElement("li");
+	    pageLi.className = "studylist-li-paginationlist";
+	    pageLi.innerText = i;
+	    pageLi.onclick = () => movePage(i, boardNum);
+
+	    if (i === pageInfo.page) {
+	        pageLi.classList.add("currentpage"); // 현재 페이지 강조
+	    }
+
+	    pagination.appendChild(pageLi);
+	}
+
+	// 다음 버튼 (next)
+	if (pageInfo.next) {
+	    const nextLi = document.createElement("li");
+	    nextLi.className = "studylist-li-paginationlist next";
+	    nextLi.innerHTML = "&#62;";
+	    nextLi.onclick = () => movePage(pageInfo.endPage + 1, boardNum);
+	    pagination.appendChild(nextLi);
+	}
+}
 
 // 댓글 등록
 /*function writeComment() {
@@ -422,9 +474,17 @@ function cancelStudy() {
 	}
 }
 //modal 닫기
-function closeModal() {
+/*function closeModal() {
 	document.getElementById("STUDYLIST-MODAL-APPLY").style.display = "none";
+}*/
+function closeModal() {
+    let modal = document.getElementById("STUDYLIST-MODAL-APPLY");
+    if (modal) {
+        modal.style.display = "none";
+    }
 }
+
+
 //각오 등록
 function writeCourage(studyNum) {
 	//각오를 입력했는지 여부를 판단
@@ -472,17 +532,4 @@ function writeCourage(studyNum) {
 		});
 	}
 
-}
-
-// 페이지네이션 클릭시 페이지 이동
-function movePage(page, keyword) {
-	console.log("페이지 이동 함수");
-	/* 현재 페이지의 경로 */
-	var pathName= window.location.pathname;
-	
-	if (keyword == null) {
-		location.href = pathName + "?page=" + page;
-	} else {
-		location.href = pathName + "?keyword=" + keyword + "&&page=" + page;
-	}
 }

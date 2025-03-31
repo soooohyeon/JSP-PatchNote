@@ -52,3 +52,6 @@
 }
 
 .rotateBtn { transform: rotate(180deg) }
+
+/* 가로 스크롤 없애기 위해 가로 너비 계산 */
+div#ADMIN-DIV-CONTENTWRAP { width: calc(100% - 210px); }

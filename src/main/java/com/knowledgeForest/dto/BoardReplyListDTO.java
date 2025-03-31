@@ -7,6 +7,7 @@ public class BoardReplyListDTO {
 	private String fbCommentUploadDate;
 	private int boardNum;
 	private int userNum;
+	private String userId;
 	private String userNick;
 	
 	public int getFbCommentNum() {
@@ -45,11 +46,18 @@ public class BoardReplyListDTO {
 	public void setUserNick(String userNick) {
 		this.userNick = userNick;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
 	@Override
 	public String toString() {
 		return "BoardReplyListDTO [fbCommentNum=" + fbCommentNum + ", fbCommentContent=" + fbCommentContent
 				+ ", fbCommentUploadDate=" + fbCommentUploadDate + ", boardNum=" + boardNum + ", userNum=" + userNum
-				+ ", userNick=" + userNick + "]";
+				+ ", userNick=" + userNick + ", userId=" + userId + "]";
 	}
+	
 }

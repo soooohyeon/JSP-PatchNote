@@ -8,6 +8,7 @@ public class StudyCommentDTO {
 	private String studyCommentUploadDate;
 	private String studyCommentEditDate;
 	private String userNick;
+	private String userId;
 	
 	public int getStudyCommentNum() {
 		return studyCommentNum;
@@ -51,12 +52,18 @@ public class StudyCommentDTO {
 	public void setUserNick(String userNick) {
 		this.userNick = userNick;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
 	@Override
 	public String toString() {
 		return "StudyCommentDTO [studyCommentNum=" + studyCommentNum + ", studyNum=" + studyNum + ", userNum=" + userNum
 				+ ", studyComment=" + studyComment + ", studyCommentUploadDate=" + studyCommentUploadDate
-				+ ", studyCommentEditDate=" + studyCommentEditDate + ", userNick=" + userNick + "]";
+				+ ", studyCommentEditDate=" + studyCommentEditDate + ", userNick=" + userNick + ", userId=" + userId
+				+ "]";
 	}
-	
 }

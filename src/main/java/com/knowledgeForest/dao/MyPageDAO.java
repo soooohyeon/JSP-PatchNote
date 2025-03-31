@@ -53,8 +53,8 @@ public class MyPageDAO {
 //	}
 
 	// 내가 작성한 스터디 목록 조회
-	public List<StudyUserDTO> getMyStudies(int userNum) {
-		return sqlsession.selectList("UserMapper.getMyStudies", userNum);
+	public List<StudyUserDTO> getMyStudies(Map<String, Object> paramMap) {
+		return sqlsession.selectList("UserMapper.getMyStudies", paramMap);
 	}
 
 	// 작성한 스터디 총 갯수 출력
@@ -63,8 +63,8 @@ public class MyPageDAO {
 	}
 
 	// 신청한 스터디 조회
-	public List<StudyApplyDTO> getStudyList(int userNum) {
-		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", userNum);
+	public List<StudyApplyDTO> getStudyList(Map<String, Object> paramMap) {
+		List<StudyApplyDTO> studyList = sqlsession.selectList("UserMapper.getStudyList", paramMap);
 		System.out.println("UserMapper.getStudyList: " + studyList);
 		return studyList;
 	}

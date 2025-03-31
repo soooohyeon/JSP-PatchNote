@@ -35,7 +35,7 @@ public class StudyWriteOkController implements Execute {
       
 //      배포시 사용해야할 주소
 //      final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("upload/");
-      final String UPLOAD_PATH = "D:\\web_0900_oht\\Semi\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\study";
+      final String UPLOAD_PATH = "D:\\web_0900_oht\\kdtpj\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\study";
       final int FILE_SIZE = 1024 * 1024 * 50; // 5mb;
 
       MultipartRequest multipartRequest = new MultipartRequest(request, UPLOAD_PATH, FILE_SIZE, "utf-8",

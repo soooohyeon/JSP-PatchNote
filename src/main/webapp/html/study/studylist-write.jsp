@@ -39,13 +39,24 @@
           </div>
           <!-- 2개씩 나눠진 div layer -->
           <div class="studylist-div-wrapperlayerDual">
-            <div class="studylist-div-infowrapperDual">
+          
+<!--             <div class="studylist-div-infowrapperDual">
               <div class="label">카테고리</div>
               <div class="studylist-div-categoryselectwrapper">
                 <div class="studylist-div-categoryselector categoryselected">개발</div>
                 <div class="studylist-div-categoryselector">보안</div>
               </div>
-            </div>
+            </div> -->
+            <div class="studylist-div-infowrapperDual">
+			  <div class="label">카테고리</div>
+			  <div class="studylist-div-categoryselectwrapper">
+			    <div class="studylist-div-categoryselector categoryselected" name="studyCategory" data-value="0">개발</div>
+			    <div class="studylist-div-categoryselector" name="studyCategory" data-value="1">보안</div>
+			  </div>
+			  <!-- 숨겨진 input -->
+			  <input type="hidden" name="studyCategory" id="studyCategory" value="0">
+			</div>
+			
             <div class="studylist-div-infowrapperDual">
               <div class="label">전화번호</div>
               <div class="studylist-div-phoneselectwrapper">

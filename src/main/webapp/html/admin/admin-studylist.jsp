@@ -67,13 +67,19 @@
 											<c:out value="${study.studyNum}" />
 										</li>
 										<li class="adminStudy-li-studytitle">
+											[
+											<c:choose>
+												<c:when test="${study.studyCategory == 0}">개발</c:when>
+												<c:otherwise>보안</c:otherwise>
+											</c:choose>
+											] 
 											<!-- 사용자 화면의 스터디 상세페이지로 이동 -->
 											<a href="${pageContext.request.contextPath}/study/studyDetailOk.st?studyNum=${study.studyNum}">
 												<c:out value="${study.studyTitle}" />
 											</a>
 										</li>
 										<li class="adminStudy-li-studymemberwrap">
-											(<c:out value="${study.participants}" />/<c:out value="${study.studyLimit}" />)
+											<c:out value="${study.participants}" />/<c:out value="${study.studyLimit}" />
 										</li>
 										<c:choose>
 										    <c:when test="${study.participants == study.studyLimit or study.studyDeadline < today}">
@@ -92,9 +98,17 @@
 										<li class="adminStudy-li-studywritedate lightdata">
 											<c:out value="${study.studyUploadDate}" />
 										</li>
-										<li class="adminStudy-li-studydelete"><input
-											type="button" class="admin-btn-delete"
-											onclick="clickDeleteBtn(${study.studyNum})" value="삭제">
+										<li class="adminStudy-li-studydelete">
+											<c:choose>
+											<c:when test="${study.participants == 0}">
+												<input type="button" class="admin-btn-delete"
+												onclick="clickDeleteBtn(${study.studyNum})" value="삭제">
+											</c:when>
+											<c:otherwise>
+												<input type="button" class="admin-btn-delete"
+												onclick="dontDeleteBtn()" value="삭제">
+											</c:otherwise>
+											</c:choose>
 										</li>
 									</ul>
 								</c:forEach>
