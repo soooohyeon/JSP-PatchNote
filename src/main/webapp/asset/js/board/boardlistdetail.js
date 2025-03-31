@@ -6,6 +6,15 @@ function getContextPath() {
 	return contextPath;
 }
 
+// 페이지네이션 클릭시 페이지 이동
+function movePage(page, boardNum) {
+	console.log("페이지 이동");
+	/* 현재 페이지의 경로 */
+	var pathName= window.location.pathname;
+	
+	location.href = pathName + "?boardNum=" + boardNum + "&&page=" + page;
+}
+
 //뒤로 가기 버튼을 눌렀을 때 이전 페이지로 이동
 function goBack() {
   window.history.back();

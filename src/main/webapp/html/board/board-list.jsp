@@ -81,18 +81,18 @@
 	 <div class="boardlist-div-paginationwrapper">
 		<ul id="BOARDLIST-UL-PAGINATION">
 			<c:if test="${prev}">
-				<li class="boardlist-li-paginationlist pre" onclick="movePage(${startPage -1}, '${param.keyword}')">&lt;</li>
+				<li class="boardlist-li-paginationlist pre" onclick="movePage(${startPage -1}, '${param.boardNum}')">&lt;</li>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
 				<c:choose>
 					<c:when test="${!(i == page)}">
-						<li class="boardlist-li-paginationlist" onclick="movePage(${i}, '${param.keyword}')">
+						<li class="boardlist-li-paginationlist" onclick="movePage(${i}, '${param.boardNum}')">
 							<c:out value="${i}"/>
 						</li>
 					</c:when>
 					<c:otherwise>
-						<li class="boardlist-li-paginationlist currentpage" onclick="movePage(${i}, '${param.keyword}')">
+						<li class="boardlist-li-paginationlist currentpage" onclick="movePage(${i}, '${param.boardNum}')">
 							<c:out value="${i}"/>
 						</li>
 					</c:otherwise>
@@ -100,7 +100,7 @@
 			</c:forEach>
 			
 			<c:if test="${next}">
-				<li class="boardlist-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
+				<li class="boardlist-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.boardNum}')">&#62;</li>
 			</c:if>
 		</ul>
 	</div> 
