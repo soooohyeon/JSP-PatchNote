@@ -86,15 +86,37 @@
     	FROM TBL_USER_IMG
     	WHERE BOARD_NUM = #{boardNumber}
     </select>
+    
     <!-- 댓글 -->
- 
    	<!-- 댓글 조회 -->
-	<select id="selectAllReply" parameterType="int" resultType="BoardReplyDTO">
-		SELECT FB_COMMENT_NUM, FB_COMMENT_CONTENT, FB_COMMENT_UPLOAD_DATE, BOARD_NUM, tu.USER_NUM, tu.USER_NICK
-		FROM TBL_USER tu join TBL_FB_COMMENT tbc
-		on tu.USER_NUM = tbc.USER_NUM
+	<select id="selectAllReply" resultType="BoardReplyListDTO">
+		SELECT *
+		FROM (
+			SELECT rownum AS rnum, boardList.*
+			FROM (
+			SELECT
+				FB_COMMENT_NUM,
+				FB_COMMENT_CONTENT,
+				FB_COMMENT_UPLOAD_DATE,
+				BOARD_NUM,
+				tu.USER_NUM,
+				tu.USER_NICK
+			FROM TBL_USER tu join TBL_FB_COMMENT tbc
+			on tu.USER_NUM = tbc.USER_NUM
+			WHERE BOARD_NUM = #{boardNum}
+			ORDER BY FB_COMMENT_NUM DESC
+			) boardList
+			WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+		)
+		WHERE rnum >= #{startRow}
+	</select>
+	
+	<select id="getCommentTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM TBL_FB_COMMENT
 		WHERE BOARD_NUM = #{boardNum}
 	</select>
+	
 	<!-- 댓글 등록 -->
 	<insert id="insertReply" parameterType="BoardReplyDTO">
 		insert into tbl_FB_COMMENT(FB_COMMENT_NUM, FB_COMMENT_CONTENT, BOARD_NUM, USER_NUM)

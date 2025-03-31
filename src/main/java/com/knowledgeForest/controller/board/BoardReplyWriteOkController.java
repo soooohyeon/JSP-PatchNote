@@ -27,7 +27,7 @@ public class BoardReplyWriteOkController implements Execute {
 		BoardReplyDTO boardreplyDTO = new BoardReplyDTO();
 		BoardReplyDAO boardreplyDAO = new BoardReplyDAO();
 		HttpSession session = request.getSession(false);
-		System.out.println("세션에 저장된 멤버" + session.getAttribute("userNumber"));
+		
 		int userNum = (int) session.getAttribute("userNumber");
 		request.setCharacterEncoding("utf-8");
 		

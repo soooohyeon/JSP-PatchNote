@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
+
 import com.knowledgeForest.Result;
 import com.knowledgeForest.controller.notice.NoticeDetailOkController;
 import com.knowledgeForest.controller.notice.NoticeListOkController;
@@ -30,7 +32,6 @@ public class BoardFrontController extends HttpServlet {
 
 	      String target = request.getRequestURI().substring(request.getContextPath().length());
 	      Result result = null;
-
 	      request.setCharacterEncoding("UTF-8");
 	      
 	      switch(target) {
@@ -61,15 +62,24 @@ public class BoardFrontController extends HttpServlet {
 		case "/board/boardEditOk.bo" :
 			result = new BoardEditOkController().execute(request, response);
 			break;
+			
 	    case "/board/boardReplyWriteOk.bo":
-	    	System.out.println("댓글 작성 컨트롤러 진입");
 	    	result = new BoardReplyWriteOkController().execute(request, response);
 	    	break;
 	    	
 	    case "/board/boardReplyListOk.bo":
-	    	System.out.println("댓글 목록 컨트롤러 진입");
 	    	result = new BoardReplyListOkController().execute(request, response);
 	    	break;
+	    	
+	    case "/board/boardReplyDeleteOk.bo":
+	    	System.out.println("댓글 삭제 컨틀롤러 진입");
+	    	result = new BoardReplyDeleteOkController().execute(request, response);
+	    	break;
+	    
+	    case "/board/boardReplyUpdateOk.bo":
+	    	result = new BoardReaplyUpdateOkController().execute(request, response);
+	    	break;
+	    	
 	}
 
 	      if (result != null) {
