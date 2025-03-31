@@ -225,101 +225,38 @@ $(document).ready(function() {
 		}
 	}
 	 
-	/*//댓글 수정 준비 (fetch)
-	function updateComment(event) {
-		const list = event.target.closest(".boardlistdetail-div-commentlist");
-		const contentDiv = list.querySelector(".boardlistdetail-span-commentcontents");
-		originalContent = contentDiv.textContent.trim();
-
-		contentDiv.innerHTML = `<textarea class="boardlistdetail-textarea-updateform">${originalContent}</textarea>`;
-		event.target.closest(".boardlistdetail-detail-div-btnwrapper").innerHTML = `
-		               <button type="button" class="boardlistdetail-span-commenteditbtn replyUpdateOk" data-number="${event.target.dataset.number}">수정 완료</button>
-		               <button type="button" class="boardlistdetail-span-commenteditbtn replyCancelBtn">취소</button>
-		           `;
-	}*/
-	
-	/*function updateComment(replyNum) {
-	    // 현재 수정하려는 댓글의 리스트
-	    const currentList = event.target.closest(".boardlistdetail-div-commentlist");
-
-	    // 1. 다른 댓글의 수정모드 초기화
-	    const allLists = document.querySelectorAll(".boardlistdetail-div-commentlist");
-	    allLists.forEach(list => {
-			
-	            const contentDiv = list.querySelector(".boardlistdetail-span-commentcontents");
-	            const original = contentDiv.dataset.originalContent;
-	            if (original) {
-	                contentDiv.innerText = original;
-	                list.querySelector(".boardlistdetail-detail-div-btnwrapper").innerHTML =
-	                    renderDefaultButtons(list.querySelector(".replyUpdate").dataset.number);
-	                delete contentDiv.dataset.originalContent;
-	            }
-			
-	    });
-
-	    // 2. 현재 댓글을 수정 모드로 변경
-	    const contentDiv = currentList.querySelector(".boardlistdetail-span-commentcontents");
-	    originalContent = contentDiv.innerText;
-	    contentDiv.dataset.originalContent = originalContent;
-
-	    const inputElement = document.createElement("input");
-	    inputElement.type = "text";
-	    inputElement.value = originalContent;
-	    inputElement.className = "boardlistdetail-input-edit";
-	    contentDiv.innerHTML = "";
-	    contentDiv.appendChild(inputElement);
-
-	    currentList.querySelector(".boardlistdetail-detail-div-btnwrapper").innerHTML =
-	        renderEditButtons(replyNum);
-	}
-
-	
-
-
-
-	
-	
-	
-	function cancelUpdateComment(event, replyNum) {
-		console.log("댓글 수정 취소");
-		console.log("originalContent : " + originalContent);
-		
-		const list = event.target.closest(".boardlistdetail-div-commentlist");
-		const contentDiv = list.querySelector(".boardlistdetail-span-commentcontents");
-
-		contentDiv.innerText = originalContent;
-		
-		event.target.closest(".boardlistdetail-detail-div-btnwrapper").innerHTML = `
-			  <span class="boardlistdetail-span-commenteditbtn replyUpdate" data-number="${replyNum}">수정</span>
-			  <span class="boardlistdetail-span-divider">|</span>
-			  <span class="boardlistdetail-span-commentdeletebtn" data-number="${replyNum}">삭제</span>`;
-	}
-
-
-
-*/
-
-function updateComment(replyNum) {
+function updateComment(event, replyNum) {
+	console.log("*** replyNum : " + replyNum);
+	console.log("*** event : " + event);
     const currentList = event.target.closest(".boardlistdetail-div-commentlist");
 
-    // 모든 댓글 수정 모드 초기화
-    const allLists = document.querySelectorAll(".boardlistdetail-div-commentlist");
-    allLists.forEach(list => {
-        const contentDiv = list.querySelector(".boardlistdetail-span-commentcontents");
+	// 모든 댓글 수정 모드 초기화
+	const allLists = document.querySelectorAll(".boardlistdetail-div-commentlist");
 
-        // 수정 중인 댓글이면 원래 내용 복구
-        if (contentDiv.dataset.originalContent !== undefined) {
-            contentDiv.innerText = contentDiv.dataset.originalContent;
+	allLists.forEach(list => {
+		const contentDiv = list.querySelector(".boardlistdetail-span-commentcontents");
 
-            const editCancelReplyNum = list.querySelector(".boardlistdetail-input-edit")?.dataset.number;
-			console.log("editCancelReplyNum : " + editCancelReplyNum);
-            if (editCancelReplyNum) {
-                list.querySelector(".boardlistdetail-detail-div-btnwrapper").innerHTML = renderDefaultButtons(editCancelReplyNum);
-            }
+		if (contentDiv && contentDiv.dataset.originalContent !== undefined) {
+			// 1. 내용 복원
+			contentDiv.innerText = contentDiv.dataset.originalContent;
 
-            delete contentDiv.dataset.originalContent;
-        }
-    });
+			// 2. 버튼 복원
+			const btnWrapper = list.querySelector(".boardlistdetail-detail-div-btnwrapper");
+
+			if (btnWrapper) {
+				// 버튼 중 아무거나에서 data-number 가져오기
+				const numberElement = btnWrapper.querySelector("[data-number]");
+				const replyNum = numberElement ? numberElement.dataset.number : null;
+
+				if (replyNum) {
+					btnWrapper.innerHTML = renderDefaultButtons(replyNum);
+				}
+			}
+
+			// 3. 원본 content 삭제
+			delete contentDiv.dataset.originalContent;
+		}
+	});
 
     // 현재 댓글 수정 모드로 전환
     const contentDiv = currentList.querySelector(".boardlistdetail-span-commentcontents");
@@ -334,7 +271,6 @@ function updateComment(replyNum) {
     inputElement.value = originalContent;
     inputElement.className = "boardlistdetail-input-edit";
 	inputElement.dataset.number = replyNum;
-	console.log("dataset : " + inputElement.dataset.number);
 
     contentDiv.innerHTML = "";
     contentDiv.appendChild(inputElement);
