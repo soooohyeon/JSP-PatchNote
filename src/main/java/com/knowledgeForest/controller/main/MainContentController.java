@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.knowledgeForest.Execute;
 import com.knowledgeForest.Result;
 import com.knowledgeForest.dao.MainDAO;
+import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.StudyDTO;
 
 public class MainContentController implements Execute {
@@ -19,6 +20,10 @@ public class MainContentController implements Execute {
             throws ServletException, IOException {
         Result result = new Result();
         MainDAO mainDAO = new MainDAO();
+        
+        // 공지 리스트 조회		
+        List<NoticeDTO> noticeList = mainDAO.getNoticeList();
+        request.setAttribute("noticeList", noticeList);
 
         // 신규 등록 스터디 조회
         List<StudyDTO> newStudyList = mainDAO.getNewStudy();
