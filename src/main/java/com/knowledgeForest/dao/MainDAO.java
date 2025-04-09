@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.knowledgeForest.config.MyBatisConfig;
+import com.knowledgeForest.dto.NoticeDTO;
 import com.knowledgeForest.dto.StudyDTO;
 
 
@@ -16,11 +17,10 @@ public class MainDAO {
 		sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 
-	// 위시리스트 조회
-	public List<String> getWishList(int userNum) {
-		System.out.println("사용자 번호로 위시리스트 조회: " + userNum);
-		List<String> wishList = sqlsession.selectList("MainMapper.getWishList", userNum);
-		return wishList;
+	// 공지리스트 조회
+	public List<NoticeDTO> getNoticeList() {
+		List<NoticeDTO> noticeList = sqlsession.selectList("MainMapper.getNoticeList");
+		return noticeList;
 
 	}
 
