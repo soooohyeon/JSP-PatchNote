@@ -100,3 +100,30 @@ function goLogin() {
 	alert("로그인 후 이용 부탁드립니다.");
 	location.href = getContextPath() + "/login/login.me";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const categoryButtons = document.querySelectorAll(".studylist-div-category");
+    const studyGroups = document.querySelectorAll(".studylist-div-group");
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            // 모든 버튼에서 'selected' 클래스 제거 후 현재 클릭한 버튼에 추가
+            categoryButtons.forEach(btn => btn.classList.remove("selected"));
+            this.classList.add("selected");
+
+            // 선택한 카테고리 가져오기
+            const selectedCategory = this.getAttribute("data-category");
+
+            // 게시글 필터링
+            studyGroups.forEach(group => {
+                const groupCategory = group.getAttribute("data-category");
+
+                if (selectedCategory === "all" || selectedCategory === groupCategory) {
+                    group.classList.remove("hidden"); // 보이게 처리
+                } else {
+                    group.classList.add("hidden"); // 숨김 처리
+                }
+            });
+        });
+    });
+});
