@@ -85,9 +85,10 @@
 							</div>
 
 							<div class="studylist-div-groupmakerwrapper">
-								<div class="studylist-div-groupmaker">
-									작성자 | <c:out value="${study.userNick}" />
-								</div>
+							  <div class="studylist-div-groupmaker" style="display: flex; justify-content: space-between; width: 100%;">
+							    <span>작성자</span>
+							    <span><c:out value="${study.userNick}" /></span>
+							  </div>
 							</div>
 						</div>
 					</div>
@@ -106,6 +107,33 @@
 				</c:choose>
 			</div>
 		</div>
+		
+				<!-- 페이지네이션 -->
+		<div class="studylist-div-paginationwrapper">
+			<ul id="STUDYLIST-UL-PAGINATION">
+				<c:if test="${prev}">
+					<li class="studylist-li-paginationlist pre" onclick="movePage(${startPage - 1}, '${param.keyword}')">&lt;</li>
+				</c:if>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<c:choose>
+						<c:when test="${!(i == page)}">
+							<li class="studylist-li-paginationlist" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="studylist-li-paginationlist currentpage" onclick="movePage(${i}, '${param.keyword}')">
+								<c:out value="${i}"/>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${next}">
+					<li class="studylist-li-paginationlist next" onclick="movePage(${endPage + 1}, '${param.keyword}')">&#62;</li>
+				</c:if>
+			</ul>
+		</div>
+		
 	</main>
 
 	<jsp:include page="/html/main/footer.jsp" />
