@@ -41,7 +41,7 @@ public class CheckPhoneOkController implements Execute {
 
 		try (PrintWriter out = response.getWriter()) {
 			// printwriter 파일 입출력
-			out.write("{\"available\": " + isAvailable + "}");
+			out.print("{\"available\": " + isAvailable + "}");
 			out.flush();
 		}
 		

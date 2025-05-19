@@ -246,8 +246,8 @@ document.addEventListener("DOMContentLoaded", function() {
 				body: JSON.stringify({ phoneNumber: phone })
 			})
 				.then(response => {
-					console.log("response : " + response + ", " + typeof(response));
 					if (!response.ok) throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+					return response.json();
 				})
 				.then(data => {
 					console.log("data : " + data + ", " + typeof(data));
@@ -268,6 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	});
 
+//  인증번호 받기 위한 함수	
 	function sendSMS(phone) {
 		fetch(getContextPath() + "/login/sendSMS.me", {
 			method: "POST",
