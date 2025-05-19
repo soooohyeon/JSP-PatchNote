@@ -35,7 +35,7 @@
 			</h1>
 		</div>
 		<!-- 수정 / 삭제 버튼 -->
-		<c:if test="${sessionScope.userNumber == detailStudy.userNumber}">
+ 		<c:if test="${sessionScope.userNum == detailStudy.userNum}">
 			<div class="studylist-detail-div-btnwrapper">
 				<span onclick="updateStudy(${detailStudy.studyNum})"
 					class="studylist-span-editbtn">수정</span> <span
@@ -43,7 +43,7 @@
 					onclick="deleteStudy(${detailStudy.studyNum})"
 					class="studylist-span-deletebtn">삭제</span>
 			</div>
-		</c:if>
+		</c:if> 
 		<!-- 전체 내용을 감싸는 래퍼-->
 		<div class="studylist-div-contentsWrapper">
 			<!-- 입력 폼을 감싸는 래퍼 -->
@@ -130,7 +130,7 @@
 		</div>
 		<!-- 등록 버튼 -->
 
-		<c:if test="${sessionScope.userNumber == detailStudy.userNum}">
+		<c:if test="${sessionScope.userNumber != detailStudy.userNum}">
 			<button class="studylist-btn-submit" type="submit"
 				form="STUDYLIST-FORM-WRITE" onclick="applyStudy()">스터디 신청</button>
 		</c:if>

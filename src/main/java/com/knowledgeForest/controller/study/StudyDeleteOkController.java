@@ -26,7 +26,7 @@ public class StudyDeleteOkController implements Execute {
 		
 		HashMap <String, String> imgInfo = new HashMap<>();
 		
-		final String UPLOAD_PATH = "D:\\web_0900_oht\\Semi\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\study";
+		final String UPLOAD_PATH = "D:\\web_0900_oht\\kdt\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\banner";
 		UserImgDTO userImgDTO = studyImgDAO.selectStudyImg(studyNumber);
 		
 		if (userImgDTO != null) {
