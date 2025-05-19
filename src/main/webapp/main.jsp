@@ -29,19 +29,6 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 <script src="${pageContext.request.contextPath}/asset/js/main/main.js"></script>
 </head>
 
-
-
-<!-- 임시 / 로그인 테스트  -->
-<%-- 		<c:choose>
-					<c:when test="${sessionScope.userNumber eq null}">
-						<div>로그인 안댐</div>
-					</c:when>
-					<c:otherwise>
-						<div>로그인 댐 세션값 저장댐</div>
-					</c:otherwise>
-				</c:choose> --%>
-
-
 <body>
 
 	<!-- 상단 메뉴바 -->
@@ -52,7 +39,7 @@ boolean isLoggedIn = (user != null); // 로그인 여부 확인
 	<main>
 		<div class="main-div-wrapper">
 
-			<!-- 위시 리스트 아이콘 -->
+			<!-- 공지 리스트 아이콘 -->
 			<div class="main-div-wishlist">
 				<h2 style="text-align: center;">
 					<img
