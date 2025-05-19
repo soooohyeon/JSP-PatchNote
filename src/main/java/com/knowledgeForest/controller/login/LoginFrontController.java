@@ -67,11 +67,9 @@ public class LoginFrontController extends HttpServlet {
 
 //		로그아웃 처리
 		case "/login/logout.me":
-			System.out.println("로그아웃 처리 시작");
 			HttpSession session = request.getSession(false); // 현재 세션 가져오기
 			if (session != null) {
 				session.invalidate(); // 세션 무효화
-				System.out.println("세션 종료 완료");
 			}
 			response.sendRedirect(request.getContextPath() + "/knowledgeForest.main"); // 메인 페이지로 이동
 			break;

@@ -6,7 +6,7 @@ function getContextPath() {
 	return contextPath;
 }
 
-//로그인버튼 클릭시 알림창 노출
+// 로그인 버튼 클릭 후 로그인 성공 여부에 따라 다른 alert 노출
 const btn_join = document.querySelector("#LOGIN-BTN-LOGIN");
 function login(){
 	const id = document.getElementById("LOGIN-INPUT-ID").value;
@@ -23,13 +23,12 @@ function login(){
 				userId : id,
 				userPw : pw,
 			},
-			// 로그인 성공 시 알람창 뜨면서 유저 목록 페이지로 이동 
 			success: (response) => {
 				console.log("response:", response, typeof response);
 				const userNo = parseInt(response.trim()); // ← r, 개행 등 제거
 				console.log("userNo:", userNo);
 					
-				if(response === "1") {
+				if(response !== "-1") {
 					alert('로그인 되었습니다.');
 					location.href = getContextPath() + "/knowledgeForest.main";
 				} else {
@@ -79,7 +78,6 @@ function inputLenFunc2() {
 	if (inpSec2.value.length > 10) {
 			inpSec2.value = inpSec1.value.slice(0, 10);
 	};
-	console.log(inpSec2.value)
 }
 inpSec2.addEventListener('input', inputLenFunc2);
 
@@ -91,7 +89,7 @@ function pwdCheck(){
     //console.log("TEST"); //입력값 확인
 	
 		if (!exr.test(pwdCheck )) {
-			//console.log(pwdCheck); //값 출력확인
+			
 		}else{
 		
 		}
@@ -105,6 +103,5 @@ function inputLenFunc1() {
 	if (inpSec.value.length > 15) {
 			inpSec.value = inpSec.value.slice(0, 15);
 	};
-	console.log(inpSec.value)
 }
 inpSec.addEventListener('input3', inputLenFunc1);
