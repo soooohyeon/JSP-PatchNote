@@ -34,8 +34,6 @@ public class CheckPhoneOkController implements Execute {
 		String userPhone = jsonObject.get("phoneNumber").getAsString();
 		isAvailable = loginDAO.checkPhone(userPhone);	// true면 해당 전화번호 사용 가능
 
-		System.out.println("isAvailable : " + isAvailable);
-		
 		response.setContentType("application/json; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
