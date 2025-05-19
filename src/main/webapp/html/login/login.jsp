@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/login/login.css"> <!-- css링크걸기 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/asset/css/main/footer.css">
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script defer src="${pageContext.request.contextPath}/asset/js/login/login.js"></script>
 </head>
 
@@ -22,7 +23,7 @@
       <div class="login-div-h1-box">
         <h1 class="login-h1-title">로그인</h1>
       </div>
-      <form action="${pageContext.request.contextPath}/login/loginOk.me" method = "post">
+      <form onsubmit="return false;">
       <div class="login-div-wrapper-input-box">
         <input type="text" class="login-input" placeholder="아이디" name="userId" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" > 
 
