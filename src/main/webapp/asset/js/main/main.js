@@ -6,8 +6,9 @@ function getContextPath() {
 	return contextPath;
 }
 
+/* ----------------------------------------------------------------  */
 
-
+// 슬라이드 배너
 document.addEventListener("DOMContentLoaded", () => {
 	const slides = document.querySelectorAll(".main-div-banner img");
 	let currentIndex = 0;
@@ -65,6 +66,7 @@ function notLogin() {
  *  
  */
 
+
 function goPage(studyNum) {
 	//  로그인 상태일때 스터디 상세페이지로 이동
 	location.href = getContextPath() + "/study/studyDetailOk.st?studyNum=" + studyNum;
@@ -83,4 +85,19 @@ function wishList() {
 // 메인 페이지 이동 링크
 function goMain() {
 	location.href = getContextPath() + "/knowledgeForest.main";
+}
+
+/* ----------------------------------------------------------------  */
+
+// 로그아웃 클릭시 alert 띄우고 로그아웃 수행 
+function logout() {
+	fetch(getContextPath() + "/login/logout.me", { method: "GET" })
+	.then(() => {
+		alert('로그아웃 되었습니다.');
+		location.href = getContextPath() + "/knowledgeForest.main";
+	})
+	.catch(error => {
+		console.error("로그아웃 실패 : ", error);
+		alert('로그아웃에 실패하였습니다.\n잠시 후 다시 시도해주세요');
+	});
 }
