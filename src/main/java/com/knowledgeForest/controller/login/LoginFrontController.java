@@ -88,9 +88,14 @@ public class LoginFrontController extends HttpServlet {
 			result = new CheckNickOkController().execute(request, response);
 			break;	
 			
+		case "/login/phoneCheck.me" :
+			 System.out.println("이미 가입된 핸드폰 번호인지 확인");
+			 result = new CheckPhoneOkController().execute(request,response);
+			break;
+			
 		case "/login/sendSMS.me" :
-			 System.out.println("핸드폰 인증 요청");
-			 result = new JoinSMSController().execute(request,response);
+			System.out.println("핸드폰 인증 요청");
+			result = new JoinSMSController().execute(request,response);
 			break;
 			
 		case "/login/verifyCode.me":

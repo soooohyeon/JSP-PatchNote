@@ -57,8 +57,8 @@ function formatDate(birth) {
 // 핸드폰 번호 형식 변환
 function formatPhone(event) {
 	ischeckPhone = false;
-	verificationStatus.textContent ='';
-	
+	verificationStatus.textContent = '';
+
 	let phone = phoneInput.value.replace(/[^\d]/g, ''); // 숫자만 칠수있게 하기
 	// 11자리에서 넘어가면 타자못침
 	if (phone.length > 11) {
@@ -171,12 +171,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 	passwordInput.addEventListener("keyup", function() {
 		ischeckPw = false;
-		checkPwConfirmMsg.textContent ='';
+		checkPwConfirmMsg.textContent = '';
 		const password = passwordInput.value.trim();
 		if (passwordRegex.test(password)) {
+			ischeckPw = true;
 			checkPwMsg.textContent = "사용 가능한 비밀번호입니다.";
 			checkPwMsg.style.color = "green";
 		} else {
+			ischeckPw = false;
 			checkPwMsg.textContent = "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상 입력해야 합니다.";
 			checkPwMsg.style.color = "red";
 		}
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			checkPwConfirmMsg.textContent = "비밀번호가 일치합니다.";
 			checkPwConfirmMsg.style.color = "green";
 		} else {
+			ischeckPw = false;
 			checkPwConfirmMsg.textContent = "비밀번호가 일치하지 않습니다.";
 			checkPwConfirmMsg.style.color = "red";
 		}
@@ -205,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			ischeckName = true;
 			checkNameMsg.textContent = "";
 		} else {
+			ischeckName = false;
 			checkNameMsg.textContent = "이름은 한글로 입력해주세요.";
 			checkNameMsg.style.color = "red";
 		}
@@ -218,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			ischeckBirth = true;
 			checkBirthMsg.textContent = "";
 		} else {
+			ischeckBirth = false;
 			checkBirthMsg.textContent = "생년월일을 확인해주세요.";
 			checkBirthMsg.style.color = "red";
 		}
@@ -234,9 +239,36 @@ document.addEventListener("DOMContentLoaded", function() {
 			alert("핸드폰 번호를 확인해주세요.");
 			return;
 		} else {
-			alert("인증번호를 보냈습니다.");
+			// 이미 가입된 전화번호인지 확인
+			fetch(getContextPath() + "/login/phoneCheck.me", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ phoneNumber: phone })
+			})
+				.then(response => {
+					console.log("response : " + response + ", " + typeof(response));
+					if (!response.ok) throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+				})
+				.then(data => {
+					console.log("data : " + data + ", " + typeof(data));
+					if (data.available) {
+						alert("인증번호를 보냈습니다.");
+						sendSMS(phone);			
+					} else {
+						alert("이미 가입된 전화번호입니다.");
+						return;	
+					}
+				})
+				.catch(error => {
+					console.error("핸드폰 번호 중복 확인 오류:", error);
+					alert("핸드폰 번호 중복 확인 중 오류가 발생했습니다.");
+					return;
+				});
 		}
 
+	});
+
+	function sendSMS(phone) {
 		fetch(getContextPath() + "/login/sendSMS.me", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -255,8 +287,8 @@ document.addEventListener("DOMContentLoaded", function() {
 				console.error("SMS 발송 오류:", error);
 				alert("인증번호 발송 중 오류가 발생했습니다.");
 			});
-	});
-
+	}
+	
 	// 인증번호 확인
 	verificationCheckBtn.addEventListener("click", function() {
 		const verificationCode = verificationCodeInput.value.trim();
@@ -282,6 +314,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					verificationStatus.textContent = "인증에 성공했습니다.";
 					verificationStatus.style.color = "green";
 				} else {
+					ischeckPhone = false;
 					verificationStatus.textContent = "인증번호가 일치하지 않습니다.";
 					verificationStatus.style.color = "red";
 				}
@@ -292,9 +325,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				verificationStatus.style.color = "red";
 			});
 	});
-
 	// 폼 제출 전 정보 유효성 검사 완료 여부 및 휴대폰 인증 여부 체크
 	submitBtn.addEventListener("click", function(e) {
+
 		if (!ischeckId) {
 			alert("아이디를 확인해주세요.");
 		} else if (!ischeckNick) {
@@ -310,7 +343,37 @@ document.addEventListener("DOMContentLoaded", function() {
 		} else if (!allAgreeCheck.checked) {
 			alert("약관에 동의해주세요.");
 		} else {
-			e.submit;
+			const validationStatus = {
+				userId: idInput.value,
+				userNick: nickInput.value,
+				userPw: passwordInput.value,
+				userName: nameInput.value,
+				userBirth: birthInput.value,
+				userPH: phoneInput.value,
+			};
+
+			fetch(getContextPath() + "/login/joinOk.me", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(validationStatus)
+			})
+				.then(response => {
+					if (!response.ok) throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+					return response.json();
+				})
+				.then(data => {
+					if (data.available == "1") {
+						alert('회원 가입되었습니다.');
+						location.href = getContextPath() + "/login/login.me";
+					} else {
+						alert('회원 가입에 실패하였습니다.\n입력하신 정보 확인 후 다시 시도해주세요');
+					}
+				})
+				.catch(error => {
+					console.error("인증 확인 오류:", error);
+					alert('회원 가입에 실패하였습니다.\n잠시 후 다시 시도해주세요');
+				});
+			// joinForm.submit();
 		}
 	});
 });

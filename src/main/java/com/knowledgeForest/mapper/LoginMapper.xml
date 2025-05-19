@@ -2,44 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="LoginMapper">
-	  
-	  <!--로그인 쿼리  -->
-      <select id = "Login" parameterType = "UserDTO" resultType = "UserDTO">
-    	SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
-    	FROM TBL_USER
-    	WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
-    </select>
-	
-	<!--ID 중복쿼리  -->
+
+	<!--로그인 쿼리 -->
+	<select id="Login" parameterType="UserDTO" resultType="UserDTO">
+		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME,
+		USER_JOIN_DATE
+		FROM TBL_USER
+		WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+	</select>
+
+	<!--ID 중복쿼리 -->
 	<select id="checkId" parameterType="string" resultType="int">
-		select count(user_num) from tbl_user
+		select
+		count(user_num) from tbl_user
 		where user_id = #{userId}
 	</select>
 
-	<!--닉네임 중복쿼리  -->
+	<!--닉네임 중복쿼리 -->
 	<select id="checkNick" parameterType="string" resultType="int">
-		select count(user_num) from tbl_user
+		select
+		count(user_num) from tbl_user
 		where user_Nick = #{userNick}
 	</select>
-	
+
+	<!--전화번호 중복쿼리 -->
+	<select id="checkPhone" parameterType="string" resultType="int">
+		select
+		count(user_num) from tbl_user
+		where user_ph = #{userPH}
+	</select>
+
 	<!-- 회원가입 쿼리 -->
-	<insert id="join" parameterType = "UserDTO">
-		INSERT INTO TBL_USER(USER_NUM, USER_ID, USER_NICK, USER_PW, USER_BIRTH, USER_PH, USER_NAME)
-		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw}, TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
+	<insert id="join" parameterType="UserDTO">
+		INSERT INTO TBL_USER(USER_NUM,
+		USER_ID, USER_NICK, USER_PW, USER_BIRTH, USER_PH, USER_NAME)
+		VALUES(SEQ_USER.NEXTVAL, #{userId}, #{userNick}, #{userPw},
+		TO_DATE(#{userBirth}, 'YYYY-MM-DD'), #{userPH}, #{userName})
 	</insert>
 
 	<!-- 비밀번호찾기에서 해당 id와 ph 일치 여부 확인 쿼리 -->
 	<select id="checkUser" resultType="UserDTO">
-		SELECT USER_NUM, USER_ID, USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
-		FROM TBL_USER
+		SELECT USER_NUM, USER_ID,
+		USER_PW, USER_NICK,USER_BIRTH, USER_PH, USER_NAME, USER_JOIN_DATE
+		FROM
+		TBL_USER
 		WHERE USER_ID = #{userId} AND USER_PH = #{userPh}
 	</select>
 
-	<!--비밀번호 변경 쿼리  -->
+	<!--비밀번호 변경 쿼리 -->
 	<update id="updatePw">
 		UPDATE TBL_USER
 		SET USER_PW = #{userPw}
-		WHERE USER_NUM = #{userNum}
+		WHERE USER_NUM
+		= #{userNum}
 	</update>
- 
+
 </mapper>
