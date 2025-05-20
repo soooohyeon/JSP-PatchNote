@@ -41,7 +41,7 @@
 				</c:otherwise>
 			</c:choose>
 
-			<li><a href="${pageContext.request.contextPath}/login/logout.me">로그아웃</a></li>
+			<li><a href="javascript:void(0);" onclick="logout()">로그아웃</a></li>
 		</c:otherwise>
 	</c:choose>
 	<%-- 로그인 여부 확인 --%>

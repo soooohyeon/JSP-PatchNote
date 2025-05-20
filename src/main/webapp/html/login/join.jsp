@@ -18,7 +18,8 @@
       <!-- 헤더 - 메뉴바 -->
       <jsp:include page="/html/main/header.jsp" />
    
-     <main>
+    <form onsubmit="return false;">
+    <main>
     <div class="join-div-section-up">
       <div class="join-div-wrapper-h1-box">
         <h1 class="join-h1-title">회원가입</h1>
@@ -29,7 +30,6 @@
       
       </div>
     </div>
-    <form action="${pageContext.request.contextPath}/login/joinOk.me"  method = "post">
       <div class="join-div-section-middle">
         <div class="join-div-inputlayer">
           <div class="join-div-labelwrapper">
@@ -110,7 +110,7 @@
 
   <main>
     <div class="join-div-section-middle">
-      <p class="join-p-labeltitle">개인정보 수집 및 처리 방침에 관한 동의사항</p>
+      <h3 class="join-p-labeltitle">개인정보 수집 및 처리 방침에 관한 동의사항</h3>
       <div class="join-div-labelwrapper">
 
         <input type="checkbox" id="join-input-allcheck" class="join-input-checkbox-big" name="join-input-checkbox-big">
@@ -125,7 +125,7 @@
         <!-- <img src="./../../asset/img/login/checkboxOut.png" alt="이미지 깨짐" class="img-checkboxsmall"> -->
       </div>
       <div class="join-div-wrapperprivacy">
-        <textarea rows="17" cols="109" class="join-p-wrapperprivacy">제 1 장 총칙
+        <textarea rows="17" cols="109" class="join-p-wrapperprivacy" readonly>제 1 장 총칙
 
           제 1 조 (목적)
           본 약관은 패치노트가 운영하는 지식의 숲홈페이지(이하 "당 사이트")에서 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -280,7 +280,7 @@
         
       </div>
       <div class="join-div-wrapperprivacy">
-        <textarea rows="17" cols="109" class="join-p-wrapperprivacy">
+        <textarea rows="17" cols="109" class="join-p-wrapperprivacy" readonly>
           1. 개인정보의 수집항목 및 수집방법 
 패치노트 지식의 숲 사이트에서는 기본적인 회원 서비스 제공을 위한 필수정보로 실명인증정보와 가입정보로 구분하여 다음의 정보를 수집하고 있습니다. 필수정보를 입력해주셔야 회원 서비스 이용이 가능합니다.
 
@@ -330,8 +330,8 @@
       <button type="button" class="join-btn-check" id="JOIN-BTN-INSITE">가입하기</button>
    
     </div>     <!-- section-middle /div -->
-  </form>
   </main>
+  </form>
    
    
    

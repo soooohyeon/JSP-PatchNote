@@ -35,16 +35,15 @@ public class VerifyCodeController implements Execute{
 		String sessionCode = (String) session.getAttribute("verificationCode"); //"verificationCode"
 		System.out.println("sessionCode : " + sessionCode);
 		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		
 		//인증번호 일치 여부 검사
 		if(sessionCode != null && sessionCode.equals(userCode)) {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("{\"success\" : " + true + "}");
 			System.out.println("인증 성공");
 			
 		}else {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("{\"success\" : " + false + " } ");
 			System.out.println("인증실패");
 		}

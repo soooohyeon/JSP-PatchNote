@@ -54,52 +54,58 @@ public class LoginFrontController extends HttpServlet {
 //      경로 분기처리
 		switch (target) {
 
+//		로그인 페이지 진입
 		case "/login/login.me":
 			request.getRequestDispatcher("/html/login/login.jsp").forward(request, response);
 			break;
 
+//		로그인 처리
 		case "/login/loginOk.me":
 			System.out.println("loginFrontController test");
 			result = new LoginOkController().execute(request, response);
 			break;
 
-		// 로그아웃 처리 추가
+//		로그아웃 처리
 		case "/login/logout.me":
-			System.out.println("로그아웃 처리 시작");
+			System.out.println("로그아웃");
 			HttpSession session = request.getSession(false); // 현재 세션 가져오기
 			if (session != null) {
 				session.invalidate(); // 세션 무효화
-				System.out.println("세션 종료 완료");
 			}
-			response.sendRedirect(request.getContextPath() + "/knowledgeForest.main"); // 메인 페이지로 이동
 			break;
 
+//		회원가입 페이지 이동
 		case "/login/join.me":
 			request.getRequestDispatcher("/html/login/join.jsp").forward(request, response);
 			break;
-			
+		
+//		아이디 중복 검사
 		case "/login/checkIdOk.me":
-			System.out.println("아이디 중복검사");
 			result = new CheckIdOkController().execute(request, response);
 			break;
 			
+//		닉네임 중복 검사
 		case "/login/checkNickOk.me":
-			System.out.println("닉네임 중복검사");
 			result = new CheckNickOkController().execute(request, response);
 			break;	
 			
-		case "/login/sendSMS.me" :
-			 System.out.println("핸드폰 인증 요청");
-			 result = new JoinSMSController().execute(request,response);
+//		이미 가입된 전화번호인지 확인
+		case "/login/phoneCheck.me" :
+			 result = new CheckPhoneOkController().execute(request,response);
 			break;
 			
+//		핸드폰 인증번호 발송
+		case "/login/sendSMS.me" :
+			result = new JoinSMSController().execute(request,response);
+			break;
+			
+//		인증번호 확인
 		case "/login/verifyCode.me":
-			System.out.println("인증번호 확인 요청");
 			result = new VerifyCodeController().execute(request, response);
 			break;	
 			
+//		회원 가입 완료
 		case "/login/joinOk.me":
-			System.out.println("회원가입완료");
 			result = new JoinOkController().execute(request, response); // 404 에러 공존
 			break;
 
@@ -122,7 +128,6 @@ public class LoginFrontController extends HttpServlet {
 		case "/login/passwordUpdateOk.me":
 			result = new PasswrdUpdateOkController().execute(request, response);
 			break;
-			
 		}
 
 		if (result != null) {

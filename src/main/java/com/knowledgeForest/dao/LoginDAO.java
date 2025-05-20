@@ -16,15 +16,12 @@ public class LoginDAO{
 
 	
 	public LoginDAO(){
-//		System.out.println("=====SQLSESSION 확인======" + sqlsession);
 		sqlsession = MyBatisConfig.getSqlSessionFactory().openSession(true);
-//		System.out.println("fifjwfjwe : " + sqlsession);
-		
 	}
 	
 	//회원가입
-	public void join(UserDTO userDTO) {
-		sqlsession.insert("LoginMapper.join", userDTO);
+	public int join(UserDTO userDTO) {
+		return sqlsession.insert("LoginMapper.join", userDTO);
 	}
 	
 	//로그인
@@ -40,6 +37,11 @@ public class LoginDAO{
 	//닉네임 중복검사
 	public boolean checkNick(String userNick) {
 		return (Integer)sqlsession.selectOne("LoginMapper.checkNick", userNick) < 1;
+	}
+	
+	//가입된 휴대폰번호인지 검사
+	public boolean checkPhone(String userPH) {
+		return (Integer)sqlsession.selectOne("LoginMapper.checkPhone", userPH) < 1;
 	}
 	
 	//첫번째 비밀번호 찾기 페이지

@@ -21,7 +21,6 @@ public class JoinSMSController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("========= JoinSMSController =========");
 
 		BufferedReader reader = request.getReader();
 		String line = reader.readLine();
