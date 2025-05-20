@@ -35,7 +35,7 @@
 			</h1>
 		</div>
 		<!-- 수정 / 삭제 버튼 -->
- 		<c:if test="${sessionScope.userNum == detailStudy.userNum}">
+ 		<c:if test="${sessionScope.userNum != detailStudy.userNum}">
 			<div class="studylist-detail-div-btnwrapper">
 				<span onclick="updateStudy(${detailStudy.studyNum})"
 					class="studylist-span-editbtn">수정</span> <span
@@ -147,7 +147,7 @@
       </button>
   
       -->
-
+		<br>
 		<!-- 댓글 입력 창 -->
 		<div class="studylist-div-commentinputwrapper">
 <!-- 			<div class="studylist-div-userNickname">
