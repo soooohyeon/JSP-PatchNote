@@ -74,7 +74,7 @@ $(document).ready(function() {
 		commentList.innerHTML = "";
 
 		if (replies.length === 0) {
-			commentList.innerHTML = "<li>댓글이 없습니다.</li>";
+			commentList.innerHTML = `<div id="BOARD-COMMENT-NONE">댓글이 없습니다.</div>`;
 			return;
 		}
 		
@@ -90,10 +90,10 @@ $(document).ready(function() {
                  <span class="boardlistdetail-span-commentnickname">${reply.userNick}</span>
                  <span class="boardlistdetail-span-commentdate">${reply.fbCommentUploadDate}</span>
                </div>
-               <div class="boardlistdetail-div-commentlayer">
-                 <span class="boardlistdetail-span-commentcontents">
+               <div class="boardlistdetail-div-commentContentlayer">
+                 <div class="boardlistdetail-span-commentcontents">
                    ${reply.fbCommentContent}
-                 </span>
+                 </div>
 				   ${isMyComment ? `
                   <div class="boardlistdetail-detail-div-btnwrapper">
                     <span class="boardlistdetail-span-commenteditbtn replyUpdate" data-number="${reply.fbCommentNum}">수정</span>
@@ -174,8 +174,11 @@ $(document).ready(function() {
 	//댓글 수정 완료 (fetch)
 	async function updateOkComment(event, replyNum) {
 		console.log("수정 완료 클릭");
+		console.log(event.target.closest(".boardlistdetail-span-commentcontents"));
 		
-		const newContent = event.target.closest(".boardlistdetail-div-commentlayer").querySelector("textarea").value.trim();
+		const newContent = event.target.closest(".boardlistdetail-detail-div-btnwrapper")
+							  .previousElementSibling // 바로 위에 있는 commentcontents div
+							  .querySelector("textarea").value.trim();
 
 		console.log("replyNum : " + replyNum);
 		console.log("newContent : " + newContent);
@@ -266,8 +269,7 @@ function updateComment(event, replyNum) {
     contentDiv.dataset.originalContent = originalContent;
 
     // input 삽입
-    const inputElement = document.createElement("input");
-    inputElement.type = "text";
+    const inputElement = document.createElement("textarea");
     inputElement.value = originalContent;
     inputElement.className = "boardlistdetail-input-edit";
 	inputElement.dataset.number = replyNum;
@@ -289,8 +291,9 @@ function renderDefaultButtons(replyNum) {
 
 function renderEditButtons(replyNum) {
     return `
-        <button type="button" class="boardlistdetail-span-commenteditbtn replyUpdateOk" data-number="${replyNum}">수정 완료</button>
-        <button type="button" class="boardlistdetail-span-commenteditbtn replyCancelBtn" data-number="${replyNum}">취소</button>
+		<span class="boardlistdetail-span-commenteditbtn replyCancelBtn" data-number="${replyNum}">취소</span>
+		<span class="boardlistdetail-span-divider">|</span>
+		<span class="boardlistdetail-span-commenteditbtn replyUpdateOk" data-number="${replyNum}">수정 완료</span>
     `;
 }
 

@@ -40,7 +40,7 @@
 	</div>
 	<!-- 수정 / 삭제 버튼 -->
 	<c:if test="${sessionScope.userNumber == boardDetail.userNum}">
-		<div class="boardlistdetail-detail-div-btnwrapper">
+		<div class="boardlistdetail-detail-div-btnwrapper top-btnwrapper">
 			<span onclick="updateBoard(${boardDetail.boardNum})"
 				class="boardlistdetail-span-editbtn">수정</span> <span
 				class="boardlistdetail-span-divider">|</span> <span
@@ -118,7 +118,7 @@
 					</div>
 
 					<div class="boardlistdetail-div-commentlayer">
-						<span class="boardlistdetail-span-commentcontents"> </span>
+						<div class="boardlistdetail-span-commentcontents"> </div>
 					</div>
 				</div>
 			</div>
