@@ -77,7 +77,7 @@
 					<c:out value="${boardDetail.boardContents}" />
 					<img
 						src="${pageContext.request.contextPath}/upload/board/${boardDetail.getImages().getUserImgUuid()}"
-						onerror="this.style.display='none';">
+						onerror="this.style.display='none';">				
 				</div>
 			</div>
 		</div>
