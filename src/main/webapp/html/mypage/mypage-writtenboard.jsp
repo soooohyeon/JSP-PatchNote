@@ -85,7 +85,7 @@
 								</a>
 								<li class="board-item" style="cursor: pointer"
 									onclick="goPage(${board.boardNum})"><span
-									class="board-number">2</span> <span class="board-title">${board.boardTitle}</span>
+									class="board-number">${board.boardNum}</span> <span class="board-title">${board.boardTitle}</span>
 									<span class="board-author">${board.userNick}</span> <span
 									class="board-date">${board.boardUploadDate}</span></li>
 							</c:forEach>
