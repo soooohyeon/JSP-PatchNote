@@ -46,13 +46,13 @@
       <main class="mypage-div-container">
         <div class="mypage-div-configure">
           <div class="mypage-div-delAccountTitle">
-            <h2>계정 삭제</h2>
+            <h2>회원 탈퇴</h2>
           </div>
-          <p><b>지식의 숲 계정을 삭제하시겠습니까?</b><br><br>
-            [이메일 주소]계정을 삭제하면
+          <p><b>지식의 숲 회원을 탈퇴하시겠습니까?</b><br><br>
+           	회원을 탈퇴하면
             여태까지 작성한 모든 글과 댓글은 사라지게 됩니다.<br>
             이 작업은 실행 취소할 수 없습니다.<br><br>
-            <b>탈퇴를 진행하시길 원한다면 아래에 " 내 계정 삭제 "</b>를 입력하세요.</p>
+            <b>탈퇴를 진행하시길 원한다면 아래에 "회원 탈퇴를 진행합니다."</b>를 입력하세요.</p>
             
             <input type="text" class="mypage-text-delComment" id="DELETEINPUT">
             <div class="mypage-btn-deleteandcancel">
