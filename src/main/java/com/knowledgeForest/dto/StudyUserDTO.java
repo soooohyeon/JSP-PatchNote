@@ -3,7 +3,7 @@ package com.knowledgeForest.dto;
 public class StudyUserDTO {
 
     private int studyNum;          
-    private int userNum;           
+    private int userNum;  
     private String studyTitle;     
     private String studyDescript;  
     private String studyLocation;  

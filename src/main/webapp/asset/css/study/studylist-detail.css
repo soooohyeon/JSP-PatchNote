@@ -300,6 +300,16 @@ textarea:focus {
   border-bottom: 1px solid #ccc;
 }
 
+.studylist-div-commentlist ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.studylist-div-commentlist ul li {
+  list-style: none;
+}
+
 /* 댓글 닉네임, 날짜를 감싸는 레이어 */
 .studylist-div-commentlayer {
   display: flex;
