@@ -39,7 +39,7 @@ public class StudyUpdateOkController implements Execute {
 		Result result = new Result();
 		
 //		final String UPLOAD_PATH = "D:\\web_0900_oht\\Semi\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\study";
-		final String UPLOAD_PATH = "D:\\web_0900_oht\\kdt\\KnowledgeForest-Back\\src\\main\\webapp\\upload\\banner";
+		final String UPLOAD_PATH = "D:\\KdtPj\\Semi\\src\\main\\webapp\\upload\\study";
 		final int FILE_SIZE = 1024 * 1024 * 5;
 
 //      MultipartParser 실행
