@@ -84,8 +84,8 @@
 									<!-- 모달 리스트 -->
 									<div id="modal-list" class="modal hidden">
 										<ul>
-											<li onclick="handleModalAction('수정페이지')">수정</li>
-											<li onclick="handleModalAction('삭제페이지')">삭제</li>
+											<!-- <li onclick="handleModalAction('수정페이지')">수정</li>
+											<li onclick="handleModalAction('삭제페이지')">삭제</li> -->
 											<li onclick="openApplicantModal(`${myStudyList.studyNum}`)">
 												신청자</li>
 										</ul>

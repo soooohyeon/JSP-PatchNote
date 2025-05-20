@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 입력값 확인 후 버튼 활성화/비활성화
   inputField.addEventListener("input", function () {
-    if (inputField.value === "내 계정 삭제") {
+    if (inputField.value === "회원 탈퇴를 진행합니다.") {
       deleteButton.disabled = false; // 버튼 활성화
     } else {
       deleteButton.disabled = true; // 버튼 비활성화
@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "GET",
       /* 유저 탈퇴 성공 시 알람창 뜨면서 유저 목록 페이지 새로고침 */
       success: () => {
-        alert("탈퇴가 완료되었습니다.");
+        alert("회원 탈퇴가 완료되었습니다.");
         location.href = getContextPath() + "/main.jsp";
       },
       /* 탈퇴 불가시 알람창 */
       error: (xhr, status, error) => {
         console.error("유저 탈퇴 실패:", error);
-        alert("유저 탈퇴에 실패했습니다.");
+        alert("회원 탈퇴에 실패했습니다.");
       },
     });
   });
