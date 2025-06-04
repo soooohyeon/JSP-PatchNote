@@ -160,7 +160,7 @@
 					tu.USER_PH,
 				(SELECT COUNT(*)
 				 FROM TBL_STUDY_APPLY tsa
-				 WHERE tsa.STUDY_NUM = ts.STUDY_NUM) AS participants
+				 WHERE tsa.STUDY_NUM = ts.STUDY_NUM AND tsa.STUDY_APPLY_STATUS = 1) AS participants
 				FROM TBL_STUDY ts
 				INNER JOIN TBL_USER tu
 				ON ts.USER_NUM = tu.USER_NUM
@@ -260,7 +260,7 @@
 					tu.USER_NICK,
 					(SELECT COUNT(tsa2.STUDY_APPLY_NUM)
 					 FROM TBL_STUDY_APPLY tsa2
-					 WHERE tsa.STUDY_NUM = tsa2.STUDY_NUM) AS participants,
+					 WHERE tsa.STUDY_NUM = tsa2.STUDY_NUM AND tsa2.STUDY_APPLY_STATUS = 1) AS participants,
 					(SELECT ts.STUDY_LIMIT
 					 FROM TBL_STUDY ts
 					 WHERE ts.STUDY_NUM = tsa.STUDY_NUM) AS limitParticipants,

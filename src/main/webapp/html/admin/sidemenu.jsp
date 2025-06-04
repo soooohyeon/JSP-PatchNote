@@ -21,7 +21,7 @@
 			<li><a href="${pageContext.request.contextPath}/admin/admin-boardlist.ad">자유게시판 관리</a></li>
 			<li><a href="${pageContext.request.contextPath}/admin/admin-boardcommentlist.ad">자유게시판 댓글 관리</a></li>
 			<li><a href="${pageContext.request.contextPath}/admin/admin-noticelist.ad">공지 목록</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/admin-bannerlist.ad">배너 목록</a></li>
+			<%-- <li><a href="${pageContext.request.contextPath}/admin/admin-bannerlist.ad">배너 목록</a></li> --%>
 		</ul>
 	</nav>
 </aside>

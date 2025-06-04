@@ -17,7 +17,7 @@ public class SmsService {
 	public String sendVerificationSms(String to) throws CoolsmsException{
 		System.out.println("========= SmsService =========");
 //		Message coolsms = new Message(API_KEY, API_SECRET);
-		String verificationCode =  generateVerificationCode();
+		String verificationCode =  "408877";
 		
 		HashMap<String, String> params = new HashMap<>();
 		params.put("to", to);

@@ -74,7 +74,9 @@
 					<div>본문</div>
 				</div>
 				<div class="boardlist-div-contents">
-					<c:out value="${boardDetail.boardContents}" />
+					<div>
+						<c:out value="${boardDetail.boardContents}" />
+					</div>
 					<img
 						src="${pageContext.request.contextPath}/upload/board/${boardDetail.getImages().getUserImgUuid()}"
 						onerror="this.style.display='none';">				
