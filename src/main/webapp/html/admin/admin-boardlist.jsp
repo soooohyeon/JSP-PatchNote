@@ -34,7 +34,7 @@
           <form action="${pageContext.request.contextPath}/admin/admin-boardlist.ad" method="get">
             <div class="admin-div-wrapper">
               <input type="text" name="keyword" class="admin-input-search"
-                placeholder="제목 또는 작성자를 입력해주세요." value="<c:out value='${param.keyword}'/>"/>
+                placeholder="제목 또는 작성자를 입력해주세요." value="<c:out value='${param.keyword}'/>" autocomplete="off" />
               <img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png"
                 alt="search" class="admin-img-search"/>
             </div>

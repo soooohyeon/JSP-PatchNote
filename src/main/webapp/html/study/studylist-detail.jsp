@@ -35,7 +35,7 @@
 			</h1>
 		</div>
 		<!-- 수정 / 삭제 버튼 -->
- 		<c:if test="${sessionScope.userNum != detailStudy.userNum}">
+ 		<c:if test="${sessionScope.userNumber == detailStudy.userNum}">
 			<div class="studylist-detail-div-btnwrapper">
 				<span onclick="updateStudy(${detailStudy.studyNum})"
 					class="studylist-span-editbtn">수정</span> <span
@@ -44,6 +44,7 @@
 					class="studylist-span-deletebtn">삭제</span>
 			</div>
 		</c:if> 
+		
 		<!-- 전체 내용을 감싸는 래퍼-->
 		<div class="studylist-div-contentsWrapper">
 			<!-- 입력 폼을 감싸는 래퍼 -->

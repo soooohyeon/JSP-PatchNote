@@ -21,7 +21,7 @@
 
 		<!-- 검색창 -->
 		<form class="studylist-form-wrapper" action="${pageContext.request.contextPath}/study/studyList.st" method="get">
-			<input type="text" name="keyword" class="studylist-input-search" placeholder="검색어를 입력하세요." />
+			<input type="text" name="keyword" class="studylist-input-search" placeholder="검색어를 입력하세요." autocomplete="off" />
 			<button type="submit" class="studylist-btn-search">
 				<img src="${pageContext.request.contextPath}/asset/img/study/search-btn.png" alt="search" class="studylist-img-search" />
 			</button>

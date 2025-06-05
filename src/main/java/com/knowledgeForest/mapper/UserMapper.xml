@@ -98,7 +98,7 @@
 		tu.USER_NICK,
 		tu.USER_PH,
 		(SELECT COUNT(*) FROM TBL_STUDY_APPLY tsa WHERE
-		tsa.STUDY_NUM = ts.STUDY_NUM)
+		tsa.STUDY_NUM = ts.STUDY_NUM and tsa.STUDY_APPLY_STATUS = 1)
 		AS participants
 		FROM TBL_STUDY ts
 		INNER
@@ -188,7 +188,7 @@
 		tsa.user_num = tu.user_num
 		WHERE
 		tsa.study_num = #{studyNum} AND
-		tsa.STUDY_APPLY_STATUS =0
+		tsa.STUDY_APPLY_STATUS = 0
 	</select>
 
 

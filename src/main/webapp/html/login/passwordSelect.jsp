@@ -24,13 +24,13 @@
 			<div class="passwordSelect-div-wrapper-all-box">
 				<div class="passwordSelect-div-wrapper-input-box">
 					<input type="text" class="passwordSelect-input" placeholder="아이디"
-						name="userId" maxlength="10" id="PASSWORDSELECT-INPUT-ID">
+						name="userId" maxlength="10" id="PASSWORDSELECT-INPUT-ID" autocomplete="off" >
 				</div>
 				<span class="join-span-wrapper-text-alarm" id="JOIN-SPAN-ID"></span>
 				<div class="passwordSelect-div-wrapper-input-box">
 					<input type="text" class="passwordSelect-input"
 						placeholder="휴대폰 번호" name="userPh"
-						id="PASSWORDSELECT-INPUT-PHONENUMBER" />
+						id="PASSWORDSELECT-INPUT-PHONENUMBER" autocomplete="off" />
 					<button type="button" class="passwordSelect-btn"
 						id="PASSWORDSELECT-BTN-SEND">발송</button>
 				</div>

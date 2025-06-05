@@ -25,9 +25,9 @@
       </div>
       <form onsubmit="return false;">
       <div class="login-div-wrapper-input-box">
-        <input type="text" class="login-input" placeholder="아이디" name="userId" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" > 
+        <input type="text" class="login-input" placeholder="아이디" name="userId" id="LOGIN-INPUT-ID" maxlength="10" onblur="idCheck()" onkeyup="inputLenFunc2()" autocomplete="off" > 
 
-        <input type="password" class="login-input" placeholder="비밀번호" name="userPw" id="LOGIN-INPUT-PWD" maxlength="15" onblur="pwdCheck()" onkeyup="inputLenFunc1()" >
+        <input type="password" class="login-input" placeholder="비밀번호" name="userPw" id="LOGIN-INPUT-PWD" maxlength="15" onblur="pwdCheck()" onkeyup="inputLenFunc1()" autocomplete="off" >
       </div>
 
       <div class="login-div-wrapper-join-box">

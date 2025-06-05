@@ -183,7 +183,7 @@ $(document).ready(function() {
                               class="studylist-span-commentdate">${comment.studyCommentUploadDate}</span>
                         </div>
                         <div class="studylist-div-commentlayer">
-                           <span class="studylist-span-commentcontent">${comment.studyComment}</span>
+                           <div class="studylist-span-commentcontent">${comment.studyComment}</div>
 						   
                               ${isMyComment ? `
                            <div class="studylist-detail-div-btnwrapper">
